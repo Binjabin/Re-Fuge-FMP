@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Stealth
-  m_Shader: {fileID: 4800000, guid: b612fc64a10b6d7469ebe3c880097abe, type: 3}
+  m_Shader: {fileID: 4800000, guid: dbceb7d26d5600e43ad368e9ad6d6d44, type: 3}
   m_ShaderKeywords: _REMOVEDIAG_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -18,11 +18,18 @@ Material:
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
     - _RemoveDiag: 1
+    - _SmoothSpeed: 0.3
     - _WireframeVal: 0.05
     m_Colors:
+    - _AmbientColor: {r: 1, g: 1, b: 1, a: 1}
     - _BackColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.084905684, g: 0.084905684, b: 0.084905684, a: 1}
     - _FrontColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

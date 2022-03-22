@@ -9,6 +9,8 @@
 		_AmbientColor("Ambient Color", Color) = (0.4,0.4,0.4,1)
 		[HDR]
 		_SmoothSpeed("Smooth Speed", Float) = 0.3
+		_ShadowIntensity("Shadow Intensity", Float) = 1
+
 
 	}
 	SubShader
@@ -22,8 +24,9 @@
 				"LightMode" = "ForwardBase"
 				"PassFlags" = "OnlyDirectional"
 			}
-
+		
 			CGPROGRAM
+			
 			#pragma vertex vert
 			#pragma fragment frag
 			// Compile multiple versions of this shader depending on lighting settings.
@@ -76,7 +79,9 @@
 
 			float4 _SpecularColor;		
 
-			float _SmoothSpeed;	
+			float _SmoothSpeed;
+
+			float _ShadowIntensity;	
 
 			float4 frag (v2f i) : SV_Target
 			{
@@ -101,11 +106,14 @@
 				float lightIntensity = smoothstep(0, _SmoothSpeed, NdotL * smoothstep(0, 0.01, shadow));	
 				// Multiply by the main directional light's intensity and color.
 				float4 light = lightIntensity * _LightColor0;
-
-							
+				light = light + (1 - light) * (1 - _ShadowIntensity);
+						
 
 				float4 sample = tex2D(_MainTex, i.uv);
+				
+
 				return (light + _AmbientColor) * _Color * sample;
+
 			}
 			ENDCG
 		}

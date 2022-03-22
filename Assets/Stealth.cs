@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Stealth : MonoBehaviour
 {
-    Material standardMat;
-    Material stealthMat;
+    [SerializeField, ColorUsage(true, true)] Color stealthColor;
+    [ColorUsage(true, true)] Color standardColor;
     float fadeSpeed = 2.0f;
     Renderer rend;
     [SerializeField] float fadeFactor;
@@ -14,13 +14,15 @@ public class Stealth : MonoBehaviour
     {
         rend = GetComponent<Renderer>();
         fadeFactor = 0;
-        standardMat = rend.material;
-        stealthMat = Resources.Load("Material/Stealth", typeof(Material)) as Material;
+        standardColor = rend.material.color;
     }
 
     // Update is called once per frame
     void Update()
     {
-        rend.material.Lerp (standardMat, stealthMat, fadeFactor);
+        Color currentColor = Color.Lerp(standardColor, stealthColor, fadeFactor);
+        float currentShadows = Mathf.Lerp(1f, 0f, fadeFactor);
+        rend.material.color = currentColor;
+        rend.material.SetFloat("_ShadowIntensity", currentShadows);
     }
 }

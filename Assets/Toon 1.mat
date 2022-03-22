@@ -23,10 +23,11 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    m_Ints: []
     m_Floats:
+    - _ShadowIntensity: 1
+    - _ShadowsIntensity: 1
     - _SmoothSpeed: 0.3
     m_Colors:
-    - _AmbientColor: {r: 0.7169812, g: 0.5512638, b: 0.5512638, a: 1}
+    - _AmbientColor: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 0}
     - _Color: {r: 0.9811321, g: 0.22567883, b: 0.1527234, a: 1}
   m_BuildTextureStacks: []
