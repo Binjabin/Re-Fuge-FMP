@@ -80,7 +80,6 @@ public class Stealth : MonoBehaviour
     {
         isFading = true;
         float targetStealthValue = stealthOn ? 1f : 0f;
-        Debug.Log(targetStealthValue);
         float startStealthValue = fadeFactor;
         elapsedTime = 0f;
         while(elapsedTime < fadeTime)
