@@ -6,7 +6,8 @@ public class LayerConfig
 {
     public int minNodeCount;
     public int maxNodeCount;
-    public int maxDistanceFromPreviousLayer;
-    public int minDistanceFromPreviousLayer;
+    public float yDistance;
+    public float yRandomFactor;
+    public float xRandomFactor;
     
 }

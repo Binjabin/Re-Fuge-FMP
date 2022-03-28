@@ -4,5 +4,6 @@ using UnityEngine;
 [CreateAssetMenu]
 public class MapConfig : ScriptableObject
 {
+    public float mapWidth;
     public List<LayerConfig> layers; 
 }

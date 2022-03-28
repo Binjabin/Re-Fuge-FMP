@@ -1,0 +1,237 @@
+fileFormatVersion: 2
+guid: f4bc79551c5f18a498592b8c75706545
+ModelImporter:
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      74: -9025327618061289804
+    second: Engine Frame|CubeAction
+  - first:
+      74: -8805517951629732577
+    second: Engine Frame|DecoAction
+  - first:
+      74: -1641288012030084652
+    second: Engine Frame|Engine 1.001Action
+  - first:
+      74: 1237723809552285483
+    second: Engine Frame|Engine 1.001Action.001
+  - first:
+      74: -4511513346972818139
+    second: Engine Frame|Engine 1Action
+  - first:
+      74: -3029205562155615415
+    second: Engine Frame|Engine 2.001Action
+  - first:
+      74: 2685891794428568450
+    second: Engine Frame|Engine 2.001Action.001
+  - first:
+      74: 8277902336014512253
+    second: Engine Frame|Engine 2Action
+  - first:
+      74: -7954859929631409925
+    second: Engine Frame|Engine 3Action
+  - first:
+      74: 3383215506866733051
+    second: Engine 2|CubeAction
+  - first:
+      74: -8149211736422342311
+    second: Engine 2|DecoAction
+  - first:
+      74: -2084477786956708394
+    second: Engine 2|Engine 1.001Action
+  - first:
+      74: -4603689047926844393
+    second: Engine 2|Engine 1.001Action.001
+  - first:
+      74: -5140075374187207491
+    second: Engine 2|Engine 1Action
+  - first:
+      74: -1829651509653941572
+    second: Engine 2|Engine 2.001Action
+  - first:
+      74: -3749197086255511520
+    second: Engine 2|Engine 2.001Action.001
+  - first:
+      74: -6736519781904038946
+    second: Engine 2|Engine 2Action
+  - first:
+      74: 4835663580158749994
+    second: Engine 2|Engine 3Action
+  - first:
+      74: -8775834806440233384
+    second: Engine 1|CubeAction
+  - first:
+      74: -6775209353455957940
+    second: Engine 1|DecoAction
+  - first:
+      74: -4395247544981245563
+    second: Engine 1|Engine 1.001Action
+  - first:
+      74: -7378921133992565608
+    second: Engine 1|Engine 1.001Action.001
+  - first:
+      74: 4566541181102571474
+    second: Engine 1|Engine 1Action
+  - first:
+      74: 3268770307754438854
+    second: Engine 1|Engine 2.001Action
+  - first:
+      74: 2521806284337888439
+    second: Engine 1|Engine 2.001Action.001
+  - first:
+      74: -6688578242889747192
+    second: Engine 1|Engine 2Action
+  - first:
+      74: -6957548059110553314
+    second: Engine 1|Engine 3Action
+  - first:
+      74: -6908707415812290862
+    second: Engine 3|CubeAction
+  - first:
+      74: -7468238390477388686
+    second: Engine 3|DecoAction
+  - first:
+      74: 3854514055506307470
+    second: Engine 3|Engine 1.001Action
+  - first:
+      74: -7038239031839334312
+    second: Engine 3|Engine 1.001Action.001
+  - first:
+      74: 4753049383966410926
+    second: Engine 3|Engine 1Action
+  - first:
+      74: -3889727454161486225
+    second: Engine 3|Engine 2.001Action
+  - first:
+      74: -6153830773378618176
+    second: Engine 3|Engine 2.001Action.001
+  - first:
+      74: 5818084710922703006
+    second: Engine 3|Engine 2Action
+  - first:
+      74: 7015217942130575853
+    second: Engine 3|Engine 3Action
+  - first:
+      74: -136672229437564254
+    second: Deco|CubeAction
+  - first:
+      74: -6167416062209218356
+    second: Deco|DecoAction
+  - first:
+      74: -6918480261734442496
+    second: Deco|Engine 1.001Action
+  - first:
+      74: -293508707117571996
+    second: Deco|Engine 1.001Action.001
+  - first:
+      74: 7241673618839068190
+    second: Deco|Engine 1Action
+  - first:
+      74: -2617819552297845872
+    second: Deco|Engine 2.001Action
+  - first:
+      74: -5711685004854340929
+    second: Deco|Engine 2.001Action.001
+  - first:
+      74: -1137587486457198255
+    second: Deco|Engine 2Action
+  - first:
+      74: -3436074071321062322
+    second: Deco|Engine 3Action
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -8,7 +8,10 @@ public class MapGenerator : MonoBehaviour
     float currentY;
     [SerializeField] MapConfig testConfig;
     MapConfig config;
+    LayerConfig layer;
     float distanceFromPreviousLayer;
+    float xDistance;
+    public List<List<Node>> nodes = new List<List<Node>>();
     // Start is called before the first frame update
     void Start()
     {
@@ -30,24 +33,53 @@ public class MapGenerator : MonoBehaviour
         {
             GenerateLayer(i);
         }
+        GeneratePaths();
     }
     void GenerateLayer(int layerIndex)
     {
-        var layer = config.layers[layerIndex];
+        layer = config.layers[layerIndex];
         int layerNodeCount = Random.Range(layer.minNodeCount, layer.maxNodeCount);
-
+        currentY += layer.yDistance;
+        var layerNodes = new List<Node>();
         for(var i = 1;i <= layerNodeCount; i++)
         {
-            distanceFromPreviousLayer = Random.Range(layer.minDistanceFromPreviousLayer, layer.maxDistanceFromPreviousLayer);
-            Debug.Log(distanceFromPreviousLayer);
-            Vector3 nodePosition = new Vector3(i * 1f, currentY + distanceFromPreviousLayer, 0f);
+            distanceFromPreviousLayer = 1f;
+            xDistance = config.mapWidth / (layerNodeCount + 1) * i;
+            float baseXPosition = -(config.mapWidth/2) + xDistance;
+
+            float baseYPosition = currentY;
+
+            float randomizedX = RandomizeNodeXPosition(baseXPosition);
+            float randomizedY = RandomizeNodeYPosition(baseYPosition);
+            var node = new Node(new NodePoint(i, layerIndex));
+            layerNodes.Add(node);
+            Vector3 nodePosition = new Vector3(randomizedX, randomizedY, 0f);
             Instantiate(mapNode, nodePosition, Quaternion.identity);
         }
-        currentY += layer.maxDistanceFromPreviousLayer;
+        nodes.Add(layerNodes);
+        
     }
     void StartingPoint()
     {
         GenerateLayer(0);
+    }
+    float RandomizeNodeXPosition(float baseX)
+    {
+        float randomOffset = layer.xRandomFactor * xDistance;
+        return baseX + Random.Range(-randomOffset, randomOffset);
+    }
+    float RandomizeNodeYPosition(float baseY)
+    {
+        float randomOffset = layer.yRandomFactor * layer.yDistance;
+        return baseY + Random.Range(-randomOffset, randomOffset);
+    }
+    void GeneratePaths()
+    {
+        Path();
+    }
+    List<NodePoint> Path()
+    {
+        return null;
     }
 }
 
