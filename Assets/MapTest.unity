@@ -152,10 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0291dcc6b67beb45a48dc72cfdfa421, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layerCount: 3
-  minDistanceBetweenLayers: 1
-  maxDistanceBetweenLayers: 3
   mapNode: {fileID: 6007380458242403859, guid: 5c9c2c2994a88d94280e86ac6a20c0c9, type: 3}
+  testConfig: {fileID: 11400000, guid: b67db9c8974b68b459c7bcf694ce5a9e, type: 2}
 --- !u!4 &349175242
 Transform:
   m_ObjectHideFlags: 0
@@ -345,34 +343,4 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1369614253
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1369614254}
-  m_Layer: 0
-  m_Name: Config
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1369614254
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1369614253}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.3486476, y: 5.9551806, z: -2.3408396}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

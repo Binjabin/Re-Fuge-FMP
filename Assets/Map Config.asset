@@ -13,5 +13,11 @@ MonoBehaviour:
   m_Name: Map Config
   m_EditorClassIdentifier: 
   layers:
-  - layerCount: -62
-  - layerCount: 0
+  - minNodeCount: 4
+    maxNodeCount: 5
+    maxDistanceFromPreviousLayer: 2
+    minDistanceFromPreviousLayer: 3
+  - minNodeCount: 4
+    maxNodeCount: 5
+    maxDistanceFromPreviousLayer: 2
+    minDistanceFromPreviousLayer: 4
