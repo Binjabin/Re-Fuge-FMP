@@ -5,5 +5,8 @@ using UnityEngine;
 public class MapConfig : ScriptableObject
 {
     public float mapWidth;
+    public int GridWidth => Mathf.Max(startGridWidth, endGridWidth);
+    public int startGridWidth;
+    public int endGridWidth;
     public List<LayerConfig> layers; 
 }
