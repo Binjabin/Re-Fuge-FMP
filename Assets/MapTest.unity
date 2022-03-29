@@ -152,8 +152,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0291dcc6b67beb45a48dc72cfdfa421, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapNode: {fileID: 6007380458242403859, guid: 5c9c2c2994a88d94280e86ac6a20c0c9, type: 3}
+  nodePrefab: {fileID: 6007380458242403859, guid: 5c9c2c2994a88d94280e86ac6a20c0c9, type: 3}
+  linePrefab: {fileID: 5818086435174080840, guid: 905f4ed5c54569e4194bde0044191e44, type: 3}
   testConfig: {fileID: 11400000, guid: b67db9c8974b68b459c7bcf694ce5a9e, type: 2}
+  nodesList: []
+  mapNodes: []
 --- !u!4 &349175242
 Transform:
   m_ObjectHideFlags: 0
