@@ -13,11 +13,13 @@ public class MapGenerator : MonoBehaviour
     float distanceFromPreviousLayer;
     float xDistance;
     public List<List<Node>> nodes = new List<List<Node>>();
+    public List<Node> nodesList = new List<Node>();
     // Start is called before the first frame update
     void Start()
     {
         currentY = 0f;
         GenerateMap(testConfig);
+        DrawMap();
     }
 
     // Update is called once per frame
@@ -34,6 +36,7 @@ public class MapGenerator : MonoBehaviour
             GenerateLayer(i);
         }
         GeneratePaths();
+        nodesList = nodes.SelectMany(x => x).ToList();
     }
     void GenerateLayer(int layerIndex)
     {
@@ -50,29 +53,34 @@ public class MapGenerator : MonoBehaviour
 
             float randomizedX = RandomizeNodeXPosition(baseXPosition);
             float randomizedY = RandomizeNodeYPosition(baseYPosition);
-            var node = new Node(new NodePoint(i, layerIndex));
+            var node = new Node(new NodePoint(i, layerIndex))
+            {
+                position = new Vector2(randomizedX, randomizedY)
+            };
             layerNodes.Add(node);
-            Vector3 nodePosition = new Vector3(randomizedX, randomizedY, 0f);
-            Instantiate(mapNode, nodePosition, Quaternion.identity);
         }
         nodes.Add(layerNodes);
 
         
     }
+
     void StartingPoint()
     {
         GenerateLayer(0);
     }
+
     float RandomizeNodeXPosition(float baseX)
     {
         float randomOffset = layer.xRandomFactor * xDistance;
         return baseX + Random.Range(-randomOffset, randomOffset);
     }
+
     float RandomizeNodeYPosition(float baseY)
     {
         float randomOffset = layer.yRandomFactor * layer.yDistance;
         return baseY + Random.Range(-randomOffset, randomOffset);
     }
+
     void GeneratePaths()
     {
         var finalNode = GetFinalNode();
@@ -102,6 +110,7 @@ public class MapGenerator : MonoBehaviour
         }
         Debug.Log("Attempts to generate paths: " + attempts);
     }
+
     List<NodePoint> Path(NodePoint from, float toY, int width)
     {
         if(from.y == toY)
@@ -131,15 +140,35 @@ public class MapGenerator : MonoBehaviour
         }
         return path;
     }
+
     NodePoint GetFinalNode()
     {
         var y = config.layers.Count - 1;
         return new NodePoint(1, y);
         
     }
+
     private static bool PathsLeadToAtLeastNDifferentPoints(IEnumerable<List<NodePoint>> paths, int n)
     {
         return (from path in paths select path[path.Count - 1].x).Distinct().Count() >= n;
     }
-}
 
+    void DrawLines()
+    {
+
+    }
+
+    void DrawNodes(IEnumerable<Node> nodes)
+    {
+        foreach(Node node in nodes)
+        {
+            Instantiate(mapNode, node.position, Quaternion.identity);
+        }
+    }
+
+    void DrawMap()
+    {
+        DrawNodes(nodesList);
+        DrawLines();
+    }
+}

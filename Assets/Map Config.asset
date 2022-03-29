@@ -13,11 +13,26 @@ MonoBehaviour:
   m_Name: Map Config
   m_EditorClassIdentifier: 
   mapWidth: 10
-  startGridWidth: 4
-  endGridWidth: 5
+  startGridWidth: 2
+  endGridWidth: 3
   layers:
   - yDistance: 0
     yRandomFactor: 0
+    xRandomFactor: 0
+  - yDistance: 1
+    yRandomFactor: 0.2
+    xRandomFactor: 0
+  - yDistance: 1
+    yRandomFactor: 0.2
+    xRandomFactor: 0
+  - yDistance: 1
+    yRandomFactor: 0.2
+    xRandomFactor: 0
+  - yDistance: 1
+    yRandomFactor: 0.2
+    xRandomFactor: 0
+  - yDistance: 1
+    yRandomFactor: 0.2
     xRandomFactor: 0
   - yDistance: 1
     yRandomFactor: 0.2
