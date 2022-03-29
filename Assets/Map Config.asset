@@ -31,18 +31,3 @@ MonoBehaviour:
   - yDistance: 1
     yRandomFactor: 0.2
     xRandomFactor: 0
-  - yDistance: 1
-    yRandomFactor: 0.2
-    xRandomFactor: 0
-  - yDistance: 1
-    yRandomFactor: 0.2
-    xRandomFactor: 0
-  - yDistance: 1
-    yRandomFactor: 0.2
-    xRandomFactor: 0
-  - yDistance: 1
-    yRandomFactor: 0.2
-    xRandomFactor: 0
-  - yDistance: 1
-    yRandomFactor: 0.2
-    xRandomFactor: 0

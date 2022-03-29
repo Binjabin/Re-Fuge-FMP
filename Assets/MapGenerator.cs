@@ -5,15 +5,19 @@ using System.Linq;
 
 public class MapGenerator : MonoBehaviour
 {
-    [SerializeField] GameObject mapNode;
+    [SerializeField] GameObject nodePrefab;
+    [SerializeField] GameObject linePrefab;
     float currentY;
     [SerializeField] MapConfig testConfig;
     MapConfig config;
     LayerConfig layer;
     float distanceFromPreviousLayer;
     float xDistance;
+    private static List<List<NodePoint>> paths = new List<List<NodePoint>>();
     public List<List<Node>> nodes = new List<List<Node>>();
     public List<Node> nodesList = new List<Node>();
+    public List<MapNode> mapNodes = new List<MapNode>();
+    int linePointsCount = 10;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +40,7 @@ public class MapGenerator : MonoBehaviour
             GenerateLayer(i);
         }
         GeneratePaths();
+        SetupConnections();
         nodesList = nodes.SelectMany(x => x).ToList();
     }
     void GenerateLayer(int layerIndex)
@@ -155,20 +160,73 @@ public class MapGenerator : MonoBehaviour
 
     void DrawLines()
     {
-
+        foreach(var node in mapNodes)
+        {
+            foreach(var connection in node.Node.outgoing)
+            {
+                Debug.Log("drawline");
+                AddLineConnection(node, mapNodes.FirstOrDefault(n => n.Node.point.Equals(connection)));
+            }
+        }
+    }
+    void AddLineConnection(MapNode from, MapNode to)
+    {
+        var lineObject = Instantiate(linePrefab, transform.position, Quaternion.identity);
+        Debug.Log("line");
+        var lineRenderer = lineObject.GetComponent<LineRenderer>();
+        var fromPoint = from.transform.position;
+        var toPoint = to.transform.position;
+        lineRenderer.positionCount = linePointsCount;
+        for (var i = 0; i < linePointsCount; i++)
+        {
+            lineRenderer.SetPosition(i, Vector3.Lerp(Vector3.zero, toPoint - fromPoint, (float)i / (linePointsCount - 1)));
+        }
     }
 
     void DrawNodes(IEnumerable<Node> nodes)
     {
-        foreach(Node node in nodes)
+        foreach(var node in nodes)
         {
-            Instantiate(mapNode, node.position, Quaternion.identity);
+            var mapNode = CreateMapNode(node);
+            mapNodes.Add(mapNode);
+        }
+    }
+
+    void SetupConnections()
+    {
+        foreach (var path in paths)
+        {
+            for (var i = 0; i < path.Count; i++)
+            {
+                var node = nodes[path[i].y][path[i].x];
+                if(i > 0)
+                {
+                    var nextNode = nodes[path[i-1].y][path[i-1].x];
+                    nextNode.AddIncoming(node.point);
+                    node.AddOutgoing(nextNode.point);
+                }
+                if(i < path.Count - 1)
+                {
+                    var previousNode = nodes[path[i+1].y][path[i+1].x];
+                    previousNode.AddOutgoing(node.point);
+                    node.AddIncoming(previousNode.point);
+
+                }
+            }
         }
     }
 
     void DrawMap()
     {
+        
         DrawNodes(nodesList);
         DrawLines();
+    }
+    MapNode CreateMapNode(Node node)
+    {
+        var mapNodeObject = Instantiate(nodePrefab, node.position, Quaternion.identity);
+        var mapNode = mapNodeObject.GetComponent<MapNode>();
+        mapNode.SetUp(node);
+        return mapNode;
     }
 }
