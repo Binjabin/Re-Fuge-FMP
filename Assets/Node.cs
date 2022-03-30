@@ -7,8 +7,8 @@ public class Node
 {
     public NodePoint point;
     public Vector2 position;
-    public readonly List<NodePoint> incoming = new List<NodePoint>();
-    public readonly List<NodePoint> outgoing = new List<NodePoint>();
+    public List<NodePoint> incoming = new List<NodePoint>();
+    public List<NodePoint> outgoing = new List<NodePoint>();
     public Node(NodePoint point)
     {
         this.point = point;

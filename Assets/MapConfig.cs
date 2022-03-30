@@ -8,5 +8,6 @@ public class MapConfig : ScriptableObject
     public int GridWidth => Mathf.Max(startGridWidth, endGridWidth);
     public int startGridWidth;
     public int endGridWidth;
+    public float randomPosition;
     public List<LayerConfig> layers; 
 }
