@@ -12,13 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25ffe42c36079d148940296bad65f3c9, type: 3}
   m_Name: Map Config
   m_EditorClassIdentifier: 
-  mapWidth: 20
+  mapWidth: 5
+  maxGridWidth: 3
   startGridWidth: 1
-  endGridWidth: 4
+  endGridWidth: 3
   randomPosition: 0.5
+  lineOffset: 0.5
   layers:
-  - yDistance: 3
+  - yDistance: 5
     yRandomFactor: 0
+    xRandomFactor: 0
+  - yDistance: 3
+    yRandomFactor: 0.2
+    xRandomFactor: 0
+  - yDistance: 3
+    yRandomFactor: 0.2
+    xRandomFactor: 0
+  - yDistance: 3
+    yRandomFactor: 0.2
     xRandomFactor: 0
   - yDistance: 3
     yRandomFactor: 0.2

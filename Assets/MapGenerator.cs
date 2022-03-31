@@ -3,36 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class MapGenerator : MonoBehaviour
+public class MapGenerator
 {
-    [SerializeField] GameObject nodePrefab;
-    [SerializeField] GameObject linePrefab;
-    float currentY;
-    [SerializeField] MapConfig testConfig;
-    MapConfig config;
-    LayerConfig layer;
-    float distanceFromPreviousLayer;
-    float xDistance;
-    List<List<NodePoint>> paths = new List<List<NodePoint>>();
-    public List<List<Node>> nodes = new List<List<Node>>();
-    public List<Node> nodesList = new List<Node>();
-    public List<MapNode> mapNodes = new List<MapNode>();
-    public List<float> layerDistances;
-    int linePointsCount = 10;
-    // Start is called before the first frame update
-    void Start()
-    {
-        currentY = 0f;
-        GenerateMap(testConfig);
-        DrawMap();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    void GenerateMap(MapConfig conf)
+    
+    static MapConfig config;
+    static LayerConfig layer;
+    static float distanceFromPreviousLayer;
+    static float xDistance;
+    static List<List<NodePoint>> paths = new List<List<NodePoint>>();
+    static public List<List<Node>> nodes = new List<List<Node>>();
+    static public List<float> layerDistances;
+    
+    public static Map GenerateMap(MapConfig conf)
     {
         config = conf;
         GenerateLayerDistances();
@@ -43,12 +25,13 @@ public class MapGenerator : MonoBehaviour
         GeneratePaths();
         RandomiseNodePositions();
         SetupConnections();
-        nodesList = nodes.SelectMany(n => n).Where(n => n.incoming.Count > 0 || n.outgoing.Count > 0).ToList();
+        RemoveCrossPaths();
+        var nodesList = nodes.SelectMany(n => n).Where(n => n.incoming.Count > 0 || n.outgoing.Count > 0).ToList();
+        return new Map(nodesList, new List<NodePoint>());
     }
-    void GenerateLayer(int layerIndex)
+    static void GenerateLayer(int layerIndex)
     {
         layer = config.layers[layerIndex];
-        currentY += layer.yDistance;
         var layerNodes = new List<Node>();
         for(var i = 1;i <= config.GridWidth; i++)
         {
@@ -56,13 +39,12 @@ public class MapGenerator : MonoBehaviour
             xDistance = config.mapWidth / (config.GridWidth + 1);
             float baseXPosition = -(config.mapWidth/2) + xDistance * i;
 
-            float baseYPosition = currentY;
 
-            float randomizedX = baseXPosition;
-            float randomizedY = baseYPosition;
+            float baseX = baseXPosition;
+            float baseY = GetDistanceToLayer(layerIndex);
             var node = new Node(new NodePoint(i, layerIndex))
             {
-                position = new Vector2(randomizedX, randomizedY)
+                position = new Vector2(baseX, baseY)
             };
             layerNodes.Add(node);
         }
@@ -71,12 +53,14 @@ public class MapGenerator : MonoBehaviour
         
     }
 
-    void StartingPoint()
+    private static float GetDistanceToLayer(int layerIndex)
     {
-        GenerateLayer(0);
+        if (layerIndex < 0 || layerIndex > layerDistances.Count) return 0f;
+
+        return layerDistances.Take(layerIndex + 1).Sum();
     }
 
-    void GeneratePaths()
+    static void GeneratePaths()
     {
         var finalNode = GetFinalNode();
         paths = new List<List<NodePoint>>();
@@ -100,23 +84,25 @@ public class MapGenerator : MonoBehaviour
         var preBossPoints = (from x in prebossX select new NodePoint(x, finalNode.y - 1)).ToList();
         foreach(var point in preBossPoints)
         {
-            var path = Path(point, 0, config.GridWidth);
+            var path = Path(point, 1, config.GridWidth);
             path.Insert(0, finalNode);
+            path.Add(new NodePoint(finalNode.x, 0));
             paths.Add(path);
             attempts++;
         }
         while(!PathsLeadToAtLeastNDifferentPoints(paths, config.startGridWidth) && attempts < 100)
         {
             var randomPreBossPoint = preBossPoints[UnityEngine.Random.Range(0, preBossPoints.Count)];
-            var path = Path(randomPreBossPoint, 0, config.GridWidth);
+            var path = Path(randomPreBossPoint, 1, config.GridWidth);
             path.Insert(0, finalNode);
+            path.Add(new NodePoint(finalNode.x, 0));
             paths.Add(path);
             attempts++;
         }
         Debug.Log("Attempts to generate paths: " + attempts);
     }
 
-    List<NodePoint> Path(NodePoint from, float toY, int width)
+    static List<NodePoint> Path(NodePoint from, float toY, int width)
     {
         if(from.y == toY)
         {
@@ -152,7 +138,7 @@ public class MapGenerator : MonoBehaviour
         return path;
     }
 
-    NodePoint GetFinalNode()
+    static NodePoint GetFinalNode()
     {
         var y = config.layers.Count - 1;
         if (config.GridWidth % 2 == 1)
@@ -171,39 +157,11 @@ public class MapGenerator : MonoBehaviour
         return (from path in paths select path[path.Count - 1].x).Distinct().Count() >= n;
     }
 
-    void DrawLines()
-    {
-        foreach(var node in mapNodes)
-        {
-            foreach(var connection in node.Node.outgoing)
-            {
-                AddLineConnection(node, mapNodes.FirstOrDefault(n => n.Node.point.Equals(connection)));
-            }
-        }
-    }
-    void AddLineConnection(MapNode from, MapNode to)
-    {
-        var lineObject = Instantiate(linePrefab, transform.position, Quaternion.identity);
-        var lineRenderer = lineObject.GetComponent<LineRenderer>();
-        var fromPoint = from.transform.position;
-        var toPoint = to.transform.position;
-        lineRenderer.positionCount = linePointsCount;
-        for (var i = 0; i < linePointsCount; i++)
-        {
-            lineRenderer.SetPosition(i, Vector3.Lerp(toPoint, fromPoint, (float)i / (linePointsCount - 1)));
-        }
-    }
+    
 
-    void DrawNodes(IEnumerable<Node> nodes)
-    {
-        foreach(var node in nodes)
-        {
-            var mapNode = CreateMapNode(node);
-            mapNodes.Add(mapNode);
-        }
-    }
+    
 
-    void SetupConnections()
+    static void SetupConnections()
     {
         foreach (var path in paths)
         {
@@ -227,21 +185,8 @@ public class MapGenerator : MonoBehaviour
         }
     }
 
-    void DrawMap()
-    {
-        
-        DrawNodes(nodesList);
-        DrawLines();
-    }
-    MapNode CreateMapNode(Node node)
-    {
-        var mapNodeObject = Instantiate(nodePrefab, node.position, Quaternion.identity);
-        var mapNode = mapNodeObject.GetComponent<MapNode>();
-        mapNode.SetUp(node);
-        return mapNode;
-    }
 
-    void RandomiseNodePositions()
+    static void RandomiseNodePositions()
     {
         for (var index = 0; index < nodes.Count; index++)
         {
@@ -259,16 +204,81 @@ public class MapGenerator : MonoBehaviour
                 var x = xRnd * xDistance * config.randomPosition/ 2f;
                 var y = yRnd < 0 ? distToPreviousLayer * yRnd * config.randomPosition / 2f : distToNextLayer * yRnd * config.randomPosition/ 2f;
 
-                node.position += new Vector2(x, y);
+                node.position += new Vector3(x, y, 0);
             }
         }
     }
-    void GenerateLayerDistances()
+
+    static private Node GetNode(NodePoint p)
+    {
+        if (p.y >= nodes.Count) return null;
+        if (p.x >= nodes[p.y].Count) return null;
+
+        return nodes[p.y][p.x];
+    }
+
+    static void GenerateLayerDistances()
     {
         layerDistances = new List<float>();
         foreach(var layer in config.layers)
         {
             layerDistances.Add(layer.yDistance);
+        }
+    }
+
+    static void RemoveCrossPaths()
+    {
+        for(var i = 0; i < config.GridWidth - 1; i++)
+        {
+            for(var j = 0; j < config.layers.Count; j++)
+            {
+                var node = GetNode(new NodePoint(i, j));
+                if (node == null || node.HasNoConnections()) continue;
+                var right = GetNode(new NodePoint(i + 1, j));
+                if (right == null || right.HasNoConnections()) continue;
+                var top = GetNode(new NodePoint(i, j + 1));
+                if (top == null || top.HasNoConnections()) continue;
+                var topRight = GetNode(new NodePoint(i + 1, j + 1));
+                if (topRight == null || topRight.HasNoConnections()) continue;
+
+
+                if (!node.outgoing.Any(element => element.Equals(topRight.point))) continue;
+                    if (!right.outgoing.Any(element => element.Equals(top.point))) continue;
+
+                    // Debug.Log("Found a cross node: " + node.point);
+
+                    // we managed to find a cross node:
+                    // 1) add direct connections:
+                    node.AddOutgoing(top.point);
+                    top.AddIncoming(node.point);
+
+                    right.AddOutgoing(topRight.point);
+                    topRight.AddIncoming(right.point);
+
+                    var rnd = Random.Range(0f, 1f);
+                    if (rnd < 0.2f)
+                    {
+                        // remove both cross connections:
+                        // a) 
+                        node.RemoveOutgoing(topRight.point);
+                        topRight.RemoveIncoming(node.point);
+                        // b) 
+                        right.RemoveOutgoing(top.point);
+                        top.RemoveIncoming(right.point);
+                    }
+                    else if (rnd < 0.6f)
+                    {
+                        // a) 
+                        node.RemoveOutgoing(topRight.point);
+                        topRight.RemoveIncoming(node.point);
+                    }
+                    else
+                    {
+                        // b) 
+                        right.RemoveOutgoing(top.point);
+                        top.RemoveIncoming(right.point);
+                    }
+            }
         }
     }
 

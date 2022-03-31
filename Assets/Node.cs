@@ -6,7 +6,7 @@ using System.Linq;
 public class Node
 {
     public NodePoint point;
-    public Vector2 position;
+    public Vector3 position;
     public List<NodePoint> incoming = new List<NodePoint>();
     public List<NodePoint> outgoing = new List<NodePoint>();
     public Node(NodePoint point)
@@ -28,5 +28,20 @@ public class Node
             return;
         }
         outgoing.Add(p);
+    }
+
+    public void RemoveIncoming(NodePoint p)
+    {
+        incoming.RemoveAll(element => element.Equals(p));
+    }
+
+    public void RemoveOutgoing(NodePoint p)
+    {
+        outgoing.RemoveAll(element => element.Equals(p));
+    }
+
+    public bool HasNoConnections()
+    {
+        return incoming.Count == 0 && outgoing.Count == 0;
     }
 }
