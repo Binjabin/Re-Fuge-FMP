@@ -14,7 +14,7 @@ public class MapGenerator
     static public List<List<Node>> nodes = new List<List<Node>>();
     static public List<float> layerDistances;
     
-    public static Map GenerateMap(MapConfig conf)
+    public static Map GetMap(MapConfig conf)
     {
         config = conf;
         GenerateLayerDistances();

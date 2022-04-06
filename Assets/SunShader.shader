@@ -2,7 +2,7 @@ Shader "Binjabin/SunShader"
 {
     Properties
     {
-        [HDR] _BaseColor ("BaseColor", Color) = (1,1,1,1)
+        [HDR] _Color ("Color", Color) = (1,1,1,1)
         _CellDensity ("CellDensity", Float) = 1
         [HDR] _CellColor ("CellColor", Color) = (1,1,1,1)
         _VoronoiTexture("VoronoiTexture", 2D) = "white" {}
@@ -28,7 +28,7 @@ Shader "Binjabin/SunShader"
         };
 
         fixed4 _CellColor;
-        fixed4 _BaseColor;
+        fixed4 _Color;
         sampler2D _VoronoiTexture;
         float4 _VoronoiTexture_ST;
         float _SolorFlare;
@@ -92,7 +92,7 @@ Shader "Binjabin/SunShader"
             float voronoi = Unity_Voronoi_float(shearUV, angleOffset, _CellDensity);
             float4 powerVoronoi = pow(voronoi, _SolorFlare);
             float4 colorVoronoi = powerVoronoi * _CellColor;
-            fixed4 c = _BaseColor + colorVoronoi;
+            fixed4 c = _Color + colorVoronoi;
             o.Emission = c;
             // Metallic and smoothness come from slider variables
             //o.Emission = colorVoronoi;

@@ -9,25 +9,27 @@ public class MapView : MonoBehaviour
     [SerializeField] GameObject linePrefab;
     int linePointsCount = 10;
     public List<MapNode> mapNodes = new List<MapNode>();
-    public List<Node> nodesList = new List<Node>();
     [SerializeField] MapConfig testConfig;
 
-    public Color lockedColor;
-    public Color visitedColor;
+    //[ColorUsage(true, true)] public Color lockedColor;
+    //[ColorUsage(true, true)] public Color attainableColor;
+    //[ColorUsage(true, true)] public Color visitedColor;
 
     public Color lockedLineColor;
+    public Color attainableLineColor;
     public Color visitedLineColor;
 
     GameObject firstParent;
     public static MapView Instance;
+    public MapManager mapManager;
 
     private List<LineConnection> lineConnections = new List<LineConnection>();
 
     void Start()
     {
-        nodesList = MapGenerator.GenerateMap(testConfig).nodes;
+        
         Instance = this;
-        DrawMap();
+        Debug.Log(Instance);
     }
 
     MapNode CreateMapNode(Node node)
@@ -39,10 +41,10 @@ public class MapView : MonoBehaviour
         return mapNode;
     }
 
-    void DrawMap()
+    public void DrawMap(Map m)
     {
         CreateMapParent();
-        DrawNodes(nodesList);
+        DrawNodes(m.nodes);
         DrawLines();
         SetAttainableNodes();
         SetLineColors();
@@ -85,21 +87,76 @@ public class MapView : MonoBehaviour
         firstParent = new GameObject("MapParent");
     }
 
-    void SetAttainableNodes()
+    public void SetAttainableNodes()
     {
         foreach(var node in mapNodes)
         {
             node.SetState(NodeStates.Locked);
         }
-        foreach (var node in mapNodes.Where(n => n.Node.point.y == 0))
-            node.SetState(NodeStates.Attainable);
+        if(mapManager.currentMap.path.Count == 0)
+        {
+            foreach (var node in mapNodes.Where(n => n.Node.point.y == 0))
+            {
+                node.SetState(NodeStates.Attainable);
+            }
+        }
+        else
+        {
+            foreach (var point in mapManager.currentMap.path)
+            {
+                var mapNode = GetNode(point);
+                if (mapNode != null)
+                {
+                    mapNode.SetState(NodeStates.Visited);
+                }
+            }
+
+            var currentPoint = mapManager.currentMap.path[mapManager.currentMap.path.Count - 1];
+            var currentNode = mapManager.currentMap.GetNode(currentPoint);
+
+            foreach (var point in currentNode.outgoing)
+            {
+                var mapNode = GetNode(point);
+                if(mapNode != null)
+                {
+                    mapNode.SetState(NodeStates.Attainable);
+                }
+            }
+        }
     }
 
-    void SetLineColors()
+    public void SetLineColors()
     {
         foreach(var connection in lineConnections)
         {
             connection.SetColor(lockedLineColor);
         }
+
+        if (mapManager.currentMap.path.Count == 0)
+            return;
+
+        var currentPoint = mapManager.currentMap.path[mapManager.currentMap.path.Count - 1];
+        var currentNode = mapManager.currentMap.GetNode(currentPoint);
+        foreach (var point in currentNode.outgoing)
+        {
+            var lineConnection = lineConnections.FirstOrDefault(conn => conn.from.Node == currentNode && conn.to.Node.point.Equals(point));
+            lineConnection.SetColor(attainableLineColor);
+        }
+
+        if (mapManager.currentMap.path.Count <= 1) return;
+
+        for (var i = 0; i < mapManager.currentMap.path.Count - 1; i++)
+        {
+            var current = mapManager.currentMap.path[i];
+            var next = mapManager.currentMap.path[i + 1];
+            var lineConnection = lineConnections.FirstOrDefault(conn => conn.@from.Node.point.Equals(current) &&
+                                                                        conn.to.Node.point.Equals(next));
+            lineConnection?.SetColor(visitedLineColor);
+        } 
+    }
+
+    private MapNode GetNode(NodePoint p)
+    {
+        return mapNodes.FirstOrDefault(n => n.Node.point.Equals(p));
     }
 }
