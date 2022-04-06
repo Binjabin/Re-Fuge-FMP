@@ -12,14 +12,21 @@ public class MapView : MonoBehaviour
     public List<Node> nodesList = new List<Node>();
     [SerializeField] MapConfig testConfig;
 
+    public Color lockedColor;
+    public Color visitedColor;
 
-
+    public Color lockedLineColor;
+    public Color visitedLineColor;
 
     GameObject firstParent;
+    public static MapView Instance;
+
+    private List<LineConnection> lineConnections = new List<LineConnection>();
 
     void Start()
     {
         nodesList = MapGenerator.GenerateMap(testConfig).nodes;
+        Instance = this;
         DrawMap();
     }
 
@@ -37,6 +44,8 @@ public class MapView : MonoBehaviour
         CreateMapParent();
         DrawNodes(nodesList);
         DrawLines();
+        SetAttainableNodes();
+        SetLineColors();
     }
 
     void DrawNodes(IEnumerable<Node> nodes)
@@ -69,9 +78,28 @@ public class MapView : MonoBehaviour
         {
             lineRenderer.SetPosition(i, Vector3.Lerp(toPoint, fromPoint, (float)i / (linePointsCount - 1)));
         }
+        lineConnections.Add(new LineConnection(lineRenderer, from, to));
     }
     void CreateMapParent()
     {
         firstParent = new GameObject("MapParent");
+    }
+
+    void SetAttainableNodes()
+    {
+        foreach(var node in mapNodes)
+        {
+            node.SetState(NodeStates.Locked);
+        }
+        foreach (var node in mapNodes.Where(n => n.Node.point.y == 0))
+            node.SetState(NodeStates.Attainable);
+    }
+
+    void SetLineColors()
+    {
+        foreach(var connection in lineConnections)
+        {
+            connection.SetColor(lockedLineColor);
+        }
     }
 }

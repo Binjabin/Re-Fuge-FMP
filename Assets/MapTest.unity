@@ -157,6 +157,10 @@ MonoBehaviour:
   mapNodes: []
   nodesList: []
   testConfig: {fileID: 11400000, guid: b67db9c8974b68b459c7bcf694ce5a9e, type: 2}
+  lockedColor: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 0}
+  visitedColor: {r: 1, g: 1, b: 1, a: 0}
+  lockedLineColor: {r: 0, g: 0, b: 0, a: 0}
+  visitedLineColor: {r: 1, g: 1, b: 1, a: 0}
 --- !u!4 &349175242
 Transform:
   m_ObjectHideFlags: 0
@@ -167,6 +171,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.8010592, y: 2.8541555, z: 1.2226301}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -260,6 +265,7 @@ Transform:
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -343,6 +349,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
