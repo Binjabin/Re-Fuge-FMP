@@ -17,7 +17,11 @@ MonoBehaviour:
   startGridWidth: 1
   endGridWidth: 3
   randomPosition: 0.5
+<<<<<<< HEAD
   lineOffset: 0
+=======
+  lineOffset: -0.05
+>>>>>>> main
   layers:
   - yDistance: 3
     yRandomFactor: 0
