@@ -18,13 +18,13 @@ public class MapNode : MonoBehaviour
     private const float MaxClickDuration = 0.5f;
     float mouseDownTime;
 
-    public void SetUp(Node n)
+    public void SetUp(Node n, Color starColor, float starSize)
     {
         Node = n; 
         sr = GetComponent<MeshRenderer>();
         
-        float randomScale = Random.Range(0.5f, 1.5f);
-        transform.localScale = transform.localScale * randomScale;
+        transform.localScale = transform.localScale * starSize;
+        sr.material.SetColor("_Color", starColor);
     }
 
     private void OnMouseEnter()

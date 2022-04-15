@@ -11,6 +11,10 @@ public class MapView : MonoBehaviour
     public List<MapNode> mapNodes = new List<MapNode>();
     [SerializeField] MapConfig testConfig;
 
+    [GradientUsageAttribute(true)] Gradient starColors;
+    [SerializeField] float maxStarSize;
+    [SerializeField] float minStarSize;
+
     //[ColorUsage(true, true)] public Color lockedColor;
     //[ColorUsage(true, true)] public Color attainableColor;
     //[ColorUsage(true, true)] public Color visitedColor;
@@ -37,7 +41,9 @@ public class MapView : MonoBehaviour
         var mapNodeObject = Instantiate(nodePrefab, firstParent.transform);
         var mapNode = mapNodeObject.GetComponent<MapNode>();
         mapNode.transform.localPosition = node.position;
-        mapNode.SetUp(node);
+        float starSize = Random.Range(minStarSize, maxStarSize);
+        Color starColor = starColors.evaluate(starSize/(maxStarSize-minStarSize));
+        mapNode.SetUp(node, starColor, starSize);
         return mapNode;
     }
 
