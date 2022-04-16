@@ -37,4 +37,14 @@ public class MapPlayerTracker : MonoBehaviour
         view.SetAttainableNodes();
         view.SetLineColors();
     }
+
+    private void EnterNode(MapNode node)
+    {
+        switch(mapNode.Node.NodeBlueprint.type)
+            case NodeType.Merchant:
+                break;
+            case NodeType.Danger:
+                break;
+
+    }
 }
