@@ -18,11 +18,14 @@ public class MapNode : MonoBehaviour
     private const float MaxClickDuration = 0.5f;
     float mouseDownTime;
 
-    public void SetUp(Node n, Color starColor, float starSize)
+    public void SetUp(Node n, Color starColor, float starSize, NodeBlueprint blueprint)
     {
         Node = n; 
         sr = GetComponent<MeshRenderer>();
-        
+        if(blueprint.type == NodeType.Boss)
+        {
+            starSize = MapView.maxStarSize * 1.5f;
+        }
         transform.localScale = transform.localScale * starSize;
         sr.material.SetColor("_Color", starColor);
     }

@@ -12,8 +12,8 @@ public class MapView : MonoBehaviour
     [SerializeField] MapConfig testConfig;
 
     [GradientUsageAttribute(true)] Gradient starColors;
-    [SerializeField] float maxStarSize;
-    [SerializeField] float minStarSize;
+    public float maxStarSize;
+    public float minStarSize;
 
     //[ColorUsage(true, true)] public Color lockedColor;
     //[ColorUsage(true, true)] public Color attainableColor;
@@ -43,7 +43,7 @@ public class MapView : MonoBehaviour
         mapNode.transform.localPosition = node.position;
         float starSize = Random.Range(minStarSize, maxStarSize);
         Color starColor = starColors.evaluate(starSize/(maxStarSize-minStarSize));
-        mapNode.SetUp(node, starColor, starSize);
+        mapNode.SetUp(node, starColor, starSize, node.blueprint);
         return mapNode;
     }
 

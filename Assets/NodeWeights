@@ -1,0 +1,5 @@
+public class NodeWeight
+{
+    public float weight;
+    public NodeBlueprint blueprint;
+}

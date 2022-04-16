@@ -42,7 +42,9 @@ public class MapGenerator
 
             float baseX = baseXPosition;
             float baseY = GetDistanceToLayer(layerIndex);
-            var node = new Node(new NodePoint(i, layerIndex))
+            var nodeBlueprint = layer.GetNodeBlueprint();
+
+            var node = new Node(new NodePoint(i, layerIndex), nodeBlueprint)
             {
                 position = new Vector2(baseX, baseY)
             };

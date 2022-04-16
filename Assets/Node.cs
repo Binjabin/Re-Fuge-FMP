@@ -6,12 +6,14 @@ using System.Linq;
 public class Node
 {
     public NodePoint point;
+    public NodeBlueprint blueprint;
     public Vector3 position;
     public List<NodePoint> incoming = new List<NodePoint>();
     public List<NodePoint> outgoing = new List<NodePoint>();
-    public Node(NodePoint point)
+    public Node(NodePoint point, NodeBlueprint blueprint)
     {
         this.point = point;
+        this.blueprint = blueprint
     }
     public void AddIncoming(NodePoint p)
     {
