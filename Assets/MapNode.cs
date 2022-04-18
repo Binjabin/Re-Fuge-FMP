@@ -17,26 +17,38 @@ public class MapNode : MonoBehaviour
     public MeshRenderer sr;
     private const float MaxClickDuration = 0.5f;
     float mouseDownTime;
-
+    SpriteRenderer icon;
     public void SetUp(Node n, Color starColor, float starSize, NodeBlueprint blueprint)
     {
+        
         Node = n; 
         sr = GetComponent<MeshRenderer>();
+        icon = GetComponentInChildren<SpriteRenderer>();
+        icon.enabled = false;
+        icon.sprite = blueprint.icon;
         if(blueprint.type == NodeType.Boss)
         {
-            starSize = MapView.maxStarSize * 1.5f;
+            starSize = FindObjectOfType<MapView>().maxStarSize * 1.5f;
         }
         transform.localScale = transform.localScale * starSize;
+        Color cell;
+        cell = starColor;
+        cell.r += 0.5f;
+        cell.b += 0.5f;
+        cell = cell * 9f;
+
+        sr.material.SetColor("_CellColor", cell);
         sr.material.SetColor("_Color", starColor);
     }
 
     private void OnMouseEnter()
     {
-
+        icon.enabled = true;
     }
 
     private void OnMouseExit()
     {
+        icon.enabled = false;
     }
 
     private void OnMouseDown()

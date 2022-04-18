@@ -13,7 +13,7 @@ public class Node
     public Node(NodePoint point, NodeBlueprint blueprint)
     {
         this.point = point;
-        this.blueprint = blueprint
+        this.blueprint = blueprint;
     }
     public void AddIncoming(NodePoint p)
     {

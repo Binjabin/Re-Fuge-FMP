@@ -7,6 +7,7 @@ public class MapPlayerTracker : MonoBehaviour
 {
     public MapManager mapManager;
     public MapView view;
+    public MapNode currentNode;
     // Start is called before the first frame update
     public void SelectNode(MapNode mapNode)
     {
@@ -32,19 +33,27 @@ public class MapPlayerTracker : MonoBehaviour
 
     private void SendPlayerToNode(MapNode mapNode)
     {
-        Debug.Log("Send to node");
         mapManager.currentMap.path.Add(mapNode.Node.point);
         view.SetAttainableNodes();
         view.SetLineColors();
+        currentNode = mapNode;
+        EnterNode(mapNode);
     }
 
     private void EnterNode(MapNode node)
     {
-        switch(mapNode.Node.NodeBlueprint.type)
+        
+        switch(node.Node.blueprint.type)
+        {
             case NodeType.Merchant:
+                Debug.Log("merchant scene");
                 break;
             case NodeType.Danger:
+                Debug.Log("danger scene");
                 break;
-
+            case NodeType.Boss:
+                Debug.Log("boss scene");
+                break;
+        }
     }
 }

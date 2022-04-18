@@ -2,13 +2,15 @@ using UnityEngine;
 public enum NodeType
 {
     Merchant,
-    Danger
+    Danger,
+    Boss
 
 }
 
 
 [CreateAssetMenu]
-public class NodeBlueprint : ScriptibleObject
+public class NodeBlueprint : ScriptableObject
 {
     public NodeType type;
+    public Sprite icon;
 }

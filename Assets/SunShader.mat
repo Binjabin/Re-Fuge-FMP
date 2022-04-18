@@ -30,5 +30,5 @@ Material:
     m_Colors:
     - _BaseColor: {r: 9.415676, g: 4.978981, b: 0.48854926, a: 1}
     - _CellColor: {r: 85.445015, g: 77.78464, b: 41.513382, a: 1}
-    - _Color: {r: 1, g: 0.777255, b: 0.4575472, a: 1}
+    - _Color: {r: 16, g: 8.282353, b: 0, a: 1}
   m_BuildTextureStacks: []

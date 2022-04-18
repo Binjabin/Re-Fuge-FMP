@@ -9,17 +9,17 @@ public class LayerConfig
     public float xRandomFactor;
     public List<NodeWeight> weights;
 
-    NodeBlueprint GetNodeBlueprint()
+    public NodeBlueprint GetNodeBlueprint()
     {
         float maxWeight = 0f;
-        for(var i = 0, i < weights.Count, i++)
+        for(var i = 0; i < weights.Count; i++)
         {
             maxWeight += weights[i].weight;
         }
         float randomValue = Random.Range(0f, maxWeight);
 
         int index = 0;
-        int lastIndex = elementCount - 1;
+        int lastIndex = weights.Count - 1;
         float weightCap = 0;
         while (index < lastIndex)
         {
@@ -31,6 +31,6 @@ public class LayerConfig
         }
     
         // No other item was selected, so return very last index.
-        return index;
+        return weights[index].blueprint;
     }
 }
