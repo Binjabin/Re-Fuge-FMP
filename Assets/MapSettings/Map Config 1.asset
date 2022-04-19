@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25ffe42c36079d148940296bad65f3c9, type: 3}
   m_Name: Map Config 1
   m_EditorClassIdentifier: 
-  mapWidth: 18
+  mapWidth: 15
   maxGridWidth: 4
   startGridWidth: 1
   endGridWidth: 3
