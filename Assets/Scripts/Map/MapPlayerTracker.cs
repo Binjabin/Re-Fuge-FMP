@@ -8,6 +8,7 @@ public class MapPlayerTracker : MonoBehaviour
     public MapManager mapManager;
     public MapView view;
     public MapNode currentNode;
+    public List<MapNode> currentAttainableNodes;
     // Start is called before the first frame update
     public void SelectNode(MapNode mapNode)
     {
@@ -26,8 +27,9 @@ public class MapPlayerTracker : MonoBehaviour
             var currentNode = mapManager.currentMap.GetNode(currentPoint);
 
             if (currentNode != null && currentNode.outgoing.Any(point => point.Equals(mapNode.Node.point)))
+            {
                 SendPlayerToNode(mapNode);
-
+            }
         }
     }
 
@@ -37,7 +39,9 @@ public class MapPlayerTracker : MonoBehaviour
         view.SetAttainableNodes();
         view.SetLineColors();
         currentNode = mapNode;
+        FindObjectOfType<MapCamera>().DetermineZoom();
         EnterNode(mapNode);
+        
     }
 
     private void EnterNode(MapNode node)

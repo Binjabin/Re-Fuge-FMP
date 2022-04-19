@@ -95,6 +95,7 @@ public class MapView : MonoBehaviour
 
     public void SetAttainableNodes()
     {
+        FindObjectOfType<MapPlayerTracker>().currentAttainableNodes.Clear();
         foreach(var node in mapNodes)
         {
             node.SetState(NodeStates.Locked);
@@ -104,6 +105,7 @@ public class MapView : MonoBehaviour
             foreach (var node in mapNodes.Where(n => n.Node.point.y == 0))
             {
                 node.SetState(NodeStates.Attainable);
+                FindObjectOfType<MapPlayerTracker>().currentAttainableNodes.Add(node);
             }
         }
         else
@@ -126,6 +128,7 @@ public class MapView : MonoBehaviour
                 if(mapNode != null)
                 {
                     mapNode.SetState(NodeStates.Attainable);
+                    FindObjectOfType<MapPlayerTracker>().currentAttainableNodes.Add(mapNode);
                 }
             }
         }

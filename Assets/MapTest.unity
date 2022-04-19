@@ -251,6 +251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smoothTime: 0.6
   startPosition: {x: 0, y: 0, z: 0}
+  zoomSmoothTime: 2
 --- !u!1 &732226097
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,6 +425,7 @@ MonoBehaviour:
   mapManager: {fileID: 732226098}
   view: {fileID: 349175241}
   currentNode: {fileID: 0}
+  currentAttainableNodes: []
 --- !u!4 &1111948959
 Transform:
   m_ObjectHideFlags: 0
