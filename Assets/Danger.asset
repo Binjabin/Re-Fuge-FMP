@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Danger
   m_EditorClassIdentifier: 
   type: 1
+  icon: {fileID: 693701544, guid: 6c9ca17dc133c55f7b220d0af2fa16ef, type: 3}

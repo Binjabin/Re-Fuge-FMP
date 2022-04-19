@@ -28,6 +28,7 @@ public class LayerConfig
             {
                 return weights[index].blueprint;
             }
+            index++;
         }
     
         // No other item was selected, so return very last index.

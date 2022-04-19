@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Merchant
   m_EditorClassIdentifier: 
   type: 0
+  icon: {fileID: 101923511, guid: 6c9ca17dc133c55f7b220d0af2fa16ef, type: 3}

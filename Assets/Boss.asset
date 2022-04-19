@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Boss
   m_EditorClassIdentifier: 
   type: 2
+  icon: {fileID: 455225142, guid: 6c9ca17dc133c55f7b220d0af2fa16ef, type: 3}

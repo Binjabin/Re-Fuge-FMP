@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class MapCamera : MonoBehaviour
 {
-    [SerializeField] Vector3 offset;
+    [SerializeField] float smoothTime;
     [SerializeField] Vector3 startPosition;
     Transform targetNode;
     MapPlayerTracker playerTracker;
+    
+    Vector3 velocity;
     private void Start() 
     {
         playerTracker = FindObjectOfType<MapPlayerTracker>();
@@ -19,8 +21,8 @@ public class MapCamera : MonoBehaviour
         if (playerTracker.currentNode != null)
         {
             Vector3 targetNodePosition = playerTracker.currentNode.transform.position;
-            Vector3 targetCameraPosition = targetNodePosition + offset;
-            transform.position = targetCameraPosition;
+            Vector3 targetCameraPosition = targetNodePosition;
+            transform.position = Vector3.SmoothDamp(transform.position, targetCameraPosition, ref velocity, smoothTime);
         }
     }
 }

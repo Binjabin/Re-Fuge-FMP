@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Map Config 1
   m_EditorClassIdentifier: 
   mapWidth: 10
-  maxGridWidth: 3
+  maxGridWidth: 4
   startGridWidth: 1
   endGridWidth: 3
   randomPosition: 0.5
@@ -23,14 +23,6 @@ MonoBehaviour:
     yRandomFactor: 0
     xRandomFactor: 0
     weights:
-    - weight: 1
-      blueprint: {fileID: 11400000, guid: 31c404771f8b3a33b83dba91d444bb39, type: 2}
-  - yDistance: 2
-    yRandomFactor: 0.2
-    xRandomFactor: 0
-    weights:
-    - weight: 1
-      blueprint: {fileID: 11400000, guid: 97efb54d5b3947d9e9b532a30f86c54c, type: 2}
     - weight: 1
       blueprint: {fileID: 11400000, guid: 31c404771f8b3a33b83dba91d444bb39, type: 2}
   - yDistance: 2
@@ -47,6 +39,62 @@ MonoBehaviour:
     weights:
     - weight: 1
       blueprint: {fileID: 11400000, guid: 97efb54d5b3947d9e9b532a30f86c54c, type: 2}
+  - yDistance: 2
+    yRandomFactor: 0.2
+    xRandomFactor: 0
+    weights:
+    - weight: 1
+      blueprint: {fileID: 11400000, guid: 97efb54d5b3947d9e9b532a30f86c54c, type: 2}
+    - weight: 1
+      blueprint: {fileID: 11400000, guid: 31c404771f8b3a33b83dba91d444bb39, type: 2}
+  - yDistance: 2
+    yRandomFactor: 0.2
+    xRandomFactor: 0
+    weights:
+    - weight: 1
+      blueprint: {fileID: 11400000, guid: 97efb54d5b3947d9e9b532a30f86c54c, type: 2}
+    - weight: 1
+      blueprint: {fileID: 11400000, guid: 31c404771f8b3a33b83dba91d444bb39, type: 2}
+  - yDistance: 2
+    yRandomFactor: 0.2
+    xRandomFactor: 0
+    weights:
+    - weight: 1
+      blueprint: {fileID: 11400000, guid: 97efb54d5b3947d9e9b532a30f86c54c, type: 2}
+    - weight: 1
+      blueprint: {fileID: 11400000, guid: 31c404771f8b3a33b83dba91d444bb39, type: 2}
+  - yDistance: 2
+    yRandomFactor: 0.2
+    xRandomFactor: 0
+    weights:
+    - weight: 1
+      blueprint: {fileID: 11400000, guid: 97efb54d5b3947d9e9b532a30f86c54c, type: 2}
+    - weight: 1
+      blueprint: {fileID: 11400000, guid: 31c404771f8b3a33b83dba91d444bb39, type: 2}
+  - yDistance: 2
+    yRandomFactor: 0.2
+    xRandomFactor: 0
+    weights:
+    - weight: 1
+      blueprint: {fileID: 11400000, guid: 97efb54d5b3947d9e9b532a30f86c54c, type: 2}
+    - weight: 1
+      blueprint: {fileID: 11400000, guid: 31c404771f8b3a33b83dba91d444bb39, type: 2}
+  - yDistance: 2
+    yRandomFactor: 0.2
+    xRandomFactor: 0
+    weights:
+    - weight: 1
+      blueprint: {fileID: 11400000, guid: 97efb54d5b3947d9e9b532a30f86c54c, type: 2}
+    - weight: 1
+      blueprint: {fileID: 11400000, guid: 31c404771f8b3a33b83dba91d444bb39, type: 2}
+  - yDistance: 2
+    yRandomFactor: 0.2
+    xRandomFactor: 0
+    weights:
+    - weight: 1
+      blueprint: {fileID: 11400000, guid: 97efb54d5b3947d9e9b532a30f86c54c, type: 2}
+    - weight: 1
+      blueprint: {fileID: 11400000, guid: 31c404771f8b3a33b83dba91d444bb39, type: 2}
   - yDistance: 3
     yRandomFactor: 0
     xRandomFactor: 0

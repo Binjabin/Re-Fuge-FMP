@@ -46,7 +46,7 @@ public class MapGenerator
 
             var node = new Node(new NodePoint(i, layerIndex), nodeBlueprint)
             {
-                position = new Vector2(baseX, baseY)
+                position = new Vector3(baseX, 0f, baseY)
             };
             layerNodes.Add(node);
         }
@@ -206,7 +206,7 @@ public class MapGenerator
                 var x = xRnd * xDistance * config.randomPosition/ 2f;
                 var y = yRnd < 0 ? distToPreviousLayer * yRnd * config.randomPosition / 2f : distToNextLayer * yRnd * config.randomPosition/ 2f;
 
-                node.position += new Vector3(x, y, 0);
+                node.position += new Vector3(x, 0, y);
             }
         }
     }

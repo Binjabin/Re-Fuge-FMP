@@ -11,7 +11,7 @@ public class MapView : MonoBehaviour
     public List<MapNode> mapNodes = new List<MapNode>();
     [SerializeField] MapConfig testConfig;
 
-    [SerializeField, GradientUsageAttribute(true)] Gradient starColors;
+    [SerializeField, GradientUsageAttribute(true)] public Gradient starColors;
     public float maxStarSize;
     public float minStarSize;
 

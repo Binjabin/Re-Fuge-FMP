@@ -22,15 +22,17 @@ public class MapNode : MonoBehaviour
     {
         
         Node = n; 
-        sr = GetComponent<MeshRenderer>();
+        sr = GetComponentInChildren<MeshRenderer>();
         icon = GetComponentInChildren<SpriteRenderer>();
         icon.enabled = false;
         icon.sprite = blueprint.icon;
         if(blueprint.type == NodeType.Boss)
         {
             starSize = FindObjectOfType<MapView>().maxStarSize * 1.5f;
+            starColor = FindObjectOfType<MapView>().starColors.Evaluate(1f);
         }
-        transform.localScale = transform.localScale * starSize;
+        
+        sr.transform.localScale = sr.transform.localScale * starSize;
         Color cell;
         cell = starColor;
         cell.r += 0.5f;
