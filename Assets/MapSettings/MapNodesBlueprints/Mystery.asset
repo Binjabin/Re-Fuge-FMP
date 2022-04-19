@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04385ed92c9a762caad807cee366e53d, type: 3}
-  m_Name: Danger
+  m_Name: Mystery
   m_EditorClassIdentifier: 
-  type: 1
-  icon: {fileID: 693701544, guid: 6c9ca17dc133c55f7b220d0af2fa16ef, type: 3}
+  type: 3
+  icon: {fileID: 2773500499794737310, guid: 6c9ca17dc133c55f7b220d0af2fa16ef, type: 3}

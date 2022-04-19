@@ -28,7 +28,7 @@ public class MapNode : MonoBehaviour
         icon.sprite = blueprint.icon;
         if(blueprint.type == NodeType.Boss)
         {
-            starSize = FindObjectOfType<MapView>().maxStarSize * 1.5f;
+            starSize = FindObjectOfType<MapView>().maxStarSize * 2.5f;
             starColor = FindObjectOfType<MapView>().starColors.Evaluate(1f);
         }
         

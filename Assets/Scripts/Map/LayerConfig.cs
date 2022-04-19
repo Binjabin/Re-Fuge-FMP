@@ -5,8 +5,6 @@ using UnityEngine;
 public class LayerConfig
 {
     public float yDistance;
-    public float yRandomFactor;
-    public float xRandomFactor;
     public List<NodeWeight> weights;
 
     public NodeBlueprint GetNodeBlueprint()

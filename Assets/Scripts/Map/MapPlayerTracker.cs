@@ -52,6 +52,12 @@ public class MapPlayerTracker : MonoBehaviour
                 Debug.Log("danger scene");
                 break;
             case NodeType.Boss:
+                Debug.Log("danger scene");
+                break;
+            case NodeType.Safe:
+                Debug.Log("danger scene");
+                break;
+            case NodeType.Mystery:
                 Debug.Log("boss scene");
                 break;
         }
