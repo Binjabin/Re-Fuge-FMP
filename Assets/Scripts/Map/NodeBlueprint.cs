@@ -15,4 +15,6 @@ public class NodeBlueprint : ScriptableObject
 {
     public NodeType type;
     public Sprite icon;
+    public string sceneName;
+    
 }

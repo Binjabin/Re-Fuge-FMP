@@ -12,10 +12,14 @@ public class Map
         this.nodes = nodes;
         this.path = path;
 
-        
+
     }
     public Node GetNode(NodePoint point)
     {
         return nodes.FirstOrDefault(n => n.point.Equals(point));
+    }
+    public Node GetBossNode()
+    {
+        return nodes.FirstOrDefault(n => n.blueprint.type == NodeType.Boss);
     }
 }

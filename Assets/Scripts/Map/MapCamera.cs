@@ -27,7 +27,7 @@ public class MapCamera : MonoBehaviour
             Vector3 targetNodePosition = playerTracker.currentNode.transform.position;
             targetCameraPosition = targetNodePosition;
             transform.position = Vector3.SmoothDamp(transform.position, targetCameraPosition, ref velocity, smoothTime);
-            Camera.main.orthographicSize = Mathf.SmoothDamp(Camera.main.orthographicSize, Mathf.Max(DetermineZoom()/1.8f, minCameraSize), ref velocity2, zoomSmoothTime);
+            Camera.main.orthographicSize = Mathf.SmoothDamp(Camera.main.orthographicSize, Mathf.Max(DetermineZoom()/1.6f, minCameraSize), ref velocity2, zoomSmoothTime);
         }
 
 

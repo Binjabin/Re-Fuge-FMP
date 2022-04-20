@@ -49,6 +49,7 @@ public class MapPlayerTracker : MonoBehaviour
         
         switch(node.Node.blueprint.type)
         {
+
             case NodeType.Merchant:
                 Debug.Log("merchant scene");
                 break;
@@ -59,7 +60,7 @@ public class MapPlayerTracker : MonoBehaviour
                 Debug.Log("danger scene");
                 break;
             case NodeType.Safe:
-                Debug.Log("danger scene");
+                Application.LoadLevel("Safe");
                 break;
             case NodeType.Mystery:
                 Debug.Log("boss scene");

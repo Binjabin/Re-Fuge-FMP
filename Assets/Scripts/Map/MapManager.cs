@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Newtonsoft.Json;
+using System.Linq;
 
 public class MapManager : MonoBehaviour
 {
@@ -9,9 +11,29 @@ public class MapManager : MonoBehaviour
 
     public Map currentMap;
 
-    private void Start() 
+    private void Start()
     {
-        GenerateNewMap();
+        if (PlayerPrefs.HasKey("Map"))
+        {
+            var mapJson = PlayerPrefs.GetString("Map");
+            var map = JsonConvert.DeserializeObject<Map>(mapJson);
+            // using this instead of .Contains()
+            if (map.path.Any(p => p.Equals(map.GetBossNode().point)))
+            {
+                // payer has already reached the boss, generate a new map
+                GenerateNewMap();
+            }
+            else
+            {
+                currentMap = map;
+                // player has not reached the boss yet, load the current map
+                view.DrawMap(map);
+            }
+        }
+        else
+        {
+            GenerateNewMap();
+        }
     }
 
     public void GenerateNewMap()
@@ -20,4 +42,14 @@ public class MapManager : MonoBehaviour
         currentMap = map;
         view.DrawMap(map);
     }
+
+    public void SaveMap()
+    {
+        if (currentMap == null) return;
+
+        var json = JsonConvert.SerializeObject(currentMap);
+        PlayerPrefs.SetString("Map", json);
+        PlayerPrefs.Save();
+    }
+
 }
