@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Newtonsoft.Json;
 using System.Linq;
 [System.Serializable]
 public class Map
@@ -21,5 +22,10 @@ public class Map
     public Node GetBossNode()
     {
         return nodes.FirstOrDefault(n => n.blueprint.type == NodeType.Boss);
+    }
+
+    public string ToJson()
+    {
+        return JsonConvert.SerializeObject(this, new JsonSerializerSettings(){ Formatting = Formatting.Indented, ReferenceLoopHandling = ReferenceLoopHandling.Ignore});
     }
 }

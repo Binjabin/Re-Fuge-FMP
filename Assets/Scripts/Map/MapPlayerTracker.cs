@@ -36,6 +36,7 @@ public class MapPlayerTracker : MonoBehaviour
     private void SendPlayerToNode(MapNode mapNode)
     {
         mapManager.currentMap.path.Add(mapNode.Node.point);
+        mapManager.SaveMap();
         view.SetAttainableNodes();
         view.SetLineColors();
         currentNode = mapNode;

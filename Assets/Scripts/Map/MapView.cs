@@ -36,6 +36,15 @@ public class MapView : MonoBehaviour
         Debug.Log(Instance);
     }
 
+    private void ClearMap()
+    {
+        if (firstParent != null)
+            Destroy(firstParent);
+
+        mapNodes.Clear();
+        lineConnections.Clear();
+        FindObjectOfType<MapCamera>().ResetCamera();
+    }
     MapNode CreateMapNode(Node node)
     {
         var mapNodeObject = Instantiate(nodePrefab, firstParent.transform);
@@ -49,6 +58,7 @@ public class MapView : MonoBehaviour
 
     public void DrawMap(Map m)
     {
+        ClearMap();
         CreateMapParent();
         DrawNodes(m.nodes);
         DrawLines();

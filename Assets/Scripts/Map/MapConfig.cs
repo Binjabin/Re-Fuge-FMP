@@ -4,6 +4,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class MapConfig : ScriptableObject
 {
+    public List<NodeBlueprint> nodeBlueprints;
     public float mapWidth;
     public int maxGridWidth;
     public int GridWidth => Mathf.Max(startGridWidth, endGridWidth, maxGridWidth);

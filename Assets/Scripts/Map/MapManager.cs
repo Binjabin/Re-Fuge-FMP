@@ -15,22 +15,32 @@ public class MapManager : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("Map"))
         {
+            Debug.Log(PlayerPrefs.GetString("Map"));
             var mapJson = PlayerPrefs.GetString("Map");
             var map = JsonConvert.DeserializeObject<Map>(mapJson);
+            //Debug.Log(JsonConvert.DeserializeObject<Map>(mapJson));
+            //view.DrawMap(map);
             // using this instead of .Contains()
-            if (map.path.Any(p => p.Equals(map.GetBossNode().point)))
-            {
+            //if (map.path.Any(p => p.Equals(map.GetBossNode().point)))
+            //{
                 // payer has already reached the boss, generate a new map
-                GenerateNewMap();
-            }
-            else
-            {
-                currentMap = map;
+                //GenerateNewMap();
+            //}
+            //else
+            //{
+            //    currentMap = map;
                 // player has not reached the boss yet, load the current map
-                view.DrawMap(map);
-            }
+            //    view.DrawMap(map);
+            //}
         }
         else
+        {
+            GenerateNewMap();
+        }
+    }
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
         {
             GenerateNewMap();
         }
@@ -46,10 +56,14 @@ public class MapManager : MonoBehaviour
     public void SaveMap()
     {
         if (currentMap == null) return;
-
-        var json = JsonConvert.SerializeObject(currentMap);
+        var json = JsonConvert.SerializeObject(currentMap, new JsonSerializerSettings(){ Formatting = Formatting.Indented, ReferenceLoopHandling = ReferenceLoopHandling.Ignore});
         PlayerPrefs.SetString("Map", json);
         PlayerPrefs.Save();
+    }
+
+    private void OnApplicationQuit()
+    {
+        SaveMap();
     }
 
 }

@@ -17,6 +17,7 @@ public class MapGenerator
     public static Map GetMap(MapConfig conf)
     {
         config = conf;
+        nodes.Clear();
         GenerateLayerDistances();
         for(var i = 0;i < config.layers.Count; i++)
         {
@@ -188,9 +189,10 @@ public class MapGenerator
     }
 
 
-    static void RandomiseNodePositions()
+    private static void RandomiseNodePositions()
     {
-        for (var index = 0; index < nodes.Count; index++)
+        Debug.Log(nodes.Count);
+        for (int index = 0; index < nodes.Count; index++)
         {
             var list = nodes[index];
             var layer = config.layers[index];

@@ -14,7 +14,7 @@ public class MapCamera : MonoBehaviour
     Vector3 velocity;
     float velocity2;
     [SerializeField] float zoomSmoothTime;
-    private void Start() 
+    private void Start()
     {
         playerTracker = FindObjectOfType<MapPlayerTracker>();
     }
@@ -26,10 +26,10 @@ public class MapCamera : MonoBehaviour
         {
             Vector3 targetNodePosition = playerTracker.currentNode.transform.position;
             targetCameraPosition = targetNodePosition;
-            transform.position = Vector3.SmoothDamp(transform.position, targetCameraPosition, ref velocity, smoothTime);
-            Camera.main.orthographicSize = Mathf.SmoothDamp(Camera.main.orthographicSize, Mathf.Max(DetermineZoom()/1.6f, minCameraSize), ref velocity2, zoomSmoothTime);
+            
         }
-
+        transform.position = Vector3.SmoothDamp(transform.position, targetCameraPosition, ref velocity, smoothTime);
+        Camera.main.orthographicSize = Mathf.SmoothDamp(Camera.main.orthographicSize, Mathf.Max(DetermineZoom() / 1.6f, minCameraSize), ref velocity2, zoomSmoothTime);
 
 
     }
@@ -39,19 +39,24 @@ public class MapCamera : MonoBehaviour
         List<MapNode> attainableNodes = FindObjectOfType<MapPlayerTracker>().currentAttainableNodes;
         bounds = new Bounds(targetCameraPosition, Vector3.zero);
         float currentDistanceLimit = 0f;
-        for(int i = 0; i < attainableNodes.Count; i++)
+        for (int i = 0; i < attainableNodes.Count; i++)
         {
-            if(Vector3.Distance(attainableNodes[i].transform.position, targetCameraPosition) > currentDistanceLimit)
+            if (Vector3.Distance(attainableNodes[i].transform.position, targetCameraPosition) > currentDistanceLimit)
             {
                 currentDistanceLimit = Vector3.Distance(attainableNodes[i].transform.position, targetCameraPosition);
             }
         }
-        
+
         return currentDistanceLimit;
     }
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(targetCameraPosition, new Vector3(2*bounds.size.x, 0f, 2*bounds.size.z));
+        Gizmos.DrawWireCube(targetCameraPosition, new Vector3(2 * bounds.size.x, 0f, 2 * bounds.size.z));
+    }
+
+    public void ResetCamera()
+    {
+        targetCameraPosition = startPosition;
     }
 }
