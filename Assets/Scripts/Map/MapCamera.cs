@@ -8,7 +8,7 @@ public class MapCamera : MonoBehaviour
     [SerializeField] Vector3 startPosition;
     Transform targetNode;
     MapPlayerTracker playerTracker;
-    float minCameraSize = 3f;
+    [SerializeField] float minCameraSize = 3f;
     Bounds bounds;
     Vector3 targetCameraPosition;
     Vector3 velocity;
@@ -27,8 +27,7 @@ public class MapCamera : MonoBehaviour
             Vector3 targetNodePosition = playerTracker.currentNode.transform.position;
             targetCameraPosition = targetNodePosition;
             transform.position = Vector3.SmoothDamp(transform.position, targetCameraPosition, ref velocity, smoothTime);
-            Camera.main.orthographicSize = Mathf.SmoothDamp(Camera.main.orthographicSize, Mathf.Max(DetermineZoom(), minCameraSize)/1.2f, ref velocity2, zoomSmoothTime);
-        
+            Camera.main.orthographicSize = Mathf.SmoothDamp(Camera.main.orthographicSize, Mathf.Max(DetermineZoom()/1.8f, minCameraSize), ref velocity2, zoomSmoothTime);
         }
 
 
@@ -39,12 +38,16 @@ public class MapCamera : MonoBehaviour
     {
         List<MapNode> attainableNodes = FindObjectOfType<MapPlayerTracker>().currentAttainableNodes;
         bounds = new Bounds(targetCameraPosition, Vector3.zero);
+        float currentDistanceLimit = 0f;
         for(int i = 0; i < attainableNodes.Count; i++)
         {
-            bounds.Encapsulate(attainableNodes[i].transform.position);
+            if(Vector3.Distance(attainableNodes[i].transform.position, targetCameraPosition) > currentDistanceLimit)
+            {
+                currentDistanceLimit = Vector3.Distance(attainableNodes[i].transform.position, targetCameraPosition);
+            }
         }
         
-        return Mathf.Max(bounds.size.x, bounds.size.z);
+        return currentDistanceLimit;
     }
     void OnDrawGizmos()
     {
