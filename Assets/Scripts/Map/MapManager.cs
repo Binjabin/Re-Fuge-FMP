@@ -30,6 +30,7 @@ public class MapManager : MonoBehaviour
                 currentMap = map;
                 // player has not reached the boss yet, load the current map
                 view.DrawMap(map);
+                FindObjectOfType<MapCamera>().StartCamera();
             }
         }
         else

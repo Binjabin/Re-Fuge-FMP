@@ -26,7 +26,7 @@ public class MapCamera : MonoBehaviour
         {
             Vector3 targetNodePosition = playerTracker.currentNode.transform.position;
             targetCameraPosition = targetNodePosition;
-            
+
         }
         transform.position = Vector3.SmoothDamp(transform.position, targetCameraPosition, ref velocity, smoothTime);
         Camera.main.orthographicSize = Mathf.SmoothDamp(Camera.main.orthographicSize, Mathf.Max(DetermineZoom() / 1.6f, minCameraSize), ref velocity2, zoomSmoothTime);
@@ -37,7 +37,6 @@ public class MapCamera : MonoBehaviour
     public float DetermineZoom()
     {
         List<MapNode> attainableNodes = FindObjectOfType<MapPlayerTracker>().currentAttainableNodes;
-        bounds = new Bounds(targetCameraPosition, Vector3.zero);
         float currentDistanceLimit = 0f;
         for (int i = 0; i < attainableNodes.Count; i++)
         {
@@ -57,6 +56,15 @@ public class MapCamera : MonoBehaviour
 
     public void ResetCamera()
     {
+        transform.position = startPosition;
         targetCameraPosition = startPosition;
+        Camera.main.orthographicSize = minCameraSize;
+    }
+
+    public void StartCamera()
+    {
+        transform.position = playerTracker.currentNode.transform.position;
+        targetCameraPosition = playerTracker.currentNode.transform.position;
+        Camera.main.orthographicSize = minCameraSize;
     }
 }

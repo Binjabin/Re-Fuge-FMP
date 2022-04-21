@@ -152,7 +152,7 @@ public class MapView : MonoBehaviour
 
             var currentPoint = mapManager.currentMap.path[mapManager.currentMap.path.Count - 1];
             var currentNode = mapManager.currentMap.GetNode(currentPoint);
-
+            FindObjectOfType<MapPlayerTracker>().currentNode = GetNode(currentPoint);
             foreach (var point in currentNode.outgoing)
             {
                 var mapNode = GetNode(point);
@@ -198,14 +198,6 @@ public class MapView : MonoBehaviour
 
     private MapNode GetNode(NodePoint p)
     {
-        for (var i = 0; i < mapNodes.Count; i++)
-        {
-            Debug.Log(mapNodes[i].Node.point.x +" "+ mapNodes[i].Node.point.y +" = "+ p.x + " " + p.y + (mapNodes[i].Node.point == p));
-            if (mapNodes[i].Node.point == p)
-            {
-                return mapNodes[i];
-            }
-        }
-        return null;
+        return mapNodes.FirstOrDefault(n => n.Node.point.Equals(p));
     }
 }
