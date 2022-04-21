@@ -94,18 +94,22 @@ public class MapView : MonoBehaviour
 
     void DrawLines()
     {
-        foreach(var node in mapNodes)
+        foreach (var node in mapNodes)
         {
-            foreach(var connection in node.Node.outgoing)
+            foreach (var connection in node.Node.outgoing)
             {
-                AddLineConnection(node, mapNodes.FirstOrDefault(n => n.Node.point.Equals(connection)));
+                Debug.Log(node.Node.outgoing.Count);
+                AddLineConnection(node, GetNode(connection));
             }
         }
     }
+
+    
     void AddLineConnection(MapNode from, MapNode to)
     {
         var lineObject = Instantiate(linePrefab, firstParent.transform);
         var lineRenderer = lineObject.GetComponent<LineRenderer>();
+        Debug.Log(to.transform.position);
         var fromPoint = from.transform.position + (to.transform.position - from.transform.position).normalized * testConfig.lineOffset;
         var toPoint = to.transform.position + (from.transform.position - to.transform.position).normalized * testConfig.lineOffset;
         lineRenderer.positionCount = linePointsCount;
@@ -176,6 +180,7 @@ public class MapView : MonoBehaviour
         foreach (var point in currentNode.outgoing)
         {
             var lineConnection = lineConnections.FirstOrDefault(conn => conn.from.Node == currentNode && conn.to.Node.point.Equals(point));
+            Debug.Log(lineConnection);
             lineConnection.SetColor(attainableLineColor);
         }
 
@@ -193,6 +198,14 @@ public class MapView : MonoBehaviour
 
     private MapNode GetNode(NodePoint p)
     {
-        return mapNodes.FirstOrDefault(n => n.Node.point.Equals(p));
+        for (var i = 0; i < mapNodes.Count; i++)
+        {
+            Debug.Log(mapNodes[i].Node.point.x +" "+ mapNodes[i].Node.point.y +" = "+ p.x + " " + p.y + (mapNodes[i].Node.point == p));
+            if (mapNodes[i].Node.point == p)
+            {
+                return mapNodes[i];
+            }
+        }
+        return null;
     }
 }
