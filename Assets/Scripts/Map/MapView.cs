@@ -33,7 +33,6 @@ public class MapView : MonoBehaviour
     {
         
         Instance = this;
-        Debug.Log(Instance);
     }
 
     private void ClearMap()
@@ -51,9 +50,27 @@ public class MapView : MonoBehaviour
         var mapNode = mapNodeObject.GetComponent<MapNode>();
         mapNode.transform.localPosition = node.position;
         float starSize = Random.Range(minStarSize, maxStarSize);
-        Color starColor = starColors.Evaluate((starSize-minStarSize)/(maxStarSize-minStarSize));
-        mapNode.SetUp(node, starColor, starSize, node.blueprint);
+        Color starColor = starColors.Evaluate((starSize - minStarSize) / (maxStarSize - minStarSize));
+        var blueprint = GetBlueprint(node.blueprintName);
+        mapNode.SetUp(node, starColor, starSize, blueprint);
         return mapNode;
+    }
+
+    public NodeBlueprint GetBlueprint(NodeType type)
+    {
+        var config = testConfig;
+        return config.nodeBlueprints.FirstOrDefault(n => n.type == type);
+    }
+
+    public NodeBlueprint GetBlueprint(string blueprintName)
+    {
+        var config = testConfig;
+        return config.nodeBlueprints.FirstOrDefault(n => n.name == blueprintName);
+    }
+
+    private MapConfig GetConfig(string configName)
+    {
+        return testConfig;
     }
 
     public void DrawMap(Map m)

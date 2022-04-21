@@ -2,18 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
 [System.Serializable]
 public class Node
 {
     public NodePoint point;
-    public NodeBlueprint blueprint;
+    public string blueprintName;
+    public NodeType nodeType;
     public Vector3 position;
     public List<NodePoint> incoming = new List<NodePoint>();
     public List<NodePoint> outgoing = new List<NodePoint>();
-    public Node(NodePoint point, NodeBlueprint blueprint)
+
+    public Node(NodeType nodeType, string blueprintName, NodePoint point)
     {
+        this.nodeType = nodeType;
+        this.blueprintName = blueprintName;
         this.point = point;
-        this.blueprint = blueprint;
     }
     public void AddIncoming(NodePoint p)
     {

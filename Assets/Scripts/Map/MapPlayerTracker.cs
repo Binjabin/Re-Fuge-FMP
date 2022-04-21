@@ -48,7 +48,7 @@ public class MapPlayerTracker : MonoBehaviour
     private void EnterNode(MapNode node)
     {
         
-        switch(node.Node.blueprint.type)
+        switch(node.Node.nodeType)
         {
 
             case NodeType.Merchant:

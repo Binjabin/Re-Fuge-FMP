@@ -18,6 +18,7 @@ public class MapNode : MonoBehaviour
     private const float MaxClickDuration = 0.5f;
     float mouseDownTime;
     SpriteRenderer icon;
+    NodeBlueprint blueprint;
     public void SetUp(Node n, Color starColor, float starSize, NodeBlueprint blueprint)
     {
         

@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
+
+
 [System.Serializable]
 public class Map
 {
@@ -21,7 +25,7 @@ public class Map
     }
     public Node GetBossNode()
     {
-        return nodes.FirstOrDefault(n => n.blueprint.type == NodeType.Boss);
+        return nodes.FirstOrDefault(n => n.nodeType == NodeType.Boss);
     }
 
     public string ToJson()

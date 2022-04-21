@@ -44,8 +44,10 @@ public class MapGenerator
             float baseX = baseXPosition;
             float baseY = GetDistanceToLayer(layerIndex);
             var nodeBlueprint = layer.GetNodeBlueprint();
+            var nodeType = nodeBlueprint.type;
+            var blueprintName = nodeBlueprint.name;
 
-            var node = new Node(new NodePoint(i, layerIndex), nodeBlueprint)
+            var node = new Node(nodeType, blueprintName, new NodePoint(i, layerIndex))
             {
                 position = new Vector3(baseX, 0f, baseY)
             };
