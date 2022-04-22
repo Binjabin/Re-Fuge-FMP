@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 3
   icon: {fileID: 2773500499794737310, guid: 6c9ca17dc133c55f7b220d0af2fa16ef, type: 3}
+  asteroidCount: 50

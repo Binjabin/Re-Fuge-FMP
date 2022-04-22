@@ -18,10 +18,10 @@ public class MapNode : MonoBehaviour
     private const float MaxClickDuration = 0.5f;
     float mouseDownTime;
     SpriteRenderer icon;
-    NodeBlueprint blueprint;
-    public void SetUp(Node n, Color starColor, float starSize, NodeBlueprint blueprint)
+    public NodeBlueprint blueprint;
+    public void SetUp(Node n, Color starColor, float starSize, NodeBlueprint inblueprint)
     {
-        
+        blueprint = inblueprint;
         Node = n; 
         sr = GetComponentInChildren<MeshRenderer>();
         icon = GetComponentInChildren<SpriteRenderer>();
@@ -64,7 +64,6 @@ public class MapNode : MonoBehaviour
         if (Time.time - mouseDownTime < MaxClickDuration)
         {
             // user clicked on this node:
-            Debug.Log("clicked");
             FindObjectOfType<MapPlayerTracker>().SelectNode(this);
         }
     }

@@ -14,7 +14,6 @@ public class MapPlayerTracker : MonoBehaviour
     {
         if(mapManager.currentMap.path.Count == 0)
         {
-            Debug.Log(mapNode.Node.point.y);
             if(mapNode.Node.point.y == 0)
             {
                 SendPlayerToNode(mapNode);
@@ -47,8 +46,9 @@ public class MapPlayerTracker : MonoBehaviour
 
     private void EnterNode(MapNode node)
     {
-        
-        switch(node.Node.nodeType)
+        LevelToLoad.asteroidCount = node.blueprint.asteroidCount;
+        Application.LoadLevel("Safe");
+        switch (node.Node.nodeType)
         {
 
             case NodeType.Merchant:
@@ -61,7 +61,7 @@ public class MapPlayerTracker : MonoBehaviour
                 Debug.Log("danger scene");
                 break;
             case NodeType.Safe:
-                Application.LoadLevel("Safe");
+                
                 break;
             case NodeType.Mystery:
                 Debug.Log("boss scene");

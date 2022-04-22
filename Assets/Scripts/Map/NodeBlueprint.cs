@@ -14,5 +14,6 @@ public class NodeBlueprint : ScriptableObject
 {
     public NodeType type;
     public Sprite icon;
-    
+    public int asteroidCount;
+
 }

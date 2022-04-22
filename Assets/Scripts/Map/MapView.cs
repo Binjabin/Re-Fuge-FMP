@@ -180,7 +180,6 @@ public class MapView : MonoBehaviour
         foreach (var point in currentNode.outgoing)
         {
             var lineConnection = lineConnections.FirstOrDefault(conn => conn.from.Node == currentNode && conn.to.Node.point.Equals(point));
-            Debug.Log(lineConnection);
             lineConnection.SetColor(attainableLineColor);
         }
 
