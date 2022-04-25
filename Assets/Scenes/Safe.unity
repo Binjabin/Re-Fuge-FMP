@@ -4663,8 +4663,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8052773220811860653}
-  m_LocalRotation: {x: -0, y: 0.99980956, z: -0, w: 0.019516638}
-  m_LocalPosition: {x: -2.1729312, y: 0.5, z: 7.9509687}
+  m_LocalRotation: {x: -0, y: 0.98986495, z: -0, w: 0.14201201}
+  m_LocalPosition: {x: 0.23, y: 0, z: -3.76}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children:
   - {fileID: 4599072970191138295}
@@ -4682,7 +4682,7 @@ Transform:
   - {fileID: 3111308462494551055}
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 177.763, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 163.671, z: 0}
 --- !u!4 &7368757428038566427
 Transform:
   m_ObjectHideFlags: 0
@@ -4811,6 +4811,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7244851683576295447}
+  - component: {fileID: 8052773220811860656}
+  - component: {fileID: 8052773220811860655}
+  - component: {fileID: 8052773220811860654}
+  - component: {fileID: 8052773220811860657}
   m_Layer: 0
   m_Name: enemy ship 1
   m_TagString: Untagged
@@ -4818,6 +4822,64 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &8052773220811860654
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8052773220811860653}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &8052773220811860655
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8052773220811860653}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0.1
+  m_AngularDrag: 30
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 84
+  m_CollisionDetection: 0
+--- !u!114 &8052773220811860656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8052773220811860653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b21240dc7f0ae247aac0fced0478760, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 1
+  thrustSpeed: 5
+  idealRange: 25
+  speedLimit: 100
+  comfortableSpeed: 50
+--- !u!114 &8052773220811860657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8052773220811860653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0684983c07aca8d408ee4d91d2e422a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!33 &8137024441289671418
 MeshFilter:
   m_ObjectHideFlags: 0

@@ -9,22 +9,32 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody rb;
     [SerializeField] float thrustSpeed = 5f;
     [SerializeField] float rotationSpeed = 5f;
-
+    float velocityref;
     bool thrusting;
     bool breaking;
     bool boosting;
+
+    TrailRenderer[] trail;
+    float[] standardTrailLength = { 0f, 0f, 0f };
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        trail = GetComponentsInChildren<TrailRenderer>();
+        for (int i = 0; i < trail.Length; i++)
+        {
+            standardTrailLength[i] = trail[i].time;
+            trail[i].time = 0f;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         GetInput();
-       
+
     }
     void FixedUpdate()
     {
@@ -37,22 +47,35 @@ public class PlayerMovement : MonoBehaviour
         breaking = Input.GetKey(KeyCode.S);
         boosting = Input.GetKey(KeyCode.E);
 
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) 
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             turnDirection = 1f;
-        } 
-        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) 
+        }
+        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             turnDirection = -1f;
-        } 
-        else 
+        }
+        else
         {
             turnDirection = 0f;
+        }
+
+
+        for (int i = 0; i < trail.Length; i++)
+        {
+            if (thrusting)
+            {
+                trail[i].time = Mathf.SmoothDamp(trail[i].time, standardTrailLength[i], ref velocityref, 0.5f);
+            }
+            else
+            {
+                trail[i].time = Mathf.SmoothDamp(trail[i].time, 0f, ref velocityref, 0.5f);
+            }
         }
     }
     void ProcessInput()
     {
-        if (thrusting) 
+        if (thrusting)
         {
             rb.AddForce(transform.right * thrustSpeed);
         }
@@ -64,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.drag = 0.1f;
         }
-        if(boosting)
+        if (boosting)
         {
             rb.AddForce(transform.right * thrustSpeed * 10);
         }
@@ -73,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddTorque(transform.up * rotationSpeed * -turnDirection);
         }
-        
+
     }
 
 }
