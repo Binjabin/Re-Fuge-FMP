@@ -8,10 +8,12 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] float thrustSpeed;
     Rigidbody rb;
     Vector3 targetDirection;
-    [SerializeField] float idealRange;
+    [SerializeField] float maxIdealRange;
+    [SerializeField] float minIdealRange;
     [SerializeField] float speedLimit;
     [SerializeField] float comfortableSpeed;
     bool breaking;
+    bool attacking;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,11 +27,11 @@ public class EnemyMovement : MonoBehaviour
         FaceTarget(player);
         if (Vector3.Dot(transform.forward, targetDirection) > 0.75f)
         {
-            if (targetDirection.magnitude < idealRange)
+            if (targetDirection.magnitude < minIdealRange)
             {
                 breaking = true;
             }
-            else
+            else if(targetDirection.magnitude > maxIdealRange)
             {
                 ThrustForwards();
             }
@@ -38,19 +40,20 @@ public class EnemyMovement : MonoBehaviour
         if (rb.velocity.magnitude > speedLimit)
         {
             breaking = true;
+            attacking = true;
         }
         if (breaking)
         {
-            rb.drag = 0.5f;
-            if (rb.velocity.magnitude < comfortableSpeed)
+            attacking = false;
+            rb.AddForce(-transform.forward * thrustSpeed * 0.5f);
+            if (rb.velocity.magnitude < comfortableSpeed && targetDirection.magnitude > minIdealRange)
             {
-
                 breaking = false;
             }
         }
         else
         {
-            rb.drag = 0.1f;
+            attacking = true;
         }
 
     }
