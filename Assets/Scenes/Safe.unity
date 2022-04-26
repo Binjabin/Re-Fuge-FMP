@@ -16016,7 +16016,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.2546557, y: 0.36785895, z: -0.10548183, w: 0.8880901}
-  m_LocalPosition: {x: -17.998442, y: 14.944268, z: -18.245697}
+  m_LocalPosition: {x: -17.99474, y: 14.944268, z: -18.2494}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -16526,7 +16526,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1148695230
 Transform:
   m_ObjectHideFlags: 0
@@ -21684,7 +21684,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.1213872, y: 1}
+    m_SensorSize: {x: 2.1849148, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -21701,7 +21701,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1399525098}
   m_LocalRotation: {x: 0.2546557, y: 0.36785895, z: -0.10548183, w: 0.8880901}
-  m_LocalPosition: {x: -17.998442, y: 14.944268, z: -18.245697}
+  m_LocalPosition: {x: -17.99474, y: 14.944268, z: -18.2494}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1569679105}
@@ -42013,11 +42013,10 @@ GameObject:
   - component: {fileID: 1170645040492699125}
   - component: {fileID: 1170645040492699124}
   - component: {fileID: 1170645040492699123}
-  - component: {fileID: 1170645040492699127}
   - component: {fileID: 1170645040492699128}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42080,18 +42079,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thrustSpeed: 20
   rotationSpeed: 15
---- !u!114 &1170645040492699127
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1170645040492699122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e6e3c5af04dbe04dab7d0abd6122ac2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1170645040492699128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43681,7 +43668,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8052773220811860653}
   m_LocalRotation: {x: -0, y: 0.98986495, z: -0, w: 0.14201201}
-  m_LocalPosition: {x: 0.23, y: 0, z: -3.76}
+  m_LocalPosition: {x: 11.1, y: 0, z: -25.41}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children:
   - {fileID: 4599072970191138295}
@@ -43887,14 +43874,15 @@ MonoBehaviour:
   minIdealRange: 22
   speedLimit: 100
   comfortableSpeed: 50
-  viewRadius: 19.25
-  viewAngle: 44.1
+  viewRadius: 30
+  viewAngle: 115
   targetMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
+  radarDistance: 50
   visibleTargets: []
 --- !u!114 &8052773220811860657
 MonoBehaviour:

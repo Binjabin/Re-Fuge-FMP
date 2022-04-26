@@ -19,6 +19,8 @@ public class EnemyMovement : MonoBehaviour
     public float viewAngle;
     public LayerMask targetMask;
     public LayerMask obstacleMask;
+    GameObject trackingObject;
+    public float radarDistance;
 
     public List<Transform> visibleTargets = new List<Transform>();
 
@@ -27,17 +29,21 @@ public class EnemyMovement : MonoBehaviour
         visibleTargets.Clear();
         Collider[] targetsInViewRadius = Physics.OverlapSphere(transform.position, viewRadius, targetMask);
 
-
+        Debug.Log(targetsInViewRadius);
         for (int i = 0; i < targetsInViewRadius.Length; i++)
         {
             Transform target = targetsInViewRadius[i].transform;
-            Vector3 dirToTarget = (target.position = transform.position).normalized;
+            Vector3 dirToTarget = (target.position - transform.position).normalized;
             if (Vector3.Angle(transform.forward, dirToTarget) < viewAngle / 2)
             {
                 float distToTarget = Vector3.Distance(target.position, transform.position);
                 if (!Physics.Raycast(transform.position, dirToTarget, distToTarget, obstacleMask))
                 {
-                    visibleTargets.Add(target);
+                    if (target.gameObject.tag == "Player")
+                    {
+                        visibleTargets.Add(target);
+                    }
+                            
                 }
             }
         }
@@ -62,40 +68,62 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Transform player = FindObjectOfType<PlayerMovement>().transform;
-        FaceTarget(player);
-        if (Vector3.Dot(transform.forward, targetDirection) > 0.75f)
-        {
-            if (targetDirection.magnitude < minIdealRange)
-            {
-                breaking = true;
-            }
-            else if(targetDirection.magnitude > maxIdealRange)
-            {
-                ThrustForwards();
-            }
+        FindVisibleTargets();
 
-        }
-        if (rb.velocity.magnitude > speedLimit)
+        if (visibleTargets.Count > 0f)
         {
-            breaking = true;
-            attacking = true;
-        }
-        if (breaking)
-        {
-            attacking = false;
-            rb.AddForce(-transform.forward * thrustSpeed * 0.5f);
-            if (rb.velocity.magnitude < comfortableSpeed && targetDirection.magnitude > minIdealRange)
-            {
-                breaking = false;
-            }
-        }
-        else
-        {
-            attacking = true;
+            trackingObject = visibleTargets[0].gameObject;
+            Debug.Log("Found Player");
         }
 
-    }
+        if (trackingObject != null)
+        {
+
+            if (Vector3.Distance(trackingObject.transform.position, transform.position) > radarDistance)
+            {
+                Debug.Log("Lost Player");
+                trackingObject = null;
+            }
+            else
+            {
+                Transform player = trackingObject.transform;
+                FaceTarget(player);
+                if (Vector3.Dot(transform.forward, targetDirection) > 0.75f)
+                {
+                    if (targetDirection.magnitude < minIdealRange)
+                    {
+                        breaking = true;
+                    }
+                    else if (targetDirection.magnitude > maxIdealRange)
+                    {
+                        ThrustForwards();
+                    }
+
+                }
+                if (rb.velocity.magnitude > speedLimit)
+                {
+                    breaking = true;
+                    attacking = true;
+                }
+                if (breaking)
+                {
+                    attacking = false;
+                    rb.AddForce(-transform.forward * thrustSpeed * 0.5f);
+                    if (rb.velocity.magnitude < comfortableSpeed && targetDirection.magnitude > minIdealRange)
+                    {
+                        breaking = false;
+                    }
+                }
+                else
+                {
+                    attacking = true;
+
+                }
+            }
+
+            
+        }
+    }   
     void FaceTarget(Transform target)
     {
         targetDirection = target.transform.position - transform.position;
