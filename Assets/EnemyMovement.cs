@@ -14,10 +14,49 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] float comfortableSpeed;
     bool breaking;
     bool attacking;
+
+    public float viewRadius;
+    public float viewAngle;
+    public LayerMask targetMask;
+    public LayerMask obstacleMask;
+
+    public List<Transform> visibleTargets = new List<Transform>();
+
+    void FindVisibleTargets()
+    {
+        visibleTargets.Clear();
+        Collider[] targetsInViewRadius = Physics.OverlapSphere(transform.position, viewRadius, targetMask);
+
+
+        for (int i = 0; i < targetsInViewRadius.Length; i++)
+        {
+            Transform target = targetsInViewRadius[i].transform;
+            Vector3 dirToTarget = (target.position = transform.position).normalized;
+            if (Vector3.Angle(transform.forward, dirToTarget) < viewAngle / 2)
+            {
+                float distToTarget = Vector3.Distance(target.position, transform.position);
+                if (!Physics.Raycast(transform.position, dirToTarget, distToTarget, obstacleMask))
+                {
+                    visibleTargets.Add(target);
+                }
+            }
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+    }
+
+    public Vector3 DirFromAngle(float angleInDeg, bool angleIsGlobal)
+    {
+        if (!angleIsGlobal)
+        {
+            angleInDeg += transform.eulerAngles.y;
+        }
+        return new Vector3(Mathf.Sin(angleInDeg * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDeg * Mathf.Deg2Rad));
+
     }
 
     // Update is called once per frame
