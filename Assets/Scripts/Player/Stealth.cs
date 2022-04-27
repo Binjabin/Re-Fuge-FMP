@@ -13,7 +13,7 @@ public class Stealth : MonoBehaviour
     List<Material> childMaterials = new List<Material>();
     List<Color> childColors = new List<Color>();
     int childIndex;
-    bool stealthOn;
+    public bool stealthOn;
     float elapsedTime;
     bool isFading;
     // Start is called before the first frame update

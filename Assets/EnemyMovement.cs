@@ -21,12 +21,21 @@ public class EnemyMovement : MonoBehaviour
     public LayerMask obstacleMask;
     GameObject trackingObject;
     public float radarDistance;
+    float distLastFrame = 0f;
 
     public List<Transform> visibleTargets = new List<Transform>();
+    public List<Transform> invisibleTargets = new List<Transform>();
 
+    [SerializeField] GameObject weapons;
+    ParticleSystem[] weaponParticles;
+    bool collided;
+    Transform player;
+    [SerializeField] List<Transform> patrolPoints;
+    int patrolIndex;
     void FindVisibleTargets()
     {
         visibleTargets.Clear();
+        invisibleTargets.Clear();
         Collider[] targetsInViewRadius = Physics.OverlapSphere(transform.position, viewRadius, targetMask);
 
         Debug.Log(targetsInViewRadius);
@@ -41,7 +50,14 @@ public class EnemyMovement : MonoBehaviour
                 {
                     if (target.gameObject.tag == "Player")
                     {
-                        visibleTargets.Add(target);
+                        if(!target.gameObject.GetComponent<Stealth>().stealthOn)
+                        {
+                            visibleTargets.Add(target);
+                        }
+                        else
+                        {
+                            invisibleTargets.Add(target);
+                        }
                     }
                             
                 }
@@ -53,6 +69,8 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        weaponParticles = weapons.GetComponentsInChildren<ParticleSystem>();
+        patrolIndex = 0;
     }
 
     public Vector3 DirFromAngle(float angleInDeg, bool angleIsGlobal)
@@ -73,55 +91,172 @@ public class EnemyMovement : MonoBehaviour
         if (visibleTargets.Count > 0f)
         {
             trackingObject = visibleTargets[0].gameObject;
-            Debug.Log("Found Player");
         }
 
         if (trackingObject != null)
         {
-
-            if (Vector3.Distance(trackingObject.transform.position, transform.position) > radarDistance)
+            if(trackingObject.tag == "Player")
             {
-                Debug.Log("Lost Player");
-                trackingObject = null;
-            }
-            else
-            {
-                Transform player = trackingObject.transform;
-                FaceTarget(player);
-                if (Vector3.Dot(transform.forward, targetDirection) > 0.75f)
+                
+                float distThisFrame = Vector3.Distance(trackingObject.transform.position, transform.position);
+                if(invisibleTargets.Count > 0){collided = false;}
+                if (distThisFrame > radarDistance)
                 {
-                    if (targetDirection.magnitude < minIdealRange)
-                    {
-                        breaking = true;
-                    }
-                    else if (targetDirection.magnitude > maxIdealRange)
-                    {
-                        ThrustForwards();
-                    }
-
+                    trackingObject = null;
+                    
                 }
-                if (rb.velocity.magnitude > speedLimit)
+                else if(invisibleTargets.Count < 1f && trackingObject.GetComponent<Stealth>().stealthOn && !collided)
                 {
-                    breaking = true;
-                    attacking = true;
-                }
-                if (breaking)
-                {
-                    attacking = false;
-                    rb.AddForce(-transform.forward * thrustSpeed * 0.5f);
-                    if (rb.velocity.magnitude < comfortableSpeed && targetDirection.magnitude > minIdealRange)
-                    {
-                        breaking = false;
-                    }
+                    trackingObject = null;
+                    
                 }
                 else
                 {
-                    attacking = true;
-
+                    
+                    player = trackingObject.transform;
+                    FaceTarget(player);
+                    if (Vector3.Dot(transform.forward, targetDirection.normalized) > 0.75f)
+                    {
+                        if (targetDirection.magnitude < minIdealRange)
+                        {
+                            attacking = false;
+                            rb.AddForce(-transform.forward * thrustSpeed);
+                        }
+                        else if (targetDirection.magnitude > maxIdealRange)
+                        {
+                            attacking = false;
+                            if(Vector3.Dot(rb.velocity.normalized, targetDirection.normalized) > 0.75f)
+                            {
+                                if(rb.velocity.magnitude < comfortableSpeed)
+                                {
+                                    ThrustForwards();
+                                }
+                            }
+                            else
+                            {
+                                ThrustForwards();
+                            }
+                            
+                            
+                        }
+                        else
+                        {
+                            attacking = true;
+                        }
+                    }
+                    if (rb.velocity.magnitude > speedLimit)
+                    {
+                        breaking = true;
+                        attacking = false;
+                    }
+                    if (breaking)
+                    {
+                        rb.drag = 3.0f;
+                        if (rb.velocity.magnitude < comfortableSpeed && targetDirection.magnitude > minIdealRange)
+                        {
+                            breaking = false;
+                        }
+                    }
+                    else
+                    {
+                        rb.drag = 0.1f;
+                    }
                 }
             }
-
+        }
+        else
+        {
+            attacking = false;
             
+            Transform point = patrolPoints[patrolIndex];
+            FaceTarget(point);
+            if (Vector3.Dot(transform.forward, targetDirection.normalized) > 0.75f)
+            {
+                Debug.Log(targetDirection.magnitude);
+                if (targetDirection.magnitude > 10f)
+                {
+                    breaking = false;
+                    if(Vector3.Dot(rb.velocity.normalized, targetDirection.normalized) > 0.3f)
+                    {
+                        breaking = false;
+                        if(rb.velocity.magnitude < comfortableSpeed)
+                        {
+                            ThrustForwards();
+                        }
+                    }
+                    else
+                    {
+                        ThrustForwards();
+                        breaking = true;
+                    }
+                    
+                    
+                }
+                else if(targetDirection.magnitude < 10f)
+                {
+                    breaking = true;
+                    patrolIndex++;
+                    if(patrolIndex >= patrolPoints.Count){patrolIndex = 0;}
+                }
+                else
+                {
+                    breaking = true;
+                    if(Vector3.Dot(rb.velocity.normalized, targetDirection.normalized) > 0.75f)
+                    {
+                        if(rb.velocity.magnitude < comfortableSpeed)
+                        {
+                            ThrustForwards();
+                        }
+                    }
+                    else
+                    {
+                        ThrustForwards();
+                        
+                    }
+                }
+            }
+            if (rb.velocity.magnitude > speedLimit)
+            {
+                breaking = true;
+                attacking = false;
+            }
+            if (breaking)
+            {
+                rb.drag = 3.0f;
+                if (rb.velocity.magnitude < comfortableSpeed && targetDirection.magnitude > minIdealRange)
+                {
+                    breaking = false;
+                }
+            }
+            else
+            {
+                rb.drag = 0.1f;
+            }
+            
+        }
+            
+        
+        
+        if(attacking)
+        {
+            for(int i = 0; i < weaponParticles.Length; i++)
+            {
+                if(!weaponParticles[i].isPlaying)
+                {
+                    weaponParticles[i].Play();
+                }
+            }
+        }
+        else
+        {
+            for(int i = 0; i < weaponParticles.Length; i++)
+            {
+                if(weaponParticles[i].isPlaying)
+                {
+                    weaponParticles[i].Stop();
+                }
+                
+            }
         }
     }   
     void FaceTarget(Transform target)
@@ -136,5 +271,14 @@ public class EnemyMovement : MonoBehaviour
     void ThrustForwards()
     {
         rb.AddForce(transform.forward * thrustSpeed);
+    }
+
+    private void OnCollisionEnter(Collision other) 
+    {
+        if(other.gameObject.tag == "Player")
+        {
+            trackingObject = other.gameObject;
+            collided = true;
+        }
     }
 }
