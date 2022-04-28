@@ -16,6 +16,7 @@ public class Stealth : MonoBehaviour
     public bool stealthOn;
     float elapsedTime;
     bool isFading;
+    [SerializeField] float energyPerSecondStealth;
     // Start is called before the first frame update
     void Start()
     {
@@ -65,15 +66,19 @@ public class Stealth : MonoBehaviour
             rend.material.color = Color.Lerp(standardColor, stealthColor, fadeFactor);
             rend.material.SetFloat("_ShadowIntensity", currentShadows);
         }
-        if(childRenderers.Length > 0)
+        if (childRenderers.Length > 0)
         {
             childIndex = 0;
-            foreach(Material mat in childMaterials) 
+            foreach (Material mat in childMaterials)
             {
                 mat.color = Color.Lerp(childColors[childIndex], stealthColor, fadeFactor);
                 mat.SetFloat("_ShadowIntensity", currentShadows);
                 childIndex++;
             }
+        }
+        if(stealthOn)
+        {
+            gameObject.GetComponent<EnergyBar>().ReduceEnergy(energyPerSecondStealth * Time.deltaTime);
         }
     }
     IEnumerator ToggleStealth(bool stealthOn)

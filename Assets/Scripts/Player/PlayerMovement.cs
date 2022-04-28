@@ -16,11 +16,15 @@ public class PlayerMovement : MonoBehaviour
 
     TrailRenderer[] trail;
     float[] standardTrailLength = { 0f, 0f, 0f };
+    EnergyBar energy;
 
+    [SerializeField] float energyPerSecondThrusting;
+    [SerializeField] float energyPerSecondBoosting;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        energy = gameObject.GetComponent<EnergyBar>();
 
         trail = GetComponentsInChildren<TrailRenderer>();
         for (int i = 0; i < trail.Length; i++)
@@ -77,6 +81,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (thrusting)
         {
+            energy.ReduceEnergy(energyPerSecondThrusting * Time.deltaTime);
             rb.AddForce(transform.right * thrustSpeed);
         }
         if (breaking)
@@ -89,7 +94,8 @@ public class PlayerMovement : MonoBehaviour
         }
         if (boosting)
         {
-            rb.AddForce(transform.right * thrustSpeed * 10);
+            rb.AddForce(transform.right * thrustSpeed * 5);
+            energy.ReduceEnergy(energyPerSecondBoosting * Time.deltaTime);
         }
 
         if (turnDirection != 0f)

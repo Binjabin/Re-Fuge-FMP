@@ -9,6 +9,7 @@ public class HomingMissile : MonoBehaviour
     [SerializeField] float rotSpeed;
     Rigidbody rb;
     [SerializeField] GameObject missileExplosion;
+    [SerializeField] float damage;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,11 +28,13 @@ public class HomingMissile : MonoBehaviour
         rb.AddForce(lookDirection.normalized * speed);
     }
 
-    
-    private void OnCollisionEnter(Collision other) 
+
+    private void OnCollisionEnter(Collision other)
     {
         Instantiate(missileExplosion, other.contacts[0].point, Quaternion.identity);
+        FindObjectOfType<HealthBar>().ShieldOnlyDamage(damage);
         Destroy(gameObject);
-        
+
     }
+
 }
