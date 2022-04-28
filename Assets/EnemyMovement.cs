@@ -19,9 +19,8 @@ public class EnemyMovement : MonoBehaviour
     public float viewAngle;
     public LayerMask targetMask;
     public LayerMask obstacleMask;
-    GameObject trackingObject;
+    GameObject trackingPlayer;
     public float radarDistance;
-    float distLastFrame = 0f;
 
     public List<Transform> visibleTargets = new List<Transform>();
     public List<Transform> invisibleTargets = new List<Transform>();
@@ -32,13 +31,15 @@ public class EnemyMovement : MonoBehaviour
     Transform player;
     [SerializeField] List<Transform> patrolPoints;
     int patrolIndex;
+    bool avoiding;
+
+    Vector3 currentAim;
     void FindVisibleTargets()
     {
         visibleTargets.Clear();
         invisibleTargets.Clear();
         Collider[] targetsInViewRadius = Physics.OverlapSphere(transform.position, viewRadius, targetMask);
 
-        Debug.Log(targetsInViewRadius);
         for (int i = 0; i < targetsInViewRadius.Length; i++)
         {
             Transform target = targetsInViewRadius[i].transform;
@@ -90,31 +91,72 @@ public class EnemyMovement : MonoBehaviour
 
         if (visibleTargets.Count > 0f)
         {
-            trackingObject = visibleTargets[0].gameObject;
+            trackingPlayer = visibleTargets[0].gameObject;
+        }
+        if (trackingPlayer != null)
+        {
+            currentAim = trackingPlayer.transform.position;
+        }
+        else
+        {
+            currentAim = patrolPoints[patrolIndex].position;
+        }
+        RaycastHit hit;
+        Vector3 aimDir = (currentAim - transform.position).normalized;
+        Debug.DrawRay(transform.position, aimDir * maxIdealRange, Color.red);
+        if (Physics.Raycast(transform.position, aimDir, out hit, maxIdealRange) && hit.transform.gameObject.tag != "player")
+        {
+            GameObject avoidingObject = hit.transform.gameObject;
+            Vector3 avoidanceDirection = Quaternion.AngleAxis(90, Vector3.up) * aimDir;
+            Debug.DrawRay(transform.position, avoidanceDirection * maxIdealRange, Color.green);
+            FaceDirection(avoidanceDirection);
+            if (Vector3.Dot(transform.forward, avoidanceDirection) > 0.75f)
+            {
+                ThrustForwards();
+                breaking = false;
+            }
+            else
+            {
+                breaking = true;
+            }
+
+
+            if (breaking)
+            {
+                rb.drag = 3.0f;
+                if (rb.velocity.magnitude < comfortableSpeed && targetDirection.magnitude > minIdealRange)
+                {
+                    breaking = false;
+                }
+            }
+            else
+            {
+                rb.drag = 0.1f;
+            }
         }
 
-        if (trackingObject != null)
+        else if (trackingPlayer != null)
         {
-            if(trackingObject.tag == "Player")
+            if(trackingPlayer.tag == "Player")
             {
                 
-                float distThisFrame = Vector3.Distance(trackingObject.transform.position, transform.position);
+                float distThisFrame = Vector3.Distance(trackingPlayer.transform.position, transform.position);
                 if(invisibleTargets.Count > 0){collided = false;}
                 if (distThisFrame > radarDistance)
                 {
-                    trackingObject = null;
+                    trackingPlayer = null;
                     
                 }
-                else if(invisibleTargets.Count < 1f && trackingObject.GetComponent<Stealth>().stealthOn && !collided)
+                else if(invisibleTargets.Count < 1f && trackingPlayer.GetComponent<Stealth>().stealthOn && !collided)
                 {
-                    trackingObject = null;
+                    trackingPlayer = null;
                     
                 }
                 else
                 {
                     
-                    player = trackingObject.transform;
-                    FaceTarget(player);
+                    player = trackingPlayer.transform;
+                    FaceTarget(player.position);
                     if (Vector3.Dot(transform.forward, targetDirection.normalized) > 0.75f)
                     {
                         if (targetDirection.magnitude < minIdealRange)
@@ -169,10 +211,9 @@ public class EnemyMovement : MonoBehaviour
             attacking = false;
             
             Transform point = patrolPoints[patrolIndex];
-            FaceTarget(point);
+            FaceTarget(point.position);
             if (Vector3.Dot(transform.forward, targetDirection.normalized) > 0.75f)
             {
-                Debug.Log(targetDirection.magnitude);
                 if (targetDirection.magnitude > 10f)
                 {
                     breaking = false;
@@ -259,12 +300,19 @@ public class EnemyMovement : MonoBehaviour
             }
         }
     }   
-    void FaceTarget(Transform target)
+    void FaceTarget(Vector3 target)
     {
-        targetDirection = target.transform.position - transform.position;
+        targetDirection = target - transform.position;
         targetDirection.y = 0f;
         float rotationStep = rotationSpeed * Time.deltaTime;
         Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, rotationStep, 0.0f);
+        transform.rotation = Quaternion.LookRotation(newDirection);
+    }
+
+    void FaceDirection(Vector3 direction)
+    {
+        float rotationStep = rotationSpeed * Time.deltaTime;
+        Vector3 newDirection = Vector3.RotateTowards(transform.forward, direction, rotationStep, 0.0f);
         transform.rotation = Quaternion.LookRotation(newDirection);
     }
 
@@ -277,7 +325,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            trackingObject = other.gameObject;
+            trackingPlayer = other.gameObject;
             collided = true;
         }
     }
