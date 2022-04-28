@@ -9,7 +9,13 @@ public class MapPlayerTracker : MonoBehaviour
     public MapView view;
     public MapNode currentNode;
     public List<MapNode> currentAttainableNodes;
+    public bool enteringScene;
     // Start is called before the first frame update
+
+    private void Start()
+    {
+        enteringScene = false;
+    }
     public void SelectNode(MapNode mapNode)
     {
         if(mapManager.currentMap.path.Count == 0)
@@ -34,19 +40,27 @@ public class MapPlayerTracker : MonoBehaviour
 
     private void SendPlayerToNode(MapNode mapNode)
     {
-        mapManager.currentMap.path.Add(mapNode.Node.point);
-        mapManager.SaveMap();
-        view.SetAttainableNodes();
-        view.SetLineColors();
-        currentNode = mapNode;
-        FindObjectOfType<MapCamera>().DetermineZoom();
-        EnterNode(mapNode);
+        if(enteringScene == false)
+        {
+            mapManager.currentMap.path.Add(mapNode.Node.point);
+            mapManager.SaveMap();
+            view.SetAttainableNodes();
+            view.SetLineColors();
+            currentNode = mapNode;
+            FindObjectOfType<MapCamera>().DetermineZoom();
+            StartCoroutine(EnterNode(mapNode));
+        }
+        
         
     }
 
-    private void EnterNode(MapNode node)
+    private IEnumerator EnterNode(MapNode node)
     {
         LevelToLoad.asteroidCount = node.blueprint.asteroidCount;
+        yield return new WaitForSeconds(1f);
+        enteringScene = true;
+        yield return new WaitForSeconds(2f);
+
         Application.LoadLevel("Safe");
         switch (node.Node.nodeType)
         {
@@ -61,11 +75,12 @@ public class MapPlayerTracker : MonoBehaviour
                 Debug.Log("danger scene");
                 break;
             case NodeType.Safe:
-                
+
                 break;
             case NodeType.Mystery:
                 Debug.Log("boss scene");
                 break;
         }
+        
     }
 }

@@ -67,13 +67,17 @@ public class PlayerMovement : MonoBehaviour
 
         for (int i = 0; i < trail.Length; i++)
         {
-            if (thrusting)
+            if(!(energy.currentEnergy > 0))
             {
-                trail[i].time = Mathf.SmoothDamp(trail[i].time, standardTrailLength[i], ref velocityref, 0.5f);
+                trail[i].time = Mathf.SmoothDamp(trail[i].time, 0f, ref velocityref, 0.1f);
+            }
+            else if (thrusting || boosting)
+            {
+                trail[i].time = Mathf.SmoothDamp(trail[i].time, standardTrailLength[i], ref velocityref, 0.1f);
             }
             else
             {
-                trail[i].time = Mathf.SmoothDamp(trail[i].time, 0f, ref velocityref, 0.5f);
+                trail[i].time = Mathf.SmoothDamp(trail[i].time, 0f, ref velocityref, 0.1f);
             }
         }
     }
@@ -82,7 +86,11 @@ public class PlayerMovement : MonoBehaviour
         if (thrusting)
         {
             energy.ReduceEnergy(energyPerSecondThrusting * Time.deltaTime);
-            rb.AddForce(transform.right * thrustSpeed);
+            if(energy.currentEnergy > 0f)
+            {
+                rb.AddForce(transform.right * thrustSpeed);
+            }
+            
         }
         if (breaking)
         {
@@ -94,8 +102,13 @@ public class PlayerMovement : MonoBehaviour
         }
         if (boosting)
         {
-            rb.AddForce(transform.right * thrustSpeed * 5);
             energy.ReduceEnergy(energyPerSecondBoosting * Time.deltaTime);
+            if (energy.currentEnergy > 0f)
+            {
+                rb.AddForce(transform.right * thrustSpeed * 5);
+            }
+                
+            
         }
 
         if (turnDirection != 0f)

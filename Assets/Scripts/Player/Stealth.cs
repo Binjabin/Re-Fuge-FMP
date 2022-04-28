@@ -54,7 +54,10 @@ public class Stealth : MonoBehaviour
         {
             if(!isFading)
             {
-                StartCoroutine(ToggleStealth(!stealthOn));
+                if (gameObject.GetComponent<EnergyBar>().currentEnergy > 0f)
+                {
+                    StartCoroutine(ToggleStealth(!stealthOn));
+                }
                 stealthOn = !stealthOn;
             }
             
@@ -79,6 +82,14 @@ public class Stealth : MonoBehaviour
         if(stealthOn)
         {
             gameObject.GetComponent<EnergyBar>().ReduceEnergy(energyPerSecondStealth * Time.deltaTime);
+            if (gameObject.GetComponent<EnergyBar>().currentEnergy > 0f)
+            {
+
+            }
+            else
+            {
+                StartCoroutine(ToggleStealth(false));
+            }
         }
     }
     IEnumerator ToggleStealth(bool stealthOn)

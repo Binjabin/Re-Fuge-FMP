@@ -22,7 +22,7 @@ public class MapManager : MonoBehaviour
             // using this instead of .Contains()
             if (map.path.Any(p => p.Equals(map.GetBossNode().point)))
             {
-                // payer has already reached the boss, generate a new map
+                // player has already reached the boss, generate a new map
                 GenerateNewMap();
             }
             else
@@ -30,7 +30,11 @@ public class MapManager : MonoBehaviour
                 currentMap = map;
                 // player has not reached the boss yet, load the current map
                 view.DrawMap(map);
-                FindObjectOfType<MapCamera>().StartCamera();
+                if(map.path.Count > 0f)
+                {
+                    FindObjectOfType<MapCamera>().StartCamera();
+                }
+                
             }
         }
         else

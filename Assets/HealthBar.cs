@@ -34,10 +34,14 @@ public class HealthBar : MonoBehaviour
         {
             if (timeSinceDamage > shieldRegenDelay)
             {
-                float increaseAmount = shieldRegenSpeed * Time.deltaTime;
-                currentShield += increaseAmount;
-                currentShield = Mathf.Clamp(currentShield, 0f, maxShield);
-                gameObject.GetComponent<EnergyBar>().ReduceEnergy(increaseAmount * energyPerShield);
+                if(gameObject.GetComponent<EnergyBar>().currentEnergy > 0f)
+                {
+                    float increaseAmount = shieldRegenSpeed * Time.deltaTime;
+                    currentShield += increaseAmount;
+                    currentShield = Mathf.Clamp(currentShield, 0f, maxShield);
+                    gameObject.GetComponent<EnergyBar>().ReduceEnergy(increaseAmount * energyPerShield);
+                }
+                
             }
         }
     }

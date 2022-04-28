@@ -14,6 +14,7 @@ public class MapCamera : MonoBehaviour
     Vector3 velocity;
     float velocity2;
     [SerializeField] float zoomSmoothTime;
+    float targetZoom;
     private void Start()
     {
         playerTracker = FindObjectOfType<MapPlayerTracker>();
@@ -29,7 +30,16 @@ public class MapCamera : MonoBehaviour
 
         }
         transform.position = Vector3.SmoothDamp(transform.position, targetCameraPosition, ref velocity, smoothTime);
-        Camera.main.orthographicSize = Mathf.SmoothDamp(Camera.main.orthographicSize, Mathf.Max(DetermineZoom() / 1.6f, minCameraSize), ref velocity2, zoomSmoothTime);
+        if (!playerTracker.enteringScene)
+        {
+            targetZoom = Mathf.Max(DetermineZoom() / 1.6f, minCameraSize);
+        }
+        else
+        {
+            targetZoom = 0.1f;
+        }
+        
+        Camera.main.orthographicSize = Mathf.SmoothDamp(Camera.main.orthographicSize, targetZoom, ref velocity2, zoomSmoothTime);
 
 
     }

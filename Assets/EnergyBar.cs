@@ -9,7 +9,7 @@ public class EnergyBar : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] float maxEnergy;
     [SerializeField] Slider energyBar;
-    float currentEnergy;
+    public float currentEnergy;
     
     void Start()
     {
