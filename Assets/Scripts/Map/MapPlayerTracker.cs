@@ -59,6 +59,7 @@ public class MapPlayerTracker : MonoBehaviour
         LevelToLoad.asteroidCount = node.blueprint.asteroidCount;
         yield return new WaitForSeconds(1f);
         enteringScene = true;
+        FindObjectOfType<SceneManagment>().LeaveScene();
         yield return new WaitForSeconds(2f);
 
         Application.LoadLevel("Safe");

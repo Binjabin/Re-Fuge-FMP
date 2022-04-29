@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SceneManagment : MonoBehaviour
 {
+    [SerializeField] Animator outAnimation;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,13 +17,25 @@ public class SceneManagment : MonoBehaviour
     {
 
     }
+    public void LeaveScene()
+    {
+        StartCoroutine(LeaveSceneAnimation());
+    }
     public void ReturnToMap()
     {
         StartCoroutine(ReturnToMapAnimation());
     }
 
+    IEnumerator LeaveSceneAnimation()
+    {
+        outAnimation.SetTrigger("Out");
+        yield return new WaitForSeconds(0.1f);
+    }
+
     IEnumerator ReturnToMapAnimation()
     {
-        return null;
+        outAnimation.SetTrigger("Out");
+        yield return new WaitForSeconds(2f);
+        Application.LoadLevel("Map");
     }
 }

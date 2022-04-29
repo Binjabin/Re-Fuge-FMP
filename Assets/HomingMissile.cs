@@ -32,7 +32,11 @@ public class HomingMissile : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         Instantiate(missileExplosion, other.contacts[0].point, Quaternion.identity);
-        FindObjectOfType<HealthBar>().ShieldOnlyDamage(damage);
+        if(other.gameObject.tag == "Player")
+        {
+            FindObjectOfType<HealthBar>().ShieldOnlyDamage(damage);
+        }
+        
         Destroy(gameObject);
 
     }

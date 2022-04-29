@@ -19,10 +19,9 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs: []
-    m_Ints: []
     m_Floats:
     - _RemoveDiag: 1
-    - _WireframeVal: 0.008
+    - _WireframeVal: 0.02
     m_Colors:
     - _BackColor: {r: 1, g: 1, b: 1, a: 1}
     - _FrontColor: {r: 0, g: 0.12793194, b: 0.13207549, a: 1}
