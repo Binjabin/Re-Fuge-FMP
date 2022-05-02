@@ -14,18 +14,23 @@ public class PlayerMovement : MonoBehaviour
     bool breaking;
     bool boosting;
 
+    bool inDialogue;
+
     TrailRenderer[] trail;
     float[] standardTrailLength = { 0f, 0f, 0f };
     EnergyBar energy;
 
     [SerializeField] float energyPerSecondThrusting;
     [SerializeField] float energyPerSecondBoosting;
+
+
+    GameObject dialogueFocus;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         energy = gameObject.GetComponent<EnergyBar>();
-
+        inDialogue = false;
         trail = GetComponentsInChildren<TrailRenderer>();
         for (int i = 0; i < trail.Length; i++)
         {
@@ -42,13 +47,25 @@ public class PlayerMovement : MonoBehaviour
     }
     void FixedUpdate()
     {
-        ProcessInput();
+        if(!inDialogue)
+        {
+            ProcessInput();
+        }
+        else
+        {
+            Vector3 targetDirection = dialogueFocus.transform.position - transform.position;
+            targetDirection.y = 0f;
+            float rotationStep = 3f * Time.deltaTime;
+            Vector3 newDirection = Vector3.RotateTowards(transform.right, targetDirection, rotationStep, 0.0f);
+            transform.rotation = Quaternion.LookRotation(newDirection) * Quaternion.Euler(0f, -90f, 0f);
+        }
+        
     }
 
     void GetInput()
     {
         thrusting = Input.GetKey(KeyCode.W);
-        breaking = Input.GetKey(KeyCode.S);
+        breaking = Input.GetKey(KeyCode.S) || inDialogue;
         boosting = Input.GetKey(KeyCode.E);
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
@@ -118,4 +135,16 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    public void EnterDialogue(GameObject focus)
+    {
+        inDialogue = true;
+        rb.drag = 3f;
+        dialogueFocus = focus;
+        FindObjectOfType<CameraStateController>().ToMerchant();
+    }
+    public void ExitDialogue()
+    {
+        inDialogue = false;
+        FindObjectOfType<CameraStateController>().ToPlayer();
+    }
 }

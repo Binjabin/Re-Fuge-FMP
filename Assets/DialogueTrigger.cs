@@ -28,6 +28,7 @@ public class DialogueTrigger : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             playerInRange = true;
+            triggeredDialogue = false;
         }
     }
 
@@ -40,6 +41,7 @@ public class DialogueTrigger : MonoBehaviour
             {
                 triggeredDialogue = true;
                 DialogueManager.GetInstance().EnterDialogue(inkJSON);
+                FindObjectOfType<PlayerMovement>().EnterDialogue(gameObject);
             }
             
         }
@@ -49,7 +51,6 @@ public class DialogueTrigger : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             playerInRange = false;
-            triggeredDialogue = false;
         }
     }
 }
