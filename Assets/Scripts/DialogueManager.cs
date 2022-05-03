@@ -19,6 +19,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] Animator playerAnimator;
     [SerializeField] Animator merchantAnimator;
     [SerializeField] Animator mysteriousAnimator;
+    Animator anim;
     private void Start()
     {
         if (instance != null)
@@ -60,11 +61,9 @@ public class DialogueManager : MonoBehaviour
         tags = currentStory.currentTags;
         foreach (string t in tags)
         {
-            string player = t.Split(" ")[0];
-            string prefix = t.Split(" ")[1];
-            string param = t.Split(" ")[2];
-            Animator anim;
-
+            string player = t.Split(' ')[0];
+            string prefix = t.Split(' ')[1];
+            string param = t.Split(' ')[2];
 
             switch (player.ToLower())
             {
@@ -78,10 +77,11 @@ public class DialogueManager : MonoBehaviour
                     anim = mysteriousAnimator;
                     break;
             }
-            if(prefix == "anim")
+            if (prefix == "anim")
             {
-                
+                anim.Play(param);          
             }
+
         }
     }
 
@@ -106,6 +106,7 @@ public class DialogueManager : MonoBehaviour
         {
             dialogueText.text = currentStory.Continue();
             DisplayChoices();
+            ParseTags();
         }
         else
         {
