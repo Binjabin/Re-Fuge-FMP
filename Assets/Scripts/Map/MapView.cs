@@ -98,7 +98,6 @@ public class MapView : MonoBehaviour
         {
             foreach (var connection in node.Node.outgoing)
             {
-                Debug.Log(node.Node.outgoing.Count);
                 AddLineConnection(node, GetNode(connection));
             }
         }
@@ -109,7 +108,6 @@ public class MapView : MonoBehaviour
     {
         var lineObject = Instantiate(linePrefab, firstParent.transform);
         var lineRenderer = lineObject.GetComponent<LineRenderer>();
-        Debug.Log(to.transform.position);
         var fromPoint = from.transform.position + (to.transform.position - from.transform.position).normalized * testConfig.lineOffset;
         var toPoint = to.transform.position + (from.transform.position - to.transform.position).normalized * testConfig.lineOffset;
         lineRenderer.positionCount = linePointsCount;
