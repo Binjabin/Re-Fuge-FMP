@@ -297,8 +297,9 @@ public class EnemyMovement : MonoBehaviour
                 if(timeSinceMissile > missileAttackTime)
                 {
                     Debug.Log("missile");
-                    Vector3 instantiatePos = transform.position;
-                    Instantiate(missilePrefab, instantiatePos, Quaternion.identity);
+                    Vector3 instantiatePos = transform.position + transform.forward * 2f;
+                    GameObject obj = Instantiate(missilePrefab, instantiatePos, Quaternion.identity);
+                    obj.GetComponent<Rigidbody>().velocity = rb.velocity;
                     timeSinceMissile = 0f;
                 }
             }
