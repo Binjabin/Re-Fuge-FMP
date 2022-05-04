@@ -87,11 +87,11 @@ public class HealthBar : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision);
+
     }
 
     public void CollisionDetected(Collision collision)
     {
-        Debug.Log(collision);
+
     }
 }

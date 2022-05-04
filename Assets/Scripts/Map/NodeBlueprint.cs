@@ -14,6 +14,9 @@ public class NodeBlueprint : ScriptableObject
 {
     public NodeType type;
     public Sprite icon;
-    public int asteroidCount;
+    public int minAsteroidCount;
+    public int maxAsteroidCount;
+    public bool containsMerchant;
+
 
 }

@@ -56,7 +56,10 @@ public class MapPlayerTracker : MonoBehaviour
 
     private IEnumerator EnterNode(MapNode node)
     {
-        LevelToLoad.asteroidCount = node.blueprint.asteroidCount;
+        LevelToLoad.asteroidCount = Random.Range(node.blueprint.minAsteroidCount, node.blueprint.maxAsteroidCount);
+        LevelToLoad.seed = Random.Range(0, 100000);
+        LevelToLoad.containsMerchant = node.blueprint.containsMerchant;
+
         yield return new WaitForSeconds(1f);
         enteringScene = true;
         FindObjectOfType<SceneManagment>().LeaveScene();

@@ -32,8 +32,12 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] List<Transform> patrolPoints;
     int patrolIndex;
     bool avoiding;
-
     Vector3 currentAim;
+
+    [SerializeField] bool isHeavy;
+    [SerializeField] GameObject missilePrefab;
+    [SerializeField] float missileAttackTime;
+    float timeSinceMissile;
     void FindVisibleTargets()
     {
         visibleTargets.Clear();
@@ -280,13 +284,26 @@ public class EnemyMovement : MonoBehaviour
         
         if(attacking)
         {
-            for(int i = 0; i < weaponParticles.Length; i++)
+            for (int i = 0; i < weaponParticles.Length; i++)
             {
-                if(!weaponParticles[i].isPlaying)
+                if (!weaponParticles[i].isPlaying)
                 {
                     weaponParticles[i].Play();
                 }
             }
+            if(isHeavy)
+            {
+                timeSinceMissile += Time.deltaTime;
+                if(timeSinceMissile > missileAttackTime)
+                {
+                    Debug.Log("missile");
+                    Vector3 instantiatePos = transform.position + transform.forward * 2f;
+                    GameObject obj = Instantiate(missilePrefab, instantiatePos, Quaternion.identity);
+                    obj.GetComponent<Rigidbody>().velocity = rb.velocity;
+                    timeSinceMissile = 0f;
+                }
+            }
+
         }
         else
         {

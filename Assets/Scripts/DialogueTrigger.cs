@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class DialogueTrigger : MonoBehaviour
 {
@@ -34,22 +35,30 @@ public class DialogueTrigger : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        timeInCollider += Time.deltaTime;
-        if (timeInCollider > timeRequired)
+        if (other.tag == "Player")
         {
-            if(!triggeredDialogue)
+            timeInCollider += Time.deltaTime;
+            if (timeInCollider > timeRequired)
             {
-                triggeredDialogue = true;
-                DialogueManager.GetInstance().EnterDialogue(inkJSON);
-                FindObjectOfType<PlayerMovement>().EnterDialogue(gameObject);
+                if (!triggeredDialogue)
+                {
+                    triggeredDialogue = true;
+                    FindObjectOfType<CinemachineTargetGroup>().m_Targets = new CinemachineTargetGroup.Target[0];
+                    FindObjectOfType<CinemachineTargetGroup>().AddMember(other.transform, 2f, 15f);
+                    FindObjectOfType<CinemachineTargetGroup>().AddMember(transform, 2f, 10f);
+                    DialogueManager.GetInstance().EnterDialogue(inkJSON);
+                    FindObjectOfType<PlayerMovement>().EnterDialogue(gameObject);
+                }
+
             }
-            
         }
+        
     }
     private void OnTriggerExit(Collider other)
     {
         if(other.gameObject.tag == "Player")
         {
+            timeInCollider = 0f;
             playerInRange = false;
         }
     }
