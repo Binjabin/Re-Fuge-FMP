@@ -1,19 +1,37 @@
-#merchant anim sad
-#player anim neutral
+
+#player anim enterNeutral
+#merchant anim enterHappy
+INCOMING TRANSMISSION
+#merchant anim inHappy
 You have come to look at my goods have you?
+#player anim inNeutral
+#merchant anim outHappy
+...
     *[Yes!] -> Yes
     *[No!] -> No
+    *[Who are you?] -> Who
     
-== No ==
+== Who ==
 #player anim scared
 What? Who are you?
-#merchant anim angry
-Wow! Rude!
+#player anim outScared
+#merchant anim inAngry
+How Rude!? 
 -> DONE
 
 == Yes == 
+#player anim neutral
 I have heard great things about this market!
-#merchant anim happy
+#player anim outNeutral
+#merchant anim inHappy
 Thats what I like to hear!
 -> DONE
  
+ == No ==
+ #player anim neutral
+ Not today! Another time mabye!
+ #player anim outNeutral
+ #merchant anim inSad
+ Oh...
+ Well come back any time...
+ -> DONE
