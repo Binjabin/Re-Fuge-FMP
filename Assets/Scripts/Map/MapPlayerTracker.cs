@@ -59,6 +59,8 @@ public class MapPlayerTracker : MonoBehaviour
         LevelToLoad.asteroidCount = Random.Range(node.blueprint.minAsteroidCount, node.blueprint.maxAsteroidCount);
         LevelToLoad.seed = Random.Range(0, 100000);
         LevelToLoad.containsMerchant = node.blueprint.containsMerchant;
+        LevelToLoad.heavyEnemyCount = Random.Range(node.blueprint.minHeavyEnemyCount, node.blueprint.maxHeavyEnemyCount + 1);
+        LevelToLoad.standardEnemyCount = Random.Range(node.blueprint.minLightEnemyCount, node.blueprint.maxLightEnemyCount + 1);
 
         yield return new WaitForSeconds(1f);
         enteringScene = true;

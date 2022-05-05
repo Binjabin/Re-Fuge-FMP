@@ -29,7 +29,7 @@ public class EnemyMovement : MonoBehaviour
     ParticleSystem[] weaponParticles;
     bool collided;
     Transform player;
-    [SerializeField] List<Transform> patrolPoints;
+    public List<Vector3> patrolPoints;
     int patrolIndex;
     bool avoiding;
     Vector3 currentAim;
@@ -103,7 +103,7 @@ public class EnemyMovement : MonoBehaviour
         }
         else
         {
-            currentAim = patrolPoints[patrolIndex].position;
+            currentAim = patrolPoints[patrolIndex];
         }
         RaycastHit hit;
         Vector3 aimDir = (currentAim - transform.position).normalized;
@@ -214,8 +214,8 @@ public class EnemyMovement : MonoBehaviour
         {
             attacking = false;
             
-            Transform point = patrolPoints[patrolIndex];
-            FaceTarget(point.position);
+            Vector3 point = patrolPoints[patrolIndex];
+            FaceTarget(point);
             if (Vector3.Dot(transform.forward, targetDirection.normalized) > 0.75f)
             {
                 if (targetDirection.magnitude > 10f)

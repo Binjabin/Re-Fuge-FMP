@@ -18,5 +18,10 @@ public class NodeBlueprint : ScriptableObject
     public int maxAsteroidCount;
     public bool containsMerchant;
 
+    public int minLightEnemyCount;
+    public int maxLightEnemyCount;
+    public int minHeavyEnemyCount;
+    public int maxHeavyEnemyCount;
+
 
 }

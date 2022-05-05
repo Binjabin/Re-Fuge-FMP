@@ -17,3 +17,7 @@ MonoBehaviour:
   minAsteroidCount: 0
   maxAsteroidCount: 100
   containsMerchant: 0
+  minLightEnemyCount: 0
+  maxLightEnemyCount: 3
+  minHeavyEnemyCount: 0
+  maxHeavyEnemyCount: 0

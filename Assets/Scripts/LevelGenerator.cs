@@ -13,19 +13,29 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] GameObject heavyEnemy;
     [SerializeField] float merchantBufferDistance;
     [SerializeField] float minDistanceFromCenterMerchant;
+
+    [SerializeField] float enemyBufferDistance;
+    [SerializeField] float minDistanceFromCenterEnemy;
+
     float seed;
     Quaternion merchantRotation;
+    List<Vector3> nextEnemyWaypoint;
     // Start is called before the first frame update
     void Start()
     {
         Random.seed = LevelToLoad.seed;
+        
         if (LevelToLoad.containsMerchant)
         {
             PlaceSpaceStation();
         }
-        for(int i = 0; i < LevelToLoad.standardEnemyCount; i++)
+        for (int i = 0; i < LevelToLoad.standardEnemyCount; i++)
         {
-
+            PlaceLightEnemy();
+        }
+        for (int i = 0; i < LevelToLoad.heavyEnemyCount; i++)
+        {
+            PlaceHeavyEnemy();
         }
         GenerateField(LevelToLoad.asteroidCount);
 
@@ -33,6 +43,33 @@ public class LevelGenerator : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+
+    }
+    void PlaceLightEnemy()
+    {
+        nextEnemyWaypoint = new List<Vector3>();
+        float x = Random.Range(maxDistance - enemyBufferDistance, minDistanceFromCenterEnemy);
+        float y = Random.Range(maxDistance - enemyBufferDistance, minDistanceFromCenterEnemy);
+        nextEnemyWaypoint.Add(new Vector3(x, 0f, y));
+
+        x = Random.Range(maxDistance - enemyBufferDistance, minDistanceFromCenterEnemy);
+        y = Random.Range(maxDistance - enemyBufferDistance, minDistanceFromCenterEnemy);
+        nextEnemyWaypoint.Add(new Vector3(-x, 0f, y));
+
+        x = Random.Range(maxDistance - enemyBufferDistance, minDistanceFromCenterEnemy);
+        y = Random.Range(maxDistance - enemyBufferDistance, minDistanceFromCenterEnemy);
+        nextEnemyWaypoint.Add(new Vector3(-x, 0f, -y));
+
+        x = Random.Range(maxDistance - enemyBufferDistance, minDistanceFromCenterEnemy);
+        y = Random.Range(maxDistance - enemyBufferDistance, minDistanceFromCenterEnemy);
+        nextEnemyWaypoint.Add(new Vector3(x, 0f, -y));
+
+        GameObject enemy = Instantiate(lightEnemy, nextEnemyWaypoint[Random.Range(0, nextEnemyWaypoint.Count)], Quaternion.identity);
+        enemy.GetComponent<EnemyMovement>().patrolPoints = nextEnemyWaypoint;
+    }
+
+    void PlaceHeavyEnemy()
     {
 
     }
