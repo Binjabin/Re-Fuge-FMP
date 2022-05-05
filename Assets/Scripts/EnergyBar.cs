@@ -7,13 +7,13 @@ using UnityEngine.UI;
 public class EnergyBar : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] float maxEnergy;
+    public float maxEnergy;
     [SerializeField] Slider energyBar;
     public float currentEnergy;
     
     void Start()
     {
-        currentEnergy = maxEnergy;
+
     }
 
     // Update is called once per frame
@@ -23,11 +23,7 @@ public class EnergyBar : MonoBehaviour
         
     }
 
-    public void ReduceEnergy(float amount)
-    {
-        currentEnergy -= amount;
-        currentEnergy = Mathf.Clamp(currentEnergy, 0f, maxEnergy);
-    }
+    
 
     
 }

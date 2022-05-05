@@ -102,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (thrusting)
         {
-            energy.ReduceEnergy(energyPerSecondThrusting * Time.deltaTime);
+            FindObjectOfType<Inventory>().ReduceEnergy(energyPerSecondThrusting * Time.deltaTime);
             if(energy.currentEnergy > 0f)
             {
                 rb.AddForce(transform.right * thrustSpeed);
@@ -119,7 +119,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (boosting)
         {
-            energy.ReduceEnergy(energyPerSecondBoosting * Time.deltaTime);
+            FindObjectOfType<Inventory>().ReduceEnergy(energyPerSecondBoosting * Time.deltaTime);
             if (energy.currentEnergy > 0f)
             {
                 rb.AddForce(transform.right * thrustSpeed * 5);

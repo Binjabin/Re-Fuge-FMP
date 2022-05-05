@@ -19,11 +19,14 @@ public class SceneManagment : MonoBehaviour
     }
     public void LeaveScene()
     {
+
         StartCoroutine(LeaveSceneAnimation());
     }
     public void ReturnToMap()
     {
+
         StartCoroutine(ReturnToMapAnimation());
+        SavePlayerStats();
     }
 
     IEnumerator LeaveSceneAnimation()
@@ -37,5 +40,19 @@ public class SceneManagment : MonoBehaviour
         outAnimation.SetTrigger("Out");
         yield return new WaitForSeconds(2f);
         Application.LoadLevel("Map");
+    }
+
+    void SavePlayerStats()
+    {
+        PlayerStats.energy = FindObjectOfType<Inventory>().currentEnergy;
+        PlayerStats.food = FindObjectOfType<Inventory>().currentFood;
+        PlayerStats.water = FindObjectOfType<Inventory>().currentWater;
+        PlayerStats.health = FindObjectOfType<HealthBar>().currentHealth;
+        PlayerStats.shield = FindObjectOfType<HealthBar>().currentShield;
+
+    }
+    void LoadPlayerStats()
+    {
+
     }
 }

@@ -81,7 +81,7 @@ public class Stealth : MonoBehaviour
         }
         if(stealthOn)
         {
-            gameObject.GetComponent<EnergyBar>().ReduceEnergy(energyPerSecondStealth * Time.deltaTime);
+            FindObjectOfType<Inventory>().ReduceEnergy(energyPerSecondStealth * Time.deltaTime);
             if (gameObject.GetComponent<EnergyBar>().currentEnergy > 0f)
             {
 

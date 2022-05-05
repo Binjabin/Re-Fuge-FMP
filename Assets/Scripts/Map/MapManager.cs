@@ -56,7 +56,7 @@ public class MapManager : MonoBehaviour
         currentMap = map;
         view.DrawMap(map);
     }
-
+    
     public void SaveMap()
     {
         if (currentMap == null) return;

@@ -20,14 +20,18 @@ public class MapPlayerTracker : MonoBehaviour
     {
         if(mapManager.currentMap.path.Count == 0)
         {
+            PlayerStats.init = true;
+            Debug.Log("first node");
             if(mapNode.Node.point.y == 0)
             {
                 SendPlayerToNode(mapNode);
+                
             }
                 
         }
         else
         {
+            PlayerStats.init = false;
             var currentPoint = mapManager.currentMap.path[mapManager.currentMap.path.Count - 1];
             var currentNode = mapManager.currentMap.GetNode(currentPoint);
 
@@ -61,6 +65,8 @@ public class MapPlayerTracker : MonoBehaviour
         LevelToLoad.containsMerchant = node.blueprint.containsMerchant;
         LevelToLoad.heavyEnemyCount = Random.Range(node.blueprint.minHeavyEnemyCount, node.blueprint.maxHeavyEnemyCount + 1);
         LevelToLoad.standardEnemyCount = Random.Range(node.blueprint.minLightEnemyCount, node.blueprint.maxLightEnemyCount + 1);
+
+
 
         yield return new WaitForSeconds(1f);
         enteringScene = true;

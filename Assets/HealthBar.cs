@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     [SerializeField] float maxHealth = 100f;
-    float currentHealth;
+    public float currentHealth;
     float maxShield;
-    float currentShield;
+    public float currentShield;
     [SerializeField] float shieldRegenDelay = 5f;
     [SerializeField] float shieldRegenSpeed = 1f;
     [SerializeField] float energyPerShield = 1f;
@@ -20,9 +20,20 @@ public class HealthBar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        maxShield = maxHealth;
-        currentShield = maxShield;
-        currentHealth = maxHealth;
+        if(PlayerStats.init == false)
+        {
+            currentHealth = PlayerStats.health;
+            maxShield = currentHealth;
+            currentShield = PlayerStats.shield;
+        }
+        else
+        {
+            currentHealth = maxHealth;
+            maxShield = currentHealth;
+            currentShield = maxShield;
+        }
+        
+        
     }
 
     private void Update()
@@ -39,7 +50,7 @@ public class HealthBar : MonoBehaviour
                     float increaseAmount = shieldRegenSpeed * Time.deltaTime;
                     currentShield += increaseAmount;
                     currentShield = Mathf.Clamp(currentShield, 0f, maxShield);
-                    gameObject.GetComponent<EnergyBar>().ReduceEnergy(increaseAmount * energyPerShield);
+                    FindObjectOfType<Inventory>().ReduceEnergy(increaseAmount * energyPerShield);
                 }
                 
             }
