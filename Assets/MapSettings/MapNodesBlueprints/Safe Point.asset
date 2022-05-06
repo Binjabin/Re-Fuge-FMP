@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: Safe Point
   m_EditorClassIdentifier: 
   type: 4
-  icon: {fileID: -1452300554245208417, guid: 6c9ca17dc133c55f7b220d0af2fa16ef, type: 3}
+  icon: {fileID: 21300000, guid: 3247bf406c65b2340940c9710c5562dd, type: 3}
   minAsteroidCount: 0
   maxAsteroidCount: 20
   containsMerchant: 0
+  minLightEnemyCount: 0
+  maxLightEnemyCount: 0
+  minHeavyEnemyCount: 0
+  maxHeavyEnemyCount: 0

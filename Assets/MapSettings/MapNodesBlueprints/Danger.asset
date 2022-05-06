@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Danger
   m_EditorClassIdentifier: 
   type: 1
-  icon: {fileID: -8890510750406895154, guid: 6c9ca17dc133c55f7b220d0af2fa16ef, type: 3}
+  icon: {fileID: 21300000, guid: af78cdda3c6885c439808a7d5d7a7566, type: 3}
   minAsteroidCount: 30
   maxAsteroidCount: 50
   containsMerchant: 0

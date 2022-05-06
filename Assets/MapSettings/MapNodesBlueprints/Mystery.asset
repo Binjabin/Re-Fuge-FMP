@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Mystery
   m_EditorClassIdentifier: 
   type: 3
-  icon: {fileID: 2773500499794737310, guid: 6c9ca17dc133c55f7b220d0af2fa16ef, type: 3}
+  icon: {fileID: 21300000, guid: 0af96d682d9717c46935d845c1d9bac8, type: 3}
   minAsteroidCount: 0
   maxAsteroidCount: 100
   containsMerchant: 0

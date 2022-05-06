@@ -1,10 +1,7 @@
 fileFormatVersion: 2
-guid: 4bc62e51a7061424190c5f7cd289a113
+guid: 3247bf406c65b2340940c9710c5562dd
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 7892672984849696396
-    second: Health bar UPDATE_0
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -44,8 +41,8 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
-  spriteExtrude: 0
+  spriteMode: 1
+  spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
@@ -116,28 +113,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Health bar UPDATE_0
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 24
-        width: 1737
-        height: 385
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c86c9463348688d60800000000000000
-      internalID: 7892672984849696396
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
