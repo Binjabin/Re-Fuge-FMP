@@ -11,4 +11,5 @@ public static class PlayerStats
     public static float shield;
 
     public static bool init;
+    public static List<GameObject> items;
 }

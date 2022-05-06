@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.Linq;
 public class SceneManagment : MonoBehaviour
 {
     [SerializeField] Animator outAnimation;
@@ -49,6 +49,13 @@ public class SceneManagment : MonoBehaviour
         PlayerStats.water = FindObjectOfType<Inventory>().currentWater;
         PlayerStats.health = FindObjectOfType<HealthBar>().currentHealth;
         PlayerStats.shield = FindObjectOfType<HealthBar>().currentShield;
+        List<Item> itemScriptList = FindObjectsOfType<Item>(true).ToList();
+        PlayerStats.items = new List<GameObject>();
+        foreach(Item item in itemScriptList)
+        {
+            PlayerStats.items.Add(item.GetComponent<Item>().prefab);
+        }
+        
 
     }
     void LoadPlayerStats()

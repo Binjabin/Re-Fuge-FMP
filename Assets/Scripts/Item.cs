@@ -20,7 +20,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndD
     private RectTransform parentRect;
     private CanvasGroup canvasGroup;
     private Vector3 startPos;
-
+    public GameObject prefab;
     public ItemType itemType;
     Inventory inv;
     public InventorySlot currentSlot;
@@ -140,6 +140,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndD
         }
         currentSlot.holdingObject = null;
         inv.TopUp(currentSlot.slotType, value);  
+        inv.currentItems.Remove(gameObject);
         Destroy(gameObject);
 
     }

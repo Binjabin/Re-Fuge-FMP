@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class Inventory : MonoBehaviour
 {
     bool open;
+    public List<GameObject> startingItems;
     [SerializeField] GameObject inventory;
     [SerializeField] Slider energySlider;
     public float currentEnergy;
@@ -16,6 +17,7 @@ public class Inventory : MonoBehaviour
     [SerializeField] float maxWater;
     public float currentWater;
     EnergyBar energy;
+    public List<GameObject> currentItems;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,12 +26,26 @@ public class Inventory : MonoBehaviour
             currentEnergy = PlayerStats.energy;
             currentFood = PlayerStats.food;
             currentWater = PlayerStats.water;
+            foreach(GameObject item in PlayerStats.items)
+            {
+                GameObject newItem = Instantiate(item);
+                newItem.transform.parent = inventory.transform;
+                newItem.GetComponent<Item>().prefab = item;
+                currentItems.Add(newItem);
+            }
         }
         else
         {
             currentEnergy = maxEnergy/2f;
             currentFood = maxFood/2f;
             currentWater = maxWater/2f;
+            foreach(GameObject item in startingItems)
+            {
+                GameObject newItem = Instantiate(item);
+                newItem.transform.parent = inventory.transform;
+                newItem.GetComponent<Item>().prefab = item;
+                currentItems.Add(newItem);
+            }
         }
         energy = FindObjectOfType<EnergyBar>();
         open = false;
