@@ -376,7 +376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeRequired: 0.8
-  inkJSON: {fileID: 4900000, guid: be572137f40b50e4aa07afcf07ee0dc1, type: 3}
+  inkJSON: {fileID: 4900000, guid: 20d11516e0dac1747b551db4314b494f, type: 3}
 --- !u!135 &8700589489323784787
 SphereCollider:
   m_ObjectHideFlags: 0

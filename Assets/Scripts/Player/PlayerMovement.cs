@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if(!inDialogue)
+        if(!inDialogue && !FindObjectOfType<Inventory>().invOpen)
         {
             ProcessInput();
         }

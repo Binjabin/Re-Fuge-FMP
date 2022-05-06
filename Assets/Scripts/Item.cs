@@ -25,8 +25,8 @@ public class Item : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndD
     Inventory inv;
     public InventorySlot currentSlot;
     public float value = 10f;
+    public InventorySlot startSlot = null;
 
-    
 
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -44,25 +44,29 @@ public class Item : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndD
         var results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventData, results);
         InventorySlot slot = null;
-        foreach(var result in results)
+        foreach (var result in results)
         {
             slot = result.gameObject.GetComponent<InventorySlot>();
-            if(slot != null)
+            if (slot != null)
             {
                 break;
-                
+
             }
         }
 
         canvasGroup.blocksRaycasts = true;
         canvasGroup.alpha = 1f;
 
-        if(slot != null)
+        if (slot != null)
         {
-            if(slot.Accepts(this))
+            if (slot.Accepts(this))
             {
                 currentSlot = slot;
-                if(slot.Absorbs(this))
+                if(slot.tradeInput)
+                {
+                    slot.trade.CheckTrade();
+                }
+                if (slot.Absorbs(this))
                 {
                     StartCoroutine(Absorb());
                 }
@@ -70,9 +74,9 @@ public class Item : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndD
             }
         }
 
-        
+
         transform.position = startPos;
-        
+
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -80,11 +84,11 @@ public class Item : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndD
         canvasGroup.blocksRaycasts = false;
         canvasGroup.alpha = 0.6f;
         startPos = transform.position;
-        if(currentSlot != null)
+        if (currentSlot != null)
         {
             currentSlot.holdingObject = null;
         }
-        
+
     }
 
 
@@ -96,31 +100,42 @@ public class Item : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndD
         parentRect = transform.parent.GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
         inv = FindObjectOfType<Inventory>();
-        InventorySlot[] standardSlotsArray = canvas.GetComponentsInChildren<InventorySlot>();
-        List<InventorySlot> slots = standardSlotsArray.ToList();
-        List<InventorySlot> standardSlots = new List<InventorySlot>();
-        foreach(InventorySlot slot in slots)
+        if (startSlot == null)
         {
-            if(slot.slotType == ItemType.Any)
+            InventorySlot[] standardSlotsArray = canvas.GetComponentsInChildren<InventorySlot>();
+            List<InventorySlot> slots = standardSlotsArray.ToList();
+            List<InventorySlot> standardSlots = new List<InventorySlot>();
+            foreach (InventorySlot slot in slots)
             {
-                standardSlots.Add(slot);
+                if (slot.slotType == ItemType.Any)
+                {
+                    standardSlots.Add(slot);
+                }
+            }
+            foreach (InventorySlot slot in standardSlots)
+            {
+                if (slot.holdingObject == null)
+                {
+                    GetComponent<RectTransform>().position = slot.GetComponent<RectTransform>().position;
+                    currentSlot = slot;
+                    slot.holdingObject = this;
+                    return;
+                }
             }
         }
-        foreach(InventorySlot slot in standardSlots)
+        else
         {
-            if(slot.holdingObject == null)
-            {
-                GetComponent<RectTransform>().position = slot.GetComponent<RectTransform>().position;
-                currentSlot = slot;
-                slot.holdingObject = this;
-                return;
-            }
+            
+            GetComponent<RectTransform>().position = startSlot.gameObject.GetComponent<RectTransform>().position;
+            currentSlot = startSlot;
+            startSlot.holdingObject = this;
         }
+
     }
 
 
 
-    
+
     void UpdatePosition()
     {
         RectTransformUtility.ScreenPointToLocalPointInRectangle(parentRect, Input.mousePosition, null, out localPoint);
@@ -135,11 +150,31 @@ public class Item : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndD
         {
             transform.localScale = Vector3.Lerp(transform.localScale, Vector3.zero, (elapsedTime / waitTime));
             elapsedTime += Time.deltaTime;
-        
+
             yield return null;
         }
         currentSlot.holdingObject = null;
-        inv.TopUp(currentSlot.slotType, value);  
+        inv.TopUp(currentSlot.slotType, value);
+        inv.currentItems.Remove(gameObject);
+        Destroy(gameObject);
+
+    }
+    public void Trade()
+    {
+        StartCoroutine(AbsorbForTrade());
+    }
+    public IEnumerator AbsorbForTrade()
+    {
+        float elapsedTime = 0f;
+        float waitTime = 1f;
+        while (elapsedTime < waitTime)
+        {
+            transform.localScale = Vector3.Lerp(transform.localScale, Vector3.zero, (elapsedTime / waitTime));
+            elapsedTime += Time.deltaTime;
+
+            yield return null;
+        }
+        currentSlot.holdingObject = null;
         inv.currentItems.Remove(gameObject);
         Destroy(gameObject);
 

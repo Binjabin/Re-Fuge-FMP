@@ -64,23 +64,37 @@ public class DialogueManager : MonoBehaviour
             string player = t.Split(' ')[0];
             string prefix = t.Split(' ')[1];
             string param = t.Split(' ')[2];
+            Debug.Log(player.ToString() + prefix.ToString() + param.ToString());
+            if (prefix.ToLower() == "event")
+            {
+                if (param == "openShop")
+                {
+                    Debug.Log("open");
+                    ExitDialogue();
+                    FindObjectOfType<Inventory>().inShop = true;
+                }
 
-            switch (player.ToLower())
-            {
-                case "player":
-                    anim = playerAnimator;
-                    break;
-                case "merchant":
-                    anim = merchantAnimator;
-                    break;
-                case "mysterious":
-                    anim = mysteriousAnimator;
-                    break;
             }
-            if (prefix == "anim")
+            else
             {
-                anim.Play(param);          
+                switch (player.ToLower())
+                {
+                    case "player":
+                        anim = playerAnimator;
+                        break;
+                    case "merchant":
+                        anim = merchantAnimator;
+                        break;
+                    case "mysterious":
+                        anim = mysteriousAnimator;
+                        break;
+                }
+                if (prefix == "anim")
+                {
+                    anim.Play(param);
+                }
             }
+            
 
         }
     }
