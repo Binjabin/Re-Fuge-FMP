@@ -36,4 +36,6 @@ public class RadarPing : MonoBehaviour
         this.disappearTimerMax = disappearTimerMax;
         disappearTimer = 0f;
     }
+
+    
 }

@@ -62,8 +62,8 @@ public class Radar : MonoBehaviour
                         {
                             newPing.GetComponent<RadarPing>().SetColor(importantPingColor);
                         }
-                        newPing.GetComponent<RadarPing>().SetDisappearTimer(360f / rotationSpeed);
-                        //newPing.transform.parent = radarCamera.transform;
+                        newPing.GetComponent<RadarPing>().SetDisappearTimer(270f / rotationSpeed);
+                        newPing.transform.parent = radarCamera.transform;
                     }
                 }
 
