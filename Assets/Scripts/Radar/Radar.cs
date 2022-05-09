@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Radar : MonoBehaviour
 {
+    [SerializeField] GameObject radarPing;
+    [SerializeField] Transform sweepTransform;
     [SerializeField] float rotationSpeed;
-    [SerializeField] float rayDistance;
-    [SerializeField] Transform player;
-    [SerializeField] GameObject ping;
+    [SerializeField] float radarDistance;
+    private List<Collider> colliderList;
     [SerializeField] LayerMask layers;
     [SerializeField] Transform radarCamera;
     List<Collider> pingedColliders = new List<Collider>();
@@ -23,8 +24,7 @@ public class Radar : MonoBehaviour
     void Update()
     {
         float previousRotation = (transform.eulerAngles.y % 360) - 180;
-        transform.position = new Vector3(player.position.x, player.position.y + 1f, player.position.z);
-        transform.eulerAngles = new Vector3(0f, transform.eulerAngles.y + (rotationSpeed * Time.deltaTime), 0f);
+        sweepTransform.eulerAngles -= new Vector3(0f, (rotationSpeed * Time.deltaTime), 0f);
         float currentRotation = (transform.eulerAngles.y % 360) - 180;
 
         if(previousRotation < 0 && currentRotation >= 0)
@@ -33,7 +33,8 @@ public class Radar : MonoBehaviour
         }
 
         RaycastHit ray;
-        Physics.Raycast(transform.position, transform.forward, out ray, rayDistance, layers);
+        Physics.Raycast(sweepTransform.position, sweepTransform.forward, out ray, radarDistance, layers);
+        Debug.DrawRay(transform.position, sweepTransform.forward * radarDistance, Color.green);
 
         if (ray.collider != null)
         {
@@ -43,7 +44,7 @@ public class Radar : MonoBehaviour
             if(!pingedColliders.Contains(ray.collider))
             {
                 pingedColliders.Add(ray.collider);
-                GameObject newPing = Instantiate(ping, ray.collider.transform.position, Quaternion.Euler(90, 0, 0));
+                GameObject newPing = Instantiate(radarPing, ray.collider.transform.position, Quaternion.Euler(90, 0, 0));
                 newPing.transform.parent = radarCamera.transform;
             }
         }

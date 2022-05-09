@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   icon: {fileID: 21300000, guid: 6f2794cfbc7323c4a97c8cd3dba8c1e5, type: 3}
-  minAsteroidCount: 100
-  maxAsteroidCount: 150
+  minAsteroidCount: 400
+  maxAsteroidCount: 600
   containsMerchant: 0
   minLightEnemyCount: 2
   maxLightEnemyCount: 4

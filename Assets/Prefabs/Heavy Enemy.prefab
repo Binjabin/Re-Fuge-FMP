@@ -57,14 +57,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b21240dc7f0ae247aac0fced0478760, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 3
+  rotationSpeed: 4
   thrustSpeed: 10
   maxIdealRange: 20
   minIdealRange: 10
   speedLimit: 30
   comfortableSpeed: 15
   viewRadius: 30
-  viewAngle: 120
+  viewAngle: 200
   targetMask:
     serializedVersion: 2
     m_Bits: 1
@@ -76,12 +76,12 @@ MonoBehaviour:
   invisibleTargets: []
   weapons: {fileID: 7031469944950062012}
   patrolPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {x: -2.7085653e-33, y: 7.06e-43, z: 8.375222e-10}
+  - {x: 0.00000016614423, y: -4.412005e-39, z: 7.08e-43}
+  - {x: 4.6e-44, y: 6.6289685e-10, z: -2.7085653e-33}
+  - {x: 7.06e-43, y: -2.7083008e-33, z: 7.06e-43}
+  - {x: -4.41205e-39, y: 7.08e-43, z: 6.9e-44}
+  - {x: 0, y: -2.7085653e-33, z: 7.06e-43}
   isHeavy: 1
   missilePrefab: {fileID: 8228636978185326110, guid: 7eeafb6972bcebb46ae9dd10d5882e25, type: 3}
   missileAttackTime: 5
