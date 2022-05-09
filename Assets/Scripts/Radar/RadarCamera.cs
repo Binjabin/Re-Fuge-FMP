@@ -8,7 +8,7 @@ public class RadarCamera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = GameObject.FindWithTag("Player").transform;
     }
 
     // Update is called once per frame

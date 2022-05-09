@@ -23,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float energyPerSecondThrusting;
     [SerializeField] float energyPerSecondBoosting;
 
+    [SerializeField] float damagePerUnitSpeed;
+    [SerializeField] float minImpactSpeedForDamage;
 
     GameObject dialogueFocus;
     // Start is called before the first frame update
@@ -146,5 +148,12 @@ public class PlayerMovement : MonoBehaviour
     {
         inDialogue = false;
         FindObjectOfType<CameraStateController>().ToPlayer();
+    }
+    void OnCollisionEnter(Collision Collision)
+    {
+        if(rb.velocity.magnitude > minImpactSpeedForDamage)
+        {
+            GetComponent<HealthBar>().Damage(rb.velocity.magnitude*damagePerUnitSpeed);
+        }
     }
 }

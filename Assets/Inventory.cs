@@ -24,7 +24,13 @@ public class Inventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (PlayerStats.init == false)
+        if(PlayerStats.items == null)
+        {
+            currentEnergy = maxEnergy;
+            currentFood = maxFood;
+            currentWater = maxWater;
+        }
+        else if (PlayerStats.init == false)
         {
             currentEnergy = PlayerStats.energy;
             currentFood = PlayerStats.food;

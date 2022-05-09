@@ -20,15 +20,23 @@ public class EndPoint : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        timeInCollider = 0f;
+        if(other.gameObject.tag == "Player")
+        {
+            timeInCollider = 0f;
+        }
+        
     }
     private void OnTriggerStay(Collider other)
     {
-        timeInCollider += Time.deltaTime;
-        if (timeInCollider > timeToWarp)
+        if(other.gameObject.tag == "Player")
         {
-            FindObjectOfType<SceneManagment>().ReturnToMap();
+            timeInCollider += Time.deltaTime;
+            if (timeInCollider > timeToWarp)
+            {
+                FindObjectOfType<SceneManagment>().ReturnToMap();
+            }
         }
+        
     }
     
 }

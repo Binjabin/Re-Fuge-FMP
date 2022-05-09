@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 54303493049355056}
+  - component: {fileID: 7672256716165487985}
   m_Layer: 0
   m_Name: Spacestation
   m_TagString: Untagged
@@ -26,6 +27,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -22, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 10}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6706935183054380934}
   - {fileID: 5871410003788314753}
@@ -33,6 +35,20 @@ Transform:
   m_Father: {fileID: 4356068062956873729}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &7672256716165487985
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 831824602709971338}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 10
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2654064401102767321
 GameObject:
   m_ObjectHideFlags: 0
@@ -47,7 +63,7 @@ GameObject:
   - component: {fileID: 2654064401102767320}
   m_Layer: 0
   m_Name: Light inside
-  m_TagString: Untagged
+  m_TagString: AdditionalCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -62,6 +78,7 @@ Transform:
   m_LocalRotation: {x: 0.4304596, y: 0.42344928, z: -0.24653654, w: 0.75803363}
   m_LocalPosition: {x: -1.2246279, y: 2.0740793, z: -0.461858}
   m_LocalScale: {x: 25.464409, y: 1.1512165, z: 11.650157}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 54303493049355056}
   m_RootOrder: 0
@@ -85,6 +102,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -143,7 +161,7 @@ GameObject:
   - component: {fileID: 2860120382379201971}
   m_Layer: 0
   m_Name: Ship disk
-  m_TagString: Untagged
+  m_TagString: AdditionalCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -158,6 +176,7 @@ Transform:
   m_LocalRotation: {x: 0.0056863613, y: 0.707084, z: -0.70708394, w: -0.005686361}
   m_LocalPosition: {x: -0, y: 2.1292906, z: 0}
   m_LocalScale: {x: 126.90119, y: 100, z: 140.98213}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 54303493049355056}
   m_RootOrder: 2
@@ -181,6 +200,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -244,7 +264,7 @@ GameObject:
   - component: {fileID: 4202659437207636655}
   m_Layer: 0
   m_Name: Ship body
-  m_TagString: Untagged
+  m_TagString: AdditionalCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -259,6 +279,7 @@ Transform:
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
   m_LocalPosition: {x: -0, y: 2.1602738, z: -0.17081943}
   m_LocalScale: {x: 42.342464, y: 29.319906, z: 100}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 54303493049355056}
   m_RootOrder: 1
@@ -282,6 +303,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -358,6 +380,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 54303493049355056}
   m_Father: {fileID: 0}

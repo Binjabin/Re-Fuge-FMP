@@ -16,6 +16,7 @@ public class Radar : MonoBehaviour
     [SerializeField] Color importantPingColor;
     [SerializeField] Color enemyPingColor;
     [SerializeField] Color otherPingColor;
+    [SerializeField] List<Collider> permanantPingedColliders = new List<Collider>();
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +26,7 @@ public class Radar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        sweepTransform.position = transform.position;
+        sweepTransform.position = new Vector3(transform.position.x, 0f, transform.position.z);
         float previousRotation = (sweepTransform.eulerAngles.y % 360) - 180;
         sweepTransform.eulerAngles -= new Vector3(0f, (rotationSpeed * Time.deltaTime), 0f);
         float currentRotation = (sweepTransform.eulerAngles.y % 360) - 180;
@@ -43,31 +44,42 @@ public class Radar : MonoBehaviour
         {
             if (raycastHit.collider != null)
             {
-                if(raycastHit.collider.gameObject.tag != "Player")
+                if(raycastHit.collider.gameObject.tag != "AdditionalCollider" && raycastHit.collider.gameObject.tag != "Player")
                 {
                     Debug.Log(raycastHit.collider.gameObject.tag);
                     if (!pingedColliders.Contains(raycastHit.collider))
                     {
                         pingedColliders.Add(raycastHit.collider);
-                        GameObject newPing = Instantiate(radarPing, raycastHit.collider.transform.position, Quaternion.Euler(90, 0, 0));
+                        
                         if (raycastHit.collider.gameObject.GetComponent<Asteroids>() != null)
                         {
+                            GameObject newPing = Instantiate(radarPing, raycastHit.collider.transform.position, Quaternion.Euler(90, 0, 0));
                             newPing.GetComponent<RadarPing>().SetColor(otherPingColor);
+                            newPing.GetComponent<RadarPing>().SetDisappearTimer(36000f / rotationSpeed);
+                            newPing.transform.localScale = new Vector3(15f, 15f, 15f);
+                            newPing.transform.parent = raycastHit.collider.transform;
                         }
                         else if (raycastHit.collider.gameObject.GetComponent<EnemyMovement>() != null)
                         {
+                            GameObject newPing = Instantiate(radarPing, raycastHit.collider.transform.position, Quaternion.Euler(90, 0, 0));
                             newPing.GetComponent<RadarPing>().SetColor(enemyPingColor);
+                            newPing.GetComponent<RadarPing>().SetDisappearTimer(36000f / rotationSpeed);
+                            newPing.transform.localScale = new Vector3(20f, 20f, 20f);
+                            newPing.transform.parent = raycastHit.collider.transform;
                         }
                         else
                         {
+                            GameObject newPing = Instantiate(radarPing, raycastHit.collider.transform.position, Quaternion.Euler(90, 0, 0));
                             newPing.GetComponent<RadarPing>().SetColor(importantPingColor);
+                            newPing.GetComponent<RadarPing>().SetDisappearTimer(36000f / rotationSpeed);
+                            newPing.transform.localScale = new Vector3(30f, 30f, 30f);
+                            newPing.transform.parent = raycastHit.collider.transform;
+                            
                         }
-                        newPing.GetComponent<RadarPing>().SetDisappearTimer(270f / rotationSpeed);
-                        newPing.transform.parent = radarCamera.transform;
+                        
+                        
                     }
                 }
-
-                
             }
         }
         
