@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 public enum NodeType
 {
     Merchant,
@@ -22,6 +24,7 @@ public class NodeBlueprint : ScriptableObject
     public int maxLightEnemyCount;
     public int minHeavyEnemyCount;
     public int maxHeavyEnemyCount;
-
+    
+    public List<AsteroidWeights> asteroidWeights;
 
 }

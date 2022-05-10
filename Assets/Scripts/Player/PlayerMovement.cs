@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     bool thrusting;
     bool breaking;
     bool boosting;
-
+    
     bool inDialogue;
 
     TrailRenderer[] trail;
@@ -27,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float minImpactSpeedForDamage;
 
     GameObject dialogueFocus;
+
+    [SerializeField] ParticleSystem miningLazer;
     // Start is called before the first frame update
     void Start()
     {
@@ -53,13 +55,17 @@ public class PlayerMovement : MonoBehaviour
         {
             ProcessInput();
         }
-        else
+        else if(inDialogue)
         {
             Vector3 targetDirection = dialogueFocus.transform.position - transform.position;
             targetDirection.y = 0f;
             float rotationStep = 3f * Time.deltaTime;
             Vector3 newDirection = Vector3.RotateTowards(transform.right, targetDirection, rotationStep, 0.0f);
             transform.rotation = Quaternion.LookRotation(newDirection) * Quaternion.Euler(0f, -90f, 0f);
+        }
+        else
+        {
+            
         }
         
     }
@@ -102,6 +108,14 @@ public class PlayerMovement : MonoBehaviour
     }
     void ProcessInput()
     {
+        if(Input.GetKey(KeyCode.Space))
+        {
+            miningLazer.Play();
+        }
+        else
+        {
+            miningLazer.Stop();
+        }
         if (thrusting)
         {
             FindObjectOfType<Inventory>().ReduceEnergy(energyPerSecondThrusting * Time.deltaTime);

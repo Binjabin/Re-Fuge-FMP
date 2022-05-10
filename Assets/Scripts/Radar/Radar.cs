@@ -16,6 +16,7 @@ public class Radar : MonoBehaviour
     [SerializeField] Color importantPingColor;
     [SerializeField] Color enemyPingColor;
     [SerializeField] Color otherPingColor;
+    [SerializeField] Color pickupPingColor;
     [SerializeField] List<Collider> permanantPingedColliders = new List<Collider>();
     // Start is called before the first frame update
     void Start()
@@ -34,7 +35,6 @@ public class Radar : MonoBehaviour
         if(previousRotation < 0 && currentRotation >= 0)
         {
             pingedColliders.Clear();
-            Debug.Log("clear list");
         }
 
         RaycastHit[] ray = Physics.RaycastAll(sweepTransform.position, sweepTransform.forward, radarDistance, layers); ;
@@ -46,7 +46,6 @@ public class Radar : MonoBehaviour
             {
                 if(raycastHit.collider.gameObject.tag != "AdditionalCollider" && raycastHit.collider.gameObject.tag != "Player")
                 {
-                    Debug.Log(raycastHit.collider.gameObject.tag);
                     if (!pingedColliders.Contains(raycastHit.collider))
                     {
                         pingedColliders.Add(raycastHit.collider);
@@ -55,7 +54,8 @@ public class Radar : MonoBehaviour
                         {
                             GameObject newPing = Instantiate(radarPing, raycastHit.collider.transform.position, Quaternion.Euler(90, 0, 0));
                             newPing.GetComponent<RadarPing>().SetColor(otherPingColor);
-                            newPing.GetComponent<RadarPing>().SetDisappearTimer(36000f / rotationSpeed);
+                            newPing.GetComponent<RadarPing>().SetDisappearTimer(900f / rotationSpeed);
+                            newPing.GetComponent<RadarPing>().alpha = false;
                             newPing.transform.localScale = new Vector3(15f, 15f, 15f);
                             newPing.transform.parent = raycastHit.collider.transform;
                         }
@@ -63,7 +63,17 @@ public class Radar : MonoBehaviour
                         {
                             GameObject newPing = Instantiate(radarPing, raycastHit.collider.transform.position, Quaternion.Euler(90, 0, 0));
                             newPing.GetComponent<RadarPing>().SetColor(enemyPingColor);
-                            newPing.GetComponent<RadarPing>().SetDisappearTimer(36000f / rotationSpeed);
+                            newPing.GetComponent<RadarPing>().SetDisappearTimer(900f / rotationSpeed);
+                            newPing.GetComponent<RadarPing>().alpha = false;
+                            newPing.transform.localScale = new Vector3(20f, 20f, 20f);
+                            newPing.transform.parent = raycastHit.collider.transform;
+                        }
+                        else if (raycastHit.collider.gameObject.GetComponent<PickUp>() != null)
+                        {
+                            GameObject newPing = Instantiate(radarPing, raycastHit.collider.transform.position, Quaternion.Euler(90, 0, 0));
+                            newPing.GetComponent<RadarPing>().SetColor(pickupPingColor);
+                            newPing.GetComponent<RadarPing>().SetDisappearTimer(900f / rotationSpeed);
+                            newPing.GetComponent<RadarPing>().alpha = false;
                             newPing.transform.localScale = new Vector3(20f, 20f, 20f);
                             newPing.transform.parent = raycastHit.collider.transform;
                         }
@@ -71,7 +81,8 @@ public class Radar : MonoBehaviour
                         {
                             GameObject newPing = Instantiate(radarPing, raycastHit.collider.transform.position, Quaternion.Euler(90, 0, 0));
                             newPing.GetComponent<RadarPing>().SetColor(importantPingColor);
-                            newPing.GetComponent<RadarPing>().SetDisappearTimer(36000f / rotationSpeed);
+                            newPing.GetComponent<RadarPing>().SetDisappearTimer(900f / rotationSpeed);
+                            newPing.GetComponent<RadarPing>().alpha = false;
                             newPing.transform.localScale = new Vector3(30f, 30f, 30f);
                             newPing.transform.parent = raycastHit.collider.transform;
                             

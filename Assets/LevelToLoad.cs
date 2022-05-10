@@ -9,6 +9,6 @@ public static class LevelToLoad
     public static bool containsMerchant;
     public static float standardEnemyCount;
     public static float heavyEnemyCount;
-
+    public static List<AsteroidWeights> asteroidWeights;
 
 }

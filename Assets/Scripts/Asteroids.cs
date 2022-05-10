@@ -6,12 +6,16 @@ public class Asteroids : MonoBehaviour
 {   
     float sizeThreshold;
     [SerializeField] bool breakAsteroid;
-
+    [SerializeField] Vector3 shrinkSpeed;
+    [SerializeField] Vector3 minSize;
+    float timeSinceLazerHit;
+    public ItemType itemType;
+    [SerializeField] GameObject dropPrefab;
     // Start is called before the first frame update
     void Start()
     {
-        Vector3 sizeV3 = new Vector3(50f, 50f, 50f);
-        sizeThreshold = sizeV3.magnitude;
+        timeSinceLazerHit = 0f;
+        sizeThreshold = minSize.magnitude;
         Rigidbody rb = GetComponent<Rigidbody>();
         Vector3 spin = new Vector3(Random.Range(-0.2f, 0.2f), Random.Range(-0.2f, 0.2f), Random.Range(-0.2f, 0.2f));
         Vector3 movement = new Vector3(Random.Range(-.5f, .5f), Random.Range(-.5f, .5f), Random.Range(-.5f, .5f));
@@ -28,23 +32,25 @@ public class Asteroids : MonoBehaviour
     {
         if(breakAsteroid)
         {
-            breakAsteroid = false;
-
+            if(timeSinceLazerHit > 1f)
+            {
+                breakAsteroid = false;
+            }
+            transform.localScale = transform.localScale - shrinkSpeed * Time.deltaTime;
             if(transform.localScale.magnitude < sizeThreshold)
             {
+                GameObject spawnedItem = Instantiate(dropPrefab, transform);
+                spawnedItem.GetComponent<PickUp>().type = itemType;
                 Destroy(gameObject);
-                Debug.Log("got too small");
+                
             }
-            else
-            {
-                GameObject newAsteroid;
-                newAsteroid = Instantiate(gameObject, transform.position, Quaternion.identity);
-                newAsteroid.transform.localScale = transform.localScale / 2f;
-                newAsteroid = Instantiate(gameObject, transform.position, Quaternion.identity);
-                newAsteroid.transform.localScale = transform.localScale / 2f;
-                Destroy(gameObject);
-            }
-            
         }
+        timeSinceLazerHit += Time.deltaTime;
     }
+    void OnParticleCollision(GameObject other)
+    {
+        breakAsteroid = true;
+        timeSinceLazerHit = 0f;
+    }
+    
 }

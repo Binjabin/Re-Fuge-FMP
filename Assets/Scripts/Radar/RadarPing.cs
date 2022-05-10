@@ -8,6 +8,7 @@ public class RadarPing : MonoBehaviour
     [SerializeField] float disappearTimerMax;
     private Color color;
     SpriteRenderer sr;
+    public bool alpha = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +19,15 @@ public class RadarPing : MonoBehaviour
     void Update()
     {
         disappearTimer += Time.deltaTime;
-        color.a = Mathf.Lerp(disappearTimerMax, 0f, disappearTimer / disappearTimerMax);
+        if(alpha)
+        {
+            color.a = Mathf.Lerp(disappearTimerMax, 0f, disappearTimer / disappearTimerMax);
+        }
+        else
+        {
+            color.a = 1f;
+        }
+        
         if (disappearTimer >= disappearTimerMax)
         {
             Destroy(gameObject);

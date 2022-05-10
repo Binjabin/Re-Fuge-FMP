@@ -120,6 +120,11 @@ public class Inventory : MonoBehaviour
 
     public void TradeOutput(ItemType type, InventorySlot slot)
     {
+        GameObject tradedItem = AddItem(type);
+        tradedItem.GetComponent<Item>().startSlot = slot;
+    }
+    public GameObject AddItem(ItemType type)
+    {
         List<GameObject> objectsOfType = new List<GameObject>();
         foreach(GameObject prefab in allItems)
         {
@@ -129,10 +134,10 @@ public class Inventory : MonoBehaviour
             }
         }
         int randIndex = Random.Range(0, objectsOfType.Count);
-        GameObject tradedItem = Instantiate(objectsOfType[randIndex]);
-        tradedItem.transform.parent = inventory.transform;
-        tradedItem.GetComponent<Item>().prefab = objectsOfType[randIndex];
-        tradedItem.GetComponent<Item>().startSlot = slot;
-        currentItems.Add(tradedItem);
+        GameObject newItem = Instantiate(objectsOfType[randIndex]);
+        newItem.transform.parent = inventory.transform;
+        newItem.GetComponent<Item>().prefab = objectsOfType[randIndex];
+        currentItems.Add(newItem);
+        return newItem;
     }
 }

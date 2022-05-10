@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-    [SerializeField] float maxDistance;
+    public float maxDistance;
     [SerializeField] float minDistanceApart;
     [SerializeField] List<Vector3> asteroidList;
     [SerializeField] List<GameObject> asteroids;
@@ -20,11 +20,13 @@ public class LevelGenerator : MonoBehaviour
     float seed;
     Quaternion merchantRotation;
     List<Vector3> nextEnemyWaypoint;
+
+    List<AsteroidWeights> asteroidWeights;
     // Start is called before the first frame update
     void Start()
     {
         Random.seed = LevelToLoad.seed;
-        
+        asteroidWeights = LevelToLoad.asteroidWeights;
         if (LevelToLoad.containsMerchant)
         {
             PlaceSpaceStation();
@@ -137,9 +139,35 @@ public class LevelGenerator : MonoBehaviour
             else
             {
                 asteroidList.Add(asteroidPos);
-                Instantiate(asteroids[Random.Range(0,asteroids.Count)], asteroidPos, Quaternion.identity);
+                GameObject newAsteroid = Instantiate(asteroids[Random.Range(0,asteroids.Count)], asteroidPos, Quaternion.identity);
+                newAsteroid.GetComponent<Asteroids>().itemType = GetAsteroidType();
             }
         }
 
+    }
+    ItemType GetAsteroidType()
+    {
+        float maxWeight = 0f;
+        for(var i = 0; i < asteroidWeights.Count; i++)
+        {
+            maxWeight += asteroidWeights[i].weight;
+        }
+        float randomValue = Random.Range(0f, maxWeight);
+
+        int index = 0;
+        int lastIndex = asteroidWeights.Count - 1;
+        float weightCap = 0;
+        while (index < lastIndex)
+        {
+            weightCap += asteroidWeights[index].weight;
+            if (randomValue < weightCap)
+            {
+                return asteroidWeights[index].type;
+            }
+            index++;
+        }
+    
+        // No other item was selected, so return very last index.
+        return asteroidWeights[index].type;
     }
 }
