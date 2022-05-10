@@ -31,6 +31,7 @@ Transform:
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
   m_LocalPosition: {x: -0, y: 0.8147559, z: -2.94}
   m_LocalScale: {x: 120, y: 120, z: 120}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -54,6 +55,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -96,6 +98,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60cd114f88df72c4b9044b0f10592455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  breakAsteroid: 0
+  shrinkSpeed: {x: 0, y: 0, z: 0}
+  minSize: {x: 0, y: 0, z: 0}
+  itemType: 0
+  dropPrefab: {fileID: 4457148152409111794, guid: 58da533998cebd8c2b63d3c258532f73, type: 3}
 --- !u!54 &-484989812125495195
 Rigidbody:
   m_ObjectHideFlags: 0
