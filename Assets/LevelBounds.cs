@@ -14,7 +14,7 @@ public class LevelBounds : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rbs = FindObjectsOfType<Rigidbody>()
+        rbs = FindObjectsOfType<Rigidbody>().ToList();
         foreach(Rigidbody rb in rbs)
         {
             
