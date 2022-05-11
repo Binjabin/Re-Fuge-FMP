@@ -5,6 +5,9 @@ using UnityEngine;
 public class LevelGenerator : MonoBehaviour
 {
     [Header("Asteroid Settings")]
+    [SerializeField] Color waterAsteroidColor;
+    [SerializeField] Color foodAsteroidColor;
+    [SerializeField] Color energyAsteroidColor;
     public float maxDistance;
     [SerializeField] float minDistanceApart;
 
@@ -150,6 +153,20 @@ public class LevelGenerator : MonoBehaviour
                 asteroidList.Add(asteroidPos);
                 GameObject newAsteroid = Instantiate(asteroids[Random.Range(0,asteroids.Count)], asteroidPos, Quaternion.identity);
                 newAsteroid.GetComponent<Asteroids>().itemType = GetAsteroidType();
+                if (newAsteroid.GetComponent<Asteroids>().itemType == ItemType.Water)
+                {
+                    newAsteroid.GetComponent<MeshRenderer>().material.SetColor("_Color", waterAsteroidColor);
+                }
+                if (newAsteroid.GetComponent<Asteroids>().itemType == ItemType.Energy)
+                {
+                    newAsteroid.GetComponent<MeshRenderer>().material.SetColor("_Color", energyAsteroidColor);
+                }
+                if (newAsteroid.GetComponent<Asteroids>().itemType == ItemType.Food)
+                {
+                    newAsteroid.GetComponent<MeshRenderer>().material.SetColor("_Color", foodAsteroidColor);
+                }
+
+
             }
         }
 

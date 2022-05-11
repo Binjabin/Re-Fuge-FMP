@@ -46,10 +46,11 @@ public class MapGenerator
             var nodeBlueprint = layer.GetNodeBlueprint();
             var nodeType = nodeBlueprint.type;
             var blueprintName = nodeBlueprint.name;
-
+            var newAsteroidWeights = GetAsteroidWeights();
             var node = new Node(nodeType, blueprintName, new NodePoint(i, layerIndex))
             {
-                position = new Vector3(baseX, 0f, baseY)
+                position = new Vector3(baseX, 0f, baseY),
+                asteroidWeights = newAsteroidWeights
             };
             layerNodes.Add(node);
         }
@@ -287,5 +288,26 @@ public class MapGenerator
             }
         }
     }
+    static List<AsteroidWeights> GetAsteroidWeights()
+    {
+        List<AsteroidWeights> asteroidWeights = new List<AsteroidWeights>();
+        List<ItemType> itemLeft = new List<ItemType>();
+        itemLeft.Add(ItemType.Food);
+        itemLeft.Add(ItemType.Energy);
+        itemLeft.Add(ItemType.Water);
 
+        float probabilityLeft = 1f;
+        int loopAmount = itemLeft.Count;
+        for (int i = 0; i < loopAmount - 1; i++)
+        {
+            var thisItem = itemLeft[Random.Range(0, itemLeft.Count)];
+            var thisWeight = Random.Range(0f, probabilityLeft);
+            var newAsteroidWeights = new AsteroidWeights(thisItem, thisWeight);
+            probabilityLeft -= thisWeight;
+            itemLeft.Remove(thisItem);
+            asteroidWeights.Add(newAsteroidWeights);
+        }
+        asteroidWeights.Add(new AsteroidWeights(itemLeft[0], probabilityLeft));
+        return asteroidWeights;
+    }
 }

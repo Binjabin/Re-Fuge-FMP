@@ -11,9 +11,11 @@ public class Asteroids : MonoBehaviour
     float timeSinceLazerHit;
     public ItemType itemType;
     [SerializeField] GameObject dropPrefab;
+    RubbleColor rubble;
     // Start is called before the first frame update
     void Start()
     {
+        rubble = FindObjectOfType<RubbleColor>();
         timeSinceLazerHit = 0f;
         sizeThreshold = minSize.magnitude;
         Rigidbody rb = GetComponent<Rigidbody>();
@@ -50,7 +52,8 @@ public class Asteroids : MonoBehaviour
     void OnParticleCollision(GameObject other)
     {
         breakAsteroid = true;
-        timeSinceLazerHit = 0f;
+        Color currentMiningAsteroidColor = gameObject.GetComponent<MeshRenderer>().material.GetColor("_Color");
+        rubble.SetColor(currentMiningAsteroidColor);
     }
     
 }

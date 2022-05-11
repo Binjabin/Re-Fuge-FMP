@@ -1957,6 +1957,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60a6ea337dbab1343916d7685ebead94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waterAsteroidColor: {r: 0.28511038, g: 0.32718864, b: 0.4056604, a: 0}
+  foodAsteroidColor: {r: 0.26415092, g: 0.1389719, b: 0.095941596, a: 0}
+  energyAsteroidColor: {r: 0.3018868, g: 0.21900673, b: 0.1295835, a: 0}
   maxDistance: 200
   minDistanceApart: 1
   asteroidList: []
@@ -3147,7 +3150,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.1213872, y: 1}
+    m_SensorSize: {x: 1.8888888, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -3176,7 +3179,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 588223025}
   m_LocalRotation: {x: 0.2546557, y: 0.36785895, z: -0.10548183, w: 0.8880901}
-  m_LocalPosition: {x: -2.390892, y: 2.4189835, z: -2.14188}
+  m_LocalPosition: {x: -2.3908844, y: 2.4189835, z: -2.14188}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1392477925}
@@ -4970,7 +4973,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.2546557, y: 0.36785895, z: -0.10548183, w: 0.8880901}
-  m_LocalPosition: {x: -59.977566, y: 51.93885, z: -60.307236}
+  m_LocalPosition: {x: -59.99563, y: 51.93885, z: -60.28917}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5842,9 +5845,10 @@ GameObject:
   - component: {fileID: 1124064222}
   - component: {fileID: 1124064224}
   - component: {fileID: 1124064223}
+  - component: {fileID: 1124064225}
   m_Layer: 9
   m_Name: Rubble
-  m_TagString: Untagged
+  m_TagString: Rubble
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5883,7 +5887,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31258771561b65d4aba1be3a49d5c921, type: 2}
+  - {fileID: 2100000, guid: 48b5e4848ced66944ac615714f4a74bb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10693,6 +10697,20 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &1124064225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1124064221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ca6680ec5dfd594580ee040c2e10da9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentRubbleColor: {r: 0, g: 1, b: 0.9374714, a: 0}
+  rubbleMat: {fileID: 2100000, guid: 48b5e4848ced66944ac615714f4a74bb, type: 2}
 --- !u!1 &1129755228
 GameObject:
   m_ObjectHideFlags: 0
@@ -11857,7 +11875,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.1213872, y: 1}
+    m_SensorSize: {x: 1.8888888, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -11874,7 +11892,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1399525098}
   m_LocalRotation: {x: 0.2546557, y: 0.36785895, z: -0.10548183, w: 0.8880901}
-  m_LocalPosition: {x: -0.003753662, y: -0.09976959, z: -0.084415436}
+  m_LocalPosition: {x: -0.021816254, y: -0.09976959, z: -0.06634903}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1569679105}

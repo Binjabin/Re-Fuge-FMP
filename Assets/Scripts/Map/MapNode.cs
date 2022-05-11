@@ -20,7 +20,6 @@ public class MapNode : MonoBehaviour
     SpriteRenderer icon;
     public NodeBlueprint blueprint;
     public List<AsteroidWeights> asteroidWeights;
-    float 
 
     public void SetUp(Node n, Color starColor, float starSize, NodeBlueprint inblueprint)
     {
@@ -31,22 +30,8 @@ public class MapNode : MonoBehaviour
         icon.enabled = false;
         icon.sprite = blueprint.icon;
 
-        List<ItemType> itemLeft = new List<ItemType>();
-        itemLeft.Add(ItemType.Food);
-        itemLeft.Add(ItemType.Energy);
-        itemLeft.Add(ItemType.Water);
+        asteroidWeights = n.asteroidWeights;
         //Calculate asteroid weights
-        float probabilityLeft = 1f;
-        int loopAmount = itemLeft.Count;
-        for (int i = 0; i < loopAmount - 1; i++)
-        {
-            var thisItem = itemLeft[Random.Range(0, itemLeft.Count)];
-            var thisWeight = Random.Range(0f, probabilityLeft);
-            var newAsteroidWeights = new AsteroidWeights(thisItem, thisWeight);
-            probabilityLeft -= thisWeight;
-            itemLeft.Remove(thisItem);
-            asteroidWeights.Add(newAsteroidWeights);
-        }
         
 
 

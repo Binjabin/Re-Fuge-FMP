@@ -6,6 +6,7 @@ TagManager:
   tags:
   - AdditionalCollider
   - NextLevelPrompt
+  - Rubble
   layers:
   - Default
   - TransparentFX

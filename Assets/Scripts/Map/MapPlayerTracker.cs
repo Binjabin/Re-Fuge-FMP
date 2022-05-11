@@ -65,7 +65,7 @@ public class MapPlayerTracker : MonoBehaviour
         LevelToLoad.containsMerchant = node.blueprint.containsMerchant;
         LevelToLoad.heavyEnemyCount = Random.Range(node.blueprint.minHeavyEnemyCount, node.blueprint.maxHeavyEnemyCount + 1);
         LevelToLoad.standardEnemyCount = Random.Range(node.blueprint.minLightEnemyCount, node.blueprint.maxLightEnemyCount + 1);
-        LevelToLoad.asteroidWeights = node.blueprint.asteroidWeights;
+        LevelToLoad.asteroidWeights = node.asteroidWeights;
 
 
         yield return new WaitForSeconds(1f);

@@ -14,6 +14,8 @@ public class Node
     public Vector3 position;
     public List<NodePoint> incoming = new List<NodePoint>();
     public List<NodePoint> outgoing = new List<NodePoint>();
+    public List<AsteroidWeights> asteroidWeights;
+
 
     public Node(NodeType nodeType, string blueprintName, NodePoint point)
     {
