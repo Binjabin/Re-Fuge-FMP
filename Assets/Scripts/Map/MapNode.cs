@@ -19,6 +19,9 @@ public class MapNode : MonoBehaviour
     float mouseDownTime;
     SpriteRenderer icon;
     public NodeBlueprint blueprint;
+    public List<AsteroidWeights> asteroidWeights;
+    float 
+
     public void SetUp(Node n, Color starColor, float starSize, NodeBlueprint inblueprint)
     {
         blueprint = inblueprint;
@@ -27,7 +30,27 @@ public class MapNode : MonoBehaviour
         icon = GetComponentInChildren<SpriteRenderer>();
         icon.enabled = false;
         icon.sprite = blueprint.icon;
-        if(blueprint.type == NodeType.Boss)
+
+        List<ItemType> itemLeft = new List<ItemType>();
+        itemLeft.Add(ItemType.Food);
+        itemLeft.Add(ItemType.Energy);
+        itemLeft.Add(ItemType.Water);
+        //Calculate asteroid weights
+        float probabilityLeft = 1f;
+        int loopAmount = itemLeft.Count;
+        for (int i = 0; i < loopAmount - 1; i++)
+        {
+            var thisItem = itemLeft[Random.Range(0, itemLeft.Count)];
+            var thisWeight = Random.Range(0f, probabilityLeft);
+            var newAsteroidWeights = new AsteroidWeights(thisItem, thisWeight);
+            probabilityLeft -= thisWeight;
+            itemLeft.Remove(thisItem);
+            asteroidWeights.Add(newAsteroidWeights);
+        }
+        
+
+
+        if (blueprint.type == NodeType.Boss)
         {
             starSize = FindObjectOfType<MapView>().maxStarSize * 2.5f;
             starColor = FindObjectOfType<MapView>().starColors.Evaluate(1f);
@@ -42,6 +65,7 @@ public class MapNode : MonoBehaviour
 
         sr.material.SetColor("_CellColor", cell);
         sr.material.SetColor("_Color", starColor);
+
     }
 
     private void OnMouseEnter()

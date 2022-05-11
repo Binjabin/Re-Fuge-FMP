@@ -25,6 +25,6 @@ public class NodeBlueprint : ScriptableObject
     public int minHeavyEnemyCount;
     public int maxHeavyEnemyCount;
     
-    public List<AsteroidWeights> asteroidWeights;
+    
 
 }
