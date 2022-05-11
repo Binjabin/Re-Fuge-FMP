@@ -32,7 +32,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.93, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
-  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -56,7 +55,6 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -142,7 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   breakAsteroid: 0
-  shrinkSpeed: {x: 0, y: 0, z: 0}
-  minSize: {x: 0, y: 0, z: 0}
+  shrinkSpeed: {x: 3, y: 3, z: 3}
+  minSize: {x: 50, y: 50, z: 50}
   itemType: 0
   dropPrefab: {fileID: 4457148152409111794, guid: 58da533998cebd8c2b63d3c258532f73, type: 3}

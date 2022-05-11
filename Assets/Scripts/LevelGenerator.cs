@@ -4,23 +4,31 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
+    [Header("Asteroid Settings")]
     public float maxDistance;
     [SerializeField] float minDistanceApart;
+
     [SerializeField] List<Vector3> asteroidList;
     [SerializeField] List<GameObject> asteroids;
+    [Header("Space Station Settings")]
     [SerializeField] GameObject spaceStation;
-    [SerializeField] GameObject lightEnemy;
-    [SerializeField] GameObject heavyEnemy;
     [SerializeField] float merchantBufferDistance;
     [SerializeField] float minDistanceFromCenterMerchant;
-
+    [Header("Warp Point Settings")]
+    [SerializeField] GameObject endPoint;
+    [SerializeField] float endBufferDistance;
+    [SerializeField] float minDistanceFromCenterEnd;
+    [SerializeField] float minDistanceFromShipEnd;
+    [Header("Enemy Settings")]
+    [SerializeField] GameObject lightEnemy;
+    [SerializeField] GameObject heavyEnemy;
     [SerializeField] float enemyBufferDistance;
     [SerializeField] float minDistanceFromCenterEnemy;
 
     float seed;
     Quaternion merchantRotation;
     List<Vector3> nextEnemyWaypoint;
-
+    GameObject merchantShip;
     List<AsteroidWeights> asteroidWeights;
     // Start is called before the first frame update
     void Start()
@@ -40,6 +48,7 @@ public class LevelGenerator : MonoBehaviour
             PlaceHeavyEnemy();
         }
         GenerateField(LevelToLoad.asteroidCount);
+        PlaceEndPoint();
 
     }
 
@@ -99,7 +108,7 @@ public class LevelGenerator : MonoBehaviour
         {
             merchantRotation.eulerAngles = new Vector3(0f, -90f, 0f);
         }
-        Instantiate(spaceStation, merchantPosition, merchantRotation);
+        merchantShip = Instantiate(spaceStation, merchantPosition, merchantRotation);
     }
 
     public void GenerateField(int count)
@@ -124,7 +133,7 @@ public class LevelGenerator : MonoBehaviour
                         checkDistance = false;
                     }
                 }
-                if (checkDistance = true)
+                if (checkDistance == true)
                 {
                     foundPos = true;
 
@@ -148,7 +157,7 @@ public class LevelGenerator : MonoBehaviour
     ItemType GetAsteroidType()
     {
         float maxWeight = 0f;
-        for(var i = 0; i < asteroidWeights.Count; i++)
+        for (var i = 0; i < asteroidWeights.Count; i++)
         {
             maxWeight += asteroidWeights[i].weight;
         }
@@ -166,8 +175,41 @@ public class LevelGenerator : MonoBehaviour
             }
             index++;
         }
-    
+
         // No other item was selected, so return very last index.
         return asteroidWeights[index].type;
+    }
+    void PlaceEndPoint()
+    {
+        bool foundPlace = false;
+        Vector3 end = Vector3.zero;
+        while (foundPlace == false)
+        {
+            float x = Random.Range(-maxDistance + endBufferDistance, -minDistanceFromCenterEnd);
+            float z = Random.Range(-maxDistance + endBufferDistance, -minDistanceFromCenterEnd);
+            if (Random.Range(0, 2) == 0)
+            {
+                x = -x;
+            }
+            if (Random.Range(0, 2) == 0)
+            {
+                z = -z;
+            }
+            end.x = x;
+            end.z = z;
+            if(LevelToLoad.containsMerchant)
+            {
+                if ((end - merchantShip.transform.position).magnitude > minDistanceFromShipEnd)
+                {
+                    foundPlace = true;
+                }
+            }
+            else
+            {
+                foundPlace = true;
+            }
+            
+        }
+        Instantiate(endPoint, end, Quaternion.identity);
     }
 }

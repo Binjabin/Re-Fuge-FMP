@@ -108,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void ProcessInput()
     {
-        if(Input.GetKey(KeyCode.Space))
+        if(Input.GetKey(KeyCode.Mouse0))
         {
             miningLazer.Play();
         }

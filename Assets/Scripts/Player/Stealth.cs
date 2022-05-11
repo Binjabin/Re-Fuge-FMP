@@ -50,17 +50,37 @@ public class Stealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Q))
+        if(Input.GetKey(KeyCode.LeftShift))
         {
-            if(!isFading)
+            if (gameObject.GetComponent<EnergyBar>().currentEnergy > 0f)
             {
-                if (gameObject.GetComponent<EnergyBar>().currentEnergy > 0f)
+                if(!isFading)
                 {
-                    StartCoroutine(ToggleStealth(!stealthOn));
+                    if (stealthOn == false)
+                    {
+                        stealthOn = true;
+                        StartCoroutine(ToggleStealth(true));
+                    }
                 }
-                stealthOn = !stealthOn;
+                
+            }
+            else    
+            {
+                stealthOn = false;
             }
             
+        }
+        else
+        {
+            if(stealthOn == true)
+            {
+                if(!isFading)
+                {
+                    stealthOn = false;
+                    StartCoroutine(ToggleStealth(false));
+                }
+                
+            }
         }
 
         float currentShadows = Mathf.Lerp(1f, 0f, fadeFactor);

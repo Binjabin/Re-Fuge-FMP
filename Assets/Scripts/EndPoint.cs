@@ -6,37 +6,46 @@ public class EndPoint : MonoBehaviour
 {
     float timeInCollider;
     [SerializeField] float timeToWarp;
-    // Start is called before the first frame update
-    void Start()
+    bool playerInWarpZone ;
+    [SerializeField] GameObject nextLevelPrompt;
+
+    private void Start()
     {
-
+        playerInWarpZone = false;
+        nextLevelPrompt = GameObject.FindGameObjectWithTag("NextLevelPrompt");
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
-            timeInCollider = 0f;
+            playerInWarpZone = true;
         }
-        
+
     }
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerExit(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
-            timeInCollider += Time.deltaTime;
-            if (timeInCollider > timeToWarp)
+            playerInWarpZone = false;
+        }
+    }
+    
+    
+    private void Update()
+    {
+        if(playerInWarpZone)
+        {
+            nextLevelPrompt.SetActive(true);
+            if (Input.GetKeyDown(KeyCode.Space))
             {
+                
                 FindObjectOfType<SceneManagment>().ReturnToMap();
             }
         }
-        
+        else
+        {
+            nextLevelPrompt.SetActive(false);
+        }
     }
-    
+
 }

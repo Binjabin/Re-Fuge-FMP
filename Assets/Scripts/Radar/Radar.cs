@@ -56,7 +56,7 @@ public class Radar : MonoBehaviour
                             newPing.GetComponent<RadarPing>().SetColor(otherPingColor);
                             newPing.GetComponent<RadarPing>().SetDisappearTimer(900f / rotationSpeed);
                             newPing.GetComponent<RadarPing>().alpha = false;
-                            newPing.transform.localScale = new Vector3(15f, 15f, 15f);
+                            newPing.transform.localScale = new Vector3(20f, 20f, 20f);
                             newPing.transform.parent = raycastHit.collider.transform;
                         }
                         else if (raycastHit.collider.gameObject.GetComponent<EnemyMovement>() != null)
@@ -65,7 +65,7 @@ public class Radar : MonoBehaviour
                             newPing.GetComponent<RadarPing>().SetColor(enemyPingColor);
                             newPing.GetComponent<RadarPing>().SetDisappearTimer(900f / rotationSpeed);
                             newPing.GetComponent<RadarPing>().alpha = false;
-                            newPing.transform.localScale = new Vector3(20f, 20f, 20f);
+                            newPing.transform.localScale = new Vector3(25f, 25f, 25f);
                             newPing.transform.parent = raycastHit.collider.transform;
                         }
                         else if (raycastHit.collider.gameObject.GetComponent<PickUp>() != null)
