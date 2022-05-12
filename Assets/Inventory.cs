@@ -124,7 +124,7 @@ public class Inventory : MonoBehaviour
         switch (type)
         {
             case ItemType.Energy:
-                Debug.Log(currentEnergy);
+                currentEnergy += value;
                 currentEnergy = Mathf.Clamp(currentEnergy, 0f, maxEnergy);
                 energy.currentEnergy = currentEnergy;
                 return;

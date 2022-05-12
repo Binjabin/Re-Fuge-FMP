@@ -10,5 +10,7 @@ public static class LevelToLoad
     public static float standardEnemyCount;
     public static float heavyEnemyCount;
     public static List<AsteroidWeights> asteroidWeights;
+    public static float foodCost;
+    public static float waterCost;
 
 }

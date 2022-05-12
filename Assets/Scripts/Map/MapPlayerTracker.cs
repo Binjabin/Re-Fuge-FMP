@@ -33,11 +33,16 @@ public class MapPlayerTracker : MonoBehaviour
         {
             PlayerStats.init = false;
             var currentPoint = mapManager.currentMap.path[mapManager.currentMap.path.Count - 1];
-            var currentNode = mapManager.currentMap.GetNode(currentPoint);
+            var currentNodePoint = mapManager.currentMap.GetNode(currentPoint);
+            currentNode = mapNode;
 
-            if (currentNode != null && currentNode.outgoing.Any(point => point.Equals(mapNode.Node.point)))
+            if (currentNodePoint != null && currentNodePoint.outgoing.Any(point => point.Equals(mapNode.Node.point)))
             {
-                SendPlayerToNode(mapNode);
+                if(PlayerStats.food > mapNode.currentMinFoodCost && PlayerStats.water > mapNode.currentMinWaterCost)
+                {
+                    SendPlayerToNode(mapNode);
+                }
+                
             }
         }
     }
@@ -66,6 +71,10 @@ public class MapPlayerTracker : MonoBehaviour
         LevelToLoad.heavyEnemyCount = Random.Range(node.blueprint.minHeavyEnemyCount, node.blueprint.maxHeavyEnemyCount + 1);
         LevelToLoad.standardEnemyCount = Random.Range(node.blueprint.minLightEnemyCount, node.blueprint.maxLightEnemyCount + 1);
         LevelToLoad.asteroidWeights = node.asteroidWeights;
+        PlayerStats.food -= Random.Range(node.currentMinFoodCost, node.currentMaxFoodCost);
+        PlayerStats.water = Random.Range(node.currentMinWaterCost, node.currentMaxWaterCost);
+        PlayerStats.food = Mathf.Clamp(PlayerStats.food, 0f, 100f);
+        PlayerStats.water = Mathf.Clamp(PlayerStats.water, 0f, 100f);
 
 
         yield return new WaitForSeconds(1f);

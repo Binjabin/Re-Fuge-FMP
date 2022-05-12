@@ -20,11 +20,17 @@ public class MapNode : MonoBehaviour
     SpriteRenderer icon;
     public NodeBlueprint blueprint;
     public List<AsteroidWeights> asteroidWeights;
+    float currentCostToTravel;
+
+    public float currentMinFoodCost;
+    public float currentMaxFoodCost;
+    public float currentMinWaterCost;
+    public float currentMaxWaterCost;
 
     public void SetUp(Node n, Color starColor, float starSize, NodeBlueprint inblueprint)
     {
         blueprint = inblueprint;
-        Node = n; 
+        Node = n;
         sr = GetComponentInChildren<MeshRenderer>();
         icon = GetComponentInChildren<SpriteRenderer>();
         icon.enabled = false;
@@ -32,7 +38,7 @@ public class MapNode : MonoBehaviour
 
         asteroidWeights = n.asteroidWeights;
         //Calculate asteroid weights
-        
+
 
 
         if (blueprint.type == NodeType.Boss)
@@ -40,7 +46,7 @@ public class MapNode : MonoBehaviour
             starSize = FindObjectOfType<MapView>().maxStarSize * 2.5f;
             starColor = FindObjectOfType<MapView>().starColors.Evaluate(1f);
         }
-        
+
         sr.transform.localScale = sr.transform.localScale * starSize;
         Color cell;
         cell = starColor;
@@ -50,22 +56,26 @@ public class MapNode : MonoBehaviour
 
         sr.material.SetColor("_CellColor", cell);
         sr.material.SetColor("_Color", starColor);
+        
 
     }
 
     private void OnMouseEnter()
     {
         icon.enabled = true;
+        FindObjectOfType<InfoSliders>().currentSelectedNode = this;
     }
 
     private void OnMouseExit()
     {
         icon.enabled = false;
+        FindObjectOfType<InfoSliders>().currentSelectedNode = null;
     }
 
     private void OnMouseDown()
     {
         mouseDownTime = Time.time;
+        FindObjectOfType<InfoSliders>().currentSelectedNode = null;
     }
 
     private void OnMouseUp()
@@ -76,7 +86,27 @@ public class MapNode : MonoBehaviour
             FindObjectOfType<MapPlayerTracker>().SelectNode(this);
         }
     }
+    public void DetermineCost()
+    {
+        if (FindObjectOfType<MapPlayerTracker>().currentNode == null)
+        {
+            currentMinFoodCost = 0f;
+            currentMaxFoodCost = 0f;
+            Debug.Log("first node so no cost");
+            currentMinWaterCost = 0f;
+            currentMaxWaterCost = 0f;
+        }
+        else
+        {
+            float currentDistance = (FindObjectOfType<MapPlayerTracker>().currentNode.transform.position - transform.position).magnitude;
+            var info = FindObjectOfType<InfoSliders>();
+            currentMinFoodCost = info.foodPerDist * currentDistance * 0.7f;
+            currentMaxFoodCost = info.foodPerDist * currentDistance * 1.3f;
 
+            currentMinWaterCost = info.waterPerDist * currentDistance * 0.7f;
+            currentMaxWaterCost = info.waterPerDist * currentDistance * 1.3f;
+        }
+    }
     public void SetState(NodeStates state)
     {
         switch (state)

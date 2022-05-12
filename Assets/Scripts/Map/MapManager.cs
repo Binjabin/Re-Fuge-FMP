@@ -12,6 +12,7 @@ public class MapManager : MonoBehaviour
     public Map currentMap;
     [SerializeField] Map map;
 
+    
     private void Start()
     {
 
