@@ -13,14 +13,14 @@ public class RubbleColor : MonoBehaviour
         part = GetComponent<ParticleSystemRenderer>();
     }
 
-    public void SetColor(Color color)
+    public void SetColor(Material color)
     {
-        currentRubbleColor = color;
+        rubbleMat = color;
+        part.sharedMaterial = rubbleMat;
     }
     private void Update()
     {
-        rubbleMat = part.sharedMaterial;
-        part.sharedMaterial.SetColor("_Color", currentRubbleColor);
+        
 
     }
 }

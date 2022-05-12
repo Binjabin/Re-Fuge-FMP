@@ -52,7 +52,7 @@ public class Asteroids : MonoBehaviour
     void OnParticleCollision(GameObject other)
     {
         breakAsteroid = true;
-        Color currentMiningAsteroidColor = gameObject.GetComponent<MeshRenderer>().material.GetColor("_Color");
+        Material currentMiningAsteroidColor = gameObject.GetComponent<MeshRenderer>().material;
         rubble.SetColor(currentMiningAsteroidColor);
     }
     
