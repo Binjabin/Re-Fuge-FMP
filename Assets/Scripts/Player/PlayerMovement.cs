@@ -22,16 +22,20 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] float energyPerSecondThrusting;
     [SerializeField] float energyPerSecondBoosting;
-
+    [SerializeField] float energyPerSecondMining;
     [SerializeField] float damagePerUnitSpeed;
     [SerializeField] float minImpactSpeedForDamage;
 
     GameObject dialogueFocus;
 
     [SerializeField] ParticleSystem miningLazer;
+    bool dead = false;
+    float timeSinceLastCollide;
     // Start is called before the first frame update
     void Start()
     {
+        timeSinceLastCollide = 0f;
+        dead = false;
         rb = GetComponent<Rigidbody>();
         energy = gameObject.GetComponent<EnergyBar>();
         inDialogue = false;
@@ -47,11 +51,11 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         GetInput();
-
+        timeSinceLastCollide += Time.deltaTime;
     }
     void FixedUpdate()
     {
-        if(!inDialogue && !FindObjectOfType<Inventory>().invOpen)
+        if(!inDialogue && !FindObjectOfType<Inventory>().invOpen && !dead)
         {
             ProcessInput();
         }
@@ -63,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
             Vector3 newDirection = Vector3.RotateTowards(transform.right, targetDirection, rotationStep, 0.0f);
             transform.rotation = Quaternion.LookRotation(newDirection) * Quaternion.Euler(0f, -90f, 0f);
         }
-        else
+        else if(dead)
         {
             
         }
@@ -111,6 +115,7 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetKey(KeyCode.Mouse0))
         {
             miningLazer.Play();
+            FindObjectOfType<Inventory>().ReduceEnergy(energyPerSecondMining * Time.deltaTime);
         }
         else
         {
@@ -163,11 +168,21 @@ public class PlayerMovement : MonoBehaviour
         inDialogue = false;
         FindObjectOfType<CameraStateController>().ToPlayer();
     }
-    void OnCollisionEnter(Collision Collision)
+    void OnCollisionEnter(Collision collision)
     {
-        if(rb.velocity.magnitude > minImpactSpeedForDamage)
+        if(timeSinceLastCollide > 0.5f)
         {
-            GetComponent<HealthBar>().Damage(rb.velocity.magnitude*damagePerUnitSpeed);
+            if (collision.relativeVelocity.magnitude > minImpactSpeedForDamage)
+            {
+                GetComponent<HealthBar>().Damage(Mathf.Min(collision.relativeVelocity.magnitude * damagePerUnitSpeed, 50f));
+                timeSinceLastCollide = 0f;
+            }
         }
+        
+    }
+    public void Die()
+    {
+        rb.drag = 100f;
+        dead = true;
     }
 }

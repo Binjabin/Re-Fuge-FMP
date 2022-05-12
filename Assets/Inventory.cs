@@ -21,6 +21,9 @@ public class Inventory : MonoBehaviour
     public List<GameObject> allItems;
     public bool inShop;
     [SerializeField] GameObject shop;
+    [SerializeField] GameObject waterWarning;
+    [SerializeField] GameObject foodWarning;
+    [SerializeField] GameObject energyWarning;
     // Start is called before the first frame update
     void Start()
     {
@@ -83,7 +86,31 @@ public class Inventory : MonoBehaviour
             {
                 invOpen = !invOpen;
             }
-            
+
+        }
+        if (currentEnergy / maxEnergy < 0.2f)
+        {
+            energyWarning.SetActive(true);
+        }
+        else
+        {
+            energyWarning.SetActive(false);
+        }
+        if (currentFood / maxFood < 0.2f)
+        {
+            foodWarning.SetActive(true);
+        }
+        else
+        {
+            foodWarning.SetActive(false);
+        }
+        if (currentWater / maxWater < 0.2f)
+        {
+            waterWarning.SetActive(true);
+        }
+        else
+        {
+            waterWarning.SetActive(false);
         }
         inventory.SetActive(invOpen);
         shop.SetActive(inShop);
@@ -97,8 +124,8 @@ public class Inventory : MonoBehaviour
         switch (type)
         {
             case ItemType.Energy:
-                currentEnergy += value;
-                currentEnergy += Mathf.Clamp(currentEnergy, 0f, maxEnergy);
+                Debug.Log(currentEnergy);
+                currentEnergy = Mathf.Clamp(currentEnergy, 0f, maxEnergy);
                 energy.currentEnergy = currentEnergy;
                 return;
             case ItemType.Food:

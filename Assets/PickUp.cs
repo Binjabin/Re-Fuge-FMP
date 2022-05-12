@@ -39,7 +39,6 @@ public class PickUp : MonoBehaviour
         Vector3 dir = -(transform.position - player.transform.position).normalized;
         float distance = (transform.position - player.transform.position).magnitude;
         transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
-        Debug.Log(distance);
         if(distance < pickupRange)
         {
             float force = (pickupRange - distance) * speed * Time.deltaTime;

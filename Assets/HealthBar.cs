@@ -16,7 +16,9 @@ public class HealthBar : MonoBehaviour
     [SerializeField] Slider shieldBar;
     [SerializeField] Slider healthBar;
 
-    [SerializeField]
+    [SerializeField] GameObject playerShip;
+    [SerializeField] List<ParticleSystem> playerDeathParticles;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -74,9 +76,9 @@ public class HealthBar : MonoBehaviour
             currentHealth -= amount;
             currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
             maxShield = currentHealth;
-            if (currentShield == 0f)
+            if (currentHealth == 0f)
             {
-                Debug.Log("Dead");
+                Die();
             }
         }
 
@@ -104,5 +106,14 @@ public class HealthBar : MonoBehaviour
     public void CollisionDetected(Collision collision)
     {
 
+    }
+    public void Die()
+    {
+        playerShip.SetActive(false);
+        FindObjectOfType<PlayerMovement>().Die();
+        foreach (ParticleSystem part in playerDeathParticles)
+        {
+            part.Play();
+        }
     }
 }
