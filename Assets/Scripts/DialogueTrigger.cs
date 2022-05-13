@@ -7,44 +7,35 @@ public class DialogueTrigger : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    bool playerInRange;
-    float timeInCollider;
-    [SerializeField] float timeRequired;
     [SerializeField] TextAsset inkJSON;
-    bool triggeredDialogue;
+
+    bool inCollider;
 
     void Start()
     {
-
+        inCollider = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-            playerInRange = true;
-            triggeredDialogue = false;
+            inCollider = true;
+            
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    private void Update()
     {
-        if (other.tag == "Player")
+        if(inCollider)
         {
-            timeInCollider += Time.deltaTime;
-            if (timeInCollider > timeRequired)
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                if (!triggeredDialogue)
+                if (!FindObjectOfType<DialogueManager>().dialogueIsPlaying)
                 {
-                    triggeredDialogue = true;
                     FindObjectOfType<CinemachineTargetGroup>().m_Targets = new CinemachineTargetGroup.Target[0];
-                    FindObjectOfType<CinemachineTargetGroup>().AddMember(other.transform, 2f, 15f);
+                    FindObjectOfType<CinemachineTargetGroup>().AddMember(FindObjectOfType<PlayerMovement>().gameObject.transform, 2f, 15f);
                     FindObjectOfType<CinemachineTargetGroup>().AddMember(transform, 2f, 10f);
                     DialogueManager.GetInstance().EnterDialogue(inkJSON);
                     FindObjectOfType<PlayerMovement>().EnterDialogue(gameObject);
@@ -56,10 +47,10 @@ public class DialogueTrigger : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if (other.tag == "Player")
         {
-            timeInCollider = 0f;
-            playerInRange = false;
+            inCollider = false;
         }
+        
     }
 }

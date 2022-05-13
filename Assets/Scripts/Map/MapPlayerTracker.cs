@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-
+using UnityEngine.SceneManagement;
 public class MapPlayerTracker : MonoBehaviour
 {
     public MapManager mapManager;
@@ -16,6 +16,7 @@ public class MapPlayerTracker : MonoBehaviour
     {
         enteringScene = false;
     }
+
     public void SelectNode(MapNode mapNode)
     {
         if(mapManager.currentMap.path.Count == 0)
@@ -34,15 +35,19 @@ public class MapPlayerTracker : MonoBehaviour
             PlayerStats.init = false;
             var currentPoint = mapManager.currentMap.path[mapManager.currentMap.path.Count - 1];
             var currentNodePoint = mapManager.currentMap.GetNode(currentPoint);
-            currentNode = mapNode;
+            
 
             if (currentNodePoint != null && currentNodePoint.outgoing.Any(point => point.Equals(mapNode.Node.point)))
             {
                 if(PlayerStats.food > mapNode.currentMinFoodCost && PlayerStats.water > mapNode.currentMinWaterCost)
                 {
                     SendPlayerToNode(mapNode);
+                    currentNode = mapNode;
                 }
-                
+                else
+                {
+                    Debug.Log("not enough resources");
+                }
             }
         }
     }
@@ -71,8 +76,9 @@ public class MapPlayerTracker : MonoBehaviour
         LevelToLoad.heavyEnemyCount = Random.Range(node.blueprint.minHeavyEnemyCount, node.blueprint.maxHeavyEnemyCount + 1);
         LevelToLoad.standardEnemyCount = Random.Range(node.blueprint.minLightEnemyCount, node.blueprint.maxLightEnemyCount + 1);
         LevelToLoad.asteroidWeights = node.asteroidWeights;
+
         PlayerStats.food -= Random.Range(node.currentMinFoodCost, node.currentMaxFoodCost);
-        PlayerStats.water = Random.Range(node.currentMinWaterCost, node.currentMaxWaterCost);
+        PlayerStats.water -= Random.Range(node.currentMinWaterCost, node.currentMaxWaterCost);
         PlayerStats.food = Mathf.Clamp(PlayerStats.food, 0f, 100f);
         PlayerStats.water = Mathf.Clamp(PlayerStats.water, 0f, 100f);
 
@@ -82,7 +88,7 @@ public class MapPlayerTracker : MonoBehaviour
         FindObjectOfType<SceneManagment>().LeaveScene();
         yield return new WaitForSeconds(2f);
 
-        Application.LoadLevel("Safe");
+        SceneManager.LoadScene("Safe");
         switch (node.Node.nodeType)
         {
 

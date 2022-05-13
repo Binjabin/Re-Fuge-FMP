@@ -12,7 +12,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] GameObject[] choices;
     TextMeshProUGUI[] choicesText;
     private Story currentStory;
-    bool dialogueIsPlaying;
+    public bool dialogueIsPlaying;
     List<Choice> currentChoices;
     List<string> tags;
 
@@ -20,6 +20,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] Animator merchantAnimator;
     [SerializeField] Animator mysteriousAnimator;
     Animator anim;
+
+    
     private void Start()
     {
         if (instance != null)
@@ -64,7 +66,6 @@ public class DialogueManager : MonoBehaviour
             string player = t.Split(' ')[0];
             string prefix = t.Split(' ')[1];
             string param = t.Split(' ')[2];
-            Debug.Log(player.ToString() + prefix.ToString() + param.ToString());
             if (prefix.ToLower() == "event")
             {
                 if (param == "openShop")
@@ -74,6 +75,21 @@ public class DialogueManager : MonoBehaviour
                     FindObjectOfType<Inventory>().inShop = true;
                 }
 
+            }
+            else if(prefix.ToLower() == "involved")
+            {
+                switch (player.ToLower())
+                {
+                    case "player":
+                        playerAnimator.gameObject.SetActive(bool.Parse(param));
+                        break;
+                    case "merchant":
+                        merchantAnimator.gameObject.SetActive(bool.Parse(param));
+                        break;
+                    case "mysterious":
+                        mysteriousAnimator.gameObject.SetActive(bool.Parse(param));
+                        break;
+                }
             }
             else
             {
@@ -104,11 +120,42 @@ public class DialogueManager : MonoBehaviour
         currentStory = new Story(json.text);
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
+        SetUpVariables();
+        
+        
         ContinueStory();
+    }
+    void SetUpVariables()
+    {
+        foreach (string name in currentStory.variablesState)
+        {
+            switch (name)
+            {
+                case "midresource":
+                    currentStory.variablesState[name] = "mid";
+                    break;
+                case "lowresource":
+                    break;
+                case "highresource":
+                    break;
+                case "midresourcecolor":
+                    currentStory.variablesState[name] = "#FF0000";
+                    break;
+                case "lowresourcecolor":
+                    break;
+                case "highresourcecolor":
+                    break;
+            }
+
+        }
     }
     void ExitDialogue()
     {
-        FindObjectOfType<PlayerMovement>().ExitDialogue();
+        if(FindObjectOfType<PlayerMovement>() != null)
+        {
+            FindObjectOfType<PlayerMovement>().ExitDialogue();
+        }
+        
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
         dialogueText.text = "";

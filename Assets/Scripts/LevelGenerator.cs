@@ -36,7 +36,7 @@ public class LevelGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Random.seed = LevelToLoad.seed;
+        Random.InitState(LevelToLoad.seed);
         asteroidWeights = LevelToLoad.asteroidWeights;
         if (LevelToLoad.containsMerchant)
         {

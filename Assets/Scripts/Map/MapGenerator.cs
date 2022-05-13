@@ -8,7 +8,7 @@ public class MapGenerator
     
     static MapConfig config;
     static LayerConfig layer;
-    static float distanceFromPreviousLayer;
+    //static float distanceFromPreviousLayer;
     static float xDistance;
     static List<List<NodePoint>> paths = new List<List<NodePoint>>();
     static public List<List<Node>> nodes = new List<List<Node>>();
@@ -36,7 +36,7 @@ public class MapGenerator
         var layerNodes = new List<Node>();
         for(var i = 1;i <= config.GridWidth; i++)
         {
-            distanceFromPreviousLayer = 1f;
+            //distanceFromPreviousLayer = 1f;
             xDistance = config.mapWidth / (config.GridWidth + 1);
             float baseXPosition = -(config.mapWidth/2) + xDistance * i;
 

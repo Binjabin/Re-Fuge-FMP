@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.SceneManagement;
 public class SceneManagment : MonoBehaviour
 {
     [SerializeField] Animator outAnimation;
@@ -39,7 +40,7 @@ public class SceneManagment : MonoBehaviour
     {
         outAnimation.SetTrigger("Out");
         yield return new WaitForSeconds(2f);
-        Application.LoadLevel("Map");
+        SceneManager.LoadScene("Map");
     }
 
     void SavePlayerStats()

@@ -42,6 +42,8 @@ public class MapManager : MonoBehaviour
         {
             GenerateNewMap();
         }
+        PlayerStats.InitStats();
+        FindObjectOfType<MapDialogueTrigger>().CheckDialogue();
     }
     void Update()
     {
