@@ -20,12 +20,12 @@ That was way too close...
 Right, no time to spare.
 Got to take inventory.
 #map inventory show
-Okay, so plenty of <color={highresourcecolor}>{highresource} <color={defaultcolor}>left. Should last me a little while at least.
-Enough <color={midresourcecolor}>{midresource}<color={defaultcolor}> for now...
+Okay, so plenty of <b><color={highresourcecolor}>{highresource} <color={defaultcolor}></b>left. Should last me a little while at least.
+Enough <b><color={midresourcecolor}>{midresource}<color={defaultcolor}></b> for now...
 #player anim scared
 And... Oh.
 #player anim scared
-Barely any <color={lowresourcecolor}>{lowresource}<color={defaultcolor}>. 
+Barely any <b><color={lowresourcecolor}>{lowresource}<color={defaultcolor}></b>. 
 #player anim neutral
 I guess getting some will be the first priority.
 

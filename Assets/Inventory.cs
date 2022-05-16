@@ -27,39 +27,26 @@ public class Inventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(PlayerStats.items == null)
+        if (PlayerStats.init == false)
         {
-            currentEnergy = maxEnergy;
-            currentFood = maxFood;
-            currentWater = maxWater;
-        }
-        else if (PlayerStats.init == false)
-        {
+            Debug.Log(PlayerStats.energy);
             currentEnergy = PlayerStats.energy;
+            Debug.Log(currentEnergy);
             currentFood = PlayerStats.food;
             currentWater = PlayerStats.water;
-            foreach (GameObject item in PlayerStats.items)
+            if(PlayerStats.items != null)
             {
-                GameObject newItem = Instantiate(item);
-                newItem.transform.parent = inventory.transform;
-                newItem.GetComponent<Item>().prefab = item;
-                currentItems.Add(newItem);
-                newItem.GetComponent<Item>().startSlot = null;
+                foreach (GameObject item in PlayerStats.items)
+                {
+                    GameObject newItem = Instantiate(item);
+                    newItem.transform.parent = inventory.transform;
+                    newItem.GetComponent<Item>().prefab = item;
+                    currentItems.Add(newItem);
+                    newItem.GetComponent<Item>().startSlot = null;
+                }
             }
-        }
-        else
-        {
-            currentEnergy = maxEnergy / 2f;
-            currentFood = maxFood / 2f;
-            currentWater = maxWater / 2f;
-            foreach (GameObject item in startingItems)
-            {
-                GameObject newItem = Instantiate(item);
-                newItem.transform.parent = inventory.transform;
-                newItem.GetComponent<Item>().prefab = item;
-                newItem.GetComponent<Item>().startSlot = null;
-                currentItems.Add(newItem);
-            }
+            
+        
         }
         energy = FindObjectOfType<EnergyBar>();
         invOpen = false;

@@ -22,11 +22,15 @@ public class MapPlayerTracker : MonoBehaviour
     {
         if(mapManager.currentMap.path.Count == 0)
         {
-            PlayerStats.init = true;
+            PlayerStats.init = false;
             Debug.Log("first node");
             if(mapNode.Node.point.y == 0)
             {
-                SendPlayerToNode(mapNode);
+                if (!FindObjectOfType<DialogueManager>().dialogueIsPlaying)
+                {
+                    SendPlayerToNode(mapNode);
+                }
+                    
                 
             }
                 
@@ -81,8 +85,9 @@ public class MapPlayerTracker : MonoBehaviour
         LevelToLoad.heavyEnemyCount = Random.Range(node.blueprint.minHeavyEnemyCount, node.blueprint.maxHeavyEnemyCount + 1);
         LevelToLoad.standardEnemyCount = Random.Range(node.blueprint.minLightEnemyCount, node.blueprint.maxLightEnemyCount + 1);
         LevelToLoad.asteroidWeights = node.asteroidWeights;
-
+        Debug.Log(PlayerStats.energy);
         PlayerStats.food -= Random.Range(node.currentMinFoodCost, node.currentMaxFoodCost);
+        
         PlayerStats.water -= Random.Range(node.currentMinWaterCost, node.currentMaxWaterCost);
         PlayerStats.food = Mathf.Clamp(PlayerStats.food, 0f, 100f);
         PlayerStats.water = Mathf.Clamp(PlayerStats.water, 0f, 100f);

@@ -19,7 +19,7 @@ public class MapDialogueTrigger : MonoBehaviour
     IEnumerator WaitSeconds()
     {
         yield return new WaitForSeconds(2f);
-        currentLevelsPassed = FindObjectOfType<MapManager>().currentMap.path.Count - 1;
+        currentLevelsPassed = FindObjectOfType<MapManager>().currentMap.path.Count;
         if (currentLevelsPassed < 1)
         {
             DialogueManager.GetInstance().EnterDialogue(startInkJSON);

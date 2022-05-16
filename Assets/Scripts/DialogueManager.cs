@@ -24,6 +24,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] Color foodColor;
     [SerializeField] Color waterColor;
     [SerializeField] Color energyColor;
+    [SerializeField] Color boldColor;
 
     string highResource;
     string midResource;
@@ -32,6 +33,7 @@ public class DialogueManager : MonoBehaviour
     Color highColor;
     Color midColor;
     Color lowColor;
+
 
     private void Start()
     {
@@ -174,7 +176,9 @@ public class DialogueManager : MonoBehaviour
                     break;
                 case "defaultcolor":
                     currentStory.variablesState[name] = "#" + ColorUtility.ToHtmlStringRGB(dialogueText.color);
-                    Debug.Log(ColorUtility.ToHtmlStringRGB(dialogueText.color));
+                    break;
+                case "boldcolor":
+                    currentStory.variablesState[name] = "#" + ColorUtility.ToHtmlStringRGB(boldColor);
                     break;
             }
         }
@@ -248,21 +252,56 @@ public class DialogueManager : MonoBehaviour
     }
     void ExitDialogue()
     {
-        if(FindObjectOfType<PlayerMovement>() != null)
+        if (FindObjectOfType<PlayerMovement>() != null)
         {
             FindObjectOfType<PlayerMovement>().ExitDialogue();
         }
-        
+
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
+    }
+
+    IEnumerator TypeSentence(string sentence)
+    {
+        bool colorOutputting = false;
+        dialogueText.text = "";
+        string currentTypedText = "";
+        string colorText = "";
+        foreach (char letter in sentence.ToCharArray())
+        {
+            if (letter == '<')
+            {
+                colorOutputting = true;
+            }
+            if (letter == '>')
+            {
+                colorOutputting = false;
+                currentTypedText += colorText;
+                colorText = "";
+
+            }
+            if (colorOutputting)
+            {
+                colorText += letter;
+            }
+            else
+            {
+                currentTypedText += letter;
+                yield return new WaitForSeconds(0.05f);
+            }
+
+            dialogueText.text = currentTypedText;
+            
+        }
     }
 
     void ContinueStory()
     {
         if (currentStory.canContinue)
         {
-            dialogueText.text = currentStory.Continue();
+            StopAllCoroutines();
+            StartCoroutine(TypeSentence(currentStory.Continue()));
             DisplayChoices();
             ParseTags();
         }

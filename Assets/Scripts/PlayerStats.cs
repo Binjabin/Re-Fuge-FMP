@@ -30,5 +30,7 @@ public static class PlayerStats
         index = Random.Range(0, values.Count);
         food = values[index];
         values.Remove(values[index]);
+        health = 100f;
+        shield = 100f;
     }
 }

@@ -388,6 +388,7 @@ MonoBehaviour:
   foodColor: {r: 0, g: 1, b: 0.0075297356, a: 1}
   waterColor: {r: 0, g: 1, b: 0.9043484, a: 1}
   energyColor: {r: 1, g: 0.5481836, b: 0, a: 1}
+  boldColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &182444007
 Transform:
   m_ObjectHideFlags: 0
@@ -415,7 +416,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startInkJSON: {fileID: 4900000, guid: 0b9c14c30588d314fbbdeffee68cc799, type: 3}
-  secondInkJSON: {fileID: 0}
+  secondInkJSON: {fileID: 4900000, guid: 5bb9df6d739c5d649829fc724c474774, type: 3}
 --- !u!1 &194807594
 GameObject:
   m_ObjectHideFlags: 0
