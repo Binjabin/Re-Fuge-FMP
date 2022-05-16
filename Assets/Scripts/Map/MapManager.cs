@@ -44,6 +44,7 @@ public class MapManager : MonoBehaviour
         }
         PlayerStats.InitStats();
         FindObjectOfType<MapDialogueTrigger>().CheckDialogue();
+        PlayerStats.levelPassed = map.path.Count;
     }
     void Update()
     {

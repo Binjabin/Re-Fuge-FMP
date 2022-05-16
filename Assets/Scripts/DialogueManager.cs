@@ -21,7 +21,18 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] Animator mysteriousAnimator;
     Animator anim;
 
-    
+    [SerializeField] Color foodColor;
+    [SerializeField] Color waterColor;
+    [SerializeField] Color energyColor;
+
+    string highResource;
+    string midResource;
+    string lowResource;
+
+    Color highColor;
+    Color midColor;
+    Color lowColor;
+
     private void Start()
     {
         if (instance != null)
@@ -127,26 +138,112 @@ public class DialogueManager : MonoBehaviour
     }
     void SetUpVariables()
     {
+        Dictionary<string, Ink.Runtime.Object> variables = new Dictionary<string, Ink.Runtime.Object>();
+        var variableNames = new List<string>();
         foreach (string name in currentStory.variablesState)
+        {
+
+            Ink.Runtime.Object value = currentStory.variablesState.GetVariableWithName(name);
+            variables.Add(name, value);
+            variableNames.Add(name);
+        }
+
+        SetUpColors();
+
+        foreach (string name in variableNames)
         {
             switch (name)
             {
+                case "highresource":
+                    currentStory.variablesState[name] = highResource;
+                    break;
                 case "midresource":
-                    currentStory.variablesState[name] = "mid";
+                    currentStory.variablesState[name] = midResource;
                     break;
                 case "lowresource":
-                    break;
-                case "highresource":
-                    break;
-                case "midresourcecolor":
-                    currentStory.variablesState[name] = "#FF0000";
-                    break;
-                case "lowresourcecolor":
+                    currentStory.variablesState[name] = lowResource;
                     break;
                 case "highresourcecolor":
+                    currentStory.variablesState[name] = "#" + ColorUtility.ToHtmlStringRGB(highColor);
+                    break;
+                case "midresourcecolor":
+                    currentStory.variablesState[name] = "#" + ColorUtility.ToHtmlStringRGB(midColor);
+                    break;
+                case "lowresourcecolor":
+                    currentStory.variablesState[name] = "#" + ColorUtility.ToHtmlStringRGB(lowColor);
+                    break;
+                case "defaultcolor":
+                    currentStory.variablesState[name] = "#" + ColorUtility.ToHtmlStringRGB(dialogueText.color);
+                    Debug.Log(ColorUtility.ToHtmlStringRGB(dialogueText.color));
                     break;
             }
+        }
+    }
+    void SetUpColors()
+    {
+        
+        if (PlayerStats.food > PlayerStats.water)
+        {
+            if (PlayerStats.food > PlayerStats.energy)
+            {
+                highResource = "food";
+                highColor = foodColor;
+                if (PlayerStats.energy > PlayerStats.water)
+                {
+                    midResource = "energy";
+                    midColor = energyColor;
+                    lowResource = "water";
+                    lowColor = waterColor;
+                }
+                else
+                {
+                    midResource = "water";
+                    midColor = waterColor;
+                    lowResource = "energy";
+                    lowColor = energyColor;
+                }
+            }
+            else
+            {
+                highResource = "energy";
+                highColor = energyColor;
+                midResource = "food";
+                midColor = foodColor;
+                lowResource = "water";
+                lowColor = waterColor;
+            }
+        }
+        else
+        {
+            if (PlayerStats.water > PlayerStats.energy)
+            {
+                highResource = "water";
+                highColor = waterColor;
+                if (PlayerStats.energy > PlayerStats.food)
+                {
+                    midResource = "energy";
+                    midColor = energyColor;
+                    lowResource = "food";
+                    lowColor = foodColor;
+                }
+                else
+                {
+                    midResource = "food";
+                    midColor = foodColor;
+                    lowResource = "energy";
+                    lowColor = energyColor;
+                }
+            }
+            else
+            {
+                highResource = "energy";
+                highColor = energyColor;
+                midResource = "water";
+                midColor = waterColor;
+                lowResource = "food";
+                lowColor = foodColor;
 
+            }
         }
     }
     void ExitDialogue()

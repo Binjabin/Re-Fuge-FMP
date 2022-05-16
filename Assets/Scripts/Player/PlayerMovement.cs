@@ -59,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
         {
             ProcessInput();
         }
-        else if(inDialogue)
+        else if(inDialogue && dialogueFocus != null)
         {
             Vector3 targetDirection = dialogueFocus.transform.position - transform.position;
             targetDirection.y = 0f;
@@ -163,6 +163,13 @@ public class PlayerMovement : MonoBehaviour
         dialogueFocus = focus;
         FindObjectOfType<CameraStateController>().ToMerchant();
     }
+
+    public void EnterMonologue()
+    {
+        inDialogue = true;
+        rb.drag = 3f;
+    }
+
     public void ExitDialogue()
     {
         inDialogue = false;

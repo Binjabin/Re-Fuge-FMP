@@ -27,7 +27,6 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -22, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 10}
-  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6706935183054380934}
   - {fileID: 5871410003788314753}
@@ -78,7 +77,6 @@ Transform:
   m_LocalRotation: {x: 0.4304596, y: 0.42344928, z: -0.24653654, w: 0.75803363}
   m_LocalPosition: {x: -1.2246279, y: 2.0740793, z: -0.461858}
   m_LocalScale: {x: 25.464409, y: 1.1512165, z: 11.650157}
-  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 54303493049355056}
   m_RootOrder: 0
@@ -102,7 +100,6 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -176,7 +173,6 @@ Transform:
   m_LocalRotation: {x: 0.0056863613, y: 0.707084, z: -0.70708394, w: -0.005686361}
   m_LocalPosition: {x: -0, y: 2.1292906, z: 0}
   m_LocalScale: {x: 126.90119, y: 100, z: 140.98213}
-  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 54303493049355056}
   m_RootOrder: 2
@@ -200,7 +196,6 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -279,7 +274,6 @@ Transform:
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
   m_LocalPosition: {x: -0, y: 2.1602738, z: -0.17081943}
   m_LocalScale: {x: 42.342464, y: 29.319906, z: 100}
-  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 54303493049355056}
   m_RootOrder: 1
@@ -303,7 +297,6 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -380,7 +373,6 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 54303493049355056}
   m_Father: {fileID: 0}
@@ -398,8 +390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5444370989b79a4e8b46072cb7e95dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeRequired: 0.8
-  inkJSON: {fileID: 4900000, guid: 20d11516e0dac1747b551db4314b494f, type: 3}
+  inkJSON: {fileID: 4900000, guid: be572137f40b50e4aa07afcf07ee0dc1, type: 3}
 --- !u!135 &8700589489323784787
 SphereCollider:
   m_ObjectHideFlags: 0

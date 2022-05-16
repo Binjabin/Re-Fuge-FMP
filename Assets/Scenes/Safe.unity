@@ -993,6 +993,9 @@ MonoBehaviour:
   playerAnimator: {fileID: 928633729}
   merchantAnimator: {fileID: 1512289543}
   mysteriousAnimator: {fileID: 0}
+  foodColor: {r: 0, g: 0, b: 0, a: 0}
+  waterColor: {r: 0, g: 0, b: 0, a: 0}
+  energyColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!4 &134917761
 Transform:
   m_ObjectHideFlags: 0
@@ -3425,7 +3428,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.1213872, y: 1}
+    m_SensorSize: {x: 1.8087649, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -3454,7 +3457,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 588223025}
   m_LocalRotation: {x: 0.2546557, y: 0.36785895, z: -0.10548183, w: 0.8880901}
-  m_LocalPosition: {x: -2.390892, y: 2.4189835, z: -2.14188}
+  m_LocalPosition: {x: -2.3909073, y: 2.4189835, z: -2.14188}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1392477925}
@@ -5299,7 +5302,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 20
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -5323,7 +5326,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.2546557, y: 0.36785895, z: -0.10548183, w: 0.8880901}
-  m_LocalPosition: {x: -62.364704, y: 54.457603, z: -62.3647}
+  m_LocalPosition: {x: -60.001858, y: 51.93885, z: -60.282944}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -22092,7 +22095,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.1213872, y: 1}
+    m_SensorSize: {x: 1.8087649, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -22109,7 +22112,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1399525098}
   m_LocalRotation: {x: 0.2546557, y: 0.36785895, z: -0.10548183, w: 0.8880901}
-  m_LocalPosition: {x: -0.003753662, y: -0.09976959, z: -0.084415436}
+  m_LocalPosition: {x: -0.028045654, y: -0.09976959, z: -0.060123444}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1569679105}
@@ -41288,6 +41291,7 @@ GameObject:
   - component: {fileID: 1170645040492699129}
   - component: {fileID: 1170645040492699130}
   - component: {fileID: 1170645040492699131}
+  - component: {fileID: 1170645040492699132}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -41453,6 +41457,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogePrompt: {fileID: 561857329}
+--- !u!114 &1170645040492699132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1170645040492699122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edede1aa16d518247848f45746fadebe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstLevelJSON: {fileID: 4900000, guid: 63750f02404966d499f3e5fcd8c74939, type: 3}
+  secondLevelJSON: {fileID: 0}
 --- !u!4 &1298608172182749129
 Transform:
   m_ObjectHideFlags: 0

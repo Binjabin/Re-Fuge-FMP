@@ -15,6 +15,7 @@ public class MapPlayerTracker : MonoBehaviour
     private void Start()
     {
         enteringScene = false;
+        
     }
 
     public void SelectNode(MapNode mapNode)
@@ -41,8 +42,12 @@ public class MapPlayerTracker : MonoBehaviour
             {
                 if(PlayerStats.food > mapNode.currentMinFoodCost && PlayerStats.water > mapNode.currentMinWaterCost)
                 {
-                    SendPlayerToNode(mapNode);
-                    currentNode = mapNode;
+                    if(!FindObjectOfType<DialogueManager>().dialogueIsPlaying)
+                    {
+                        SendPlayerToNode(mapNode);
+                        currentNode = mapNode;
+                    }
+                    
                 }
                 else
                 {
