@@ -67,6 +67,10 @@ public class Inventory : MonoBehaviour
                 invOpen = false;
             }
         }
+        else if(FindObjectOfType<DialogueManager>().dialogueIsPlaying)
+        {
+            invOpen = false;
+        }
         else
         {
             if (Input.GetKeyDown(KeyCode.I))

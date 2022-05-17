@@ -1,0 +1,1608 @@
+fileFormatVersion: 2
+guid: 01cc99c80972a199ca9683448328737f
+ModelImporter:
+  serializedVersion: 21202
+  internalIDToNameTable:
+  - first:
+      74: -6592636351816793933
+    second: Engine Frame|Deco|Deco|Deco|Deco|DecoAction
+  - first:
+      74: 2114779272683446321
+    second: Engine Frame|Deco|Deco|Deco|Deco|Engine 1Action
+  - first:
+      74: -2409218235745528898
+    second: Engine Frame|Deco|Deco|Deco|Deco|Engine 2Action
+  - first:
+      74: 1114023963999459416
+    second: Engine Frame|Deco|Deco|Deco|Deco|Engine 3Action
+  - first:
+      74: -6841076648670933878
+    second: Engine Frame|Deco|Deco|Engine 1|Engine 1|DecoAction
+  - first:
+      74: 1715539039500334940
+    second: Engine Frame|Deco|Deco|Engine 1|Engine 1|Engine 1Action
+  - first:
+      74: 3501658862792778841
+    second: Engine Frame|Deco|Deco|Engine 1|Engine 1|Engine 2Action
+  - first:
+      74: -3977811310931903292
+    second: Engine Frame|Deco|Deco|Engine 1|Engine 1|Engine 3Action
+  - first:
+      74: 7727312471175513427
+    second: Engine Frame|Deco|Deco|Engine 2|Engine 2|DecoAction
+  - first:
+      74: -9118231813860700754
+    second: Engine Frame|Deco|Deco|Engine 2|Engine 2|Engine 1Action
+  - first:
+      74: 7479794548215934727
+    second: Engine Frame|Deco|Deco|Engine 2|Engine 2|Engine 2Action
+  - first:
+      74: 4063802351506168014
+    second: Engine Frame|Deco|Deco|Engine 2|Engine 2|Engine 3Action
+  - first:
+      74: -4118262002761313291
+    second: Engine Frame|Deco|Deco|Engine 3|Engine 3|DecoAction
+  - first:
+      74: -4249004657029308257
+    second: Engine Frame|Deco|Deco|Engine 3|Engine 3|Engine 1Action
+  - first:
+      74: -1991584560805563788
+    second: Engine Frame|Deco|Deco|Engine 3|Engine 3|Engine 2Action
+  - first:
+      74: -8811052420480182396
+    second: Engine Frame|Deco|Deco|Engine 3|Engine 3|Engine 3Action
+  - first:
+      74: 8706869654167171947
+    second: Engine Frame|Deco|Deco|Engine Frame|Engine Frame|DecoAction
+  - first:
+      74: -2671002814689765776
+    second: Engine Frame|Deco|Deco|Engine Frame|Engine Frame|Engine 1Action
+  - first:
+      74: 4837453820143238615
+    second: Engine Frame|Deco|Deco|Engine Frame|Engine Frame|Engine 2Action
+  - first:
+      74: -617404311805649816
+    second: Engine Frame|Deco|Deco|Engine Frame|Engine Frame|Engine 3Action
+  - first:
+      74: -1707723792165234546
+    second: Engine Frame|Engine 1|Engine 1|Deco|Deco|DecoAction
+  - first:
+      74: 4478477630248389205
+    second: Engine Frame|Engine 1|Engine 1|Deco|Deco|Engine 1Action
+  - first:
+      74: -2666403623605404386
+    second: Engine Frame|Engine 1|Engine 1|Deco|Deco|Engine 2Action
+  - first:
+      74: 1410784787765456790
+    second: Engine Frame|Engine 1|Engine 1|Deco|Deco|Engine 3Action
+  - first:
+      74: -6581001014958054087
+    second: Engine Frame|Engine 1|Engine 1|Engine 1|Engine 1|DecoAction
+  - first:
+      74: 9160482514505419478
+    second: Engine Frame|Engine 1|Engine 1|Engine 1|Engine 1|Engine 1Action
+  - first:
+      74: -7215094929269645397
+    second: Engine Frame|Engine 1|Engine 1|Engine 1|Engine 1|Engine 2Action
+  - first:
+      74: -6166788043949466426
+    second: Engine Frame|Engine 1|Engine 1|Engine 1|Engine 1|Engine 3Action
+  - first:
+      74: -6365315752225270236
+    second: Engine Frame|Engine 1|Engine 1|Engine 2|Engine 2|DecoAction
+  - first:
+      74: 7258794310515084304
+    second: Engine Frame|Engine 1|Engine 1|Engine 2|Engine 2|Engine 1Action
+  - first:
+      74: -7827243720294128706
+    second: Engine Frame|Engine 1|Engine 1|Engine 2|Engine 2|Engine 2Action
+  - first:
+      74: -7665518591940729309
+    second: Engine Frame|Engine 1|Engine 1|Engine 2|Engine 2|Engine 3Action
+  - first:
+      74: -4273963452227339097
+    second: Engine Frame|Engine 1|Engine 1|Engine 3|Engine 3|DecoAction
+  - first:
+      74: -1315955171764476353
+    second: Engine Frame|Engine 1|Engine 1|Engine 3|Engine 3|Engine 1Action
+  - first:
+      74: 2227978929589408535
+    second: Engine Frame|Engine 1|Engine 1|Engine 3|Engine 3|Engine 2Action
+  - first:
+      74: 249533532585892253
+    second: Engine Frame|Engine 1|Engine 1|Engine 3|Engine 3|Engine 3Action
+  - first:
+      74: 5187716547578742
+    second: Engine Frame|Engine 1|Engine 1|Engine Frame|Engine Frame|DecoAction
+  - first:
+      74: 5576880119334280665
+    second: Engine Frame|Engine 1|Engine 1|Engine Frame|Engine Frame|Engine 1Action
+  - first:
+      74: -9090991028307122102
+    second: Engine Frame|Engine 1|Engine 1|Engine Frame|Engine Frame|Engine 2Action
+  - first:
+      74: -8115829304591961626
+    second: Engine Frame|Engine 1|Engine 1|Engine Frame|Engine Frame|Engine 3Action
+  - first:
+      74: -6569755390255923090
+    second: Engine Frame|Engine 2|Engine 2|Deco|Deco|DecoAction
+  - first:
+      74: -826559646936882058
+    second: Engine Frame|Engine 2|Engine 2|Deco|Deco|Engine 1Action
+  - first:
+      74: -432729629364823636
+    second: Engine Frame|Engine 2|Engine 2|Deco|Deco|Engine 2Action
+  - first:
+      74: -3464592174207403647
+    second: Engine Frame|Engine 2|Engine 2|Deco|Deco|Engine 3Action
+  - first:
+      74: 3727026407117176965
+    second: Engine Frame|Engine 2|Engine 2|Engine 1|Engine 1|DecoAction
+  - first:
+      74: -8687103835018636380
+    second: Engine Frame|Engine 2|Engine 2|Engine 1|Engine 1|Engine 1Action
+  - first:
+      74: -1432142346727994287
+    second: Engine Frame|Engine 2|Engine 2|Engine 1|Engine 1|Engine 2Action
+  - first:
+      74: -8358115061989853112
+    second: Engine Frame|Engine 2|Engine 2|Engine 1|Engine 1|Engine 3Action
+  - first:
+      74: 664450017596394836
+    second: Engine Frame|Engine 2|Engine 2|Engine 2|Engine 2|DecoAction
+  - first:
+      74: 1774268628134460168
+    second: Engine Frame|Engine 2|Engine 2|Engine 2|Engine 2|Engine 1Action
+  - first:
+      74: -7103208259001839788
+    second: Engine Frame|Engine 2|Engine 2|Engine 2|Engine 2|Engine 2Action
+  - first:
+      74: -7928364902754092667
+    second: Engine Frame|Engine 2|Engine 2|Engine 2|Engine 2|Engine 3Action
+  - first:
+      74: -8404949112650147921
+    second: Engine Frame|Engine 2|Engine 2|Engine 3|Engine 3|DecoAction
+  - first:
+      74: -444879150289362516
+    second: Engine Frame|Engine 2|Engine 2|Engine 3|Engine 3|Engine 1Action
+  - first:
+      74: 4981626260967239824
+    second: Engine Frame|Engine 2|Engine 2|Engine 3|Engine 3|Engine 2Action
+  - first:
+      74: -730929258658930043
+    second: Engine Frame|Engine 2|Engine 2|Engine 3|Engine 3|Engine 3Action
+  - first:
+      74: -6996981186511298792
+    second: Engine Frame|Engine 2|Engine 2|Engine Frame|Engine Frame|DecoAction
+  - first:
+      74: 6313800644409420658
+    second: Engine Frame|Engine 2|Engine 2|Engine Frame|Engine Frame|Engine 1Action
+  - first:
+      74: -7043380457063955339
+    second: Engine Frame|Engine 2|Engine 2|Engine Frame|Engine Frame|Engine 2Action
+  - first:
+      74: -6972198356271223245
+    second: Engine Frame|Engine 2|Engine 2|Engine Frame|Engine Frame|Engine 3Action
+  - first:
+      74: -4656822711670578451
+    second: Engine Frame|Engine 3|Engine 3|Deco|Deco|DecoAction
+  - first:
+      74: -1357890006453654680
+    second: Engine Frame|Engine 3|Engine 3|Deco|Deco|Engine 1Action
+  - first:
+      74: 320796851022302749
+    second: Engine Frame|Engine 3|Engine 3|Deco|Deco|Engine 2Action
+  - first:
+      74: 5262583357460021614
+    second: Engine Frame|Engine 3|Engine 3|Deco|Deco|Engine 3Action
+  - first:
+      74: -3803680546800210341
+    second: Engine Frame|Engine 3|Engine 3|Engine 1|Engine 1|DecoAction
+  - first:
+      74: 1902462887650179032
+    second: Engine Frame|Engine 3|Engine 3|Engine 1|Engine 1|Engine 1Action
+  - first:
+      74: -6180915107483902360
+    second: Engine Frame|Engine 3|Engine 3|Engine 1|Engine 1|Engine 2Action
+  - first:
+      74: -6458056064219309009
+    second: Engine Frame|Engine 3|Engine 3|Engine 1|Engine 1|Engine 3Action
+  - first:
+      74: 5686132293343980533
+    second: Engine Frame|Engine 3|Engine 3|Engine 2|Engine 2|DecoAction
+  - first:
+      74: 1158995617296894394
+    second: Engine Frame|Engine 3|Engine 3|Engine 2|Engine 2|Engine 1Action
+  - first:
+      74: 8195214428182602337
+    second: Engine Frame|Engine 3|Engine 3|Engine 2|Engine 2|Engine 2Action
+  - first:
+      74: -6894744623986665282
+    second: Engine Frame|Engine 3|Engine 3|Engine 2|Engine 2|Engine 3Action
+  - first:
+      74: -7741002335878094956
+    second: Engine Frame|Engine 3|Engine 3|Engine 3|Engine 3|DecoAction
+  - first:
+      74: -4151344472688856665
+    second: Engine Frame|Engine 3|Engine 3|Engine 3|Engine 3|Engine 1Action
+  - first:
+      74: 3011048520898587644
+    second: Engine Frame|Engine 3|Engine 3|Engine 3|Engine 3|Engine 2Action
+  - first:
+      74: 940536084925214057
+    second: Engine Frame|Engine 3|Engine 3|Engine 3|Engine 3|Engine 3Action
+  - first:
+      74: 2609479554526589108
+    second: Engine Frame|Engine 3|Engine 3|Engine Frame|Engine Frame|DecoAction
+  - first:
+      74: 5942496189997951252
+    second: Engine Frame|Engine 3|Engine 3|Engine Frame|Engine Frame|Engine 1Action
+  - first:
+      74: 1752100305466715346
+    second: Engine Frame|Engine 3|Engine 3|Engine Frame|Engine Frame|Engine 2Action
+  - first:
+      74: 1978635205771656166
+    second: Engine Frame|Engine 3|Engine 3|Engine Frame|Engine Frame|Engine 3Action
+  - first:
+      74: -849713414781995795
+    second: Engine Frame|Engine Frame|Engine Frame|Deco|Deco|DecoAction
+  - first:
+      74: 2508722977312465067
+    second: Engine Frame|Engine Frame|Engine Frame|Deco|Deco|Engine 1Action
+  - first:
+      74: 206419420314703676
+    second: Engine Frame|Engine Frame|Engine Frame|Deco|Deco|Engine 2Action
+  - first:
+      74: -5438926078894500059
+    second: Engine Frame|Engine Frame|Engine Frame|Deco|Deco|Engine 3Action
+  - first:
+      74: -7406759807067755082
+    second: Engine Frame|Engine Frame|Engine Frame|Engine 1|Engine 1|DecoAction
+  - first:
+      74: 4556382169700772521
+    second: Engine Frame|Engine Frame|Engine Frame|Engine 1|Engine 1|Engine 1Action
+  - first:
+      74: -7003304911543032638
+    second: Engine Frame|Engine Frame|Engine Frame|Engine 1|Engine 1|Engine 2Action
+  - first:
+      74: 1761019583299681509
+    second: Engine Frame|Engine Frame|Engine Frame|Engine 1|Engine 1|Engine 3Action
+  - first:
+      74: 166532627854472256
+    second: Engine Frame|Engine Frame|Engine Frame|Engine 2|Engine 2|DecoAction
+  - first:
+      74: -2055412750078259658
+    second: Engine Frame|Engine Frame|Engine Frame|Engine 2|Engine 2|Engine 1Action
+  - first:
+      74: -4366632701299434294
+    second: Engine Frame|Engine Frame|Engine Frame|Engine 2|Engine 2|Engine 2Action
+  - first:
+      74: 2843796019542664407
+    second: Engine Frame|Engine Frame|Engine Frame|Engine 2|Engine 2|Engine 3Action
+  - first:
+      74: -4168388751603374592
+    second: Engine Frame|Engine Frame|Engine Frame|Engine 3|Engine 3|DecoAction
+  - first:
+      74: -723708631505361078
+    second: Engine Frame|Engine Frame|Engine Frame|Engine 3|Engine 3|Engine 1Action
+  - first:
+      74: -8166361321582245357
+    second: Engine Frame|Engine Frame|Engine Frame|Engine 3|Engine 3|Engine 2Action
+  - first:
+      74: 7820421479026713996
+    second: Engine Frame|Engine Frame|Engine Frame|Engine 3|Engine 3|Engine 3Action
+  - first:
+      74: 6834072568578984435
+    second: Engine Frame|Engine Frame|Engine Frame|Engine Frame|Engine Frame|DecoAction
+  - first:
+      74: -6727332450570589613
+    second: Engine Frame|Engine Frame|Engine Frame|Engine Frame|Engine Frame|Engine
+      1Act
+  - first:
+      74: 8724693285335809444
+    second: Engine Frame|Engine Frame|Engine Frame|Engine Frame|Engine Frame|Engine
+      2Act
+  - first:
+      74: 2720000584762710661
+    second: Engine Frame|Engine Frame|Engine Frame|Engine Frame|Engine Frame|Engine
+      3Act
+  - first:
+      74: -4454972956055638485
+    second: Engine 2|Deco|Deco|Deco|Deco|DecoAction
+  - first:
+      74: 7980852121724424834
+    second: Engine 2|Deco|Deco|Deco|Deco|Engine 1Action
+  - first:
+      74: 4112895179932702628
+    second: Engine 2|Deco|Deco|Deco|Deco|Engine 2Action
+  - first:
+      74: 183544183399937825
+    second: Engine 2|Deco|Deco|Deco|Deco|Engine 3Action
+  - first:
+      74: 4998032310468750173
+    second: Engine 2|Deco|Deco|Engine 1|Engine 1|DecoAction
+  - first:
+      74: 6004091835040679212
+    second: Engine 2|Deco|Deco|Engine 1|Engine 1|Engine 1Action
+  - first:
+      74: -979996490699482891
+    second: Engine 2|Deco|Deco|Engine 1|Engine 1|Engine 2Action
+  - first:
+      74: 8960352679526340399
+    second: Engine 2|Deco|Deco|Engine 1|Engine 1|Engine 3Action
+  - first:
+      74: 5173259654240030363
+    second: Engine 2|Deco|Deco|Engine 2|Engine 2|DecoAction
+  - first:
+      74: -8620611262499732533
+    second: Engine 2|Deco|Deco|Engine 2|Engine 2|Engine 1Action
+  - first:
+      74: -38334917169961998
+    second: Engine 2|Deco|Deco|Engine 2|Engine 2|Engine 2Action
+  - first:
+      74: -4341295442091293478
+    second: Engine 2|Deco|Deco|Engine 2|Engine 2|Engine 3Action
+  - first:
+      74: -6926781164770171735
+    second: Engine 2|Deco|Deco|Engine 3|Engine 3|DecoAction
+  - first:
+      74: 2318331850942449919
+    second: Engine 2|Deco|Deco|Engine 3|Engine 3|Engine 1Action
+  - first:
+      74: -8039417718211978453
+    second: Engine 2|Deco|Deco|Engine 3|Engine 3|Engine 2Action
+  - first:
+      74: 1744081623271718964
+    second: Engine 2|Deco|Deco|Engine 3|Engine 3|Engine 3Action
+  - first:
+      74: -3963399352875980990
+    second: Engine 2|Deco|Deco|Engine Frame|Engine Frame|DecoAction
+  - first:
+      74: -5591884197247222693
+    second: Engine 2|Deco|Deco|Engine Frame|Engine Frame|Engine 1Action
+  - first:
+      74: -8664834500019725824
+    second: Engine 2|Deco|Deco|Engine Frame|Engine Frame|Engine 2Action
+  - first:
+      74: -5363742265737921309
+    second: Engine 2|Deco|Deco|Engine Frame|Engine Frame|Engine 3Action
+  - first:
+      74: 2076375940875455591
+    second: Engine 2|Engine 1|Engine 1|Deco|Deco|DecoAction
+  - first:
+      74: -4463672766950345041
+    second: Engine 2|Engine 1|Engine 1|Deco|Deco|Engine 1Action
+  - first:
+      74: 1378149880266517069
+    second: Engine 2|Engine 1|Engine 1|Deco|Deco|Engine 2Action
+  - first:
+      74: 6967427084641677684
+    second: Engine 2|Engine 1|Engine 1|Deco|Deco|Engine 3Action
+  - first:
+      74: 5795653967968731009
+    second: Engine 2|Engine 1|Engine 1|Engine 1|Engine 1|DecoAction
+  - first:
+      74: -5817910343860401321
+    second: Engine 2|Engine 1|Engine 1|Engine 1|Engine 1|Engine 1Action
+  - first:
+      74: 5921897020541033410
+    second: Engine 2|Engine 1|Engine 1|Engine 1|Engine 1|Engine 2Action
+  - first:
+      74: 4343218678133030649
+    second: Engine 2|Engine 1|Engine 1|Engine 1|Engine 1|Engine 3Action
+  - first:
+      74: 8315565625550364225
+    second: Engine 2|Engine 1|Engine 1|Engine 2|Engine 2|DecoAction
+  - first:
+      74: 8519567409757568405
+    second: Engine 2|Engine 1|Engine 1|Engine 2|Engine 2|Engine 1Action
+  - first:
+      74: 1393667048393616750
+    second: Engine 2|Engine 1|Engine 1|Engine 2|Engine 2|Engine 2Action
+  - first:
+      74: -6585343713741657045
+    second: Engine 2|Engine 1|Engine 1|Engine 2|Engine 2|Engine 3Action
+  - first:
+      74: -5785133240921351165
+    second: Engine 2|Engine 1|Engine 1|Engine 3|Engine 3|DecoAction
+  - first:
+      74: 5996294642100780933
+    second: Engine 2|Engine 1|Engine 1|Engine 3|Engine 3|Engine 1Action
+  - first:
+      74: 9110742489924939284
+    second: Engine 2|Engine 1|Engine 1|Engine 3|Engine 3|Engine 2Action
+  - first:
+      74: -2172271153582161737
+    second: Engine 2|Engine 1|Engine 1|Engine 3|Engine 3|Engine 3Action
+  - first:
+      74: 5077661258462940132
+    second: Engine 2|Engine 1|Engine 1|Engine Frame|Engine Frame|DecoAction
+  - first:
+      74: 1755200907924714635
+    second: Engine 2|Engine 1|Engine 1|Engine Frame|Engine Frame|Engine 1Action
+  - first:
+      74: 8266361883095552937
+    second: Engine 2|Engine 1|Engine 1|Engine Frame|Engine Frame|Engine 2Action
+  - first:
+      74: 3846717756366915025
+    second: Engine 2|Engine 1|Engine 1|Engine Frame|Engine Frame|Engine 3Action
+  - first:
+      74: -4313532080925475357
+    second: Engine 2|Engine 2|Engine 2|Deco|Deco|DecoAction
+  - first:
+      74: 7448088625876144799
+    second: Engine 2|Engine 2|Engine 2|Deco|Deco|Engine 1Action
+  - first:
+      74: -798511283104082478
+    second: Engine 2|Engine 2|Engine 2|Deco|Deco|Engine 2Action
+  - first:
+      74: -4336860971951076307
+    second: Engine 2|Engine 2|Engine 2|Deco|Deco|Engine 3Action
+  - first:
+      74: 3507436206792160305
+    second: Engine 2|Engine 2|Engine 2|Engine 1|Engine 1|DecoAction
+  - first:
+      74: -8814612573036035841
+    second: Engine 2|Engine 2|Engine 2|Engine 1|Engine 1|Engine 1Action
+  - first:
+      74: -537661421267648799
+    second: Engine 2|Engine 2|Engine 2|Engine 1|Engine 1|Engine 2Action
+  - first:
+      74: 3128560358236946522
+    second: Engine 2|Engine 2|Engine 2|Engine 1|Engine 1|Engine 3Action
+  - first:
+      74: 1093873485114775159
+    second: Engine 2|Engine 2|Engine 2|Engine 2|Engine 2|DecoAction
+  - first:
+      74: -4075732725827306893
+    second: Engine 2|Engine 2|Engine 2|Engine 2|Engine 2|Engine 1Action
+  - first:
+      74: 4294510160381603668
+    second: Engine 2|Engine 2|Engine 2|Engine 2|Engine 2|Engine 2Action
+  - first:
+      74: -4611077517229530450
+    second: Engine 2|Engine 2|Engine 2|Engine 2|Engine 2|Engine 3Action
+  - first:
+      74: -1640936177960270881
+    second: Engine 2|Engine 2|Engine 2|Engine 3|Engine 3|DecoAction
+  - first:
+      74: 5712459655498858506
+    second: Engine 2|Engine 2|Engine 2|Engine 3|Engine 3|Engine 1Action
+  - first:
+      74: 2336079794594010818
+    second: Engine 2|Engine 2|Engine 2|Engine 3|Engine 3|Engine 2Action
+  - first:
+      74: -2359487299751491898
+    second: Engine 2|Engine 2|Engine 2|Engine 3|Engine 3|Engine 3Action
+  - first:
+      74: -2585507056750756046
+    second: Engine 2|Engine 2|Engine 2|Engine Frame|Engine Frame|DecoAction
+  - first:
+      74: 6776946214820280337
+    second: Engine 2|Engine 2|Engine 2|Engine Frame|Engine Frame|Engine 1Action
+  - first:
+      74: -6938831968836546123
+    second: Engine 2|Engine 2|Engine 2|Engine Frame|Engine Frame|Engine 2Action
+  - first:
+      74: -6127562135088536315
+    second: Engine 2|Engine 2|Engine 2|Engine Frame|Engine Frame|Engine 3Action
+  - first:
+      74: 245486219020888167
+    second: Engine 2|Engine 3|Engine 3|Deco|Deco|DecoAction
+  - first:
+      74: -7530050153837110113
+    second: Engine 2|Engine 3|Engine 3|Deco|Deco|Engine 1Action
+  - first:
+      74: -2693761156300761051
+    second: Engine 2|Engine 3|Engine 3|Deco|Deco|Engine 2Action
+  - first:
+      74: 1513162381361040729
+    second: Engine 2|Engine 3|Engine 3|Deco|Deco|Engine 3Action
+  - first:
+      74: 1788071180819389461
+    second: Engine 2|Engine 3|Engine 3|Engine 1|Engine 1|DecoAction
+  - first:
+      74: -8365471901388997462
+    second: Engine 2|Engine 3|Engine 3|Engine 1|Engine 1|Engine 1Action
+  - first:
+      74: -2291463401076864108
+    second: Engine 2|Engine 3|Engine 3|Engine 1|Engine 1|Engine 2Action
+  - first:
+      74: 4241616632702874676
+    second: Engine 2|Engine 3|Engine 3|Engine 1|Engine 1|Engine 3Action
+  - first:
+      74: -6727182885523262077
+    second: Engine 2|Engine 3|Engine 3|Engine 2|Engine 2|DecoAction
+  - first:
+      74: 667404815358260939
+    second: Engine 2|Engine 3|Engine 3|Engine 2|Engine 2|Engine 1Action
+  - first:
+      74: -9186652053116383391
+    second: Engine 2|Engine 3|Engine 3|Engine 2|Engine 2|Engine 2Action
+  - first:
+      74: -2705133397426422378
+    second: Engine 2|Engine 3|Engine 3|Engine 2|Engine 2|Engine 3Action
+  - first:
+      74: 4118956893898303541
+    second: Engine 2|Engine 3|Engine 3|Engine 3|Engine 3|DecoAction
+  - first:
+      74: 2222277613606466657
+    second: Engine 2|Engine 3|Engine 3|Engine 3|Engine 3|Engine 1Action
+  - first:
+      74: 6383653911184504713
+    second: Engine 2|Engine 3|Engine 3|Engine 3|Engine 3|Engine 2Action
+  - first:
+      74: 3246577544459519218
+    second: Engine 2|Engine 3|Engine 3|Engine 3|Engine 3|Engine 3Action
+  - first:
+      74: -2442541095516484815
+    second: Engine 2|Engine 3|Engine 3|Engine Frame|Engine Frame|DecoAction
+  - first:
+      74: -263070877238997613
+    second: Engine 2|Engine 3|Engine 3|Engine Frame|Engine Frame|Engine 1Action
+  - first:
+      74: -7632679071382213064
+    second: Engine 2|Engine 3|Engine 3|Engine Frame|Engine Frame|Engine 2Action
+  - first:
+      74: -1752082204152635816
+    second: Engine 2|Engine 3|Engine 3|Engine Frame|Engine Frame|Engine 3Action
+  - first:
+      74: -1715791171552419976
+    second: Engine 2|Engine Frame|Engine Frame|Deco|Deco|DecoAction
+  - first:
+      74: -3766780046422472897
+    second: Engine 2|Engine Frame|Engine Frame|Deco|Deco|Engine 1Action
+  - first:
+      74: 9151475352148423086
+    second: Engine 2|Engine Frame|Engine Frame|Deco|Deco|Engine 2Action
+  - first:
+      74: -3495600799906483070
+    second: Engine 2|Engine Frame|Engine Frame|Deco|Deco|Engine 3Action
+  - first:
+      74: -7375565390379188117
+    second: Engine 2|Engine Frame|Engine Frame|Engine 1|Engine 1|DecoAction
+  - first:
+      74: 554219607872768818
+    second: Engine 2|Engine Frame|Engine Frame|Engine 1|Engine 1|Engine 1Action
+  - first:
+      74: -7702204067990750468
+    second: Engine 2|Engine Frame|Engine Frame|Engine 1|Engine 1|Engine 2Action
+  - first:
+      74: 721995740580995778
+    second: Engine 2|Engine Frame|Engine Frame|Engine 1|Engine 1|Engine 3Action
+  - first:
+      74: 6743270743977239200
+    second: Engine 2|Engine Frame|Engine Frame|Engine 2|Engine 2|DecoAction
+  - first:
+      74: 4205359703933327138
+    second: Engine 2|Engine Frame|Engine Frame|Engine 2|Engine 2|Engine 1Action
+  - first:
+      74: 5108956518517732604
+    second: Engine 2|Engine Frame|Engine Frame|Engine 2|Engine 2|Engine 2Action
+  - first:
+      74: -2974522860749043584
+    second: Engine 2|Engine Frame|Engine Frame|Engine 2|Engine 2|Engine 3Action
+  - first:
+      74: 48178621389257500
+    second: Engine 2|Engine Frame|Engine Frame|Engine 3|Engine 3|DecoAction
+  - first:
+      74: -6164907603473884409
+    second: Engine 2|Engine Frame|Engine Frame|Engine 3|Engine 3|Engine 1Action
+  - first:
+      74: -5981360491265049962
+    second: Engine 2|Engine Frame|Engine Frame|Engine 3|Engine 3|Engine 2Action
+  - first:
+      74: 3232796838765147970
+    second: Engine 2|Engine Frame|Engine Frame|Engine 3|Engine 3|Engine 3Action
+  - first:
+      74: 420980842078128544
+    second: Engine 2|Engine Frame|Engine Frame|Engine Frame|Engine Frame|DecoAction
+  - first:
+      74: -905552866374864191
+    second: Engine 2|Engine Frame|Engine Frame|Engine Frame|Engine Frame|Engine 1Act
+  - first:
+      74: -7414754374478758126
+    second: Engine 2|Engine Frame|Engine Frame|Engine Frame|Engine Frame|Engine 2Act
+  - first:
+      74: 1653963528070118570
+    second: Engine 2|Engine Frame|Engine Frame|Engine Frame|Engine Frame|Engine 3Act
+  - first:
+      74: -2896186126547584181
+    second: Engine 1|Deco|Deco|Deco|Deco|DecoAction
+  - first:
+      74: 6592724813560742192
+    second: Engine 1|Deco|Deco|Deco|Deco|Engine 1Action
+  - first:
+      74: -7912338241303148295
+    second: Engine 1|Deco|Deco|Deco|Deco|Engine 2Action
+  - first:
+      74: 9170574538556731847
+    second: Engine 1|Deco|Deco|Deco|Deco|Engine 3Action
+  - first:
+      74: -557445181573640022
+    second: Engine 1|Deco|Deco|Engine 1|Engine 1|DecoAction
+  - first:
+      74: 2340237746002381643
+    second: Engine 1|Deco|Deco|Engine 1|Engine 1|Engine 1Action
+  - first:
+      74: -6752985693858521584
+    second: Engine 1|Deco|Deco|Engine 1|Engine 1|Engine 2Action
+  - first:
+      74: -5463518830030741723
+    second: Engine 1|Deco|Deco|Engine 1|Engine 1|Engine 3Action
+  - first:
+      74: 2562945595767320164
+    second: Engine 1|Deco|Deco|Engine 2|Engine 2|DecoAction
+  - first:
+      74: 4827786699158414131
+    second: Engine 1|Deco|Deco|Engine 2|Engine 2|Engine 1Action
+  - first:
+      74: -7633165306389251871
+    second: Engine 1|Deco|Deco|Engine 2|Engine 2|Engine 2Action
+  - first:
+      74: 1609139269541186294
+    second: Engine 1|Deco|Deco|Engine 2|Engine 2|Engine 3Action
+  - first:
+      74: 957563795907611400
+    second: Engine 1|Deco|Deco|Engine 3|Engine 3|DecoAction
+  - first:
+      74: 949589758921202603
+    second: Engine 1|Deco|Deco|Engine 3|Engine 3|Engine 1Action
+  - first:
+      74: -6192270289370843193
+    second: Engine 1|Deco|Deco|Engine 3|Engine 3|Engine 2Action
+  - first:
+      74: 3262945618117411994
+    second: Engine 1|Deco|Deco|Engine 3|Engine 3|Engine 3Action
+  - first:
+      74: 4626295745627630618
+    second: Engine 1|Deco|Deco|Engine Frame|Engine Frame|DecoAction
+  - first:
+      74: -1881667841247374996
+    second: Engine 1|Deco|Deco|Engine Frame|Engine Frame|Engine 1Action
+  - first:
+      74: -2656048595076814671
+    second: Engine 1|Deco|Deco|Engine Frame|Engine Frame|Engine 2Action
+  - first:
+      74: -5922232223731112370
+    second: Engine 1|Deco|Deco|Engine Frame|Engine Frame|Engine 3Action
+  - first:
+      74: 3508876151893123084
+    second: Engine 1|Engine 1|Engine 1|Deco|Deco|DecoAction
+  - first:
+      74: 1117352650776350999
+    second: Engine 1|Engine 1|Engine 1|Deco|Deco|Engine 1Action
+  - first:
+      74: 6581981339914358958
+    second: Engine 1|Engine 1|Engine 1|Deco|Deco|Engine 2Action
+  - first:
+      74: -7557626157375793366
+    second: Engine 1|Engine 1|Engine 1|Deco|Deco|Engine 3Action
+  - first:
+      74: 3322957717813285597
+    second: Engine 1|Engine 1|Engine 1|Engine 1|Engine 1|DecoAction
+  - first:
+      74: 7792011791841040985
+    second: Engine 1|Engine 1|Engine 1|Engine 1|Engine 1|Engine 1Action
+  - first:
+      74: 8248945061153856715
+    second: Engine 1|Engine 1|Engine 1|Engine 1|Engine 1|Engine 2Action
+  - first:
+      74: 7902277045224131523
+    second: Engine 1|Engine 1|Engine 1|Engine 1|Engine 1|Engine 3Action
+  - first:
+      74: 8782323360660443761
+    second: Engine 1|Engine 1|Engine 1|Engine 2|Engine 2|DecoAction
+  - first:
+      74: 8393771853377961924
+    second: Engine 1|Engine 1|Engine 1|Engine 2|Engine 2|Engine 1Action
+  - first:
+      74: 1063445861311871316
+    second: Engine 1|Engine 1|Engine 1|Engine 2|Engine 2|Engine 2Action
+  - first:
+      74: 1630096372944067123
+    second: Engine 1|Engine 1|Engine 1|Engine 2|Engine 2|Engine 3Action
+  - first:
+      74: -3089611674278241444
+    second: Engine 1|Engine 1|Engine 1|Engine 3|Engine 3|DecoAction
+  - first:
+      74: -3205007135806755650
+    second: Engine 1|Engine 1|Engine 1|Engine 3|Engine 3|Engine 1Action
+  - first:
+      74: 2797666174271866080
+    second: Engine 1|Engine 1|Engine 1|Engine 3|Engine 3|Engine 2Action
+  - first:
+      74: -4260814127582941502
+    second: Engine 1|Engine 1|Engine 1|Engine 3|Engine 3|Engine 3Action
+  - first:
+      74: -1886448912780103285
+    second: Engine 1|Engine 1|Engine 1|Engine Frame|Engine Frame|DecoAction
+  - first:
+      74: 8571465213063126307
+    second: Engine 1|Engine 1|Engine 1|Engine Frame|Engine Frame|Engine 1Action
+  - first:
+      74: 1657897030283040907
+    second: Engine 1|Engine 1|Engine 1|Engine Frame|Engine Frame|Engine 2Action
+  - first:
+      74: 1170903901356720144
+    second: Engine 1|Engine 1|Engine 1|Engine Frame|Engine Frame|Engine 3Action
+  - first:
+      74: -3404538393764105091
+    second: Engine 1|Engine 2|Engine 2|Deco|Deco|DecoAction
+  - first:
+      74: -2503914340436377501
+    second: Engine 1|Engine 2|Engine 2|Deco|Deco|Engine 1Action
+  - first:
+      74: 936475889655866184
+    second: Engine 1|Engine 2|Engine 2|Deco|Deco|Engine 2Action
+  - first:
+      74: 4135926502278515967
+    second: Engine 1|Engine 2|Engine 2|Deco|Deco|Engine 3Action
+  - first:
+      74: -138588540178137649
+    second: Engine 1|Engine 2|Engine 2|Engine 1|Engine 1|DecoAction
+  - first:
+      74: 4063572758495488718
+    second: Engine 1|Engine 2|Engine 2|Engine 1|Engine 1|Engine 1Action
+  - first:
+      74: -6723782043567910350
+    second: Engine 1|Engine 2|Engine 2|Engine 1|Engine 1|Engine 2Action
+  - first:
+      74: -6186851058208456202
+    second: Engine 1|Engine 2|Engine 2|Engine 1|Engine 1|Engine 3Action
+  - first:
+      74: 7152467461777227294
+    second: Engine 1|Engine 2|Engine 2|Engine 2|Engine 2|DecoAction
+  - first:
+      74: 1293740202434893405
+    second: Engine 1|Engine 2|Engine 2|Engine 2|Engine 2|Engine 1Action
+  - first:
+      74: -7651118419468977446
+    second: Engine 1|Engine 2|Engine 2|Engine 2|Engine 2|Engine 2Action
+  - first:
+      74: -6003627337070585253
+    second: Engine 1|Engine 2|Engine 2|Engine 2|Engine 2|Engine 3Action
+  - first:
+      74: -6426874905959938152
+    second: Engine 1|Engine 2|Engine 2|Engine 3|Engine 3|DecoAction
+  - first:
+      74: -5810062552952011958
+    second: Engine 1|Engine 2|Engine 2|Engine 3|Engine 3|Engine 1Action
+  - first:
+      74: 3855261418267391526
+    second: Engine 1|Engine 2|Engine 2|Engine 3|Engine 3|Engine 2Action
+  - first:
+      74: -3623185968313033657
+    second: Engine 1|Engine 2|Engine 2|Engine 3|Engine 3|Engine 3Action
+  - first:
+      74: 2245058459809222748
+    second: Engine 1|Engine 2|Engine 2|Engine Frame|Engine Frame|DecoAction
+  - first:
+      74: 1469219373371672718
+    second: Engine 1|Engine 2|Engine 2|Engine Frame|Engine Frame|Engine 1Action
+  - first:
+      74: -5711985713447752333
+    second: Engine 1|Engine 2|Engine 2|Engine Frame|Engine Frame|Engine 2Action
+  - first:
+      74: 7291412881376492454
+    second: Engine 1|Engine 2|Engine 2|Engine Frame|Engine Frame|Engine 3Action
+  - first:
+      74: 2820344859408363990
+    second: Engine 1|Engine 3|Engine 3|Deco|Deco|DecoAction
+  - first:
+      74: -6121290182000169852
+    second: Engine 1|Engine 3|Engine 3|Deco|Deco|Engine 1Action
+  - first:
+      74: 5273140265936596870
+    second: Engine 1|Engine 3|Engine 3|Deco|Deco|Engine 2Action
+  - first:
+      74: 6171773459777368121
+    second: Engine 1|Engine 3|Engine 3|Deco|Deco|Engine 3Action
+  - first:
+      74: 5387799256246701772
+    second: Engine 1|Engine 3|Engine 3|Engine 1|Engine 1|DecoAction
+  - first:
+      74: 7861822955704553697
+    second: Engine 1|Engine 3|Engine 3|Engine 1|Engine 1|Engine 1Action
+  - first:
+      74: 9141823782381997024
+    second: Engine 1|Engine 3|Engine 3|Engine 1|Engine 1|Engine 2Action
+  - first:
+      74: 4921763738080530572
+    second: Engine 1|Engine 3|Engine 3|Engine 1|Engine 1|Engine 3Action
+  - first:
+      74: -7455664380891380989
+    second: Engine 1|Engine 3|Engine 3|Engine 2|Engine 2|DecoAction
+  - first:
+      74: -700814053135736014
+    second: Engine 1|Engine 3|Engine 3|Engine 2|Engine 2|Engine 1Action
+  - first:
+      74: -6422826725328630694
+    second: Engine 1|Engine 3|Engine 3|Engine 2|Engine 2|Engine 2Action
+  - first:
+      74: 6135005260750277526
+    second: Engine 1|Engine 3|Engine 3|Engine 2|Engine 2|Engine 3Action
+  - first:
+      74: -2383418308019484246
+    second: Engine 1|Engine 3|Engine 3|Engine 3|Engine 3|DecoAction
+  - first:
+      74: 9010499822892807397
+    second: Engine 1|Engine 3|Engine 3|Engine 3|Engine 3|Engine 1Action
+  - first:
+      74: 1702592618146558441
+    second: Engine 1|Engine 3|Engine 3|Engine 3|Engine 3|Engine 2Action
+  - first:
+      74: 5401872098557425612
+    second: Engine 1|Engine 3|Engine 3|Engine 3|Engine 3|Engine 3Action
+  - first:
+      74: 1517699768258726500
+    second: Engine 1|Engine 3|Engine 3|Engine Frame|Engine Frame|DecoAction
+  - first:
+      74: 924890390331112178
+    second: Engine 1|Engine 3|Engine 3|Engine Frame|Engine Frame|Engine 1Action
+  - first:
+      74: 5419149329502208012
+    second: Engine 1|Engine 3|Engine 3|Engine Frame|Engine Frame|Engine 2Action
+  - first:
+      74: 2417170975613491829
+    second: Engine 1|Engine 3|Engine 3|Engine Frame|Engine Frame|Engine 3Action
+  - first:
+      74: 795667192828249562
+    second: Engine 1|Engine Frame|Engine Frame|Deco|Deco|DecoAction
+  - first:
+      74: -6491153105513873622
+    second: Engine 1|Engine Frame|Engine Frame|Deco|Deco|Engine 1Action
+  - first:
+      74: 8980824222684680155
+    second: Engine 1|Engine Frame|Engine Frame|Deco|Deco|Engine 2Action
+  - first:
+      74: -3592025660335424446
+    second: Engine 1|Engine Frame|Engine Frame|Deco|Deco|Engine 3Action
+  - first:
+      74: 4170351857090759858
+    second: Engine 1|Engine Frame|Engine Frame|Engine 1|Engine 1|DecoAction
+  - first:
+      74: 472260209264231312
+    second: Engine 1|Engine Frame|Engine Frame|Engine 1|Engine 1|Engine 1Action
+  - first:
+      74: -8113316913730722331
+    second: Engine 1|Engine Frame|Engine Frame|Engine 1|Engine 1|Engine 2Action
+  - first:
+      74: -3919829139044223815
+    second: Engine 1|Engine Frame|Engine Frame|Engine 1|Engine 1|Engine 3Action
+  - first:
+      74: 7431082095492286893
+    second: Engine 1|Engine Frame|Engine Frame|Engine 2|Engine 2|DecoAction
+  - first:
+      74: 7715445811266288888
+    second: Engine 1|Engine Frame|Engine Frame|Engine 2|Engine 2|Engine 1Action
+  - first:
+      74: -7187499904646037858
+    second: Engine 1|Engine Frame|Engine Frame|Engine 2|Engine 2|Engine 2Action
+  - first:
+      74: -764867326342753288
+    second: Engine 1|Engine Frame|Engine Frame|Engine 2|Engine 2|Engine 3Action
+  - first:
+      74: -8469243187317864236
+    second: Engine 1|Engine Frame|Engine Frame|Engine 3|Engine 3|DecoAction
+  - first:
+      74: 5014053289726649384
+    second: Engine 1|Engine Frame|Engine Frame|Engine 3|Engine 3|Engine 1Action
+  - first:
+      74: 1073751425947069482
+    second: Engine 1|Engine Frame|Engine Frame|Engine 3|Engine 3|Engine 2Action
+  - first:
+      74: -3282373117537296398
+    second: Engine 1|Engine Frame|Engine Frame|Engine 3|Engine 3|Engine 3Action
+  - first:
+      74: 6617727862251612917
+    second: Engine 1|Engine Frame|Engine Frame|Engine Frame|Engine Frame|DecoAction
+  - first:
+      74: -7430878077864464806
+    second: Engine 1|Engine Frame|Engine Frame|Engine Frame|Engine Frame|Engine 1Act
+  - first:
+      74: 7358375151638310891
+    second: Engine 1|Engine Frame|Engine Frame|Engine Frame|Engine Frame|Engine 2Act
+  - first:
+      74: 273492122614865606
+    second: Engine 1|Engine Frame|Engine Frame|Engine Frame|Engine Frame|Engine 3Act
+  - first:
+      74: 6444776423418907157
+    second: Engine 3|Deco|Deco|Deco|Deco|DecoAction
+  - first:
+      74: -262293835916780320
+    second: Engine 3|Deco|Deco|Deco|Deco|Engine 1Action
+  - first:
+      74: -7186621075642441179
+    second: Engine 3|Deco|Deco|Deco|Deco|Engine 2Action
+  - first:
+      74: 186005935167991510
+    second: Engine 3|Deco|Deco|Deco|Deco|Engine 3Action
+  - first:
+      74: -7736692952083144418
+    second: Engine 3|Deco|Deco|Engine 1|Engine 1|DecoAction
+  - first:
+      74: -8597782557652318680
+    second: Engine 3|Deco|Deco|Engine 1|Engine 1|Engine 1Action
+  - first:
+      74: -8324694438637697488
+    second: Engine 3|Deco|Deco|Engine 1|Engine 1|Engine 2Action
+  - first:
+      74: -8926488304477305215
+    second: Engine 3|Deco|Deco|Engine 1|Engine 1|Engine 3Action
+  - first:
+      74: 3715174235025303220
+    second: Engine 3|Deco|Deco|Engine 2|Engine 2|DecoAction
+  - first:
+      74: -2742973119292965912
+    second: Engine 3|Deco|Deco|Engine 2|Engine 2|Engine 1Action
+  - first:
+      74: -3672363199249536472
+    second: Engine 3|Deco|Deco|Engine 2|Engine 2|Engine 2Action
+  - first:
+      74: -1893013737371555536
+    second: Engine 3|Deco|Deco|Engine 2|Engine 2|Engine 3Action
+  - first:
+      74: -2182163508128809309
+    second: Engine 3|Deco|Deco|Engine 3|Engine 3|DecoAction
+  - first:
+      74: -6728027856455865229
+    second: Engine 3|Deco|Deco|Engine 3|Engine 3|Engine 1Action
+  - first:
+      74: -7825049344676639361
+    second: Engine 3|Deco|Deco|Engine 3|Engine 3|Engine 2Action
+  - first:
+      74: -769818589342291895
+    second: Engine 3|Deco|Deco|Engine 3|Engine 3|Engine 3Action
+  - first:
+      74: 9104038392833050644
+    second: Engine 3|Deco|Deco|Engine Frame|Engine Frame|DecoAction
+  - first:
+      74: 2629336582558521735
+    second: Engine 3|Deco|Deco|Engine Frame|Engine Frame|Engine 1Action
+  - first:
+      74: 4058952588398594331
+    second: Engine 3|Deco|Deco|Engine Frame|Engine Frame|Engine 2Action
+  - first:
+      74: -3123092047296954673
+    second: Engine 3|Deco|Deco|Engine Frame|Engine Frame|Engine 3Action
+  - first:
+      74: 2808760471449805372
+    second: Engine 3|Engine 1|Engine 1|Deco|Deco|DecoAction
+  - first:
+      74: -2082512970191261772
+    second: Engine 3|Engine 1|Engine 1|Deco|Deco|Engine 1Action
+  - first:
+      74: 3015270217133296953
+    second: Engine 3|Engine 1|Engine 1|Deco|Deco|Engine 2Action
+  - first:
+      74: -7717008817700413100
+    second: Engine 3|Engine 1|Engine 1|Deco|Deco|Engine 3Action
+  - first:
+      74: -3342124773750659449
+    second: Engine 3|Engine 1|Engine 1|Engine 1|Engine 1|DecoAction
+  - first:
+      74: -8842659036025996268
+    second: Engine 3|Engine 1|Engine 1|Engine 1|Engine 1|Engine 1Action
+  - first:
+      74: 5471608840015213122
+    second: Engine 3|Engine 1|Engine 1|Engine 1|Engine 1|Engine 2Action
+  - first:
+      74: -2688193599643850938
+    second: Engine 3|Engine 1|Engine 1|Engine 1|Engine 1|Engine 3Action
+  - first:
+      74: -1009720665444155599
+    second: Engine 3|Engine 1|Engine 1|Engine 2|Engine 2|DecoAction
+  - first:
+      74: -81870066017666604
+    second: Engine 3|Engine 1|Engine 1|Engine 2|Engine 2|Engine 1Action
+  - first:
+      74: -29121845807392970
+    second: Engine 3|Engine 1|Engine 1|Engine 2|Engine 2|Engine 2Action
+  - first:
+      74: -7261297783734422017
+    second: Engine 3|Engine 1|Engine 1|Engine 2|Engine 2|Engine 3Action
+  - first:
+      74: 2642508168617095819
+    second: Engine 3|Engine 1|Engine 1|Engine 3|Engine 3|DecoAction
+  - first:
+      74: -6110195549189329952
+    second: Engine 3|Engine 1|Engine 1|Engine 3|Engine 3|Engine 1Action
+  - first:
+      74: -6936848683501925949
+    second: Engine 3|Engine 1|Engine 1|Engine 3|Engine 3|Engine 2Action
+  - first:
+      74: -1312256890519454652
+    second: Engine 3|Engine 1|Engine 1|Engine 3|Engine 3|Engine 3Action
+  - first:
+      74: -3474213861280777732
+    second: Engine 3|Engine 1|Engine 1|Engine Frame|Engine Frame|DecoAction
+  - first:
+      74: 5767571942201470709
+    second: Engine 3|Engine 1|Engine 1|Engine Frame|Engine Frame|Engine 1Action
+  - first:
+      74: 9144311449314135099
+    second: Engine 3|Engine 1|Engine 1|Engine Frame|Engine Frame|Engine 2Action
+  - first:
+      74: 4282140317699498386
+    second: Engine 3|Engine 1|Engine 1|Engine Frame|Engine Frame|Engine 3Action
+  - first:
+      74: 1510825922183563651
+    second: Engine 3|Engine 2|Engine 2|Deco|Deco|DecoAction
+  - first:
+      74: -1064250446044978706
+    second: Engine 3|Engine 2|Engine 2|Deco|Deco|Engine 1Action
+  - first:
+      74: 1814827386894819368
+    second: Engine 3|Engine 2|Engine 2|Deco|Deco|Engine 2Action
+  - first:
+      74: -6755146758776378272
+    second: Engine 3|Engine 2|Engine 2|Deco|Deco|Engine 3Action
+  - first:
+      74: -5343717319996135564
+    second: Engine 3|Engine 2|Engine 2|Engine 1|Engine 1|DecoAction
+  - first:
+      74: -1336093616469993433
+    second: Engine 3|Engine 2|Engine 2|Engine 1|Engine 1|Engine 1Action
+  - first:
+      74: -5976811531860062197
+    second: Engine 3|Engine 2|Engine 2|Engine 1|Engine 1|Engine 2Action
+  - first:
+      74: -7958889234456420524
+    second: Engine 3|Engine 2|Engine 2|Engine 1|Engine 1|Engine 3Action
+  - first:
+      74: 8816583242839066568
+    second: Engine 3|Engine 2|Engine 2|Engine 2|Engine 2|DecoAction
+  - first:
+      74: 4019058157639672893
+    second: Engine 3|Engine 2|Engine 2|Engine 2|Engine 2|Engine 1Action
+  - first:
+      74: 396686193079943172
+    second: Engine 3|Engine 2|Engine 2|Engine 2|Engine 2|Engine 2Action
+  - first:
+      74: -7149355484530953001
+    second: Engine 3|Engine 2|Engine 2|Engine 2|Engine 2|Engine 3Action
+  - first:
+      74: -8595140536847834276
+    second: Engine 3|Engine 2|Engine 2|Engine 3|Engine 3|DecoAction
+  - first:
+      74: 3212694286841136595
+    second: Engine 3|Engine 2|Engine 2|Engine 3|Engine 3|Engine 1Action
+  - first:
+      74: 8453658898541278050
+    second: Engine 3|Engine 2|Engine 2|Engine 3|Engine 3|Engine 2Action
+  - first:
+      74: 6576111663412322849
+    second: Engine 3|Engine 2|Engine 2|Engine 3|Engine 3|Engine 3Action
+  - first:
+      74: -1114464012167172855
+    second: Engine 3|Engine 2|Engine 2|Engine Frame|Engine Frame|DecoAction
+  - first:
+      74: 3942498697769121379
+    second: Engine 3|Engine 2|Engine 2|Engine Frame|Engine Frame|Engine 1Action
+  - first:
+      74: -4897466955606629251
+    second: Engine 3|Engine 2|Engine 2|Engine Frame|Engine Frame|Engine 2Action
+  - first:
+      74: -7093021070826107127
+    second: Engine 3|Engine 2|Engine 2|Engine Frame|Engine Frame|Engine 3Action
+  - first:
+      74: -1748162573288909105
+    second: Engine 3|Engine 3|Engine 3|Deco|Deco|DecoAction
+  - first:
+      74: 7127177179863144663
+    second: Engine 3|Engine 3|Engine 3|Deco|Deco|Engine 1Action
+  - first:
+      74: -5157992717320142952
+    second: Engine 3|Engine 3|Engine 3|Deco|Deco|Engine 2Action
+  - first:
+      74: -2956540094143130600
+    second: Engine 3|Engine 3|Engine 3|Deco|Deco|Engine 3Action
+  - first:
+      74: 283262631977365910
+    second: Engine 3|Engine 3|Engine 3|Engine 1|Engine 1|DecoAction
+  - first:
+      74: 8369926689168790133
+    second: Engine 3|Engine 3|Engine 3|Engine 1|Engine 1|Engine 1Action
+  - first:
+      74: 7506153923490556217
+    second: Engine 3|Engine 3|Engine 3|Engine 1|Engine 1|Engine 2Action
+  - first:
+      74: -6127731959220405675
+    second: Engine 3|Engine 3|Engine 3|Engine 1|Engine 1|Engine 3Action
+  - first:
+      74: 3998771999721973054
+    second: Engine 3|Engine 3|Engine 3|Engine 2|Engine 2|DecoAction
+  - first:
+      74: 2720276034340556535
+    second: Engine 3|Engine 3|Engine 3|Engine 2|Engine 2|Engine 1Action
+  - first:
+      74: -5061782964131258148
+    second: Engine 3|Engine 3|Engine 3|Engine 2|Engine 2|Engine 2Action
+  - first:
+      74: 4633592378645161130
+    second: Engine 3|Engine 3|Engine 3|Engine 2|Engine 2|Engine 3Action
+  - first:
+      74: -3909527616086322864
+    second: Engine 3|Engine 3|Engine 3|Engine 3|Engine 3|DecoAction
+  - first:
+      74: -4541053464863146143
+    second: Engine 3|Engine 3|Engine 3|Engine 3|Engine 3|Engine 1Action
+  - first:
+      74: 4600318038291904280
+    second: Engine 3|Engine 3|Engine 3|Engine 3|Engine 3|Engine 2Action
+  - first:
+      74: -2375898985202716598
+    second: Engine 3|Engine 3|Engine 3|Engine 3|Engine 3|Engine 3Action
+  - first:
+      74: -7312305952680220646
+    second: Engine 3|Engine 3|Engine 3|Engine Frame|Engine Frame|DecoAction
+  - first:
+      74: -6594545198641655146
+    second: Engine 3|Engine 3|Engine 3|Engine Frame|Engine Frame|Engine 1Action
+  - first:
+      74: -7704267791254800389
+    second: Engine 3|Engine 3|Engine 3|Engine Frame|Engine Frame|Engine 2Action
+  - first:
+      74: 6210686362819307106
+    second: Engine 3|Engine 3|Engine 3|Engine Frame|Engine Frame|Engine 3Action
+  - first:
+      74: -2497280753365718513
+    second: Engine 3|Engine Frame|Engine Frame|Deco|Deco|DecoAction
+  - first:
+      74: 8557812136533104790
+    second: Engine 3|Engine Frame|Engine Frame|Deco|Deco|Engine 1Action
+  - first:
+      74: -3548328002578203660
+    second: Engine 3|Engine Frame|Engine Frame|Deco|Deco|Engine 2Action
+  - first:
+      74: 1474767453264544226
+    second: Engine 3|Engine Frame|Engine Frame|Deco|Deco|Engine 3Action
+  - first:
+      74: 8383645826907422060
+    second: Engine 3|Engine Frame|Engine Frame|Engine 1|Engine 1|DecoAction
+  - first:
+      74: -1996774155137201410
+    second: Engine 3|Engine Frame|Engine Frame|Engine 1|Engine 1|Engine 1Action
+  - first:
+      74: 2803492184652416039
+    second: Engine 3|Engine Frame|Engine Frame|Engine 1|Engine 1|Engine 2Action
+  - first:
+      74: 5187081970564550641
+    second: Engine 3|Engine Frame|Engine Frame|Engine 1|Engine 1|Engine 3Action
+  - first:
+      74: 1642757543673735840
+    second: Engine 3|Engine Frame|Engine Frame|Engine 2|Engine 2|DecoAction
+  - first:
+      74: -6653967260759914812
+    second: Engine 3|Engine Frame|Engine Frame|Engine 2|Engine 2|Engine 1Action
+  - first:
+      74: 43149171308738784
+    second: Engine 3|Engine Frame|Engine Frame|Engine 2|Engine 2|Engine 2Action
+  - first:
+      74: -924330477145867605
+    second: Engine 3|Engine Frame|Engine Frame|Engine 2|Engine 2|Engine 3Action
+  - first:
+      74: -5447622593667859656
+    second: Engine 3|Engine Frame|Engine Frame|Engine 3|Engine 3|DecoAction
+  - first:
+      74: 5083738037867880612
+    second: Engine 3|Engine Frame|Engine Frame|Engine 3|Engine 3|Engine 1Action
+  - first:
+      74: 7890495478811010483
+    second: Engine 3|Engine Frame|Engine Frame|Engine 3|Engine 3|Engine 2Action
+  - first:
+      74: 5961992248063914940
+    second: Engine 3|Engine Frame|Engine Frame|Engine 3|Engine 3|Engine 3Action
+  - first:
+      74: -5375503777211049822
+    second: Engine 3|Engine Frame|Engine Frame|Engine Frame|Engine Frame|DecoAction
+  - first:
+      74: 6754093607751907942
+    second: Engine 3|Engine Frame|Engine Frame|Engine Frame|Engine Frame|Engine 1Act
+  - first:
+      74: -5967031257877613129
+    second: Engine 3|Engine Frame|Engine Frame|Engine Frame|Engine Frame|Engine 2Act
+  - first:
+      74: -6832495286108042353
+    second: Engine 3|Engine Frame|Engine Frame|Engine Frame|Engine Frame|Engine 3Act
+  - first:
+      74: 4857153180139377909
+    second: Deco|Deco|Deco|Deco|Deco|DecoAction
+  - first:
+      74: -2647487613762522964
+    second: Deco|Deco|Deco|Deco|Deco|Engine 1Action
+  - first:
+      74: 8811035629053030238
+    second: Deco|Deco|Deco|Deco|Deco|Engine 2Action
+  - first:
+      74: 2586947375332807965
+    second: Deco|Deco|Deco|Deco|Deco|Engine 3Action
+  - first:
+      74: 2727518338081803168
+    second: Deco|Deco|Deco|Engine 1|Engine 1|DecoAction
+  - first:
+      74: 4664741843033660227
+    second: Deco|Deco|Deco|Engine 1|Engine 1|Engine 1Action
+  - first:
+      74: -6933728731584604325
+    second: Deco|Deco|Deco|Engine 1|Engine 1|Engine 2Action
+  - first:
+      74: -1285518379568526840
+    second: Deco|Deco|Deco|Engine 1|Engine 1|Engine 3Action
+  - first:
+      74: -7405151864576892460
+    second: Deco|Deco|Deco|Engine 2|Engine 2|DecoAction
+  - first:
+      74: 7793987563575523436
+    second: Deco|Deco|Deco|Engine 2|Engine 2|Engine 1Action
+  - first:
+      74: -8993519138264703928
+    second: Deco|Deco|Deco|Engine 2|Engine 2|Engine 2Action
+  - first:
+      74: 6069486896073411108
+    second: Deco|Deco|Deco|Engine 2|Engine 2|Engine 3Action
+  - first:
+      74: 6338521313681668611
+    second: Deco|Deco|Deco|Engine 3|Engine 3|DecoAction
+  - first:
+      74: -6272823612245058707
+    second: Deco|Deco|Deco|Engine 3|Engine 3|Engine 1Action
+  - first:
+      74: -617080691357141912
+    second: Deco|Deco|Deco|Engine 3|Engine 3|Engine 2Action
+  - first:
+      74: 7519087150009762109
+    second: Deco|Deco|Deco|Engine 3|Engine 3|Engine 3Action
+  - first:
+      74: -1464678560251344357
+    second: Deco|Deco|Deco|Engine Frame|Engine Frame|DecoAction
+  - first:
+      74: 7800869200486716303
+    second: Deco|Deco|Deco|Engine Frame|Engine Frame|Engine 1Action
+  - first:
+      74: -1737783242136347550
+    second: Deco|Deco|Deco|Engine Frame|Engine Frame|Engine 2Action
+  - first:
+      74: 5100287201032078466
+    second: Deco|Deco|Deco|Engine Frame|Engine Frame|Engine 3Action
+  - first:
+      74: -7238568247672107594
+    second: Deco|Engine 1|Engine 1|Deco|Deco|DecoAction
+  - first:
+      74: 7764801691521462108
+    second: Deco|Engine 1|Engine 1|Deco|Deco|Engine 1Action
+  - first:
+      74: 2024389932877779619
+    second: Deco|Engine 1|Engine 1|Deco|Deco|Engine 2Action
+  - first:
+      74: -300444114535916692
+    second: Deco|Engine 1|Engine 1|Deco|Deco|Engine 3Action
+  - first:
+      74: -8961869641230227331
+    second: Deco|Engine 1|Engine 1|Engine 1|Engine 1|DecoAction
+  - first:
+      74: -6961588051853460709
+    second: Deco|Engine 1|Engine 1|Engine 1|Engine 1|Engine 1Action
+  - first:
+      74: 7291934309678888857
+    second: Deco|Engine 1|Engine 1|Engine 1|Engine 1|Engine 2Action
+  - first:
+      74: 7257991113902581052
+    second: Deco|Engine 1|Engine 1|Engine 1|Engine 1|Engine 3Action
+  - first:
+      74: -1923124174411327028
+    second: Deco|Engine 1|Engine 1|Engine 2|Engine 2|DecoAction
+  - first:
+      74: -8913565258368198744
+    second: Deco|Engine 1|Engine 1|Engine 2|Engine 2|Engine 1Action
+  - first:
+      74: 1961090930991980519
+    second: Deco|Engine 1|Engine 1|Engine 2|Engine 2|Engine 2Action
+  - first:
+      74: 948446051365203142
+    second: Deco|Engine 1|Engine 1|Engine 2|Engine 2|Engine 3Action
+  - first:
+      74: -4378194674584934659
+    second: Deco|Engine 1|Engine 1|Engine 3|Engine 3|DecoAction
+  - first:
+      74: -1301710030245544230
+    second: Deco|Engine 1|Engine 1|Engine 3|Engine 3|Engine 1Action
+  - first:
+      74: -7631289738467999363
+    second: Deco|Engine 1|Engine 1|Engine 3|Engine 3|Engine 2Action
+  - first:
+      74: -775208992605470665
+    second: Deco|Engine 1|Engine 1|Engine 3|Engine 3|Engine 3Action
+  - first:
+      74: -2260082326777515430
+    second: Deco|Engine 1|Engine 1|Engine Frame|Engine Frame|DecoAction
+  - first:
+      74: 1150883473313066484
+    second: Deco|Engine 1|Engine 1|Engine Frame|Engine Frame|Engine 1Action
+  - first:
+      74: -2978281479999585208
+    second: Deco|Engine 1|Engine 1|Engine Frame|Engine Frame|Engine 2Action
+  - first:
+      74: 8734405608692074621
+    second: Deco|Engine 1|Engine 1|Engine Frame|Engine Frame|Engine 3Action
+  - first:
+      74: -2304248469717968494
+    second: Deco|Engine 2|Engine 2|Deco|Deco|DecoAction
+  - first:
+      74: -6839540245126562167
+    second: Deco|Engine 2|Engine 2|Deco|Deco|Engine 1Action
+  - first:
+      74: -2350143932970536058
+    second: Deco|Engine 2|Engine 2|Deco|Deco|Engine 2Action
+  - first:
+      74: -4693251967156980687
+    second: Deco|Engine 2|Engine 2|Deco|Deco|Engine 3Action
+  - first:
+      74: 8051810735820616279
+    second: Deco|Engine 2|Engine 2|Engine 1|Engine 1|DecoAction
+  - first:
+      74: -4147780839721050571
+    second: Deco|Engine 2|Engine 2|Engine 1|Engine 1|Engine 1Action
+  - first:
+      74: 7053368525383534668
+    second: Deco|Engine 2|Engine 2|Engine 1|Engine 1|Engine 2Action
+  - first:
+      74: 96233683059918358
+    second: Deco|Engine 2|Engine 2|Engine 1|Engine 1|Engine 3Action
+  - first:
+      74: -4267751845012938895
+    second: Deco|Engine 2|Engine 2|Engine 2|Engine 2|DecoAction
+  - first:
+      74: -9216486899521989319
+    second: Deco|Engine 2|Engine 2|Engine 2|Engine 2|Engine 1Action
+  - first:
+      74: -2684381539165830104
+    second: Deco|Engine 2|Engine 2|Engine 2|Engine 2|Engine 2Action
+  - first:
+      74: 316992886203799937
+    second: Deco|Engine 2|Engine 2|Engine 2|Engine 2|Engine 3Action
+  - first:
+      74: 7849337255138781712
+    second: Deco|Engine 2|Engine 2|Engine 3|Engine 3|DecoAction
+  - first:
+      74: -7388179273828886131
+    second: Deco|Engine 2|Engine 2|Engine 3|Engine 3|Engine 1Action
+  - first:
+      74: 2628064935754481410
+    second: Deco|Engine 2|Engine 2|Engine 3|Engine 3|Engine 2Action
+  - first:
+      74: 7928435021264287770
+    second: Deco|Engine 2|Engine 2|Engine 3|Engine 3|Engine 3Action
+  - first:
+      74: 124660456123405474
+    second: Deco|Engine 2|Engine 2|Engine Frame|Engine Frame|DecoAction
+  - first:
+      74: 1847161399306222041
+    second: Deco|Engine 2|Engine 2|Engine Frame|Engine Frame|Engine 1Action
+  - first:
+      74: -2095093987781569640
+    second: Deco|Engine 2|Engine 2|Engine Frame|Engine Frame|Engine 2Action
+  - first:
+      74: 8369786438487942064
+    second: Deco|Engine 2|Engine 2|Engine Frame|Engine Frame|Engine 3Action
+  - first:
+      74: 8288639225831968145
+    second: Deco|Engine 3|Engine 3|Deco|Deco|DecoAction
+  - first:
+      74: -4036837021803444662
+    second: Deco|Engine 3|Engine 3|Deco|Deco|Engine 1Action
+  - first:
+      74: -1139991699121242962
+    second: Deco|Engine 3|Engine 3|Deco|Deco|Engine 2Action
+  - first:
+      74: 3220243632486706700
+    second: Deco|Engine 3|Engine 3|Deco|Deco|Engine 3Action
+  - first:
+      74: 1641286693569149624
+    second: Deco|Engine 3|Engine 3|Engine 1|Engine 1|DecoAction
+  - first:
+      74: -856838177620471827
+    second: Deco|Engine 3|Engine 3|Engine 1|Engine 1|Engine 1Action
+  - first:
+      74: 683463564950309705
+    second: Deco|Engine 3|Engine 3|Engine 1|Engine 1|Engine 2Action
+  - first:
+      74: 7656158502135236760
+    second: Deco|Engine 3|Engine 3|Engine 1|Engine 1|Engine 3Action
+  - first:
+      74: 4151421052963043988
+    second: Deco|Engine 3|Engine 3|Engine 2|Engine 2|DecoAction
+  - first:
+      74: -7221736563621742926
+    second: Deco|Engine 3|Engine 3|Engine 2|Engine 2|Engine 1Action
+  - first:
+      74: 4168395399514094194
+    second: Deco|Engine 3|Engine 3|Engine 2|Engine 2|Engine 2Action
+  - first:
+      74: 8382148442274884067
+    second: Deco|Engine 3|Engine 3|Engine 2|Engine 2|Engine 3Action
+  - first:
+      74: 4302525670200544427
+    second: Deco|Engine 3|Engine 3|Engine 3|Engine 3|DecoAction
+  - first:
+      74: 4793502921916497963
+    second: Deco|Engine 3|Engine 3|Engine 3|Engine 3|Engine 1Action
+  - first:
+      74: -3424817842477433399
+    second: Deco|Engine 3|Engine 3|Engine 3|Engine 3|Engine 2Action
+  - first:
+      74: 2226503825744222903
+    second: Deco|Engine 3|Engine 3|Engine 3|Engine 3|Engine 3Action
+  - first:
+      74: -5575700602056744768
+    second: Deco|Engine 3|Engine 3|Engine Frame|Engine Frame|DecoAction
+  - first:
+      74: 7097239463382713894
+    second: Deco|Engine 3|Engine 3|Engine Frame|Engine Frame|Engine 1Action
+  - first:
+      74: -3188099314382987877
+    second: Deco|Engine 3|Engine 3|Engine Frame|Engine Frame|Engine 2Action
+  - first:
+      74: 8090621430555362755
+    second: Deco|Engine 3|Engine 3|Engine Frame|Engine Frame|Engine 3Action
+  - first:
+      74: -83913195780803746
+    second: Deco|Engine Frame|Engine Frame|Deco|Deco|DecoAction
+  - first:
+      74: -5849465907690649619
+    second: Deco|Engine Frame|Engine Frame|Deco|Deco|Engine 1Action
+  - first:
+      74: -6774539375641493657
+    second: Deco|Engine Frame|Engine Frame|Deco|Deco|Engine 2Action
+  - first:
+      74: -6115643979671288148
+    second: Deco|Engine Frame|Engine Frame|Deco|Deco|Engine 3Action
+  - first:
+      74: 6527814106020399276
+    second: Deco|Engine Frame|Engine Frame|Engine 1|Engine 1|DecoAction
+  - first:
+      74: 5996515198684639581
+    second: Deco|Engine Frame|Engine Frame|Engine 1|Engine 1|Engine 1Action
+  - first:
+      74: -7020301570511677583
+    second: Deco|Engine Frame|Engine Frame|Engine 1|Engine 1|Engine 2Action
+  - first:
+      74: -4126386250964052684
+    second: Deco|Engine Frame|Engine Frame|Engine 1|Engine 1|Engine 3Action
+  - first:
+      74: 9076462664928740543
+    second: Deco|Engine Frame|Engine Frame|Engine 2|Engine 2|DecoAction
+  - first:
+      74: -8133533513281888150
+    second: Deco|Engine Frame|Engine Frame|Engine 2|Engine 2|Engine 1Action
+  - first:
+      74: 981627028497129783
+    second: Deco|Engine Frame|Engine Frame|Engine 2|Engine 2|Engine 2Action
+  - first:
+      74: 7308193104306256014
+    second: Deco|Engine Frame|Engine Frame|Engine 2|Engine 2|Engine 3Action
+  - first:
+      74: -8074783896998657022
+    second: Deco|Engine Frame|Engine Frame|Engine 3|Engine 3|DecoAction
+  - first:
+      74: -4806737374464462942
+    second: Deco|Engine Frame|Engine Frame|Engine 3|Engine 3|Engine 1Action
+  - first:
+      74: 1361637294853158175
+    second: Deco|Engine Frame|Engine Frame|Engine 3|Engine 3|Engine 2Action
+  - first:
+      74: 2596758245731290184
+    second: Deco|Engine Frame|Engine Frame|Engine 3|Engine 3|Engine 3Action
+  - first:
+      74: -4402644789527186609
+    second: Deco|Engine Frame|Engine Frame|Engine Frame|Engine Frame|DecoAction
+  - first:
+      74: -7173536222280500482
+    second: Deco|Engine Frame|Engine Frame|Engine Frame|Engine Frame|Engine 1Act
+  - first:
+      74: 3741407068773038708
+    second: Deco|Engine Frame|Engine Frame|Engine Frame|Engine Frame|Engine 2Act
+  - first:
+      74: -2678711306257550621
+    second: Deco|Engine Frame|Engine Frame|Engine Frame|Engine Frame|Engine 3Act
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 1
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 0
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

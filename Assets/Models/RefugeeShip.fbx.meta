@@ -1,0 +1,405 @@
+fileFormatVersion: 2
+guid: f66c39d9a62369240bc11a5466683b6c
+ModelImporter:
+  serializedVersion: 21202
+  internalIDToNameTable:
+  - first:
+      74: 6742252908423229119
+    second: Engine Frame|Deco|Deco|DecoAction
+  - first:
+      74: 5178329198672255504
+    second: Engine Frame|Deco|Deco|Engine 1Action
+  - first:
+      74: -5136685390684738179
+    second: Engine Frame|Deco|Deco|Engine 2Action
+  - first:
+      74: 2766371416686964182
+    second: Engine Frame|Deco|Deco|Engine 3Action
+  - first:
+      74: -7123096342599226932
+    second: Engine Frame|Engine 1|Engine 1|DecoAction
+  - first:
+      74: 992966993493587456
+    second: Engine Frame|Engine 1|Engine 1|Engine 1Action
+  - first:
+      74: -4078711584956389006
+    second: Engine Frame|Engine 1|Engine 1|Engine 2Action
+  - first:
+      74: -2271110780921152163
+    second: Engine Frame|Engine 1|Engine 1|Engine 3Action
+  - first:
+      74: 4886056159999605372
+    second: Engine Frame|Engine 2|Engine 2|DecoAction
+  - first:
+      74: -5222956886652646845
+    second: Engine Frame|Engine 2|Engine 2|Engine 1Action
+  - first:
+      74: -1694707670730553322
+    second: Engine Frame|Engine 2|Engine 2|Engine 2Action
+  - first:
+      74: -7615491486391082268
+    second: Engine Frame|Engine 2|Engine 2|Engine 3Action
+  - first:
+      74: 6165118061339056417
+    second: Engine Frame|Engine 3|Engine 3|DecoAction
+  - first:
+      74: 4856667823381630563
+    second: Engine Frame|Engine 3|Engine 3|Engine 1Action
+  - first:
+      74: -8857067935106782232
+    second: Engine Frame|Engine 3|Engine 3|Engine 2Action
+  - first:
+      74: -5881982989891200844
+    second: Engine Frame|Engine 3|Engine 3|Engine 3Action
+  - first:
+      74: 3559638225494263600
+    second: Engine Frame|Engine Frame|Engine Frame|DecoAction
+  - first:
+      74: 3825514592834091708
+    second: Engine Frame|Engine Frame|Engine Frame|Engine 1Action
+  - first:
+      74: 3496066563081351921
+    second: Engine Frame|Engine Frame|Engine Frame|Engine 2Action
+  - first:
+      74: 9037314740418328309
+    second: Engine Frame|Engine Frame|Engine Frame|Engine 3Action
+  - first:
+      74: 3872175600742836173
+    second: Engine 2|Deco|Deco|DecoAction
+  - first:
+      74: 3522851366810811928
+    second: Engine 2|Deco|Deco|Engine 1Action
+  - first:
+      74: -1541116907018705546
+    second: Engine 2|Deco|Deco|Engine 2Action
+  - first:
+      74: 993043900820042830
+    second: Engine 2|Deco|Deco|Engine 3Action
+  - first:
+      74: 5669196564238637930
+    second: Engine 2|Engine 1|Engine 1|DecoAction
+  - first:
+      74: -6286134618117560400
+    second: Engine 2|Engine 1|Engine 1|Engine 1Action
+  - first:
+      74: 1692123201861387927
+    second: Engine 2|Engine 1|Engine 1|Engine 2Action
+  - first:
+      74: 7364475374227530756
+    second: Engine 2|Engine 1|Engine 1|Engine 3Action
+  - first:
+      74: -6879039246852897793
+    second: Engine 2|Engine 2|Engine 2|DecoAction
+  - first:
+      74: 3140054529241272174
+    second: Engine 2|Engine 2|Engine 2|Engine 1Action
+  - first:
+      74: -3036983168222983985
+    second: Engine 2|Engine 2|Engine 2|Engine 2Action
+  - first:
+      74: -6276961428653003014
+    second: Engine 2|Engine 2|Engine 2|Engine 3Action
+  - first:
+      74: -4379147166274615124
+    second: Engine 2|Engine 3|Engine 3|DecoAction
+  - first:
+      74: 3819612432929778086
+    second: Engine 2|Engine 3|Engine 3|Engine 1Action
+  - first:
+      74: 4739879642603958520
+    second: Engine 2|Engine 3|Engine 3|Engine 2Action
+  - first:
+      74: -6934097241954914247
+    second: Engine 2|Engine 3|Engine 3|Engine 3Action
+  - first:
+      74: 2461108168354657259
+    second: Engine 2|Engine Frame|Engine Frame|DecoAction
+  - first:
+      74: -1582754415167481025
+    second: Engine 2|Engine Frame|Engine Frame|Engine 1Action
+  - first:
+      74: 3772627710158009586
+    second: Engine 2|Engine Frame|Engine Frame|Engine 2Action
+  - first:
+      74: -8173168592098221271
+    second: Engine 2|Engine Frame|Engine Frame|Engine 3Action
+  - first:
+      74: 6392395014734578543
+    second: Engine 1|Deco|Deco|DecoAction
+  - first:
+      74: 682244588850194320
+    second: Engine 1|Deco|Deco|Engine 1Action
+  - first:
+      74: 7651704802053999727
+    second: Engine 1|Deco|Deco|Engine 2Action
+  - first:
+      74: -4634344386661049554
+    second: Engine 1|Deco|Deco|Engine 3Action
+  - first:
+      74: 7006615852287776570
+    second: Engine 1|Engine 1|Engine 1|DecoAction
+  - first:
+      74: -7790207573512927405
+    second: Engine 1|Engine 1|Engine 1|Engine 1Action
+  - first:
+      74: -4186857623988616397
+    second: Engine 1|Engine 1|Engine 1|Engine 2Action
+  - first:
+      74: -2217915516276669706
+    second: Engine 1|Engine 1|Engine 1|Engine 3Action
+  - first:
+      74: -5519847530495632292
+    second: Engine 1|Engine 2|Engine 2|DecoAction
+  - first:
+      74: -7666390260371687297
+    second: Engine 1|Engine 2|Engine 2|Engine 1Action
+  - first:
+      74: 8975216531455491837
+    second: Engine 1|Engine 2|Engine 2|Engine 2Action
+  - first:
+      74: -8730753971922140392
+    second: Engine 1|Engine 2|Engine 2|Engine 3Action
+  - first:
+      74: 6797182831967745144
+    second: Engine 1|Engine 3|Engine 3|DecoAction
+  - first:
+      74: 6309091719931400273
+    second: Engine 1|Engine 3|Engine 3|Engine 1Action
+  - first:
+      74: -4420301332258103407
+    second: Engine 1|Engine 3|Engine 3|Engine 2Action
+  - first:
+      74: -5486973675668416365
+    second: Engine 1|Engine 3|Engine 3|Engine 3Action
+  - first:
+      74: 1280956189315469618
+    second: Engine 1|Engine Frame|Engine Frame|DecoAction
+  - first:
+      74: 96873075248327318
+    second: Engine 1|Engine Frame|Engine Frame|Engine 1Action
+  - first:
+      74: -4849001597373125640
+    second: Engine 1|Engine Frame|Engine Frame|Engine 2Action
+  - first:
+      74: -7354148397011798318
+    second: Engine 1|Engine Frame|Engine Frame|Engine 3Action
+  - first:
+      74: -7825557560224226678
+    second: Engine 3|Deco|Deco|DecoAction
+  - first:
+      74: -232121656629001624
+    second: Engine 3|Deco|Deco|Engine 1Action
+  - first:
+      74: -2074670522733699173
+    second: Engine 3|Deco|Deco|Engine 2Action
+  - first:
+      74: 5239493830684116083
+    second: Engine 3|Deco|Deco|Engine 3Action
+  - first:
+      74: -1943492051010546945
+    second: Engine 3|Engine 1|Engine 1|DecoAction
+  - first:
+      74: -3708109646246587665
+    second: Engine 3|Engine 1|Engine 1|Engine 1Action
+  - first:
+      74: -5379499698092678429
+    second: Engine 3|Engine 1|Engine 1|Engine 2Action
+  - first:
+      74: 6446064651893754225
+    second: Engine 3|Engine 1|Engine 1|Engine 3Action
+  - first:
+      74: 3158112021507897620
+    second: Engine 3|Engine 2|Engine 2|DecoAction
+  - first:
+      74: -8934151189231236306
+    second: Engine 3|Engine 2|Engine 2|Engine 1Action
+  - first:
+      74: -5219643628667512468
+    second: Engine 3|Engine 2|Engine 2|Engine 2Action
+  - first:
+      74: -7235840703326588834
+    second: Engine 3|Engine 2|Engine 2|Engine 3Action
+  - first:
+      74: -9050793798879992447
+    second: Engine 3|Engine 3|Engine 3|DecoAction
+  - first:
+      74: 1029765240149014433
+    second: Engine 3|Engine 3|Engine 3|Engine 1Action
+  - first:
+      74: -1202947850646252741
+    second: Engine 3|Engine 3|Engine 3|Engine 2Action
+  - first:
+      74: -4665696306819851610
+    second: Engine 3|Engine 3|Engine 3|Engine 3Action
+  - first:
+      74: 6714861963352508638
+    second: Engine 3|Engine Frame|Engine Frame|DecoAction
+  - first:
+      74: 1533719996494070722
+    second: Engine 3|Engine Frame|Engine Frame|Engine 1Action
+  - first:
+      74: 8901512798016982678
+    second: Engine 3|Engine Frame|Engine Frame|Engine 2Action
+  - first:
+      74: 6189385611373038196
+    second: Engine 3|Engine Frame|Engine Frame|Engine 3Action
+  - first:
+      74: -9205134219383107946
+    second: Deco|Deco|Deco|DecoAction
+  - first:
+      74: 8766558993768139648
+    second: Deco|Deco|Deco|Engine 1Action
+  - first:
+      74: 6933661283115208786
+    second: Deco|Deco|Deco|Engine 2Action
+  - first:
+      74: -2058046320487159663
+    second: Deco|Deco|Deco|Engine 3Action
+  - first:
+      74: -813292218134863727
+    second: Deco|Engine 1|Engine 1|DecoAction
+  - first:
+      74: 8098109497948932278
+    second: Deco|Engine 1|Engine 1|Engine 1Action
+  - first:
+      74: -7007568582722064050
+    second: Deco|Engine 1|Engine 1|Engine 2Action
+  - first:
+      74: 8231577685445753499
+    second: Deco|Engine 1|Engine 1|Engine 3Action
+  - first:
+      74: 519580706863659561
+    second: Deco|Engine 2|Engine 2|DecoAction
+  - first:
+      74: -8272276188043523504
+    second: Deco|Engine 2|Engine 2|Engine 1Action
+  - first:
+      74: 6984399566131030375
+    second: Deco|Engine 2|Engine 2|Engine 2Action
+  - first:
+      74: 1203580809639772911
+    second: Deco|Engine 2|Engine 2|Engine 3Action
+  - first:
+      74: 6459787571875041570
+    second: Deco|Engine 3|Engine 3|DecoAction
+  - first:
+      74: -8452916210343135879
+    second: Deco|Engine 3|Engine 3|Engine 1Action
+  - first:
+      74: 4634204906374279891
+    second: Deco|Engine 3|Engine 3|Engine 2Action
+  - first:
+      74: 4328893536069678956
+    second: Deco|Engine 3|Engine 3|Engine 3Action
+  - first:
+      74: 4461685324549678504
+    second: Deco|Engine Frame|Engine Frame|DecoAction
+  - first:
+      74: 5254410101591291275
+    second: Deco|Engine Frame|Engine Frame|Engine 1Action
+  - first:
+      74: 4081392905087996029
+    second: Deco|Engine Frame|Engine Frame|Engine 2Action
+  - first:
+      74: -4277079176714718028
+    second: Deco|Engine Frame|Engine Frame|Engine 3Action
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 1
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 0
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

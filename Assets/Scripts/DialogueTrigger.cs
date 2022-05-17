@@ -39,6 +39,10 @@ public class DialogueTrigger : MonoBehaviour
                     FindObjectOfType<CinemachineTargetGroup>().AddMember(transform, 2f, 10f);
                     DialogueManager.GetInstance().EnterDialogue(inkJSON);
                     FindObjectOfType<PlayerMovement>().EnterDialogue(gameObject);
+                    if(GetComponent<Rigidbody>() != null)
+                    {
+                        GetComponent<Rigidbody>().drag = 3.0f;
+                    }
                 }
 
             }

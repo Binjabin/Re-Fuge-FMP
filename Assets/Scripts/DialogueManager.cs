@@ -19,6 +19,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] Animator playerAnimator;
     [SerializeField] Animator merchantAnimator;
     [SerializeField] Animator mysteriousAnimator;
+    [SerializeField] Animator refugeeAnimator;
     Animator anim;
 
     [SerializeField] Color foodColor;
