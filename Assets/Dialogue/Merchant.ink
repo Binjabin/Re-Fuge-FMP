@@ -1,5 +1,7 @@
 #player involved true
 #merchant involved true
+#mysterious involved false
+#refugee involved false
 #mystery involved false
 #player anim enterNeutral
 #merchant anim enterAngry

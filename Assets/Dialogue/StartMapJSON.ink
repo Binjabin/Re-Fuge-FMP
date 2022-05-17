@@ -11,7 +11,8 @@ VAR defaultcolor = ""
 
 #player involved true
 #merchant involved false
-#mystery involved false
+#mysterious involved false
+#refugee involved false
 #player anim enterScared
 INCOMING TRANSMISSION
 #player anim inScared

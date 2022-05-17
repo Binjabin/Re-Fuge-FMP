@@ -103,6 +103,9 @@ public class DialogueManager : MonoBehaviour
                     case "mysterious":
                         mysteriousAnimator.gameObject.SetActive(bool.Parse(param));
                         break;
+                    case "refugee":
+                        refugeeAnimator.gameObject.SetActive(bool.Parse(param));
+                        break;
                 }
             }
             else
@@ -117,6 +120,9 @@ public class DialogueManager : MonoBehaviour
                         break;
                     case "mysterious":
                         anim = mysteriousAnimator;
+                        break;
+                    case "refugee":
+                        anim = refugeeAnimator;
                         break;
                 }
                 if (prefix == "anim")
