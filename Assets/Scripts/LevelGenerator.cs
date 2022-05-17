@@ -17,6 +17,14 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] GameObject spaceStation;
     [SerializeField] float merchantBufferDistance;
     [SerializeField] float minDistanceFromCenterMerchant;
+    [Header("Refugee Settings")]
+    [SerializeField] GameObject refugeeShip;
+    [SerializeField] float refugeeBufferDistance;
+    [SerializeField] float minDistanceFromCenterRefugee;
+    [Header("Mysterious Man Settings")]
+    [SerializeField] GameObject manShip;
+    [SerializeField] float manBufferDistance;
+    [SerializeField] float minDistanceFromCenterMan;
     [Header("Warp Point Settings")]
     [SerializeField] GameObject endPoint;
     [SerializeField] float endBufferDistance;
@@ -42,6 +50,14 @@ public class LevelGenerator : MonoBehaviour
         {
             PlaceSpaceStation();
         }
+        if (LevelToLoad.containsRefugee)
+        {
+            PlaceRefugeeShip();
+        }
+        if(LevelToLoad.containsMysteriousMan)
+        {
+            PlaceMysteriousMan();
+        }
         for (int i = 0; i < LevelToLoad.standardEnemyCount; i++)
         {
             PlaceLightEnemy();
@@ -60,7 +76,32 @@ public class LevelGenerator : MonoBehaviour
     {
 
     }
+
+    
     void PlaceLightEnemy()
+    {
+        nextEnemyWaypoint = new List<Vector3>();
+        float x = Random.Range(maxDistance - enemyBufferDistance, minDistanceFromCenterEnemy);
+        float y = Random.Range(maxDistance - enemyBufferDistance, minDistanceFromCenterEnemy);
+        nextEnemyWaypoint.Add(new Vector3(x, 0f, y));
+
+        x = Random.Range(maxDistance - enemyBufferDistance, minDistanceFromCenterEnemy);
+        y = Random.Range(maxDistance - enemyBufferDistance, minDistanceFromCenterEnemy);
+        nextEnemyWaypoint.Add(new Vector3(-x, 0f, y));
+
+        x = Random.Range(maxDistance - enemyBufferDistance, minDistanceFromCenterEnemy);
+        y = Random.Range(maxDistance - enemyBufferDistance, minDistanceFromCenterEnemy);
+        nextEnemyWaypoint.Add(new Vector3(-x, 0f, -y));
+
+        x = Random.Range(maxDistance - enemyBufferDistance, minDistanceFromCenterEnemy);
+        y = Random.Range(maxDistance - enemyBufferDistance, minDistanceFromCenterEnemy);
+        nextEnemyWaypoint.Add(new Vector3(x, 0f, -y));
+
+        GameObject enemy = Instantiate(heavyEnemy, nextEnemyWaypoint[Random.Range(0, nextEnemyWaypoint.Count)], Quaternion.identity);
+        enemy.GetComponent<EnemyMovement>().patrolPoints = nextEnemyWaypoint;
+    }
+
+    void PlaceHeavyEnemy()
     {
         nextEnemyWaypoint = new List<Vector3>();
         float x = Random.Range(maxDistance - enemyBufferDistance, minDistanceFromCenterEnemy);
@@ -81,11 +122,6 @@ public class LevelGenerator : MonoBehaviour
 
         GameObject enemy = Instantiate(lightEnemy, nextEnemyWaypoint[Random.Range(0, nextEnemyWaypoint.Count)], Quaternion.identity);
         enemy.GetComponent<EnemyMovement>().patrolPoints = nextEnemyWaypoint;
-    }
-
-    void PlaceHeavyEnemy()
-    {
-
     }
 
     void PlaceSpaceStation()
@@ -112,6 +148,44 @@ public class LevelGenerator : MonoBehaviour
             merchantRotation.eulerAngles = new Vector3(0f, -90f, 0f);
         }
         merchantShip = Instantiate(spaceStation, merchantPosition, merchantRotation);
+    }
+
+    void PlaceRefugeeShip()
+    {
+        Vector3 refugeePosition = new Vector3(0f, 0f, 0f);
+        float x = Random.Range(-maxDistance + refugeeBufferDistance, -minDistanceFromCenterRefugee);
+        float z = Random.Range(-maxDistance + refugeeBufferDistance, -minDistanceFromCenterRefugee);
+        if (Random.Range(0, 2) == 0)
+        {
+            x = -x;
+        }
+        if (Random.Range(0, 2) == 0)
+        {
+            z = -z;
+        }
+        refugeePosition.x = x;
+        refugeePosition.z = z;
+
+        Instantiate(refugeeShip, refugeePosition, Quaternion.identity);
+    }
+
+    void PlaceMysteriousMan()
+    {
+        Vector3 manPosition = new Vector3(0f, 0f, 0f);
+        float x = Random.Range(-maxDistance + manBufferDistance, -minDistanceFromCenterMan);
+        float z = Random.Range(-maxDistance + merchantBufferDistance, -minDistanceFromCenterMan);
+        if (Random.Range(0, 2) == 0)
+        {
+            x = -x;
+        }
+        if (Random.Range(0, 2) == 0)
+        {
+            z = -z;
+        }
+        manPosition.x = x;
+        manPosition.z = z;
+
+        Instantiate(manShip, manPosition, Quaternion.identity);
     }
 
     public void GenerateField(int count)

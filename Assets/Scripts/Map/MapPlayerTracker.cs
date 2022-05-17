@@ -10,6 +10,8 @@ public class MapPlayerTracker : MonoBehaviour
     public MapNode currentNode;
     public List<MapNode> currentAttainableNodes;
     public bool enteringScene;
+    [SerializeField] AudioClip cannotGo;
+    [SerializeField] AudioClip canGo;
     // Start is called before the first frame update
 
     private void Start()
@@ -29,9 +31,20 @@ public class MapPlayerTracker : MonoBehaviour
                 if (!FindObjectOfType<DialogueManager>().dialogueIsPlaying)
                 {
                     SendPlayerToNode(mapNode);
+                    GetComponent<AudioSource>().clip = canGo;
+                    GetComponent<AudioSource>().Play();
+                }
+
+
+            }
+            else
+            {
+                if (!FindObjectOfType<DialogueManager>().dialogueIsPlaying)
+                {
+                    GetComponent<AudioSource>().clip = cannotGo;
+                    GetComponent<AudioSource>().Play();
                 }
                     
-                
             }
                 
         }
@@ -50,12 +63,15 @@ public class MapPlayerTracker : MonoBehaviour
                     {
                         SendPlayerToNode(mapNode);
                         currentNode = mapNode;
+                        GetComponent<AudioSource>().clip = canGo;
+                        GetComponent<AudioSource>().Play();
                     }
-                    
+
                 }
                 else
                 {
-                    Debug.Log("not enough resources");
+                    GetComponent<AudioSource>().clip = cannotGo;
+                    GetComponent<AudioSource>().Play();
                 }
             }
         }
@@ -82,6 +98,9 @@ public class MapPlayerTracker : MonoBehaviour
         LevelToLoad.asteroidCount = Random.Range(node.blueprint.minAsteroidCount, node.blueprint.maxAsteroidCount);
         LevelToLoad.seed = Random.Range(0, 100000);
         LevelToLoad.containsMerchant = node.blueprint.containsMerchant;
+        LevelToLoad.containsRefugee = node.blueprint.containsRefugee;
+        LevelToLoad.containsMysteriousMan = node.blueprint.containsMysteroiusMan;
+
         LevelToLoad.heavyEnemyCount = Random.Range(node.blueprint.minHeavyEnemyCount, node.blueprint.maxHeavyEnemyCount + 1);
         LevelToLoad.standardEnemyCount = Random.Range(node.blueprint.minLightEnemyCount, node.blueprint.maxLightEnemyCount + 1);
         LevelToLoad.asteroidWeights = node.asteroidWeights;

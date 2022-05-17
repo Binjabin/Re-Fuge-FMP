@@ -6,6 +6,7 @@ using Ink.Runtime;
 
 public class DialogueManager : MonoBehaviour
 {
+    bool typing;
     static DialogueManager instance;
     [SerializeField] GameObject dialoguePanel;
     [SerializeField] TextMeshProUGUI dialogueText;
@@ -17,7 +18,7 @@ public class DialogueManager : MonoBehaviour
     List<string> tags;
     AudioSource audio;
     public bool showCostObject;
-
+    string currentSentence;
     [SerializeField] Animator playerAnimator;
     [SerializeField] Animator merchantAnimator;
     [SerializeField] Animator mysteriousAnimator;
@@ -66,10 +67,19 @@ public class DialogueManager : MonoBehaviour
         if (!dialogueIsPlaying) { return; }
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            if(currentChoices.Count < 1)
+            if(!typing)
             {
-                ContinueStory();
+                if (currentChoices.Count < 1)
+                {
+                    ContinueStory();
+                }
             }
+            else
+            {
+                DisplayFullSentence();
+
+            }
+            
             
         }
     }
@@ -285,6 +295,7 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = "";
         string currentTypedText = "";
         string colorText = "";
+        typing = true;
         foreach (char letter in sentence.ToCharArray())
         {
             if (letter == '<')
@@ -309,8 +320,16 @@ public class DialogueManager : MonoBehaviour
             }
 
             dialogueText.text = currentTypedText;
-            
+
         }
+        typing = false;
+    }
+
+    void DisplayFullSentence()
+    {
+        StopAllCoroutines();
+        dialogueText.text = currentSentence;
+        typing = false;
     }
 
     void ContinueStory()
@@ -318,7 +337,8 @@ public class DialogueManager : MonoBehaviour
         if (currentStory.canContinue)
         {
             StopAllCoroutines();
-            StartCoroutine(TypeSentence(currentStory.Continue()));
+            currentSentence = currentStory.Continue();
+            StartCoroutine(TypeSentence(currentSentence));
             DisplayChoices();
             ParseTags();
         }
@@ -354,6 +374,7 @@ public class DialogueManager : MonoBehaviour
         currentStory.ChooseChoiceIndex(choiceIndex);
         audio = GetComponent<AudioSource>();
         GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
+        audio.Play();
         ContinueStory();
     }
 }

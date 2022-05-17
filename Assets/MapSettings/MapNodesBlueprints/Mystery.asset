@@ -14,17 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 3
   icon: {fileID: 21300000, guid: 0af96d682d9717c46935d845c1d9bac8, type: 3}
-  minAsteroidCount: 0
+  minAsteroidCount: 300
   maxAsteroidCount: 500
   containsMerchant: 0
+  containsRefugee: 0
+  containsMysteroiusMan: 1
   minLightEnemyCount: 0
-  maxLightEnemyCount: 3
+  maxLightEnemyCount: 0
   minHeavyEnemyCount: 0
   maxHeavyEnemyCount: 0
-  asteroidWeights:
-  - type: 0
-    weight: 1
-  - type: 1
-    weight: 1
-  - type: 2
-    weight: 1
