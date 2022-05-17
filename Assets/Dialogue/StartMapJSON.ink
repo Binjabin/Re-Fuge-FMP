@@ -19,7 +19,7 @@ That was way too close...
 #player anim neutral
 Right, no time to spare.
 Got to take inventory.
-#map inventory show
+#map event showResource
 Okay, so plenty of <b><color={highresourcecolor}>{highresource} <color={defaultcolor}></b>left. Should last me a little while at least.
 Enough <b><color={midresourcecolor}>{midresource}<color={defaultcolor}></b> for now...
 #player anim scared
@@ -28,7 +28,7 @@ And... Oh.
 Barely any <b><color={lowresourcecolor}>{lowresource}<color={defaultcolor}></b>. 
 #player anim neutral
 I guess getting some will be the first priority.
-
+#map event hideResource
 I can see the next solar system on the ship's map. I better select it.
 #player anim neutral
 I have to move forwards. No time for rest.

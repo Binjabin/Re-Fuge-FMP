@@ -23,6 +23,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndD
     public GameObject prefab;
     public ItemType itemType;
     Inventory inv;
+    AudioSource audio;
     public InventorySlot currentSlot;
     public float value = 10f;
     public InventorySlot startSlot = null;
@@ -62,6 +63,8 @@ public class Item : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndD
             if (slot.Accepts(this))
             {
                 currentSlot = slot;
+                audio.pitch = Random.Range(0.9f, 1.1f);
+                audio.Play();
                 if(slot.tradeInput)
                 {
                     slot.trade.CheckTrade();
@@ -100,6 +103,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndD
         parentRect = transform.parent.GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
         inv = FindObjectOfType<Inventory>();
+        audio = inv.gameObject.GetComponent<AudioSource>();
         if (startSlot == null)
         {
             InventorySlot[] standardSlotsArray = canvas.GetComponentsInChildren<InventorySlot>();
