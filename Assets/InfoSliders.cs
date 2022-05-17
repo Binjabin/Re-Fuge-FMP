@@ -58,7 +58,7 @@ public class InfoSliders : MonoBehaviour
         currentWaterSlider.value = PlayerStats.water / 100f;
         if (FindObjectOfType<DialogueManager>().dialogueIsPlaying)
         {
-            invObject.SetActive(false);
+            invObject.SetActive(FindObjectOfType<DialogueManager>().showCostObject);
             recourceObject.SetActive(false);
             costObject.SetActive(false);
             enemyObject.SetActive(false);
@@ -68,6 +68,7 @@ public class InfoSliders : MonoBehaviour
             invObject.SetActive(true);
             if (currentSelectedNode == null)
             {
+                
                 recourceObject.SetActive(false);
                 costObject.SetActive(false);
                 enemyObject.SetActive(false);

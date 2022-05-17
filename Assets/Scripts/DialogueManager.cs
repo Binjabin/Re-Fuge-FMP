@@ -15,6 +15,8 @@ public class DialogueManager : MonoBehaviour
     public bool dialogueIsPlaying;
     List<Choice> currentChoices;
     List<string> tags;
+    AudioSource audio;
+    public bool showCostObject;
 
     [SerializeField] Animator playerAnimator;
     [SerializeField] Animator merchantAnimator;
@@ -87,6 +89,14 @@ public class DialogueManager : MonoBehaviour
                     Debug.Log("open");
                     ExitDialogue();
                     FindObjectOfType<Inventory>().inShop = true;
+                }
+                else if (param == "showResource")
+                {
+                    showCostObject = true;
+                }
+                else if (param == "hideResource")
+                {
+                    showCostObject = false;
                 }
 
             }
@@ -342,6 +352,8 @@ public class DialogueManager : MonoBehaviour
     public void MakeChoice(int choiceIndex)
     {
         currentStory.ChooseChoiceIndex(choiceIndex);
+        audio = GetComponent<AudioSource>();
+        GetComponent<AudioSource>().pitch = Random.Range(0.9f, 1.1f);
         ContinueStory();
     }
 }
