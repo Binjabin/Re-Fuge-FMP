@@ -115,7 +115,7 @@ public class MapPlayerTracker : MonoBehaviour
         yield return new WaitForSeconds(1f);
         enteringScene = true;
         FindObjectOfType<SceneManagment>().LeaveScene();
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(4f);
 
         SceneManager.LoadScene("Safe");
         switch (node.Node.nodeType)

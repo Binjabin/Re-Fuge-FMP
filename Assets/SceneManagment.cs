@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 public class SceneManagment : MonoBehaviour
 {
     [SerializeField] Animator outAnimation;
+    [SerializeField] AudioSource audio;
+    [SerializeField] AudioSource rumbleAudio;
+
 
     // Start is called before the first frame update
     void Start()
@@ -32,14 +35,48 @@ public class SceneManagment : MonoBehaviour
 
     IEnumerator LeaveSceneAnimation()
     {
+        
+        float elapsedTime = 0f;
+        rumbleAudio.Play();
+        rumbleAudio.volume = 0.3f;
+        while (elapsedTime < 2f)
+        {
+            elapsedTime += Time.deltaTime;
+            audio.volume = Mathf.Lerp(0.2f, 0f, (elapsedTime / 5f));
+            rumbleAudio.volume = Mathf.Lerp(.5f, 1f, (elapsedTime / 5f));
+            yield return null;
+        }
         outAnimation.SetTrigger("Out");
-        yield return new WaitForSeconds(0.1f);
+        while (elapsedTime < 4f)
+        {
+            elapsedTime += Time.deltaTime;
+            audio.volume = Mathf.Lerp(0.2f, 0f, (elapsedTime / 4f));
+            rumbleAudio.volume = Mathf.Lerp(.5f, 1f, (elapsedTime / 4f));
+            yield return null;
+        }
     }
 
     IEnumerator ReturnToMapAnimation()
     {
         outAnimation.SetTrigger("Out");
-        yield return new WaitForSeconds(2f);
+        float elapsedTime = 0f;
+        rumbleAudio.Play();
+        rumbleAudio.volume = 0.3f;
+        while (elapsedTime < 2f)
+        {
+            elapsedTime += Time.deltaTime;
+            audio.volume = Mathf.Lerp(0.2f, 0f, (elapsedTime / 5f));
+            rumbleAudio.volume = Mathf.Lerp(.5f, 1f, (elapsedTime / 5f));
+            yield return null;
+        }
+        outAnimation.SetTrigger("Out");
+        while (elapsedTime < 5f)
+        {
+            elapsedTime += Time.deltaTime;
+            audio.volume = Mathf.Lerp(0.2f, 0f, (elapsedTime / 5f));
+            rumbleAudio.volume = Mathf.Lerp(.5f, 1f, (elapsedTime / 5f));
+            yield return null;
+        }
         SceneManager.LoadScene("Map");
     }
 

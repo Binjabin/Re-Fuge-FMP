@@ -112,15 +112,23 @@ public class PlayerMovement : MonoBehaviour
     }
     void ProcessInput()
     {
-        if(Input.GetKey(KeyCode.Mouse0))
-        {
-            miningLazer.Play();
-            FindObjectOfType<Inventory>().ReduceEnergy(energyPerSecondMining * Time.deltaTime);
-        }
-        else
+        if (FindObjectOfType<Inventory>().currentEnergy < 0.01f)
         {
             miningLazer.Stop();
         }
+        else
+        {
+            if (Input.GetKey(KeyCode.Mouse0))
+            {
+                miningLazer.Play();
+                FindObjectOfType<Inventory>().ReduceEnergy(energyPerSecondMining * Time.deltaTime);
+            }
+            else
+            {
+                miningLazer.Stop();
+            }
+        }
+        
         if (thrusting)
         {
             FindObjectOfType<Inventory>().ReduceEnergy(energyPerSecondThrusting * Time.deltaTime);

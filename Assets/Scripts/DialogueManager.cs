@@ -38,6 +38,12 @@ public class DialogueManager : MonoBehaviour
     Color midColor;
     Color lowColor;
 
+    [SerializeField] AudioClip startDialogueClip;
+    [SerializeField] AudioClip playerDialogueClip;
+    [SerializeField] AudioClip otherDialogueClip;
+    [SerializeField] AudioSource commsSource;
+
+    bool isPlayer;
 
     private void Start()
     {
@@ -71,7 +77,9 @@ public class DialogueManager : MonoBehaviour
             {
                 if (currentChoices.Count < 1)
                 {
+
                     ContinueStory();
+
                 }
             }
             else
@@ -134,7 +142,15 @@ public class DialogueManager : MonoBehaviour
                 {
                     case "player":
                         anim = playerAnimator;
-                        break;
+                        if (param.Contains("in"))
+                        {
+                            isPlayer = true;
+                        }
+                        else if(param.Contains("out"))
+                        {
+                            isPlayer = false;
+                        }
+                            break;
                     case "merchant":
                         anim = merchantAnimator;
                         break;
@@ -149,6 +165,7 @@ public class DialogueManager : MonoBehaviour
                 {
                     anim.Play(param);
                 }
+                
             }
             
 
@@ -160,10 +177,13 @@ public class DialogueManager : MonoBehaviour
         currentStory = new Story(json.text);
         dialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
+        isPlayer = false;
         SetUpVariables();
+        commsSource.volume = 1f;
+        commsSource.clip = startDialogueClip;
+        commsSource.Play();
         
-        
-        ContinueStory();
+        StartStory();
     }
     void SetUpVariables()
     {
@@ -323,6 +343,7 @@ public class DialogueManager : MonoBehaviour
 
         }
         typing = false;
+        commsSource.Stop();
     }
 
     void DisplayFullSentence()
@@ -330,9 +351,54 @@ public class DialogueManager : MonoBehaviour
         StopAllCoroutines();
         dialogueText.text = currentSentence;
         typing = false;
+        commsSource.Stop();
+    }
+    void DoSound()
+    {
+        commsSource.Stop();
+        if (isPlayer)
+        {
+            commsSource.volume = 2f;
+            commsSource.pitch = Random.Range(-0.8f, -1.2f);
+            commsSource.clip = playerDialogueClip;
+            float offset = Random.Range(0f, playerDialogueClip.length);
+            commsSource.time = offset;
+        }
+        else
+        {
+            commsSource.volume = 2f;
+            commsSource.pitch = Random.Range(0.8f, 1.2f);
+            commsSource.clip = otherDialogueClip;
+            float offset = Random.Range(0f, otherDialogueClip.length);
+            commsSource.time = offset;
+        }
+
+
+
+        commsSource.Play();
     }
 
     void ContinueStory()
+    {
+
+        
+
+        if (currentStory.canContinue)
+        {
+            DoSound();
+            StopAllCoroutines();
+            currentSentence = currentStory.Continue();
+            StartCoroutine(TypeSentence(currentSentence));
+            DisplayChoices();
+            ParseTags();
+        }
+        else
+        {
+            ExitDialogue();
+        }
+    }
+
+    void StartStory()
     {
         if (currentStory.canContinue)
         {
