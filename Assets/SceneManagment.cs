@@ -93,6 +93,7 @@ public class SceneManagment : MonoBehaviour
         {
             PlayerStats.items.Add(item.GetComponent<Item>().prefab);
         }
+        PlayerStats.SaveStats();
         
 
     }

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Newtonsoft.Json;
 public static class PlayerStats
 {
     public static float energy;
@@ -12,7 +12,7 @@ public static class PlayerStats
 
     public static bool init;
     public static List<GameObject> items;
-    
+
     public static float levelPassed;
 
     public static void InitStats()
@@ -32,5 +32,65 @@ public static class PlayerStats
         values.Remove(values[index]);
         health = 100f;
         shield = 100f;
+    }
+    public static void SaveStats()
+    {
+        PlayerStatsJSON playerJSON = new PlayerStatsJSON();
+        playerJSON.energy = energy;
+        playerJSON.food = food;
+        playerJSON.water = water;
+        playerJSON.health = health;
+        playerJSON.shield = shield;
+        foreach(GameObject item in items)
+        {
+            ItemData itemData = new ItemData();
+            itemData.value = item.GetComponent<Item>().value;
+            itemData.type = item.GetComponent<Item>().itemType;
+            playerJSON.items.Add(itemData);
+        }
+        
+        playerJSON.levelPassed = levelPassed;
+
+
+        var json = JsonConvert.SerializeObject(playerJSON);
+        PlayerPrefs.SetString("Player", json);
+        PlayerPrefs.Save();
+    }
+
+    public static void LoadStats()
+    {
+        if (PlayerPrefs.HasKey("Player"))
+        {
+            var json = PlayerPrefs.GetString("Player");
+            PlayerStatsJSON playerJSON = JsonConvert.DeserializeObject<PlayerStatsJSON>(json);
+
+            energy = playerJSON.energy;
+            food = playerJSON.food;
+            water = playerJSON.water;
+            health = playerJSON.health;
+            shield = playerJSON.shield;
+            foreach(ItemData data in playerJSON.items)
+            {
+                if (data.type == ItemType.Food)
+                {
+                    
+                }
+                if (data.type == ItemType.Water)
+                {
+
+                }
+                if (data.type == ItemType.Energy)
+                {
+                      
+                }
+
+            }
+            levelPassed = playerJSON.levelPassed;
+
+        }
+        else
+        {
+            InitStats();
+        }
     }
 }

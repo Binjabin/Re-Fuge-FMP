@@ -42,7 +42,7 @@ public class MapManager : MonoBehaviour
         {
             GenerateNewMap();
         }
-        PlayerStats.InitStats();
+        PlayerStats.LoadStats();
         FindObjectOfType<MapDialogueTrigger>().CheckDialogue();
         PlayerStats.levelPassed = map.path.Count;
     }
