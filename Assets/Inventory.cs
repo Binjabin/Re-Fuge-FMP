@@ -27,6 +27,7 @@ public class Inventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        allItems = ItemPrefabs.prefabList;
         if (PlayerStats.init == false)
         {
             Debug.Log(PlayerStats.energy);

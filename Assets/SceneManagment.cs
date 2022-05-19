@@ -93,12 +93,9 @@ public class SceneManagment : MonoBehaviour
         {
             PlayerStats.items.Add(item.GetComponent<Item>().prefab);
         }
+        PlayerStats.levelPassed += 1;
         PlayerStats.SaveStats();
         
-
-    }
-    void LoadPlayerStats()
-    {
 
     }
 }

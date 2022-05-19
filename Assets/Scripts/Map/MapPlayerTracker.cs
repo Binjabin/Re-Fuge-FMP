@@ -96,7 +96,7 @@ public class MapPlayerTracker : MonoBehaviour
     private IEnumerator EnterNode(MapNode node)
     {
         LevelToLoad.asteroidCount = Random.Range(node.blueprint.minAsteroidCount, node.blueprint.maxAsteroidCount);
-        LevelToLoad.seed = Random.Range(0, 100000);
+        LevelToLoad.seed = node.Node.seed;
         LevelToLoad.containsMerchant = node.blueprint.containsMerchant;
         LevelToLoad.containsRefugee = node.blueprint.containsRefugee;
         LevelToLoad.containsMysteriousMan = node.blueprint.containsMysteroiusMan;

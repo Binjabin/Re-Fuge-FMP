@@ -13,7 +13,6 @@ public class MapGenerator
     static List<List<NodePoint>> paths = new List<List<NodePoint>>();
     static public List<List<Node>> nodes = new List<List<Node>>();
     static public List<float> layerDistances;
-    
     public static Map GetMap(MapConfig conf)
     {
         config = conf;
@@ -50,7 +49,8 @@ public class MapGenerator
             var node = new Node(nodeType, blueprintName, new NodePoint(i, layerIndex))
             {
                 position = new Vector3(baseX, 0f, baseY),
-                asteroidWeights = newAsteroidWeights
+                asteroidWeights = newAsteroidWeights,
+                seed = Random.Range(0, 100000)
             };
             layerNodes.Add(node);
         }

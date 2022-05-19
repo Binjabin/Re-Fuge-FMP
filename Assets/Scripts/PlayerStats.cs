@@ -30,6 +30,8 @@ public static class PlayerStats
         index = Random.Range(0, values.Count);
         food = values[index];
         values.Remove(values[index]);
+        items.Clear();
+        levelPassed = 0f;
         health = 100f;
         shield = 100f;
     }
@@ -41,6 +43,7 @@ public static class PlayerStats
         playerJSON.water = water;
         playerJSON.health = health;
         playerJSON.shield = shield;
+        playerJSON.items = new List<ItemData>();
         foreach(GameObject item in items)
         {
             ItemData itemData = new ItemData();
@@ -59,38 +62,40 @@ public static class PlayerStats
 
     public static void LoadStats()
     {
-        if (PlayerPrefs.HasKey("Player"))
+        
+        
+        var json = PlayerPrefs.GetString("Player");
+        Debug.Log(json);
+        PlayerStatsJSON playerJSON = JsonConvert.DeserializeObject<PlayerStatsJSON>(json);
+
+        energy = playerJSON.energy;
+        food = playerJSON.food;
+        water = playerJSON.water;
+        health = playerJSON.health;
+        shield = playerJSON.shield;
+        if(playerJSON.items != null)
         {
-            var json = PlayerPrefs.GetString("Player");
-            PlayerStatsJSON playerJSON = JsonConvert.DeserializeObject<PlayerStatsJSON>(json);
-
-            energy = playerJSON.energy;
-            food = playerJSON.food;
-            water = playerJSON.water;
-            health = playerJSON.health;
-            shield = playerJSON.shield;
-            foreach(ItemData data in playerJSON.items)
+            items = new List<GameObject>();
+            foreach (ItemData data in playerJSON.items)
             {
-                if (data.type == ItemType.Food)
+                bool foundItem = false;
+                int itemIndex = 0;
+                List<GameObject> itemPrefabList = ItemPrefabs.prefabList;
+                while (foundItem == false)
                 {
-                    
-                }
-                if (data.type == ItemType.Water)
-                {
-
-                }
-                if (data.type == ItemType.Energy)
-                {
-                      
+                    GameObject item = itemPrefabList[itemIndex];
+                    var itemScript = item.GetComponent<Item>();
+                    if (itemScript.value == data.value && itemScript.itemType == data.type)
+                    {
+                        items.Add(item);
+                        foundItem = true;
+                    }
+                    itemIndex++;
                 }
 
             }
-            levelPassed = playerJSON.levelPassed;
-
         }
-        else
-        {
-            InitStats();
-        }
+            
+        levelPassed = playerJSON.levelPassed;
     }
 }

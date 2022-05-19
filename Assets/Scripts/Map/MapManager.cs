@@ -25,13 +25,23 @@ public class MapManager : MonoBehaviour
             {
                 // player has already reached the boss, generate a new map
                 GenerateNewMap();
+                
             }
             else
             {
                 currentMap = map;
                 // player has not reached the boss yet, load the current map
+
+                PlayerStats.LoadStats();
+                if(PlayerStats.levelPassed < map.path.Count)
+                {
+                    if(map.path.Count > 0f)
+                    {
+                        map.path.RemoveAt(map.path.Count - 1);
+                    }
+                }
                 view.DrawMap(map);
-                if(map.path.Count > 0f)
+                if (map.path.Count > 0f)
                 {
                     FindObjectOfType<MapCamera>().StartCamera();
                 }
@@ -41,10 +51,10 @@ public class MapManager : MonoBehaviour
         else
         {
             GenerateNewMap();
+            
         }
-        PlayerStats.LoadStats();
+
         FindObjectOfType<MapDialogueTrigger>().CheckDialogue();
-        PlayerStats.levelPassed = map.path.Count;
     }
     void Update()
     {
@@ -56,6 +66,7 @@ public class MapManager : MonoBehaviour
 
     public void GenerateNewMap()
     {
+        PlayerStats.InitStats();
         var map = MapGenerator.GetMap(config);
         currentMap = map;
         view.DrawMap(map);
@@ -73,6 +84,7 @@ public class MapManager : MonoBehaviour
     private void OnApplicationQuit()
     {
         SaveMap();
+        PlayerStats.SaveStats();
     }
 
 }

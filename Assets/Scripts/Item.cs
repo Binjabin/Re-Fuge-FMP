@@ -63,7 +63,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndD
             if (slot.Accepts(this))
             {
                 currentSlot = slot;
-                audio.pitch = Random.Range(0.9f, 1.1f);
+                audio.pitch = Random.Range(0.9f, 1.1f); 
                 audio.Play();
                 if(slot.tradeInput)
                 {

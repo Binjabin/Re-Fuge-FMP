@@ -15,7 +15,7 @@ public class Node
     public List<NodePoint> incoming = new List<NodePoint>();
     public List<NodePoint> outgoing = new List<NodePoint>();
     public List<AsteroidWeights> asteroidWeights;
-
+    public int seed;
 
     public Node(NodeType nodeType, string blueprintName, NodePoint point)
     {

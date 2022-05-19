@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
 [System.Serializable]
-public class PlayerStatsJSON : MonoBehaviour
+public class PlayerStatsJSON
 {
     public float energy;
     public float food;
