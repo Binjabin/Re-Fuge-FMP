@@ -16,7 +16,7 @@ public class MapManager : MonoBehaviour
     private void Start()
     {
 
-        if (PlayerPrefs.HasKey("Map"))
+        if (PlayerPrefs.HasKey("Map") && PlayerPrefs.HasKey("Player"))
         {
             var mapJson = PlayerPrefs.GetString("Map");
             map = JsonConvert.DeserializeObject<Map>(mapJson);

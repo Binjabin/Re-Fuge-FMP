@@ -38,6 +38,8 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] GameObject missilePrefab;
     [SerializeField] float missileAttackTime;
     float timeSinceMissile;
+
+    public bool isTracking;
     void FindVisibleTargets()
     {
         visibleTargets.Clear();
@@ -92,7 +94,7 @@ public class EnemyMovement : MonoBehaviour
     void FixedUpdate()
     {
         FindVisibleTargets();
-
+        isTracking = trackingPlayer != null;
         if (visibleTargets.Count > 0f)
         {
             trackingPlayer = visibleTargets[0].gameObject;

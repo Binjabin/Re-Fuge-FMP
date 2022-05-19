@@ -367,7 +367,7 @@ public class DialogueManager : MonoBehaviour
         else
         {
             commsSource.volume = 2f;
-            commsSource.pitch = Random.Range(0.8f, 1.2f);
+            commsSource.pitch = Random.Range(0.6f, 0.8f);
             commsSource.clip = otherDialogueClip;
             float offset = Random.Range(0f, otherDialogueClip.length);
             commsSource.time = offset;
@@ -385,12 +385,13 @@ public class DialogueManager : MonoBehaviour
 
         if (currentStory.canContinue)
         {
-            DoSound();
+            
             StopAllCoroutines();
             currentSentence = currentStory.Continue();
             StartCoroutine(TypeSentence(currentSentence));
             DisplayChoices();
             ParseTags();
+            DoSound();
         }
         else
         {

@@ -27,7 +27,7 @@ public class MenuAsteroids : MonoBehaviour
             {
                 float x = Random.Range(-maxDistance, maxDistance);
                 float y = Random.Range(-maxDistance, maxDistance);
-                asteroidPos = new Vector3(x, y, Random.RandomRange(0f, 5f));
+                asteroidPos = new Vector3(x, y, Random.Range(0f, 5f));
                 attempts++;
                 bool checkDistance = true;
                 for (int j = 0; j < asteroidList.Count; j++)

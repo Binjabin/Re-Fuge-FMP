@@ -31,6 +31,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] ParticleSystem miningLazer;
     bool dead = false;
     float timeSinceLastCollide;
+
+    [SerializeField] AudioSource miningLazerSound;
+    [SerializeField] AudioSource rubbleEffectSound;
     // Start is called before the first frame update
     void Start()
     {

@@ -42,7 +42,7 @@ public class LevelGenerator : MonoBehaviour
     GameObject merchantShip;
     List<AsteroidWeights> asteroidWeights;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         Random.InitState(LevelToLoad.seed);
         asteroidWeights = LevelToLoad.asteroidWeights;

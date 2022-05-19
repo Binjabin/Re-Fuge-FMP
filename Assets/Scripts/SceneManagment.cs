@@ -39,42 +39,27 @@ public class SceneManagment : MonoBehaviour
         float elapsedTime = 0f;
         rumbleAudio.Play();
         rumbleAudio.volume = 0.3f;
+        outAnimation.SetTrigger("Out");
         while (elapsedTime < 2f)
         {
             elapsedTime += Time.deltaTime;
-            audio.volume = Mathf.Lerp(0.2f, 0f, (elapsedTime / 5f));
-            rumbleAudio.volume = Mathf.Lerp(.5f, 1f, (elapsedTime / 5f));
-            yield return null;
-        }
-        outAnimation.SetTrigger("Out");
-        while (elapsedTime < 4f)
-        {
-            elapsedTime += Time.deltaTime;
-            audio.volume = Mathf.Lerp(0.2f, 0f, (elapsedTime / 4f));
-            rumbleAudio.volume = Mathf.Lerp(.5f, 1f, (elapsedTime / 4f));
+            audio.volume = Mathf.Lerp(0.2f, 0f, (elapsedTime / 2f));
+            rumbleAudio.volume = Mathf.Lerp(.5f, 1f, (elapsedTime / 2f));
             yield return null;
         }
     }
 
     IEnumerator ReturnToMapAnimation()
     {
-        outAnimation.SetTrigger("Out");
         float elapsedTime = 0f;
         rumbleAudio.Play();
         rumbleAudio.volume = 0.3f;
+        outAnimation.SetTrigger("Out");
         while (elapsedTime < 2f)
         {
             elapsedTime += Time.deltaTime;
-            audio.volume = Mathf.Lerp(0.2f, 0f, (elapsedTime / 5f));
-            rumbleAudio.volume = Mathf.Lerp(.5f, 1f, (elapsedTime / 5f));
-            yield return null;
-        }
-        outAnimation.SetTrigger("Out");
-        while (elapsedTime < 5f)
-        {
-            elapsedTime += Time.deltaTime;
-            audio.volume = Mathf.Lerp(0.2f, 0f, (elapsedTime / 5f));
-            rumbleAudio.volume = Mathf.Lerp(.5f, 1f, (elapsedTime / 5f));
+            audio.volume = Mathf.Lerp(0.2f, 0f, (elapsedTime / 2f));
+            rumbleAudio.volume = Mathf.Lerp(.5f, 1f, (elapsedTime / 2f));
             yield return null;
         }
         SceneManager.LoadScene("Map");

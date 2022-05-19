@@ -30,7 +30,7 @@ public static class PlayerStats
         index = Random.Range(0, values.Count);
         food = values[index];
         values.Remove(values[index]);
-        items.Clear();
+        items = new List<GameObject>();
         levelPassed = 0f;
         health = 100f;
         shield = 100f;
