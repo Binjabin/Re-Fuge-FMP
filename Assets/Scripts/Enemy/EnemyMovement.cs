@@ -57,14 +57,18 @@ public class EnemyMovement : MonoBehaviour
                 {
                     if (target.gameObject.tag == "Player")
                     {
-                        if(!target.gameObject.GetComponent<Stealth>().stealthOn)
+                        if(!target.GetComponent<PlayerMovement>().dead)
                         {
-                            visibleTargets.Add(target);
+                            if (!target.gameObject.GetComponent<Stealth>().stealthOn)
+                            {
+                                visibleTargets.Add(target);
+                            }
+                            else
+                            {
+                                invisibleTargets.Add(target);
+                            }
                         }
-                        else
-                        {
-                            invisibleTargets.Add(target);
-                        }
+                        
                     }
                             
                 }

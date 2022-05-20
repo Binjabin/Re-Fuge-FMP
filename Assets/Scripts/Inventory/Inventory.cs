@@ -24,6 +24,9 @@ public class Inventory : MonoBehaviour
     [SerializeField] GameObject waterWarning;
     [SerializeField] GameObject foodWarning;
     [SerializeField] GameObject energyWarning;
+
+    [SerializeField] GameObject tutorial;
+    public bool showTutorial;
     // Start is called before the first frame update
     void Start()
     {
@@ -59,6 +62,7 @@ public class Inventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if(inShop)
         {
             invOpen = true;
@@ -71,12 +75,17 @@ public class Inventory : MonoBehaviour
         else if(FindObjectOfType<DialogueManager>().dialogueIsPlaying)
         {
             invOpen = false;
+            FindObjectOfType<SceneStartDialogueTrigger>().checkedInventory = false;
         }
         else
         {
             if (Input.GetKeyDown(KeyCode.I))
             {
                 invOpen = !invOpen;
+                if(!invOpen)
+                {
+                    FindObjectOfType<SceneStartDialogueTrigger>().checkedInventory = true;
+                }
             }
 
         }

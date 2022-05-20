@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class PlayerMovement : MonoBehaviour
 {
     float turnDirection;
@@ -13,9 +13,9 @@ public class PlayerMovement : MonoBehaviour
     bool thrusting;
     bool breaking;
     bool boosting;
-    
+    [SerializeField] bool die;
     bool inDialogue;
-
+    [SerializeField] GameObject playerShip;
     TrailRenderer[] trail;
     float[] standardTrailLength = { 0f, 0f, 0f };
     EnergyBar energy;
@@ -29,11 +29,15 @@ public class PlayerMovement : MonoBehaviour
     GameObject dialogueFocus;
 
     [SerializeField] ParticleSystem miningLazer;
-    bool dead = false;
+    public bool dead = false;
     float timeSinceLastCollide;
 
     [SerializeField] AudioSource miningLazerSound;
     [SerializeField] AudioSource rubbleEffectSound;
+
+    [SerializeField] LayerMask deathLayers;
+    [SerializeField] List<ParticleSystem> playerDeathParticles;
+    [SerializeField] GameObject deathCanvas;
     // Start is called before the first frame update
     void Start()
     {
@@ -55,24 +59,37 @@ public class PlayerMovement : MonoBehaviour
     {
         GetInput();
         timeSinceLastCollide += Time.deltaTime;
+        if(die)
+        {
+            die = false;
+            Die();
+        }
     }
     void FixedUpdate()
     {
-        if(!inDialogue && !FindObjectOfType<Inventory>().invOpen && !dead)
+        if(!dead)
         {
-            ProcessInput();
+            deathCanvas.SetActive(false);
+            if (!inDialogue && !FindObjectOfType<Inventory>().invOpen && !dead)
+            {
+                ProcessInput();
+            }
+            else if (inDialogue && dialogueFocus != null)
+            {
+                Vector3 targetDirection = dialogueFocus.transform.position - transform.position;
+                targetDirection.y = 0f;
+                float rotationStep = 3f * Time.deltaTime;
+                Vector3 newDirection = Vector3.RotateTowards(transform.right, targetDirection, rotationStep, 0.0f);
+                transform.rotation = Quaternion.LookRotation(newDirection) * Quaternion.Euler(0f, -90f, 0f);
+            }
+            if(inDialogue)
+            {
+                miningLazer.Stop();
+            }
         }
-        else if(inDialogue && dialogueFocus != null)
+        else
         {
-            Vector3 targetDirection = dialogueFocus.transform.position - transform.position;
-            targetDirection.y = 0f;
-            float rotationStep = 3f * Time.deltaTime;
-            Vector3 newDirection = Vector3.RotateTowards(transform.right, targetDirection, rotationStep, 0.0f);
-            transform.rotation = Quaternion.LookRotation(newDirection) * Quaternion.Euler(0f, -90f, 0f);
-        }
-        else if(dead)
-        {
-            
+            deathCanvas.SetActive(true);
         }
         
     }
@@ -196,11 +213,48 @@ public class PlayerMovement : MonoBehaviour
                 timeSinceLastCollide = 0f;
             }
         }
-        
+
     }
     public void Die()
     {
         rb.drag = 100f;
         dead = true;
+        FindObjectOfType<Inventory>().gameObject.SetActive(false);
+        Camera.main.cullingMask = deathLayers;
+        Camera.main.clearFlags = CameraClearFlags.Color;
+        Camera.main.backgroundColor = Color.black;
+        playerShip.SetActive(false);
+        foreach (ParticleSystem part in playerDeathParticles)
+        {
+            part.Play();
+        }
+        playerShip.SetActive(false);
+        playerShip.SetActive(false);
+        StartCoroutine(Death());
+
+    }
+
+    IEnumerator Death()
+    {
+        deathCanvas.GetComponent<CanvasGroup>().alpha = 0f;
+        yield return new WaitForSeconds(4f);
+        float elapsed = 0f;
+        while (elapsed < 2f)
+        {
+            deathCanvas.GetComponent<CanvasGroup>().alpha = Mathf.Lerp(0f, 2f, elapsed / 2f);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(2f);
+        elapsed = 0f;
+        while (elapsed < 1f)
+        {
+            deathCanvas.GetComponent<CanvasGroup>().alpha = Mathf.Lerp(2f, 0f, elapsed / 1f);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        SceneManager.LoadScene("Menu");
+        
     }
 }

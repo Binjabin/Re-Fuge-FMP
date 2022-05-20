@@ -15,11 +15,13 @@ Start a new life. A normal life.
 Got to focus though.
 I have some options now. I can choose which system to pass through next.
 
-#player anim scared
-Damn. The scanner detects military activity ahead either way.
-#player anim neutral
-Lets hope the old <color={boldcolor}><b>stealth system</b><color={defaultcolor}> is still working. I'll be in trouble otherwise.
+I need food and water for the journey. The further away the star is, the longer it will take, and the more food I will have to use.
 
+It's also good to keep an eye on the relative mineral amounts.
+
+If I'm low on something, then looking for a system with high amounts of that resource is a smart move.
+
+Luckily no enemy activity ahead either way.
 #player anim outNeutral
 END OF TRANSMISSION
 -> END

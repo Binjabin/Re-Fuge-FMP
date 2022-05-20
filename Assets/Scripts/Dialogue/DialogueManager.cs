@@ -44,7 +44,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] AudioSource commsSource;
 
     bool isPlayer;
-
+    
     private void Start()
     {
         if (instance != null)

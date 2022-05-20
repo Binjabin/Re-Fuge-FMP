@@ -28,6 +28,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndD
     public float value = 10f;
     public InventorySlot startSlot = null;
 
+    
 
     public void OnPointerDown(PointerEventData eventData)
     {

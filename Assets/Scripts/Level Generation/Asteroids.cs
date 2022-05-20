@@ -32,6 +32,7 @@ public class Asteroids : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (FindObjectOfType<DialogueManager>().dialogueIsPlaying) { FindObjectOfType<SceneStartDialogueTrigger>().minedAsteroids = false; } 
         if(breakAsteroid)
         {
             if(timeSinceLazerHit > 1f)
@@ -44,7 +45,8 @@ public class Asteroids : MonoBehaviour
                 GameObject spawnedItem = Instantiate(dropPrefab, transform.position, Quaternion.identity);
                 spawnedItem.GetComponent<PickUp>().type = itemType;
                 Destroy(gameObject);
-                
+                FindObjectOfType<SceneStartDialogueTrigger>().minedAsteroids = true;
+
             }
         }
         timeSinceLazerHit += Time.deltaTime;

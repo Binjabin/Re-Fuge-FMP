@@ -31,11 +31,21 @@ MonoBehaviour:
       blueprint: {fileID: 11400000, guid: 97efb54d5b3947d9e9b532a30f86c54c, type: 2}
   - yDistance: 2
     weights:
-    - weight: 3
+    - weight: 1
+      blueprint: {fileID: 11400000, guid: c39d13e1d5c01d646ac4de3e26aeb3a8, type: 2}
+  - yDistance: 2
+    weights:
+    - weight: 1
       blueprint: {fileID: 11400000, guid: 31c404771f8b3a33b83dba91d444bb39, type: 2}
   - yDistance: 2
     weights:
-    - weight: 3
+    - weight: 1
+      blueprint: {fileID: 11400000, guid: c17acfcdd9adbfb4898481a26f826a06, type: 2}
+    - weight: 1
+      blueprint: {fileID: 11400000, guid: 31c404771f8b3a33b83dba91d444bb39, type: 2}
+  - yDistance: 2
+    weights:
+    - weight: 1
       blueprint: {fileID: 11400000, guid: 31c404771f8b3a33b83dba91d444bb39, type: 2}
     - weight: 1
       blueprint: {fileID: 11400000, guid: c39d13e1d5c01d646ac4de3e26aeb3a8, type: 2}
@@ -44,19 +54,7 @@ MonoBehaviour:
   - yDistance: 2
     weights:
     - weight: 3
-      blueprint: {fileID: 11400000, guid: 31c404771f8b3a33b83dba91d444bb39, type: 2}
-    - weight: 1
-      blueprint: {fileID: 11400000, guid: c39d13e1d5c01d646ac4de3e26aeb3a8, type: 2}
-    - weight: 1
-      blueprint: {fileID: 11400000, guid: c17acfcdd9adbfb4898481a26f826a06, type: 2}
-  - yDistance: 2
-    weights:
-    - weight: 3
-      blueprint: {fileID: 11400000, guid: 31c404771f8b3a33b83dba91d444bb39, type: 2}
-    - weight: 1
-      blueprint: {fileID: 11400000, guid: c39d13e1d5c01d646ac4de3e26aeb3a8, type: 2}
-    - weight: 1
-      blueprint: {fileID: 11400000, guid: c17acfcdd9adbfb4898481a26f826a06, type: 2}
+      blueprint: {fileID: 11400000, guid: 97efb54d5b3947d9e9b532a30f86c54c, type: 2}
   - yDistance: 4
     weights:
     - weight: 3
