@@ -27,6 +27,9 @@ public class Inventory : MonoBehaviour
 
     [SerializeField] GameObject tutorial;
     public bool showTutorial;
+    public bool hasID;
+    public bool helpedRefugee;
+    public float resourceMultiplier;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +41,7 @@ public class Inventory : MonoBehaviour
             Debug.Log(currentEnergy);
             currentFood = PlayerStats.food;
             currentWater = PlayerStats.water;
+            hasID = PlayerStats.hasID;
             if(PlayerStats.items != null)
             {
                 foreach (GameObject item in PlayerStats.items)

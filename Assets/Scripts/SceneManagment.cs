@@ -69,9 +69,13 @@ public class SceneManagment : MonoBehaviour
     {
         PlayerStats.energy = FindObjectOfType<Inventory>().currentEnergy;
         PlayerStats.food = FindObjectOfType<Inventory>().currentFood;
+        PlayerStats.hasID = FindObjectOfType<Inventory>().hasID;
         PlayerStats.water = FindObjectOfType<Inventory>().currentWater;
         PlayerStats.health = FindObjectOfType<HealthBar>().currentHealth;
         PlayerStats.shield = FindObjectOfType<HealthBar>().currentShield;
+        PlayerStats.helpedRefugee = FindObjectOfType<Inventory>().helpedRefugee;
+        PlayerStats.resourceMultiplier = FindObjectOfType<Inventory>().resourceMultiplier;
+
         List<Item> itemScriptList = FindObjectsOfType<Item>(true).ToList();
         PlayerStats.items = new List<GameObject>();
         foreach(Item item in itemScriptList)

@@ -32,7 +32,11 @@ public class Asteroids : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (FindObjectOfType<DialogueManager>().dialogueIsPlaying) { FindObjectOfType<SceneStartDialogueTrigger>().minedAsteroids = false; } 
+        if(FindObjectOfType<DialogueManager>() != null)
+        {
+            if (FindObjectOfType<DialogueManager>().dialogueIsPlaying) { FindObjectOfType<SceneStartDialogueTrigger>().minedAsteroids = false; } 
+        }
+        
         if(breakAsteroid)
         {
             if(timeSinceLazerHit > 1f)

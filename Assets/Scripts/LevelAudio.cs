@@ -87,4 +87,11 @@ public class LevelAudio : MonoBehaviour
         }
         dangerAudio.Stop();
     }
+
+    public void Death()
+    {
+        enemies.Clear();
+        suspenseAudio.Stop();
+        dangerAudio.Stop();
+    }
 }

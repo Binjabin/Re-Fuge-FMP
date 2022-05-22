@@ -40,6 +40,15 @@ I can give you some resources. What do you need? Food, water, power cells?
 #player anim outNeutral
 #refugee anim inNeutral
 Thank you! Anything you can spare.
+#player anim inNeutral
+#refugee anim outNeutral
+Here. You can have a third of my resources.
+#player anim outNeutral
+#refugee anim inNeutral
+Thank you! I may yet survive this thanks to you.
+#refugee event share
+#refugee anim outNeutral
+END OF TRANSMISSION
  -> END
 
 ==Leave==
@@ -58,7 +67,10 @@ END OF TRANSMISSION
 You are heading to Othea? I have family there too!
 You should come with me!
 Quick get on board, before your ship falls apart.
+We'll use up more food and water now though, so we have to make sure to stay on top of that.
 #player anim outNeutral
 #refugee anim inNeutral
 Thank you so much! Mabye I will see my family again.
+#refugee event pickup
+#refugee anim outNeutral
 -> END

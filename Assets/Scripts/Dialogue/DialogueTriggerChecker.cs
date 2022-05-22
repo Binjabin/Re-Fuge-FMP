@@ -6,6 +6,7 @@ public class DialogueTriggerChecker : MonoBehaviour
 {
     int triggerNumber;
     [SerializeField] GameObject dialogePrompt;
+    
     // Start is called before the first frame update
     void Start()
     {

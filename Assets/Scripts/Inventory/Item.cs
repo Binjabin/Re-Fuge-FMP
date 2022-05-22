@@ -104,7 +104,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndD
         parentRect = transform.parent.GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
         inv = FindObjectOfType<Inventory>();
-        audio = inv.gameObject.GetComponent<AudioSource>();
+        audio = GetComponent<AudioSource>();
         if (startSlot == null)
         {
             InventorySlot[] standardSlotsArray = canvas.GetComponentsInChildren<InventorySlot>();

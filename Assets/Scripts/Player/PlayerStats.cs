@@ -12,10 +12,11 @@ public static class PlayerStats
 
     public static bool init;
     public static List<GameObject> items;
-
+    public static bool hasID;
     public static float levelPassed;
-
-
+    public static bool isDead;
+    public static float resourceMultiplier;
+    public static bool helpedRefugee;
 
     public static void InitStats()
     {
@@ -36,6 +37,10 @@ public static class PlayerStats
         levelPassed = 0f;
         health = 100f;
         shield = 100f;
+        isDead = false;
+        hasID = false;
+        helpedRefugee = false;
+        resourceMultiplier = 1f;
     }
     public static void SaveStats()
     {
@@ -46,16 +51,22 @@ public static class PlayerStats
         playerJSON.health = health;
         playerJSON.shield = shield;
         playerJSON.items = new List<ItemData>();
-        foreach(GameObject item in items)
+        playerJSON.isDead = isDead;
+        playerJSON.hasID = hasID;
+        if(items != null)
         {
-            ItemData itemData = new ItemData();
-            itemData.value = item.GetComponent<Item>().value;
-            itemData.type = item.GetComponent<Item>().itemType;
-            playerJSON.items.Add(itemData);
+            foreach(GameObject item in items)
+            {
+                ItemData itemData = new ItemData();
+                itemData.value = item.GetComponent<Item>().value;
+                itemData.type = item.GetComponent<Item>().itemType;
+                playerJSON.items.Add(itemData);
+            }
         }
         
+        playerJSON.helpedRefugee = helpedRefugee;
         playerJSON.levelPassed = levelPassed;
-
+        playerJSON.resourceMultiplier = resourceMultiplier;
 
         var json = JsonConvert.SerializeObject(playerJSON);
         PlayerPrefs.SetString("Player", json);
@@ -65,16 +76,19 @@ public static class PlayerStats
     public static void LoadStats()
     {
         
-        
+         
         var json = PlayerPrefs.GetString("Player");
         Debug.Log(json);
         PlayerStatsJSON playerJSON = JsonConvert.DeserializeObject<PlayerStatsJSON>(json);
-
+        hasID = playerJSON.hasID;
         energy = playerJSON.energy;
         food = playerJSON.food;
         water = playerJSON.water;
         health = playerJSON.health;
         shield = playerJSON.shield;
+        isDead = playerJSON.isDead;
+        helpedRefugee = playerJSON.helpedRefugee;
+        resourceMultiplier = playerJSON.resourceMultiplier;
         if(playerJSON.items != null)
         {
             items = new List<GameObject>();

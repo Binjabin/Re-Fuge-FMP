@@ -18,6 +18,13 @@ public class MapManager : MonoBehaviour
 
         if (PlayerPrefs.HasKey("Map") && PlayerPrefs.HasKey("Player"))
         {
+            PlayerStats.LoadStats();
+            if(PlayerStats.isDead)
+            {
+                GenerateNewMap();
+                PlayerStats.InitStats();
+                Debug.Log("player died");
+            }
             var mapJson = PlayerPrefs.GetString("Map");
             map = JsonConvert.DeserializeObject<Map>(mapJson);
             // using this instead of .Contains()
@@ -25,14 +32,14 @@ public class MapManager : MonoBehaviour
             {
                 // player has already reached the boss, generate a new map
                 GenerateNewMap();
-                
+                PlayerStats.InitStats();
             }
             else
             {
+                
                 currentMap = map;
                 // player has not reached the boss yet, load the current map
-
-                PlayerStats.LoadStats();
+                
                 if(PlayerStats.levelPassed < map.path.Count)
                 {
                     if(map.path.Count > 0f)
@@ -51,6 +58,7 @@ public class MapManager : MonoBehaviour
         else
         {
             GenerateNewMap();
+            PlayerStats.InitStats();
             
         }
 

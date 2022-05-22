@@ -39,7 +39,7 @@ public class Radar : MonoBehaviour
 
         RaycastHit[] ray = Physics.RaycastAll(sweepTransform.position, sweepTransform.forward, radarDistance, layers); ;
         
-        Debug.DrawRay(transform.position, sweepTransform.forward * radarDistance, Color.green);
+        Debug.DrawRay(sweepTransform.position, sweepTransform.forward * radarDistance, Color.green);
         foreach(RaycastHit raycastHit in ray)
         {
             if (raycastHit.collider != null)

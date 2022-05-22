@@ -100,11 +100,11 @@ public class MapNode : MonoBehaviour
         {
             float currentDistance = (FindObjectOfType<MapPlayerTracker>().currentNode.transform.position - transform.position).magnitude;
             var info = FindObjectOfType<InfoSliders>();
-            currentMinFoodCost = info.foodPerDist * currentDistance * 0.7f;
-            currentMaxFoodCost = info.foodPerDist * currentDistance * 1.3f;
+            currentMinFoodCost = info.foodPerDist * currentDistance * 0.7f * PlayerStats.resourceMultiplier;
+            currentMaxFoodCost = info.foodPerDist * currentDistance * 1.3f * PlayerStats.resourceMultiplier;
 
-            currentMinWaterCost = info.waterPerDist * currentDistance * 0.7f;
-            currentMaxWaterCost = info.waterPerDist * currentDistance * 1.3f;
+            currentMinWaterCost = info.waterPerDist * currentDistance * 0.7f * PlayerStats.resourceMultiplier;
+            currentMaxWaterCost = info.waterPerDist * currentDistance * 1.3f * PlayerStats.resourceMultiplier; 
         }
     }
     public void SetState(NodeStates state)

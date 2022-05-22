@@ -116,6 +116,23 @@ public class DialogueManager : MonoBehaviour
                 {
                     showCostObject = false;
                 }
+                else if(param == "gainID")
+                {
+                    FindObjectOfType<Inventory>().hasID = true;
+                }
+                else if(param == "pickup")
+                {
+                    FindObjectOfType<Inventory>().helpedRefugee = true;
+                    FindObjectOfType<Inventory>().resourceMultiplier += 0.5f;
+                    FindObjectOfType<DialogueTrigger>().enabled = false;
+                }
+                else if(param == "share")
+                {
+                    FindObjectOfType<Inventory>().helpedRefugee = true;
+                    FindObjectOfType<Inventory>().currentFood = FindObjectOfType<Inventory>().currentFood*0.3f;
+                    FindObjectOfType<Inventory>().currentWater = FindObjectOfType<Inventory>().currentWater*0.3f;
+                    FindObjectOfType<Inventory>().currentEnergy = FindObjectOfType<Inventory>().currentEnergy*0.3f;
+                }
 
             }
             else if(prefix.ToLower() == "involved")
@@ -181,6 +198,7 @@ public class DialogueManager : MonoBehaviour
         SetUpVariables();
         commsSource.volume = 1f;
         commsSource.clip = startDialogueClip;
+        commsSource.time = 0f;
         commsSource.Play();
         
         StartStory();

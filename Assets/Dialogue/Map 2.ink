@@ -17,11 +17,13 @@ I have some options now. I can choose which system to pass through next.
 
 I need food and water for the journey. The further away the star is, the longer it will take, and the more food I will have to use.
 
+I'll need to keep on top of my food and water to be able to survive.
+
 It's also good to keep an eye on the relative mineral amounts.
 
 If I'm low on something, then looking for a system with high amounts of that resource is a smart move.
 
-Luckily no enemy activity ahead either way.
+Luckily no enemy activity ahead either way. I'll have more chance to stock up on resources.
 #player anim outNeutral
 END OF TRANSMISSION
 -> END

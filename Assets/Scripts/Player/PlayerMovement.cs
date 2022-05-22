@@ -8,18 +8,20 @@ public class PlayerMovement : MonoBehaviour
     Vector3 velocity, additionalForce, inputVector;
     Rigidbody rb;
     [SerializeField] float thrustSpeed = 5f;
+    [SerializeField] AudioSource thrustSound;
     [SerializeField] float rotationSpeed = 5f;
     float velocityref;
     bool thrusting;
     bool breaking;
     bool boosting;
+    [SerializeField] float lazerDistance;
     [SerializeField] bool die;
     bool inDialogue;
     [SerializeField] GameObject playerShip;
     TrailRenderer[] trail;
     float[] standardTrailLength = { 0f, 0f, 0f };
     EnergyBar energy;
-
+    public bool miningRock;
     [SerializeField] float energyPerSecondThrusting;
     [SerializeField] float energyPerSecondBoosting;
     [SerializeField] float energyPerSecondMining;
@@ -38,6 +40,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] LayerMask deathLayers;
     [SerializeField] List<ParticleSystem> playerDeathParticles;
     [SerializeField] GameObject deathCanvas;
+    [SerializeField] AudioSource explosion;
+    [SerializeField] LayerMask lazerLayerMask;
     // Start is called before the first frame update
     void Start()
     {
@@ -53,10 +57,34 @@ public class PlayerMovement : MonoBehaviour
             trail[i].time = 0f;
         }
     }
-
+    void DetermineRubbleEffect()
+    {
+        RaycastHit hit;
+        Physics.Raycast(miningLazer.transform.position, transform.right, out hit, lazerDistance, lazerLayerMask);
+        Debug.DrawRay(miningLazer.transform.position, transform.right * lazerDistance, Color.red);
+        Debug.Log(hit.collider);
+        if(hit.collider != null)
+        {
+            
+            if(hit.collider.gameObject.GetComponent<Asteroids>() != null)
+            {
+                miningRock = true;
+            }
+            else
+            {
+                miningRock = false;
+            }
+        }
+        
+        else
+        {
+            miningRock = false;
+        }
+    }
     // Update is called once per frame
     void Update()
     {
+        DetermineRubbleEffect();
         GetInput();
         timeSinceLastCollide += Time.deltaTime;
         if(die)
@@ -74,6 +102,12 @@ public class PlayerMovement : MonoBehaviour
             {
                 ProcessInput();
             }
+            else if(FindObjectOfType<Inventory>().invOpen)
+            {
+                miningLazer.Stop();
+                miningLazerSound.Stop();
+                rubbleEffectSound.Stop();
+            }
             else if (inDialogue && dialogueFocus != null)
             {
                 Vector3 targetDirection = dialogueFocus.transform.position - transform.position;
@@ -85,7 +119,10 @@ public class PlayerMovement : MonoBehaviour
             if(inDialogue)
             {
                 miningLazer.Stop();
+                miningLazerSound.Stop();
+                rubbleEffectSound.Stop();
             }
+            
         }
         else
         {
@@ -135,17 +172,40 @@ public class PlayerMovement : MonoBehaviour
         if (FindObjectOfType<Inventory>().currentEnergy < 0.01f)
         {
             miningLazer.Stop();
+            miningLazerSound.Stop();
+            rubbleEffectSound.Stop();
         }
         else
         {
             if (Input.GetKey(KeyCode.Mouse0))
             {
+                
                 miningLazer.Play();
+                if(!miningLazerSound.isPlaying)
+                {
+                    miningLazerSound.Play();
+                    
+                }
+                if(miningRock)
+                {
+                    if(!rubbleEffectSound.isPlaying)
+                    {
+                        rubbleEffectSound.Play();
+                    }
+                    
+                }
+                else
+                {
+                    rubbleEffectSound.Stop();
+                }
+                
                 FindObjectOfType<Inventory>().ReduceEnergy(energyPerSecondMining * Time.deltaTime);
             }
             else
             {
                 miningLazer.Stop();
+                miningLazerSound.Stop();
+                rubbleEffectSound.Stop();
             }
         }
         
@@ -155,8 +215,23 @@ public class PlayerMovement : MonoBehaviour
             if(energy.currentEnergy > 0f)
             {
                 rb.AddForce(transform.right * thrustSpeed);
+                if(!thrustSound.isPlaying)
+                {
+                    thrustSound.Play();
+                    thrustSound.volume = rb.velocity.magnitude/300f + 0.2f;
+                    thrustSound.pitch = rb.velocity.magnitude/100f + 0.5f;
+                }
+            }
+            else
+            {
+                thrustSound.Stop();
             }
             
+            
+        }
+        else
+        {
+            thrustSound.Stop();
         }
         if (breaking)
         {
@@ -217,6 +292,9 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Die()
     {
+        PlayerStats.isDead = true;
+        PlayerStats.SaveStats();
+        explosion.Play();
         rb.drag = 100f;
         dead = true;
         FindObjectOfType<Inventory>().gameObject.SetActive(false);
@@ -236,6 +314,7 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator Death()
     {
+        FindObjectOfType<LevelAudio>().Death();
         deathCanvas.GetComponent<CanvasGroup>().alpha = 0f;
         yield return new WaitForSeconds(4f);
         float elapsed = 0f;
