@@ -3962,7 +3962,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 588223025}
   m_LocalRotation: {x: 0.2546557, y: 0.36785895, z: -0.10548183, w: 0.8880901}
-  m_LocalPosition: {x: -7.1509056, y: 2.4189835, z: 15.85812}
+  m_LocalPosition: {x: -7.1508904, y: 2.4189835, z: 15.85812}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1392477925}
@@ -5745,7 +5745,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 20
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -5769,7 +5769,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.2546557, y: 0.36785895, z: -0.10548183, w: 0.8880901}
-  m_LocalPosition: {x: -64.76427, y: 51.93885, z: -42.280533}
+  m_LocalPosition: {x: -67.1247, y: 54.457603, z: -44.3647}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -47314,7 +47314,7 @@ MonoBehaviour:
   miningRock: 0
   energyPerSecondThrusting: 0.1
   energyPerSecondBoosting: 10
-  energyPerSecondMining: 1
+  energyPerSecondMining: 0.8
   damagePerUnitSpeed: 1
   minImpactSpeedForDamage: 10
   miningLazer: {fileID: 1833329457}
