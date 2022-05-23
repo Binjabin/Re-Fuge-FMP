@@ -266,9 +266,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5444370989b79a4e8b46072cb7e95dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultJSON: {fileID: 4900000, guid: 2cb9aab1f25d1f0f4b76cea080bec18c, type: 3}
-  firstJSON: {fileID: 4900000, guid: 4f1f8f48893665dac9d2cffac001b151, type: 3}
-  defaultJSON2: {fileID: 4900000, guid: 437c2fbeeee77b5a9b56607d9c097438, type: 3}
+  defaultJSON: {fileID: 4900000, guid: 1af8d4809f2ab28448cb571a3decce5c, type: 3}
+  firstJSON: {fileID: 4900000, guid: a8915476d1769564ca5a8d6886b62f6f, type: 3}
+  defaultJSON2: {fileID: 4900000, guid: 80ed35f88c6487248a737a9bc6a2be96, type: 3}
   isMerchant: 0
   isMysterious: 1
 --- !u!135 &7445064286346289752

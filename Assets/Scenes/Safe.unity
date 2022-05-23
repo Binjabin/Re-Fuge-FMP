@@ -2131,7 +2131,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &306092526
 RectTransform:
   m_ObjectHideFlags: 0
@@ -47314,7 +47314,7 @@ MonoBehaviour:
   miningRock: 0
   energyPerSecondThrusting: 0.1
   energyPerSecondBoosting: 10
-  energyPerSecondMining: 0.5
+  energyPerSecondMining: 1
   damagePerUnitSpeed: 1
   minImpactSpeedForDamage: 10
   miningLazer: {fileID: 1833329457}
@@ -47352,7 +47352,7 @@ MonoBehaviour:
   currentShield: 0
   shieldRegenDelay: 10
   shieldRegenSpeed: 10
-  energyPerShield: 0.1
+  energyPerShield: 0.5
   shieldBar: {fileID: 1945502104}
   healthBar: {fileID: 1542557541}
 --- !u!114 &1170645040492699128

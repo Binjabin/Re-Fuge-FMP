@@ -64,7 +64,7 @@ MonoBehaviour:
   speedLimit: 30
   comfortableSpeed: 15
   viewRadius: 30
-  viewAngle: 200
+  viewAngle: 220
   targetMask:
     serializedVersion: 2
     m_Bits: 513
@@ -85,6 +85,7 @@ MonoBehaviour:
   isHeavy: 1
   missilePrefab: {fileID: 8228636978185326110, guid: 7eeafb6972bcebb46ae9dd10d5882e25, type: 3}
   missileAttackTime: 5
+  isTracking: 0
 --- !u!54 &371606181412322228
 Rigidbody:
   m_ObjectHideFlags: 0

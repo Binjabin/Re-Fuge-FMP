@@ -97,7 +97,7 @@ public class LevelGenerator : MonoBehaviour
         y = Random.Range(maxDistance - enemyBufferDistance, minDistanceFromCenterEnemy);
         nextEnemyWaypoint.Add(new Vector3(x, 0f, -y));
 
-        GameObject enemy = Instantiate(heavyEnemy, nextEnemyWaypoint[Random.Range(0, nextEnemyWaypoint.Count)], Quaternion.identity);
+        GameObject enemy = Instantiate(lightEnemy, nextEnemyWaypoint[Random.Range(0, nextEnemyWaypoint.Count)], Quaternion.identity);
         enemy.GetComponent<EnemyMovement>().patrolPoints = nextEnemyWaypoint;
     }
 
@@ -120,7 +120,7 @@ public class LevelGenerator : MonoBehaviour
         y = Random.Range(maxDistance - enemyBufferDistance, minDistanceFromCenterEnemy);
         nextEnemyWaypoint.Add(new Vector3(x, 0f, -y));
 
-        GameObject enemy = Instantiate(lightEnemy, nextEnemyWaypoint[Random.Range(0, nextEnemyWaypoint.Count)], Quaternion.identity);
+        GameObject enemy = Instantiate(heavyEnemy, nextEnemyWaypoint[Random.Range(0, nextEnemyWaypoint.Count)], Quaternion.identity);
         enemy.GetComponent<EnemyMovement>().patrolPoints = nextEnemyWaypoint;
     }
 

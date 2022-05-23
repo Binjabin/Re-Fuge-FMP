@@ -478,7 +478,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 0.25
+    scalar: 0.75
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -39770,7 +39770,7 @@ MonoBehaviour:
   speedLimit: 30
   comfortableSpeed: 15
   viewRadius: 30
-  viewAngle: 300
+  viewAngle: 220
   targetMask:
     serializedVersion: 2
     m_Bits: 513
@@ -39791,6 +39791,7 @@ MonoBehaviour:
   isHeavy: 0
   missilePrefab: {fileID: 8228636978185326110, guid: 7eeafb6972bcebb46ae9dd10d5882e25, type: 3}
   missileAttackTime: 0
+  isTracking: 0
 --- !u!54 &5529096492299164450
 Rigidbody:
   m_ObjectHideFlags: 0
