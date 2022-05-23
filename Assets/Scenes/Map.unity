@@ -517,8 +517,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f7a77fb0ce364148b1a44c36cf35090, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startInkJSON: {fileID: 4900000, guid: 0b9c14c30588d314fbbdeffee68cc799, type: 3}
-  secondInkJSON: {fileID: 4900000, guid: 5bb9df6d739c5d649829fc724c474774, type: 3}
+  startInkJSON: {fileID: 4900000, guid: 31a6230ed34ae17458b339f233e380c7, type: 3}
+  secondInkJSON: {fileID: 4900000, guid: 7e063276909153c4fb2f5d00c4ba6844, type: 3}
 --- !u!82 &182444009
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1301,7 +1301,7 @@ MonoBehaviour:
   nodePrefab: {fileID: 8388290685878406284, guid: 813be218a3446ceedab40d95289e3057, type: 3}
   linePrefab: {fileID: 5818086435174080840, guid: 905f4ed5c54569e4194bde0044191e44, type: 3}
   mapNodes: []
-  testConfig: {fileID: 11400000, guid: 80b54b70456ba37858eb6edc5187ffd9, type: 2}
+  testConfig: {fileID: 11400000, guid: b945c916fd5c49f49a8f7a9410f36eab, type: 2}
   starColors:
     serializedVersion: 2
     key0: {r: 42.666668, g: 4.266667, b: 0, a: 1}

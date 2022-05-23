@@ -1,8 +1,7 @@
 #player involved true
-#mysterious involved false
-#mysterious involved false
+#mysterious involved true
+#merchant involved false
 #refugee involved false
-#mystery involved false
 #player anim enterNeutral
 #mysterious anim enterNeutral
 INCOMING TRANSMISSION
@@ -20,9 +19,9 @@ Who are you? Why do you come in an enforcment ship but do not attack?
 Do not worry who I am, asylum seeker.
 In your position I would be more interested in what I can give you.
 #mysterious anim outNeutral
-#player anim outScared
+#player anim inScared
 What you can give me? You mean to help?
-#mysterious anim outNeutral
+#mysterious anim inNeutral
 #player anim outScared
 Perhaps. 
 Have you thought about what happens once you complete your journey? Arrive at Othea?
@@ -34,8 +33,8 @@ What do you mean? I will start a new life. Get a job perhaps.
 Before that.
 You believe that they will Welcome you with open arms?
 You are naive.
-I can however offer you this.
-#mysterious anim outNeutral
+I can, however, offer you this.
+#mysterious anim outAngry
 #player anim inScared
 Fake identification? How did you get that?
 #mysterious anim inNeutral

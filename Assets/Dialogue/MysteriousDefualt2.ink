@@ -1,8 +1,7 @@
 #player involved true
-#mysterious involved false
-#mysterious involved false
+#mysterious involved true
+#merchant involved false
 #refugee involved false
-#mystery involved false
 #player anim enterNeutral
 #mysterious anim enterNeutral
 INCOMING TRANSMISSION

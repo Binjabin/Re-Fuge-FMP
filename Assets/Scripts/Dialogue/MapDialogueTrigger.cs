@@ -28,6 +28,14 @@ public class MapDialogueTrigger : MonoBehaviour
         {
             DialogueManager.GetInstance().EnterDialogue(secondInkJSON);
         }
+        else if (currentLevelsPassed < 3)
+        {
+            DialogueManager.GetInstance().EnterDialogue(secondInkJSON);
+        }
+        else if (currentLevelsPassed < 4)
+        {
+            DialogueManager.GetInstance().EnterDialogue(secondInkJSON);
+        }
     }
 
 

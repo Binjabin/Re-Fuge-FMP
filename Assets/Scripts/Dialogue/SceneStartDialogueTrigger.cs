@@ -43,7 +43,7 @@ public class SceneStartDialogueTrigger : MonoBehaviour
         }
         else if (PlayerStats.levelPassed < 2)
         {
-            DialogueManager.GetInstance().EnterDialogue(secondLevelJSON);
+            //DialogueManager.GetInstance().EnterDialogue(secondLevelJSON);
         }
     }
 }

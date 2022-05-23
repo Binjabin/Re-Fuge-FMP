@@ -7,7 +7,8 @@ public enum NodeType
     Danger,
     Boss,
     Mystery,
-    Safe
+    Safe,
+    Empty
 
 }
 

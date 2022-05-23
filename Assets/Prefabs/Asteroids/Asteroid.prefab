@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   breakAsteroid: 0
-  shrinkSpeed: {x: 3, y: 3, z: 3}
+  shrinkSpeed: {x: 6, y: 6, z: 6}
   minSize: {x: 50, y: 50, z: 50}
   itemType: 0
   dropPrefab: {fileID: 4457148152409111794, guid: 58da533998cebd8c2b63d3c258532f73, type: 3}

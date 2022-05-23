@@ -23,7 +23,8 @@ It's also good to keep an eye on the relative mineral amounts.
 
 If I'm low on something, then looking for a system with high amounts of that resource is a smart move.
 
-Luckily no enemy activity ahead either way. I'll have more chance to stock up on resources.
+It looks like the local trader sometimes passes through this area. Might be worth seeing if he is around.
+Luckily no enemy activity ahead either way. I'll have more chance to stock up on resources if I need it.
 #player anim outNeutral
 END OF TRANSMISSION
 -> END
