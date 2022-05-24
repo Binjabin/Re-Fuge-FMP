@@ -45,6 +45,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] LayerMask lazerLayerMask;
     string deathMessage;
     [SerializeField] TextMeshProUGUI causeOfDeath;
+
+    [SerializeField] GameObject winCanvas;
     // Start is called before the first frame update
     void Start()
     {
@@ -64,11 +66,11 @@ public class PlayerMovement : MonoBehaviour
 
     void CheckDeath()
     {
-        if(FindObjectOfType<Inventory>().currentWater < 0.1f)
+        if (FindObjectOfType<Inventory>().currentWater < 0.1f)
         {
             Die("Thirst");
         }
-        else if(FindObjectOfType<Inventory>().currentFood < 0.1f)
+        else if (FindObjectOfType<Inventory>().currentFood < 0.1f)
         {
             Die("Starvation");
         }
@@ -79,10 +81,10 @@ public class PlayerMovement : MonoBehaviour
         Physics.Raycast(miningLazer.transform.position, transform.right, out hit, lazerDistance, lazerLayerMask);
         Debug.DrawRay(miningLazer.transform.position, transform.right * lazerDistance, Color.red);
         Debug.Log(hit.collider);
-        if(hit.collider != null)
+        if (hit.collider != null)
         {
-            
-            if(hit.collider.gameObject.GetComponent<Asteroids>() != null)
+
+            if (hit.collider.gameObject.GetComponent<Asteroids>() != null)
             {
                 miningRock = true;
             }
@@ -91,7 +93,7 @@ public class PlayerMovement : MonoBehaviour
                 miningRock = false;
             }
         }
-        
+
         else
         {
             miningRock = false;
@@ -103,30 +105,32 @@ public class PlayerMovement : MonoBehaviour
         DetermineRubbleEffect();
         GetInput();
         timeSinceLastCollide += Time.deltaTime;
-        if(die)
+        if (die)
         {
             die = false;
             Die("Command");
         }
-        if(!dead)
+        if (!dead)
         {
             if (FindObjectOfType<Inventory>().currentEnergy == 0f)
             {
                 Die("Power Failure");
             }
         }
-        
+
     }
+
+
     void FixedUpdate()
     {
-        if(!dead)
+        if (!dead)
         {
             deathCanvas.SetActive(false);
             if (!inDialogue && !FindObjectOfType<Inventory>().invOpen && !dead)
             {
                 ProcessInput();
             }
-            else if(FindObjectOfType<Inventory>().invOpen)
+            else if (FindObjectOfType<Inventory>().invOpen)
             {
                 miningLazer.Stop();
                 miningLazerSound.Stop();
@@ -140,13 +144,13 @@ public class PlayerMovement : MonoBehaviour
                 Vector3 newDirection = Vector3.RotateTowards(transform.right, targetDirection, rotationStep, 0.0f);
                 transform.rotation = Quaternion.LookRotation(newDirection) * Quaternion.Euler(0f, -90f, 0f);
             }
-            if(inDialogue)
+            if (inDialogue)
             {
                 miningLazer.Stop();
                 miningLazerSound.Stop();
                 rubbleEffectSound.Stop();
             }
-            
+
         }
         else
         {
@@ -180,7 +184,7 @@ public class PlayerMovement : MonoBehaviour
 
         for (int i = 0; i < trail.Length; i++)
         {
-            if(!(energy.currentEnergy > 0))
+            if (!(energy.currentEnergy > 0))
             {
                 trail[i].time = Mathf.SmoothDamp(trail[i].time, 0f, ref velocityref, 0.1f);
             }
@@ -206,26 +210,26 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.Mouse0))
             {
-                
+
                 miningLazer.Play();
-                if(!miningLazerSound.isPlaying)
+                if (!miningLazerSound.isPlaying)
                 {
                     miningLazerSound.Play();
-                    
+
                 }
-                if(miningRock)
+                if (miningRock)
                 {
-                    if(!rubbleEffectSound.isPlaying)
+                    if (!rubbleEffectSound.isPlaying)
                     {
                         rubbleEffectSound.Play();
                     }
-                    
+
                 }
                 else
                 {
                     rubbleEffectSound.Stop();
                 }
-                
+
                 FindObjectOfType<Inventory>().ReduceEnergy(energyPerSecondMining * Time.deltaTime);
             }
             else
@@ -235,26 +239,26 @@ public class PlayerMovement : MonoBehaviour
                 rubbleEffectSound.Stop();
             }
         }
-        
+
         if (thrusting)
         {
             FindObjectOfType<Inventory>().ReduceEnergy(energyPerSecondThrusting * Time.deltaTime);
-            if(energy.currentEnergy > 0f)
+            if (energy.currentEnergy > 0f)
             {
                 rb.AddForce(transform.right * thrustSpeed);
-                if(!thrustSound.isPlaying)
+                if (!thrustSound.isPlaying)
                 {
                     thrustSound.Play();
-                    thrustSound.volume = rb.velocity.magnitude/300f + 0.2f;
-                    thrustSound.pitch = rb.velocity.magnitude/100f + 0.5f;
+                    thrustSound.volume = rb.velocity.magnitude / 300f + 0.2f;
+                    thrustSound.pitch = rb.velocity.magnitude / 100f + 0.5f;
                 }
             }
             else
             {
                 thrustSound.Stop();
             }
-            
-            
+
+
         }
         else
         {
@@ -275,8 +279,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.AddForce(transform.right * thrustSpeed * 5);
             }
-                
-            
+
+
         }
 
         if (turnDirection != 0f)
@@ -307,7 +311,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
-        if(timeSinceLastCollide > 0.5f)
+        if (timeSinceLastCollide > 0.5f)
         {
             if (collision.relativeVelocity.magnitude > minImpactSpeedForDamage)
             {
@@ -346,7 +350,7 @@ public class PlayerMovement : MonoBehaviour
 
         deathCanvas.GetComponent<CanvasGroup>().alpha = 0f;
         yield return new WaitForSeconds(4f);
-        causeOfDeath.text = "Cause Of Death: " + deathMessage; 
+        causeOfDeath.text = "Cause Of Death: " + deathMessage;
         float elapsed = 0f;
         while (elapsed < 2f)
         {
@@ -364,6 +368,48 @@ public class PlayerMovement : MonoBehaviour
             yield return null;
         }
         SceneManager.LoadScene("Menu");
-        
+
+    }
+
+    public void Win()
+    {
+        PlayerStats.isDead = true;
+        PlayerStats.SaveStats();
+        rb.drag = 100f;
+        dead = true;
+        FindObjectOfType<Inventory>().gameObject.SetActive(false);
+        Camera.main.cullingMask = deathLayers;
+        Camera.main.clearFlags = CameraClearFlags.Color;
+        Camera.main.backgroundColor = Color.black;
+        foreach (ParticleSystem part in playerDeathParticles)
+        {
+            part.Play();
+        }
+        StartCoroutine(PlayerWin());
+    }
+
+    IEnumerator PlayerWin()
+    {
+        FindObjectOfType<LevelAudio>().Death();
+
+        winCanvas.GetComponent<CanvasGroup>().alpha = 0f;
+        yield return new WaitForSeconds(4f);
+        float elapsed = 0f;
+        while (elapsed < 2f)
+        {
+            winCanvas.GetComponent<CanvasGroup>().alpha = Mathf.Lerp(0f, 2f, elapsed / 2f);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(2f);
+        elapsed = 0f;
+        while (elapsed < 1f)
+        {
+            deathCanvas.GetComponent<CanvasGroup>().alpha = Mathf.Lerp(2f, 0f, elapsed / 1f);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        SceneManager.LoadScene("Menu");
     }
 }

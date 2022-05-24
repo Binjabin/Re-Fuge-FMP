@@ -8,7 +8,7 @@ public class EndPoint : MonoBehaviour
     [SerializeField] float timeToWarp;
     bool playerInWarpZone ;
     [SerializeField] GameObject nextLevelPrompt;
-
+    [SerializeField] bool finalPortal = false;
     private void Start()
     {
         playerInWarpZone = false;
@@ -38,8 +38,15 @@ public class EndPoint : MonoBehaviour
             nextLevelPrompt.SetActive(true);
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                if(!finalPortal)
+                {
+                    FindObjectOfType<SceneManagment>().ReturnToMap();
+                }
+                else
+                {
+                    FindObjectOfType<PlayerMovement>().Win();
+                }
                 
-                FindObjectOfType<SceneManagment>().ReturnToMap();
             }
         }
         else

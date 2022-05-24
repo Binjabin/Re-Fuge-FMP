@@ -65,6 +65,8 @@ public class SceneManagment : MonoBehaviour
         SceneManager.LoadScene("Map");
     }
 
+    
+
     void SavePlayerStats()
     {
         PlayerStats.energy = FindObjectOfType<Inventory>().currentEnergy;

@@ -12,6 +12,7 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField] TextAsset defaultJSON3;
     [SerializeField] bool isMerchant;
     [SerializeField] bool isMysterious;
+    [SerializeField] bool isBorder = false;
     bool alreadySpoken;
 
     bool inCollider;
@@ -87,6 +88,23 @@ public class DialogueTrigger : MonoBehaviour
                         else
                         {
                             DialogueManager.GetInstance().EnterDialogue(defaultJSON);
+                        }
+                    }
+                }
+                else if(isBorder)
+                {
+                    if (!FindObjectOfType<DialogueManager>().dialogueIsPlaying)
+                    {
+                        
+                        if (FindObjectOfType<Inventory>().hasID)
+                        {
+                            DialogueManager.GetInstance().EnterDialogue(defaultJSON);
+                            FindObjectOfType<PlayerMovement>().EnterMonologue();
+                        }
+                        else
+                        {
+                            DialogueManager.GetInstance().EnterDialogue(defaultJSON2);
+                            FindObjectOfType<PlayerMovement>().EnterMonologue();
                         }
                     }
                 }
