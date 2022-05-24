@@ -57,7 +57,7 @@ public class EnemyMovement : MonoBehaviour
                 {
                     if (target.gameObject.tag == "Player")
                     {
-                        if(!target.GetComponent<PlayerMovement>().dead)
+                        if(!target.GetComponent<PlayerMovement>().inactive)
                         {
                             if (!target.gameObject.GetComponent<Stealth>().stealthOn)
                             {

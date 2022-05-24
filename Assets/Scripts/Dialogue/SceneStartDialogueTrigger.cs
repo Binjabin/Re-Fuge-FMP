@@ -27,7 +27,7 @@ public class SceneStartDialogueTrigger : MonoBehaviour
     IEnumerator WaitSeconds()
     {
         yield return new WaitForSeconds(2f);
-        if(FindObjectOfType<PlayerMovement>().dead == false)
+        if(FindObjectOfType<PlayerMovement>().inactive == false)
         {
             if (PlayerStats.levelPassed == 0)
             {

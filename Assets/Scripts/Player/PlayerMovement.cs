@@ -32,7 +32,9 @@ public class PlayerMovement : MonoBehaviour
     GameObject dialogueFocus;
 
     [SerializeField] ParticleSystem miningLazer;
-    public bool dead = false;
+    bool dead = false;
+    bool win = false;
+    public bool inactive;
     float timeSinceLastCollide;
 
     [SerializeField] AudioSource miningLazerSound;
@@ -47,15 +49,19 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] TextMeshProUGUI causeOfDeath;
 
     [SerializeField] GameObject winCanvas;
+    Inventory inventory;
     // Start is called before the first frame update
     void Start()
     {
+
         timeSinceLastCollide = 0f;
         dead = false;
+        win = false;
         rb = GetComponent<Rigidbody>();
         energy = gameObject.GetComponent<EnergyBar>();
         inDialogue = false;
         trail = GetComponentsInChildren<TrailRenderer>();
+        inventory = FindObjectOfType<Inventory>();
         CheckDeath();
         for (int i = 0; i < trail.Length; i++)
         {
@@ -66,11 +72,11 @@ public class PlayerMovement : MonoBehaviour
 
     void CheckDeath()
     {
-        if (FindObjectOfType<Inventory>().currentWater < 0.1f)
+        if (inventory.currentWater < 0.1f)
         {
             Die("Thirst");
         }
-        else if (FindObjectOfType<Inventory>().currentFood < 0.1f)
+        else if (inventory.currentFood < 0.1f)
         {
             Die("Starvation");
         }
@@ -102,6 +108,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        inactive = dead || win;
         DetermineRubbleEffect();
         GetInput();
         timeSinceLastCollide += Time.deltaTime;
@@ -110,9 +117,9 @@ public class PlayerMovement : MonoBehaviour
             die = false;
             Die("Command");
         }
-        if (!dead)
+        if (!inactive)
         {
-            if (FindObjectOfType<Inventory>().currentEnergy == 0f)
+            if (inventory.currentEnergy < 0.1f)
             {
                 Die("Power Failure");
             }
@@ -123,14 +130,15 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!dead)
+
+        if (!inactive)
         {
             deathCanvas.SetActive(false);
-            if (!inDialogue && !FindObjectOfType<Inventory>().invOpen && !dead)
+            if (!inDialogue && !inventory.invOpen)
             {
                 ProcessInput();
             }
-            else if (FindObjectOfType<Inventory>().invOpen)
+            else if (inventory.invOpen)
             {
                 miningLazer.Stop();
                 miningLazerSound.Stop();
@@ -154,11 +162,20 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            deathCanvas.SetActive(true);
             miningLazer.Stop();
             miningLazerSound.Stop();
             rubbleEffectSound.Stop();
+            if(dead)
+            {
+                deathCanvas.SetActive(true);
+                
+            }
+            if(win)
+            {
+                winCanvas.SetActive(true);
+            }
         }
+        
 
     }
 
@@ -200,7 +217,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void ProcessInput()
     {
-        if (FindObjectOfType<Inventory>().currentEnergy < 0.01f)
+        if (inventory.currentEnergy < 0.01f)
         {
             miningLazer.Stop();
             miningLazerSound.Stop();
@@ -230,7 +247,7 @@ public class PlayerMovement : MonoBehaviour
                     rubbleEffectSound.Stop();
                 }
 
-                FindObjectOfType<Inventory>().ReduceEnergy(energyPerSecondMining * Time.deltaTime);
+                inventory.ReduceEnergy(energyPerSecondMining * Time.deltaTime);
             }
             else
             {
@@ -242,7 +259,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (thrusting)
         {
-            FindObjectOfType<Inventory>().ReduceEnergy(energyPerSecondThrusting * Time.deltaTime);
+            inventory.ReduceEnergy(energyPerSecondThrusting * Time.deltaTime);
             if (energy.currentEnergy > 0f)
             {
                 rb.AddForce(transform.right * thrustSpeed);
@@ -274,7 +291,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (boosting)
         {
-            FindObjectOfType<Inventory>().ReduceEnergy(energyPerSecondBoosting * Time.deltaTime);
+            inventory.ReduceEnergy(energyPerSecondBoosting * Time.deltaTime);
             if (energy.currentEnergy > 0f)
             {
                 rb.AddForce(transform.right * thrustSpeed * 5);
@@ -329,7 +346,7 @@ public class PlayerMovement : MonoBehaviour
         explosion.Play();
         rb.drag = 100f;
         dead = true;
-        FindObjectOfType<Inventory>().gameObject.SetActive(false);
+        inventory.gameObject.SetActive(false);
         Camera.main.cullingMask = deathLayers;
         Camera.main.clearFlags = CameraClearFlags.Color;
         Camera.main.backgroundColor = Color.black;
@@ -373,18 +390,14 @@ public class PlayerMovement : MonoBehaviour
 
     public void Win()
     {
-        PlayerStats.isDead = true;
+        PlayerStats.levelPassed += 1;
         PlayerStats.SaveStats();
         rb.drag = 100f;
-        dead = true;
-        FindObjectOfType<Inventory>().gameObject.SetActive(false);
+        win = true;
+        inventory.gameObject.SetActive(false);
         Camera.main.cullingMask = deathLayers;
         Camera.main.clearFlags = CameraClearFlags.Color;
         Camera.main.backgroundColor = Color.black;
-        foreach (ParticleSystem part in playerDeathParticles)
-        {
-            part.Play();
-        }
         StartCoroutine(PlayerWin());
     }
 

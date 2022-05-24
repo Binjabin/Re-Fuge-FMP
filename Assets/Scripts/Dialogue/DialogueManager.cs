@@ -29,7 +29,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] Color waterColor;
     [SerializeField] Color energyColor;
     [SerializeField] Color boldColor;
-
+    
     string highResource;
     string midResource;
     string lowResource;
@@ -42,7 +42,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] AudioClip playerDialogueClip;
     [SerializeField] AudioClip otherDialogueClip;
     [SerializeField] AudioSource commsSource;
-
+    [SerializeField] GameObject gate;
     bool isPlayer;
     
     private void Start()
@@ -133,6 +133,14 @@ public class DialogueManager : MonoBehaviour
                     FindObjectOfType<Inventory>().currentWater = FindObjectOfType<Inventory>().currentWater*0.3f;
                     FindObjectOfType<Inventory>().currentEnergy = FindObjectOfType<Inventory>().currentEnergy*0.3f;
                 }
+                else if(param == "gate")
+                {
+                    StartCoroutine(Gate());
+                }
+                else if(param == "refused")
+                {
+                    FindObjectOfType<PlayerMovement>().Die("Deported");
+                }
 
             }
             else if(prefix.ToLower() == "involved")
@@ -188,7 +196,14 @@ public class DialogueManager : MonoBehaviour
 
         }
     }
-
+    IEnumerator Gate()
+    {
+        gate.SetActive(false);
+        yield return new WaitForSeconds(0.3f);
+        gate.SetActive(true);
+        yield return new WaitForSeconds(0.3f);
+        gate.SetActive(false);
+    }
     public void EnterDialogue(TextAsset json)
     {
         currentStory = new Story(json.text);
