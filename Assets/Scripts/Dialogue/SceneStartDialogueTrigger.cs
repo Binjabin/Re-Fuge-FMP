@@ -8,6 +8,11 @@ public class SceneStartDialogueTrigger : MonoBehaviour
     [SerializeField] TextAsset firstLevelJSON2;
     [SerializeField] TextAsset firstLevelJSON3;
     [SerializeField] TextAsset secondLevelJSON;
+    [SerializeField] TextAsset forthLevelJSON;
+    [SerializeField] TextAsset sixthLevelJSON;
+    [SerializeField] TextAsset eightLevelJSON;
+    [SerializeField] TextAsset ninthLevelJSON;
+    [SerializeField] TextAsset ninthLevelJSON2;
     public bool minedAsteroids;
     public bool checkedInventory;
     // Start is called before the first frame update
@@ -22,7 +27,7 @@ public class SceneStartDialogueTrigger : MonoBehaviour
     IEnumerator WaitSeconds()
     {
         yield return new WaitForSeconds(2f);
-        if (PlayerStats.levelPassed < 1)
+        if (PlayerStats.levelPassed == 0)
         {
             DialogueManager.GetInstance().EnterDialogue(firstLevelJSON);
             FindObjectOfType<PlayerMovement>().EnterMonologue();
@@ -41,9 +46,40 @@ public class SceneStartDialogueTrigger : MonoBehaviour
             FindObjectOfType<Inventory>().showTutorial = false;
             FindObjectOfType<PlayerMovement>().EnterMonologue();
         }
-        else if (PlayerStats.levelPassed < 2)
+        else if (PlayerStats.levelPassed == 1)
         {
-            //DialogueManager.GetInstance().EnterDialogue(secondLevelJSON);
+            DialogueManager.GetInstance().EnterDialogue(secondLevelJSON);
+            FindObjectOfType<PlayerMovement>().EnterMonologue();
         }
+        else if (PlayerStats.levelPassed == 3)
+        {
+            DialogueManager.GetInstance().EnterDialogue(forthLevelJSON);
+            FindObjectOfType<PlayerMovement>().EnterMonologue();
+        }
+        else if (PlayerStats.levelPassed == 5)
+        {
+            DialogueManager.GetInstance().EnterDialogue(sixthLevelJSON);
+            FindObjectOfType<PlayerMovement>().EnterMonologue();
+        }
+        else if (PlayerStats.levelPassed == 7)
+        {
+            DialogueManager.GetInstance().EnterDialogue(eightLevelJSON);
+            FindObjectOfType<PlayerMovement>().EnterMonologue();
+        }
+        else if (PlayerStats.levelPassed == 8)
+        {
+            if(FindObjectOfType<Inventory>().hasID)
+            {
+                DialogueManager.GetInstance().EnterDialogue(ninthLevelJSON2);
+                FindObjectOfType<PlayerMovement>().EnterMonologue();
+            }
+            else
+            {
+                DialogueManager.GetInstance().EnterDialogue(ninthLevelJSON);
+                FindObjectOfType<PlayerMovement>().EnterMonologue();
+            }
+            
+        }
+        
     }
 }

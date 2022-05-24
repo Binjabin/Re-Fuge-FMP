@@ -9,6 +9,7 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField] TextAsset defaultJSON;
     [SerializeField] TextAsset firstJSON;
     [SerializeField] TextAsset defaultJSON2;
+    [SerializeField] TextAsset defaultJSON3;
     [SerializeField] bool isMerchant;
     [SerializeField] bool isMysterious;
     bool alreadySpoken;
@@ -110,6 +111,10 @@ public class DialogueTrigger : MonoBehaviour
                         else if(FindObjectOfType<Inventory>().helpedRefugee)
                         {
                             DialogueManager.GetInstance().EnterDialogue(defaultJSON2);
+                        }
+                        else if(FindObjectOfType<Inventory>().pickedUpRefugee)
+                        {
+                            DialogueManager.GetInstance().EnterDialogue(defaultJSON3);
                         }
                         else
                         {

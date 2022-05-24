@@ -61,7 +61,7 @@ public class MapManager : MonoBehaviour
             PlayerStats.InitStats();
             
         }
-
+        Debug.Log(PlayerStats.resourceMultiplier);
         FindObjectOfType<MapDialogueTrigger>().CheckDialogue();
     }
     void Update()

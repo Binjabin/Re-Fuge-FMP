@@ -88,6 +88,7 @@ public static class PlayerStats
         shield = playerJSON.shield;
         isDead = playerJSON.isDead;
         helpedRefugee = playerJSON.helpedRefugee;
+        Debug.Log(playerJSON.resourceMultiplier);
         resourceMultiplier = playerJSON.resourceMultiplier;
         if(playerJSON.items != null)
         {

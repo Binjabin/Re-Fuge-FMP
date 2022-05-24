@@ -73,4 +73,5 @@ We'll use up more food and water now though, so we have to make sure to stay on 
 Thank you so much! Mabye I will see my family again.
 #refugee event pickup
 #refugee anim outNeutral
+END OF TRANSMISSION
 -> END

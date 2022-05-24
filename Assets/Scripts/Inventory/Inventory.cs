@@ -29,6 +29,7 @@ public class Inventory : MonoBehaviour
     public bool showTutorial;
     public bool hasID;
     public bool helpedRefugee;
+    public bool pickedUpRefugee;
     public float resourceMultiplier;
     // Start is called before the first frame update
     void Start()
@@ -42,6 +43,7 @@ public class Inventory : MonoBehaviour
             currentFood = PlayerStats.food;
             currentWater = PlayerStats.water;
             hasID = PlayerStats.hasID;
+            resourceMultiplier = PlayerStats.resourceMultiplier;
             if(PlayerStats.items != null)
             {
                 foreach (GameObject item in PlayerStats.items)

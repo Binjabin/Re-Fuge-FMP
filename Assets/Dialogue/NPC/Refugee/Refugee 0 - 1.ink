@@ -44,4 +44,6 @@ Quick get on board, before your ship falls apart.
 #player anim outNeutral
 #refugee anim inNeutral
 Thank you so much! Mabye I will see my family again.
+#refugee outNeutral
+END OF TRANSMISSION
 -> END

@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   icon: {fileID: 21300000, guid: 6f2794cfbc7323c4a97c8cd3dba8c1e5, type: 3}
-  minAsteroidCount: 150
-  maxAsteroidCount: 200
+  minAsteroidCount: 70
+  maxAsteroidCount: 130
   containsMerchant: 0
   containsRefugee: 0
   containsMysteroiusMan: 0
-  minLightEnemyCount: 2
-  maxLightEnemyCount: 4
-  minHeavyEnemyCount: 1
-  maxHeavyEnemyCount: 2
+  minLightEnemyCount: 0
+  maxLightEnemyCount: 0
+  minHeavyEnemyCount: 0
+  maxHeavyEnemyCount: 0

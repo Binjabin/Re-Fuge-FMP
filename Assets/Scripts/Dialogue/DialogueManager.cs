@@ -124,7 +124,7 @@ public class DialogueManager : MonoBehaviour
                 {
                     FindObjectOfType<Inventory>().helpedRefugee = true;
                     FindObjectOfType<Inventory>().resourceMultiplier += 0.5f;
-                    FindObjectOfType<DialogueTrigger>().enabled = false;
+                    FindObjectOfType<Inventory>().pickedUpRefugee = true;
                 }
                 else if(param == "share")
                 {
