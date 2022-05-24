@@ -110,7 +110,7 @@ public class HealthBar : MonoBehaviour
     public void Die()
     {
         
-        FindObjectOfType<PlayerMovement>().Die();
+        FindObjectOfType<PlayerMovement>().Die("Ship Damage");
         
     }
 }

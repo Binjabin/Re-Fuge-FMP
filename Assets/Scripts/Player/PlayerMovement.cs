@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 public class PlayerMovement : MonoBehaviour
 {
     float turnDirection;
@@ -42,6 +43,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] GameObject deathCanvas;
     [SerializeField] AudioSource explosion;
     [SerializeField] LayerMask lazerLayerMask;
+    string deathMessage;
+    [SerializeField] TextMeshProUGUI causeOfDeath;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,10 +54,23 @@ public class PlayerMovement : MonoBehaviour
         energy = gameObject.GetComponent<EnergyBar>();
         inDialogue = false;
         trail = GetComponentsInChildren<TrailRenderer>();
+        CheckDeath();
         for (int i = 0; i < trail.Length; i++)
         {
             standardTrailLength[i] = trail[i].time;
             trail[i].time = 0f;
+        }
+    }
+
+    void CheckDeath()
+    {
+        if(FindObjectOfType<Inventory>().currentWater < 0.1f)
+        {
+            Die("Thirst");
+        }
+        else if(FindObjectOfType<Inventory>().currentFood < 0.1f)
+        {
+            Die("Starvation");
         }
     }
     void DetermineRubbleEffect()
@@ -90,8 +106,16 @@ public class PlayerMovement : MonoBehaviour
         if(die)
         {
             die = false;
-            Die();
+            Die("Command");
         }
+        if(!dead)
+        {
+            if (FindObjectOfType<Inventory>().currentEnergy == 0f)
+            {
+                Die("Power Failure");
+            }
+        }
+        
     }
     void FixedUpdate()
     {
@@ -127,8 +151,11 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             deathCanvas.SetActive(true);
+            miningLazer.Stop();
+            miningLazerSound.Stop();
+            rubbleEffectSound.Stop();
         }
-        
+
     }
 
     void GetInput()
@@ -290,8 +317,9 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
-    public void Die()
+    public void Die(string deathCause)
     {
+        deathMessage = deathCause;
         PlayerStats.isDead = true;
         PlayerStats.SaveStats();
         explosion.Play();
@@ -315,8 +343,10 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator Death()
     {
         FindObjectOfType<LevelAudio>().Death();
+
         deathCanvas.GetComponent<CanvasGroup>().alpha = 0f;
         yield return new WaitForSeconds(4f);
+        causeOfDeath.text = "Cause Of Death: " + deathMessage; 
         float elapsed = 0f;
         while (elapsed < 2f)
         {
