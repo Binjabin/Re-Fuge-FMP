@@ -25,35 +25,39 @@ public class MapManager : MonoBehaviour
                 PlayerStats.InitStats();
                 Debug.Log("player died");
             }
-            var mapJson = PlayerPrefs.GetString("Map");
-            map = JsonConvert.DeserializeObject<Map>(mapJson);
-            // using this instead of .Contains()
-            if (map.path.Any(p => p.Equals(map.GetBossNode().point)))
-            {
-                // player has already reached the boss, generate a new map
-                GenerateNewMap();
-                PlayerStats.InitStats();
-            }
             else
             {
-                
-                currentMap = map;
-                // player has not reached the boss yet, load the current map
-                
-                if(PlayerStats.levelPassed < map.path.Count)
+                var mapJson = PlayerPrefs.GetString("Map");
+                map = JsonConvert.DeserializeObject<Map>(mapJson);
+                // using this instead of .Contains()
+                if (map.path.Any(p => p.Equals(map.GetBossNode().point)))
                 {
-                    if(map.path.Count > 0f)
+                    // player has already reached the boss, generate a new map
+                    GenerateNewMap();
+                    PlayerStats.InitStats();
+                }
+                else
+                {
+
+                    currentMap = map;
+                    // player has not reached the boss yet, load the current map
+
+                    if (PlayerStats.levelPassed < map.path.Count)
                     {
-                        map.path.RemoveAt(map.path.Count - 1);
+                        if (map.path.Count > 0f)
+                        {
+                            map.path.RemoveAt(map.path.Count - 1);
+                        }
                     }
+                    view.DrawMap(map);
+                    if (map.path.Count > 0f)
+                    {
+                        FindObjectOfType<MapCamera>().StartCamera();
+                    }
+
                 }
-                view.DrawMap(map);
-                if (map.path.Count > 0f)
-                {
-                    FindObjectOfType<MapCamera>().StartCamera();
-                }
-                
             }
+            
         }
         else
         {

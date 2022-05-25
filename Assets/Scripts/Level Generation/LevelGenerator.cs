@@ -41,6 +41,7 @@ public class LevelGenerator : MonoBehaviour
     List<Vector3> nextEnemyWaypoint;
     GameObject merchantShip;
     List<AsteroidWeights> asteroidWeights;
+    [SerializeField] GameObject othea;
     // Start is called before the first frame update
     void Awake()
     {
@@ -67,10 +68,22 @@ public class LevelGenerator : MonoBehaviour
             PlaceHeavyEnemy();
         }
         GenerateField(LevelToLoad.asteroidCount);
-        PlaceEndPoint();
+        if(PlayerStats.levelPassed == 8)
+        {
+            othea.SetActive(true);
+        }
+        else
+        {
+            othea.SetActive(false);
+            PlaceEndPoint();
+        }
+        
 
     }
+    void LateStart()
+    {
 
+    }
     // Update is called once per frame
     void Update()
     {

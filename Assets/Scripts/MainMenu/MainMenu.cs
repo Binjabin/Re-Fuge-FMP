@@ -58,6 +58,16 @@ public class MainMenu : MonoBehaviour
         audio.Play();
         transitions.SetTrigger("Out");
         yield return new WaitForSeconds(2f);
-        Debug.Log("Credits");
+        SceneManager.LoadScene("Credits");
+    }
+    IEnumerator Menu()
+    {
+        transitions.SetTrigger("Out");
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("Menu");
+    }
+    public void OpenMenu()
+    {
+        StartCoroutine(Menu());
     }
 }

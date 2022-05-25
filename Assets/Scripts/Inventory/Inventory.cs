@@ -24,7 +24,7 @@ public class Inventory : MonoBehaviour
     [SerializeField] GameObject waterWarning;
     [SerializeField] GameObject foodWarning;
     [SerializeField] GameObject energyWarning;
-
+    bool absorbing;
     [SerializeField] GameObject tutorial;
     public bool showTutorial;
     public bool hasID;
@@ -87,9 +87,16 @@ public class Inventory : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.I))
             {
-                invOpen = !invOpen;
-                if(!invOpen)
+                if(invOpen)
                 {
+                    if (!absorbing)
+                    {
+                        invOpen = false;
+                    }
+                }
+                else
+                {
+                    invOpen = true;
                     FindObjectOfType<SceneStartDialogueTrigger>().checkedInventory = true;
                 }
             }
@@ -125,6 +132,17 @@ public class Inventory : MonoBehaviour
         energySlider.value = currentEnergy / maxEnergy;
         waterSlider.value = currentWater / maxWater;
         foodSlider.value = currentFood / maxFood;
+        if(invOpen)
+        {
+            absorbing = false;
+            foreach(GameObject item in currentItems)
+            {
+                if(item.GetComponent<Item>().absorbing == true)
+                {
+                    absorbing = true;
+                }
+            }
+        }
     }
     public void TopUp(ItemType type, float value)
     {

@@ -5,9 +5,10 @@ using UnityEngine;
 public class FinalEndPoint : MonoBehaviour
 {
     // Start is called before the first frame update
+    [SerializeField] GameObject nextLevelPrompt;
     void Start()
     {
-        
+        nextLevelPrompt.SetActive(false);
     }
 
     // Update is called once per frame

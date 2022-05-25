@@ -27,7 +27,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndD
     public InventorySlot currentSlot;
     public float value = 10f;
     public InventorySlot startSlot = null;
-
+    public bool absorbing = false;
     
 
     public void OnPointerDown(PointerEventData eventData)
@@ -149,6 +149,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndD
 
     public IEnumerator Absorb()
     {
+        absorbing = true;
         float elapsedTime = 0f;
         float waitTime = 1f;
         while (elapsedTime < waitTime)
@@ -162,7 +163,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndD
         inv.TopUp(currentSlot.slotType, value);
         inv.currentItems.Remove(gameObject);
         Destroy(gameObject);
-
+        absorbing = false;
     }
     public void Trade()
     {

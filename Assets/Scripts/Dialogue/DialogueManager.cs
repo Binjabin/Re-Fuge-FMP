@@ -23,6 +23,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] Animator merchantAnimator;
     [SerializeField] Animator mysteriousAnimator;
     [SerializeField] Animator refugeeAnimator;
+    [SerializeField] Animator authAnimator;
     Animator anim;
 
     [SerializeField] Color foodColor;
@@ -159,6 +160,9 @@ public class DialogueManager : MonoBehaviour
                     case "refugee":
                         refugeeAnimator.gameObject.SetActive(bool.Parse(param));
                         break;
+                    case "auth":
+                        authAnimator.gameObject.SetActive(bool.Parse(param));
+                        break;
                 }
             }
             else
@@ -184,6 +188,9 @@ public class DialogueManager : MonoBehaviour
                         break;
                     case "refugee":
                         anim = refugeeAnimator;
+                        break;
+                    case "auth":
+                        anim = authAnimator;
                         break;
                 }
                 if (prefix == "anim")

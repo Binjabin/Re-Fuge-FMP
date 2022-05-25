@@ -98,12 +98,12 @@ public class DialogueTrigger : MonoBehaviour
                         
                         if (FindObjectOfType<Inventory>().hasID)
                         {
-                            DialogueManager.GetInstance().EnterDialogue(defaultJSON);
+                            DialogueManager.GetInstance().EnterDialogue(defaultJSON2);
                             FindObjectOfType<PlayerMovement>().EnterMonologue();
                         }
                         else
                         {
-                            DialogueManager.GetInstance().EnterDialogue(defaultJSON2);
+                            DialogueManager.GetInstance().EnterDialogue(defaultJSON);
                             FindObjectOfType<PlayerMovement>().EnterMonologue();
                         }
                     }
