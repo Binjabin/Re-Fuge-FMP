@@ -384,6 +384,8 @@ public class PlayerMovement : MonoBehaviour
             elapsed += Time.deltaTime;
             yield return null;
         }
+        FindObjectOfType<SceneManagment>().LeaveScene();
+        yield return new WaitForSeconds(2f);
         SceneManager.LoadScene("Menu");
 
     }
@@ -423,6 +425,8 @@ public class PlayerMovement : MonoBehaviour
             elapsed += Time.deltaTime;
             yield return null;
         }
-        SceneManager.LoadScene("Menu");
+        FindObjectOfType<SceneManagment>().LeaveScene();
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("Credits");
     }
 }

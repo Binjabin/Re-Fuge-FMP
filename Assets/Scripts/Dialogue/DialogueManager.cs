@@ -376,7 +376,7 @@ public class DialogueManager : MonoBehaviour
             else
             {
                 currentTypedText += letter;
-                yield return new WaitForSeconds(0.05f);
+                yield return new WaitForSeconds(0.02f);
             }
 
             dialogueText.text = currentTypedText;

@@ -70,10 +70,6 @@ public class MapManager : MonoBehaviour
     }
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            GenerateNewMap();
-        }
     }
 
     public void GenerateNewMap()

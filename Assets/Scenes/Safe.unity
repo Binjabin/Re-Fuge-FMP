@@ -478,8 +478,8 @@ MonoBehaviour:
 
     THIS IS SAMPLE TEXT'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 570205d0769730b4486220b4b5112e53, type: 2}
-  m_sharedMaterial: {fileID: 2912045379006780603, guid: 570205d0769730b4486220b4b5112e53, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: df53ac5f277c78644b0b382fa0494838, type: 2}
+  m_sharedMaterial: {fileID: 4024788270295793047, guid: df53ac5f277c78644b0b382fa0494838, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -970,8 +970,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Button
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 570205d0769730b4486220b4b5112e53, type: 2}
-  m_sharedMaterial: {fileID: 2912045379006780603, guid: 570205d0769730b4486220b4b5112e53, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: df53ac5f277c78644b0b382fa0494838, type: 2}
+  m_sharedMaterial: {fileID: 4024788270295793047, guid: df53ac5f277c78644b0b382fa0494838, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2193,8 +2193,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Press Space To Warp
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 570205d0769730b4486220b4b5112e53, type: 2}
-  m_sharedMaterial: {fileID: 2912045379006780603, guid: 570205d0769730b4486220b4b5112e53, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: df53ac5f277c78644b0b382fa0494838, type: 2}
+  m_sharedMaterial: {fileID: 4024788270295793047, guid: df53ac5f277c78644b0b382fa0494838, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4323,7 +4323,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 588223025}
   m_LocalRotation: {x: 0.2546557, y: 0.36785895, z: -0.10548183, w: 0.8880901}
-  m_LocalPosition: {x: -4.7522545, y: 15.299309, z: 18.256763}
+  m_LocalPosition: {x: -7.1508904, y: 2.4189835, z: 15.85812}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1392477925}
@@ -6531,7 +6531,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 20
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -6555,7 +6555,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.2546557, y: 0.36785895, z: -0.10548183, w: 0.8880901}
-  m_LocalPosition: {x: -64.76427, y: 51.93885, z: -42.280533}
+  m_LocalPosition: {x: -67.1247, y: 54.457603, z: -44.3647}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -12377,8 +12377,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Button
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 570205d0769730b4486220b4b5112e53, type: 2}
-  m_sharedMaterial: {fileID: 2912045379006780603, guid: 570205d0769730b4486220b4b5112e53, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: df53ac5f277c78644b0b382fa0494838, type: 2}
+  m_sharedMaterial: {fileID: 4024788270295793047, guid: df53ac5f277c78644b0b382fa0494838, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -17806,8 +17806,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Press Space \nTo Recieve Transmission"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 570205d0769730b4486220b4b5112e53, type: 2}
-  m_sharedMaterial: {fileID: 2912045379006780603, guid: 570205d0769730b4486220b4b5112e53, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: df53ac5f277c78644b0b382fa0494838, type: 2}
+  m_sharedMaterial: {fileID: 4024788270295793047, guid: df53ac5f277c78644b0b382fa0494838, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -23228,8 +23228,8 @@ MonoBehaviour:
 
     (It''s simple!)'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 570205d0769730b4486220b4b5112e53, type: 2}
-  m_sharedMaterial: {fileID: 2912045379006780603, guid: 570205d0769730b4486220b4b5112e53, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: df53ac5f277c78644b0b382fa0494838, type: 2}
+  m_sharedMaterial: {fileID: 4024788270295793047, guid: df53ac5f277c78644b0b382fa0494838, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -23626,8 +23626,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: (Press I to close)
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 570205d0769730b4486220b4b5112e53, type: 2}
-  m_sharedMaterial: {fileID: 2912045379006780603, guid: 570205d0769730b4486220b4b5112e53, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: df53ac5f277c78644b0b382fa0494838, type: 2}
+  m_sharedMaterial: {fileID: 4024788270295793047, guid: df53ac5f277c78644b0b382fa0494838, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -24639,8 +24639,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: INVENTORY
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 570205d0769730b4486220b4b5112e53, type: 2}
-  m_sharedMaterial: {fileID: 2912045379006780603, guid: 570205d0769730b4486220b4b5112e53, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: df53ac5f277c78644b0b382fa0494838, type: 2}
+  m_sharedMaterial: {fileID: 4024788270295793047, guid: df53ac5f277c78644b0b382fa0494838, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -26324,8 +26324,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Button
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 570205d0769730b4486220b4b5112e53, type: 2}
-  m_sharedMaterial: {fileID: 2912045379006780603, guid: 570205d0769730b4486220b4b5112e53, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: df53ac5f277c78644b0b382fa0494838, type: 2}
+  m_sharedMaterial: {fileID: 4024788270295793047, guid: df53ac5f277c78644b0b382fa0494838, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

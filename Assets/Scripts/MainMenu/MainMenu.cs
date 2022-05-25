@@ -28,7 +28,7 @@ public class MainMenu : MonoBehaviour
 
     public void CreditsButton()
     {
-        audio.Play();
+        StartCoroutine(Credits());
     }
 
     IEnumerator QuitGame()
