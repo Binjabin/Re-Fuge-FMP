@@ -38,7 +38,6 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] GameObject missilePrefab;
     [SerializeField] float missileAttackTime;
     float timeSinceMissile;
-
     public bool isTracking;
     void FindVisibleTargets()
     {

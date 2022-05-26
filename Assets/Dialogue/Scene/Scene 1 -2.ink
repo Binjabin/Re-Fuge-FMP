@@ -12,7 +12,7 @@ VAR boldcolor = ""
 INCOMING TRANSMISSION
 #player anim inNeutral
 Looks like that asteroid had some resources inside. 
-I'll be able to refill my putting the resources into the ship's input slot.
+I'll be able to refill by putting the resources into the ship's input slot.
 I should check my inventory <color={boldcolor}><b>(i)</b><color={defaultcolor}>.
 
 #player anim outNeutral

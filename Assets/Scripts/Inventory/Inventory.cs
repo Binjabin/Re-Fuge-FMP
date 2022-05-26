@@ -92,12 +92,13 @@ public class Inventory : MonoBehaviour
                     if (!absorbing)
                     {
                         invOpen = false;
+                        FindObjectOfType<SceneStartDialogueTrigger>().checkedInventory = true;
                     }
                 }
                 else
                 {
                     invOpen = true;
-                    FindObjectOfType<SceneStartDialogueTrigger>().checkedInventory = true;
+                    
                 }
             }
 

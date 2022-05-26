@@ -50,6 +50,10 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] GameObject winCanvas;
     Inventory inventory;
+    [SerializeField] AudioSource collisionSound;
+    [SerializeField] AudioClip heavyCollision;
+    [SerializeField] AudioClip lightCollision;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -328,12 +332,25 @@ public class PlayerMovement : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
-        if (timeSinceLastCollide > 0.5f)
+        if (timeSinceLastCollide > 1f)
         {
             if (collision.relativeVelocity.magnitude > minImpactSpeedForDamage)
             {
                 GetComponent<HealthBar>().Damage(Mathf.Min(collision.relativeVelocity.magnitude * damagePerUnitSpeed, 50f));
                 timeSinceLastCollide = 0f;
+                collisionSound.Stop();
+                collisionSound.pitch = 1.8f;
+                collisionSound.clip = heavyCollision;
+                collisionSound.Play();
+                
+            }
+            else
+            {
+                timeSinceLastCollide = 0f;
+                collisionSound.Stop();
+                collisionSound.pitch = 0.7f;
+                collisionSound.clip = lightCollision;
+                collisionSound.Play();
             }
         }
 

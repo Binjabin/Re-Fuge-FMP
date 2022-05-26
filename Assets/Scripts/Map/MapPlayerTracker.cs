@@ -43,6 +43,7 @@ public class MapPlayerTracker : MonoBehaviour
                 {
                     GetComponent<AudioSource>().clip = cannotGo;
                     GetComponent<AudioSource>().Play();
+                    SendPlayerToNode(mapNode);
                 }
                     
             }
