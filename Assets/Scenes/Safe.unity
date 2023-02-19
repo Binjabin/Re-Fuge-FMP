@@ -6536,7 +6536,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 20
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -6560,7 +6560,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.2546557, y: 0.36785895, z: -0.10548183, w: 0.8880901}
-  m_LocalPosition: {x: -67.1247, y: 54.457603, z: -44.3647}
+  m_LocalPosition: {x: -64.76427, y: 51.93885, z: -42.280533}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -48771,7 +48771,7 @@ Rigidbody:
   m_GameObject: {fileID: 1170645040492699122}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0.3
+  m_Drag: 0.4
   m_AngularDrag: 10
   m_UseGravity: 0
   m_IsKinematic: 0
@@ -48811,7 +48811,7 @@ MonoBehaviour:
   playerShip: {fileID: 2020449860}
   miningRock: 0
   energyPerSecondThrusting: 0.1
-  energyPerSecondMining: 1
+  energyPerSecondMining: 0.5
   damagePerUnitSpeed: 0.5
   minImpactSpeedForDamage: 10
   miningLazer: {fileID: 1833329457}
@@ -48854,7 +48854,7 @@ MonoBehaviour:
   currentShield: 0
   shieldRegenDelay: 10
   shieldRegenSpeed: 10
-  energyPerShield: 0.3
+  energyPerShield: 0.05
   shieldBar: {fileID: 1945502104}
   healthBar: {fileID: 1542557541}
 --- !u!114 &1170645040492699128

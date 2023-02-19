@@ -29,6 +29,8 @@ public class MapView : MonoBehaviour
 
     private List<LineConnection> lineConnections = new List<LineConnection>();
 
+    [SerializeField] GameObject currentPositionIcon;
+
     void Start()
     {
         
@@ -81,6 +83,19 @@ public class MapView : MonoBehaviour
         DrawLines();
         SetAttainableNodes();
         SetLineColors();
+
+        if(mapManager.currentMap.path.Count != 0)
+        {
+            currentPositionIcon.SetActive(true);
+            var currentPoint = mapManager.currentMap.path[mapManager.currentMap.path.Count - 1];
+            var currentNode = mapManager.currentMap.GetNode(currentPoint);
+            currentPositionIcon.transform.position = currentNode.position;
+        }
+        else
+        {
+            currentPositionIcon.SetActive(false);
+        }
+        
     }
 
     void DrawNodes(IEnumerable<Node> nodes)
