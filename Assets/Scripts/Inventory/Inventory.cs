@@ -31,6 +31,18 @@ public class Inventory : MonoBehaviour
     public bool helpedRefugee;
     public bool pickedUpRefugee;
     public float resourceMultiplier;
+
+    [Header("Item Drag Preview")]
+    [SerializeField] GameObject preview;
+    [SerializeField] Transform waterEnd;
+    [SerializeField] Transform foodEnd;
+    [SerializeField] Transform energyEnd;
+    Vector3 previewStartPosition;
+    ItemType previewType;
+    Vector3 previewEndPosition;
+    Item firstItem;
+    float previewTimer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -142,6 +154,46 @@ public class Inventory : MonoBehaviour
                 {
                     absorbing = true;
                 }
+            }
+
+            if(showTutorial)
+            {
+                preview.SetActive(true);
+                
+                if(currentItems.Count != 0)
+                {
+                    firstItem = currentItems[0].GetComponent<Item>();
+
+                    if(!firstItem.dragged)
+                    {
+                        previewStartPosition = firstItem.transform.position;
+                    }
+
+                    if(firstItem.itemType == ItemType.Energy)
+                    {
+                        previewEndPosition = energyEnd.position;
+                    }
+                    if(firstItem.itemType == ItemType.Water)
+                    {
+                        previewEndPosition = waterEnd.position;
+                    }
+                    if(firstItem.itemType == ItemType.Food)
+                    {
+                        previewEndPosition = foodEnd.position;
+                    }
+
+                    float fac = previewTimer % 3f;
+                    float smoothFac = Mathf.SmoothStep(0f, 1f, fac/3f);
+                    preview.transform.position = Vector3.Lerp(previewStartPosition, previewEndPosition, smoothFac);
+                    previewTimer += Time.deltaTime;
+                }
+                
+                
+            }
+            else
+            {
+                preview.SetActive(false);
+                previewTimer = 0f;
             }
         }
     }

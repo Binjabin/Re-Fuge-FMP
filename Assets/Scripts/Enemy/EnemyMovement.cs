@@ -116,7 +116,7 @@ public class EnemyMovement : MonoBehaviour
         if (Physics.Raycast(transform.position, aimDir, out hit, maxIdealRange) && hit.transform.gameObject.tag != "player")
         {
             GameObject avoidingObject = hit.transform.gameObject;
-            Vector3 avoidanceDirection = Quaternion.AngleAxis(90, Vector3.up) * aimDir;
+            Vector3 avoidanceDirection = Quaternion.AngleAxis(45, Vector3.up) * aimDir;
             Debug.DrawRay(transform.position, avoidanceDirection * maxIdealRange, Color.green);
             FaceDirection(avoidanceDirection);
             if (Vector3.Dot(transform.forward, avoidanceDirection) > 0.75f)

@@ -39763,7 +39763,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b21240dc7f0ae247aac0fced0478760, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 4
+  rotationSpeed: 3
   thrustSpeed: 18
   maxIdealRange: 20
   minIdealRange: 10

@@ -14,7 +14,6 @@ public class PlayerMovement : MonoBehaviour
     float velocityref;
     bool thrusting;
     bool breaking;
-    bool boosting;
     [SerializeField] float lazerDistance;
     [SerializeField] bool die;
     bool inDialogue;
@@ -24,7 +23,6 @@ public class PlayerMovement : MonoBehaviour
     EnergyBar energy;
     public bool miningRock;
     [SerializeField] float energyPerSecondThrusting;
-    [SerializeField] float energyPerSecondBoosting;
     [SerializeField] float energyPerSecondMining;
     [SerializeField] float damagePerUnitSpeed;
     [SerializeField] float minImpactSpeedForDamage;
@@ -187,7 +185,6 @@ public class PlayerMovement : MonoBehaviour
     {
         thrusting = Input.GetKey(KeyCode.W);
         breaking = Input.GetKey(KeyCode.S) || inDialogue;
-        boosting = Input.GetKey(KeyCode.E);
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
@@ -209,7 +206,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 trail[i].time = Mathf.SmoothDamp(trail[i].time, 0f, ref velocityref, 0.1f);
             }
-            else if (thrusting || boosting)
+            else if (thrusting)
             {
                 trail[i].time = Mathf.SmoothDamp(trail[i].time, standardTrailLength[i], ref velocityref, 0.1f);
             }
@@ -293,17 +290,6 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.drag = 0.1f;
         }
-        if (boosting)
-        {
-            inventory.ReduceEnergy(energyPerSecondBoosting * Time.deltaTime);
-            if (energy.currentEnergy > 0f)
-            {
-                rb.AddForce(transform.right * thrustSpeed * 5);
-            }
-
-
-        }
-
         if (turnDirection != 0f)
         {
             rb.AddTorque(transform.up * rotationSpeed * -turnDirection);

@@ -112,9 +112,9 @@ MonoBehaviour:
   pickupRange: 30
   speed: 40
   type: 0
-  waterPickupColor: {r: 6.450261, g: 15.916228, b: 15.999998, a: 0}
-  energyPickupColor: {r: 29.45428, g: 12.491082, b: 8.018967, a: 0}
-  foodPickupColor: {r: 7.8431373, g: 16, b: 6.27451, a: 0}
+  waterPickupColor: {r: 0.88287646, g: 5.992518, b: 6.037736, a: 0}
+  energyPickupColor: {r: 6.113208, g: 1.8149891, b: 0.720897, a: 0}
+  foodPickupColor: {r: 1.6840265, g: 5.886792, b: 0.86080444, a: 0}
 --- !u!54 &4457148152409111793
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -21,8 +21,8 @@ Material:
     m_TexEnvs: []
     m_Floats:
     - _RemoveDiag: 1
-    - _WireframeVal: 0.005
+    - _WireframeVal: 0.002
     m_Colors:
     - _BackColor: {r: 1, g: 1, b: 1, a: 1}
-    - _FrontColor: {r: 0, g: 0.9830508, b: 1, a: 1}
+    - _FrontColor: {r: 0, g: 0.2228635, b: 0.2264151, a: 1}
   m_BuildTextureStacks: []

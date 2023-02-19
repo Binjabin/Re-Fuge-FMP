@@ -28,6 +28,7 @@ public class Item : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndD
     public float value = 10f;
     public InventorySlot startSlot = null;
     public bool absorbing = false;
+    public bool dragged;
     
 
     public void OnPointerDown(PointerEventData eventData)
@@ -37,12 +38,13 @@ public class Item : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndD
 
     public void OnDrag(PointerEventData eventData)
     {
+        dragged = true;
         UpdatePosition();
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-
+        dragged = false;
         var results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventData, results);
         InventorySlot slot = null;
