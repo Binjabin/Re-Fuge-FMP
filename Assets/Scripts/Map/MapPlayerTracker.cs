@@ -58,20 +58,12 @@ public class MapPlayerTracker : MonoBehaviour
 
             if (currentNodePoint != null && currentNodePoint.outgoing.Any(point => point.Equals(mapNode.Node.point)))
             {
-                if(PlayerStats.food > mapNode.currentMinFoodCost && PlayerStats.water > mapNode.currentMinWaterCost)
-                {
-                    if(!FindObjectOfType<DialogueManager>().dialogueIsPlaying)
-                    {
-                        SendPlayerToNode(mapNode);
-                        currentNode = mapNode;
-                        GetComponent<AudioSource>().clip = canGo;
-                        GetComponent<AudioSource>().Play();
-                    }
 
-                }
-                else
+                if(!FindObjectOfType<DialogueManager>().dialogueIsPlaying)
                 {
-                    GetComponent<AudioSource>().clip = cannotGo;
+                    SendPlayerToNode(mapNode);
+                    currentNode = mapNode;
+                    GetComponent<AudioSource>().clip = canGo;
                     GetComponent<AudioSource>().Play();
                 }
             }
