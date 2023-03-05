@@ -5907,7 +5907,7 @@ MonoBehaviour:
   currentEnergySlider: {fileID: 1078033320}
   enemySlider: {fileID: 1146684655}
   currentSelectedNode: {fileID: 0}
-  uncertaintySmoothSpeed: 0.2
+  uncertaintySmoothSpeed: 1
   foodPerDist: 3
   waterPerDist: 5
 --- !u!1 &1269623875

@@ -45,6 +45,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] LayerMask lazerLayerMask;
     string deathMessage;
     [SerializeField] TextMeshProUGUI causeOfDeath;
+    string tipText;
+    [SerializeField] private TextMeshProUGUI tip;
 
     [SerializeField] GameObject winCanvas;
     Inventory inventory;
@@ -76,11 +78,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (inventory.currentWater < 0.1f)
         {
-            Die("Thirst");
+            Die("Water");
         }
         else if (inventory.currentFood < 0.1f)
         {
-            Die("Starvation");
+            Die("Food");
         }
     }
     void DetermineRubbleEffect()
@@ -123,7 +125,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (inventory.currentEnergy < 0.1f)
             {
-                Die("Power Failure");
+                Die("Power");
             }
         }
 
@@ -343,7 +345,33 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Die(string deathCause)
     {
-        deathMessage = deathCause;
+        Debug.Log(deathCause);
+        switch (deathCause)
+        {
+            case "Food":
+                tipText = "Keep an eye on your supplies. If you don't have enough food gather some more by mining the darker brown asteroids.";
+                deathMessage = "Starvation";
+                break;
+            case "Water":
+                tipText = "Keep an eye on your supplies. If you don't have enough water gather some more by mining the light grey asteroids.";
+                deathMessage = "Thirst";
+                break;
+            case "Power":
+                tipText = "Keep an eye on your supplies. If you don't have enough energy gather some more by mining the light brown asteroids.";
+                deathMessage = "Power Failure";
+                break;
+            case "Damage":
+                tipText = "Avoid crashing into asteroids! You can slow down using the S key. Make sure to use your stealth to stay well away from enemies. ";
+                deathMessage = "Ship Damage";
+                break;
+            case "Deported":
+                tipText = "You didn't have any ID so they sent you away! You might need to find someone who sells false identification.";
+                deathMessage = "Deportation";
+                break;
+        }
+        
+
+        
         PlayerStats.isDead = true;
         PlayerStats.SaveStats();
         explosion.Play();
@@ -371,6 +399,7 @@ public class PlayerMovement : MonoBehaviour
         deathCanvas.GetComponent<CanvasGroup>().alpha = 0f;
         yield return new WaitForSeconds(4f);
         causeOfDeath.text = "Cause Of Death: " + deathMessage;
+        tip.text = "Tip: " + tipText;
         float elapsed = 0f;
         while (elapsed < 2f)
         {
@@ -392,6 +421,8 @@ public class PlayerMovement : MonoBehaviour
         SceneManager.LoadScene("Menu");
 
     }
+
+    
 
     public void Win()
     {
